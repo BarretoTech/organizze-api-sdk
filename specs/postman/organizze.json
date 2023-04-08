@@ -137,7 +137,7 @@
 							"variable": [
 								{
 									"key": "accountId",
-									"value": "6632818"
+									"value": "6633003"
 								}
 							]
 						}
@@ -544,7 +544,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/transactions",
+							"raw": "{{base_url}}/transactions?start_date=2015-09-01&end_date=2015-10-01&account_id=6632818",
 							"host": [
 								"{{base_url}}"
 							],
@@ -554,29 +554,150 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "",
-									"description": "ISO8601 Date with the start period for filtering",
-									"type": "text",
-									"disabled": true
+									"value": "2015-09-01",
+									"description": "ISO8601 Date with the start period for filtering"
 								},
 								{
 									"key": "end_date",
-									"value": "",
-									"description": "ISO8601 Date with the end period for filtering",
-									"type": "text",
-									"disabled": true
+									"value": "2015-10-01",
+									"description": "ISO8601 Date with the end period for filtering"
 								},
 								{
 									"key": "account_id",
-									"value": "",
-									"description": "Account ID for filtering",
-									"type": "text",
-									"disabled": true
+									"value": "6632818",
+									"description": "Account ID for filtering"
 								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"id": "3e9ac986-7124-41ff-b5d1-4d41fee04ad8",
+							"name": "List Transactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions?start_date=2015-09-01&end_date=2015-10-01",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2015-09-01",
+											"description": "ISO8601 Date with the start period for filtering",
+											"type": "text"
+										},
+										{
+											"key": "end_date",
+											"value": "2015-10-01",
+											"description": "ISO8601 Date with the end period for filtering",
+											"type": "text"
+										},
+										{
+											"key": "account_id",
+											"value": "",
+											"description": "Account ID for filtering",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:34:51 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "link",
+									"value": ""
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"6a49b7ebcbad27757c4bc6cdda39fd55\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "66ddfde97c143db2df6fe9cd6d02fc6f"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.035589"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=5V6rnaiV3957QW4fhQKMqMv8Mlnra9gDFZVV6db4ioRRVwAr1XDZ11QI4V2hSEzkNDO6heQ3jWkpBhHq4PFXKE7CbAaieJ6%2F9p%2Bz%2B%2FXhMe15qnr9mdSsBDBBEJJK9%2BRktiQMK7nP\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b93acca2b0637-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[\n    {\n        \"id\": 2477483422,\n        \"description\": \"Despesa fixa\",\n        \"date\": \"2015-09-16\",\n        \"paid\": true,\n        \"amount_cents\": 0,\n        \"total_installments\": 1,\n        \"installment\": 1,\n        \"recurring\": false,\n        \"account_id\": 6632818,\n        \"category_id\": 120321159,\n        \"notes\": \"Pagamento via boleto\",\n        \"attachments_count\": 0,\n        \"credit_card_id\": null,\n        \"credit_card_invoice_id\": null,\n        \"paid_credit_card_id\": null,\n        \"paid_credit_card_invoice_id\": null,\n        \"oposite_transaction_id\": null,\n        \"oposite_account_id\": null,\n        \"created_at\": \"2023-04-08T12:32:16-03:00\",\n        \"updated_at\": \"2023-04-08T12:32:16-03:00\",\n        \"tags\": [],\n        \"attachments\": []\n    },\n    {\n        \"id\": 2477483178,\n        \"description\": \"Test\",\n        \"date\": \"2015-09-16\",\n        \"paid\": true,\n        \"amount_cents\": 0,\n        \"total_installments\": 1,\n        \"installment\": 1,\n        \"recurring\": false,\n        \"account_id\": 6632818,\n        \"category_id\": 120321159,\n        \"notes\": \"Test\",\n        \"attachments_count\": 0,\n        \"credit_card_id\": null,\n        \"credit_card_invoice_id\": null,\n        \"paid_credit_card_id\": null,\n        \"paid_credit_card_invoice_id\": null,\n        \"oposite_transaction_id\": null,\n        \"oposite_account_id\": null,\n        \"created_at\": \"2023-04-08T12:30:58-03:00\",\n        \"updated_at\": \"2023-04-08T12:30:58-03:00\",\n        \"tags\": [],\n        \"attachments\": []\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Create Transaction",
@@ -600,14 +721,14 @@
 					},
 					"response": [
 						{
-							"id": "08f667b8-4f1d-448d-8b00-f44db6383191",
-							"name": "Create Transaction",
+							"id": "0137a867-b058-4d61-bcb8-8d4642bb0b6a",
+							"name": "Create Income Transaction",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"description\": \"Computador\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\"\n}",
+									"raw": "{\n    \"description\": \"Computador\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"amount_cents\": 100000\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -616,21 +737,96 @@
 								},
 								"url": "{{base_url}}/transactions"
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:42:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "\"58be75cdbf928197993a916213001046\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "41fcbf2268e2b48671edf0b3c70ca43d"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.063846"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "invalidate, pass"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=mmtXjQd01Kj3nnCnsQ5auXOepYXNuXm9acl5jmtOs%2FY7OE7LF%2BqZiaganDg2ZWrmk6Hdq5W0xRNc6bEyoksixQKmSfb8p1R4ue7hwK3cVrMhLfiLaaSMoRY4XJoWMP7eE0lTtCwc\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b9e8d28fd2057-IAD"
+								}
+							],
 							"cookie": [],
 							"responseTime": null,
-							"body": null
+							"body": "{\n    \"id\": 2477487022,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": 100000,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321160,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:42:17-03:00\",\n    \"updated_at\": \"2023-04-08T12:42:17-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
 						},
 						{
-							"id": "30dfb332-8789-4753-8ed5-8911b9b50560",
-							"name": "Create Recurring Transaction",
+							"id": "ee4c0c80-54d5-4b3f-85c3-51d058202360",
+							"name": "Create Expense Transaction",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"description\": \"Despesa fixa\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"recurrence_attributes\": {\"periodicity\": \"monthly\"}\n}",
+									"raw": "{\n    \"description\": \"Computador\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"amount_cents\": -100000\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -639,34 +835,86 @@
 								},
 								"url": "{{base_url}}/transactions"
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "845bc0b3-7afd-4e27-b22d-dd8c586e698e",
-							"name": "Create Recurring Transaction Split in Installments",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"description\": \"Despesa parcelada\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"installments_attributes\": {\"periodicity\": \"monthly\", \"total\": 12}\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:41:01 GMT"
 								},
-								"url": "{{base_url}}/transactions"
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "\"7a2a4e521f6a06bf827391eaf43095a4\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "c9ba65cafd97e346c15d977ba6dfb1d0"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.064414"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "invalidate, pass"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=PfZqzVlETBahBQ%2BJuzLVUFOLvQoCzUfqG4IVd9C6zBU2MnL3MtDP4FkZI8yGyyb7nU49D%2FXATNmb%2FrchrAffCH00dXXoWPUsqA0vhTA8%2Fr%2FZf5bKohsz3dNVlwquVq31g7SxF7a4\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b9cb63dd2393e-IAD"
+								}
+							],
 							"cookie": [],
 							"responseTime": null,
-							"body": null
+							"body": "{\n    \"id\": 2477486740,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": -100000,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:41:01-03:00\",\n    \"updated_at\": \"2023-04-08T12:41:01-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
 						}
 					]
 				},
@@ -691,13 +939,123 @@
 							"variable": [
 								{
 									"key": "transactionId",
-									"value": "2477070345",
+									"value": "2477489680",
 									"description": "ID of the Transaction"
 								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"id": "25cb810d-d2a3-4489-9aad-1f981fc0d133",
+							"name": "Read Transaction",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:transactionId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "2477489680",
+											"description": "ID of the Transaction"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:53:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"46340523671383122447f465b8dc915d\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "f615cf544cc65f1e342a0c030b6b3a03"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.026186"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=902BKn6GPtZkcAreT4QqQBhrDBHUEOCm2hxbXH7mOn6OjMQn3Del5EMhE%2FstT%2FwyiqBgESIYWh3PDTdPd79KhAsmqAfELtNSbD3ObI7FDypj0RLnzG7wqSQT%2Bp2eH6kEjycDPji%2F\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4baeb64ee82d17-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 2477489680,\n    \"description\": \"Updated parcelada via API\",\n    \"date\": \"2015-12-20\",\n    \"paid\": true,\n    \"amount_cents\": 20050,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:50:27-03:00\",\n    \"updated_at\": \"2023-04-08T12:52:05-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "Update Transaction",
@@ -737,7 +1095,7 @@
 					},
 					"response": [
 						{
-							"id": "b740bc73-efb5-40c9-9149-605900a6f46a",
+							"id": "7032213b-6db4-474a-80af-e9514904914c",
 							"name": "Update Transaction",
 							"originalRequest": {
 								"method": "PUT",
@@ -763,95 +1121,92 @@
 									"variable": [
 										{
 											"key": "transactionId",
-											"value": "101",
+											"value": "2477489680",
 											"description": "ID of the Transaction"
 										}
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "263b6c16-98dc-42cb-99e2-fd49d3f1f395",
-							"name": "Update Recurring Transaction with All Future Transactions",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"description\": \"Updated parcelada via API\",\n    \"notes\": \"Pagamento via boleto\",\n    \"amount_cents\": 20050,\n    \"date\": \"2015-12-20\",\n    \"update_future\": true\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:52:05 GMT"
 								},
-								"url": {
-									"raw": "{{base_url}}/transactions/:transactionId",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"transactions",
-										":transactionId"
-									],
-									"variable": [
-										{
-											"key": "transactionId",
-											"value": "101",
-											"description": "ID of the Transaction"
-										}
-									]
-								}
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "47e1b021-8268-4607-9758-2b787d9dd9b4",
-							"name": "Update Recurring Transaction with All Related Transactions",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"description\": \"Updated parcelada via API\",\n    \"notes\": \"Pagamento via boleto\",\n    \"amount_cents\": 20050,\n    \"date\": \"2015-12-20\",\n    \"update_all\": true\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
 								},
-								"url": {
-									"raw": "{{base_url}}/transactions/:transactionId",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"transactions",
-										":transactionId"
-									],
-									"variable": [
-										{
-											"key": "transactionId",
-											"value": "101",
-											"description": "ID of the Transaction"
-										}
-									]
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "\"46340523671383122447f465b8dc915d\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "7735160ddd10a19c37f855b37e9909a8"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.067097"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "invalidate, pass"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=BW7MYyimEx1BDkVKjCk2BLJYaH67kCnS2rFhBQvd141nCcuTe3KW%2BTy1ImiHu%2FbYZNSGPcJ0iLIxzmTnuKnIQO3%2FLDuN4uoJ0UpCmCK%2FU1aMMO6%2BlrUmQJ35P2Xv7QQKg6BnpQmY\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4bacebed528254-IAD"
 								}
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							],
 							"cookie": [],
 							"responseTime": null,
-							"body": null
+							"body": "{\n    \"id\": 2477489680,\n    \"description\": \"Updated parcelada via API\",\n    \"date\": \"2015-12-20\",\n    \"paid\": true,\n    \"amount_cents\": 20050,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:50:27-03:00\",\n    \"updated_at\": \"2023-04-08T12:52:05-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
 						}
 					]
 				},
@@ -884,7 +1239,7 @@
 					},
 					"response": [
 						{
-							"id": "3a97027c-2f8a-4d32-b5c9-d94f1e4f3739",
+							"id": "bba602bd-02d4-4ea8-b853-47c51476bdc2",
 							"name": "Delete Transaction",
 							"originalRequest": {
 								"method": "DELETE",
@@ -901,109 +1256,96 @@
 									"variable": [
 										{
 											"key": "transactionId",
-											"value": "101",
+											"value": "2477483021",
 											"description": "ID of the Transaction"
 										}
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "e8b08739-8658-4a4d-aae8-4a5b44914aab",
-							"name": "Delete Recurring Transaction with All Future Transactions",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"update_future\": true\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:31:40 GMT"
 								},
-								"url": {
-									"raw": "{{base_url}}/transactions/:transactionId",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"transactions",
-										":transactionId"
-									],
-									"variable": [
-										{
-											"key": "transactionId",
-											"value": "101",
-											"description": "ID of the Transaction"
-										}
-									]
-								}
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "f6d952dc-9bcf-4490-95d0-8759286fd1ef",
-							"name": "Delete Recurring Transaction with All Related Transactions",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"update_all\": true\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
 								},
-								"url": {
-									"raw": "{{base_url}}/transactions/:transactionId",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"transactions",
-										":transactionId"
-									],
-									"variable": [
-										{
-											"key": "transactionId",
-											"value": "101",
-											"description": "ID of the Transaction"
-										}
-									]
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"8a976d41197b92d1cc4fad7931dae10f\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "6ddacdbd5aec5ec514ab31e25bc92931"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.235340"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "invalidate, pass"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=5T7aP7nBeWHLl3xFUD6XErxOg14uV27aD9QBpr8jTfQnSCGB93XPN2XMdFhuZ%2Bamc8r8ct%2FMj2oVUK7GByIs3wp7QjAWq149Fo4GHpg67N10FLF%2FQvhIAYsh2f6UZS45LGmxDLmh\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b8ed87a8d3938-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
 								}
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							],
 							"cookie": [],
 							"responseTime": null,
-							"body": null
+							"body": "{\n    \"id\": 2477483021,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": 0,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:30:43-03:00\",\n    \"updated_at\": \"2023-04-08T12:30:43-03:00\",\n    \"tags\": [],\n    \"attachments\": [],\n    \"deleted\": true\n}"
 						}
 					]
 				}
@@ -1042,7 +1384,7 @@
 	],
 	"variable": [
 		{
-			"id": "10e21916-b2ac-476e-9ccc-2a689dd507f2",
+			"id": "c1f38f35-4a7d-4c65-bcab-65a2e75c5c4b",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
