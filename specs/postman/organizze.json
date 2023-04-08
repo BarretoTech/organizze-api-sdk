@@ -961,6 +961,104 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": null
+						},
+						{
+							"id": "ee4c0c80-54d5-4b3f-85c3-51d058202360",
+							"name": "Create Transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Computador\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"amount_cents\": -100000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:41:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "\"7a2a4e521f6a06bf827391eaf43095a4\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "c9ba65cafd97e346c15d977ba6dfb1d0"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.064414"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "invalidate, pass"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=PfZqzVlETBahBQ%2BJuzLVUFOLvQoCzUfqG4IVd9C6zBU2MnL3MtDP4FkZI8yGyyb7nU49D%2FXATNmb%2FrchrAffCH00dXXoWPUsqA0vhTA8%2Fr%2FZf5bKohsz3dNVlwquVq31g7SxF7a4\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b9cb63dd2393e-IAD"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 2477486740,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": -100000,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:41:01-03:00\",\n    \"updated_at\": \"2023-04-08T12:41:01-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
 						}
 					]
 				},
@@ -1415,7 +1513,7 @@
 	],
 	"variable": [
 		{
-			"id": "1a2363ea-f207-4175-8591-846b015dbce0",
+			"id": "94597330-9783-4f56-8dd7-3f364c68af5c",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
