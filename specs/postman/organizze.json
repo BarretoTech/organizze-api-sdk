@@ -418,6 +418,29 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": null
+						},
+						{
+							"id": "30dfb332-8789-4753-8ed5-8911b9b50560",
+							"name": "Create Recurring Transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Computador\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
 						}
 					]
 				},
@@ -752,7 +775,7 @@
 	],
 	"variable": [
 		{
-			"id": "9053127d-41f3-4d0c-a409-6597dfd2676f",
+			"id": "228e3b04-295c-4472-abd0-c58c2980a336",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
