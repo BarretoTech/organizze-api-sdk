@@ -1,0 +1,2219 @@
+{
+	"info": {
+		"_postman_id": "889f3267-7854-44c3-9583-82f2d28f8a03",
+		"name": "REST API",
+		"description": "Specification for the Organizze API described in [https://github.com/organizze/api-doc](https://github.com/organizze/api-doc)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "4856818-889f3267-7854-44c3-9583-82f2d28f8a03"
+	},
+	"item": [
+		{
+			"name": "Bank Accounts",
+			"item": [
+				{
+					"name": "List Bank Accounts",
+					"id": "c34b8e15-fdbb-43dd-b153-d304490afb12",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/accounts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "5fa14502-0269-447c-9647-d2a9ddc5a1c5",
+							"name": "List Bank Accounts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/accounts",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:09:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"9de36f42be15fc0ec85513881b8a493f\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "baea90a8f6150faa8851c72f6b8664fd"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.037067"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=vyISO%2FzVVGRixnLPDa0zf9hC1FcaVq70lzT6H8AD%2BnsHqKkJkvQzNuY6GmpfMbJ9UF3ok0WM5eQ5244D58bEOdHvrmM%2Bwhr8SZ%2FgqYr6EYJRM%2FY3e9GJrtUHoJBjfL%2Fj1tOFqhgD\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b6e80df82588a-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 6632818,\n        \"name\": \"SBanken\",\n        \"institution_id\": \"bank\",\n        \"institution_name\": \"SBanken\",\n        \"description\": \"SBanken Norway\",\n        \"archived\": false,\n        \"created_at\": \"2023-04-07T11:33:13-03:00\",\n        \"updated_at\": \"2023-04-07T14:12:34-03:00\",\n        \"default\": true,\n        \"type\": \"other\"\n    },\n    {\n        \"id\": 6633003,\n        \"name\": \"Nubank Conta Corrente\",\n        \"institution_id\": \"nuconta\",\n        \"institution_name\": \"Nubank\",\n        \"description\": null,\n        \"archived\": false,\n        \"created_at\": \"2023-04-07T13:10:51-03:00\",\n        \"updated_at\": \"2023-04-07T14:11:43-03:00\",\n        \"default\": false,\n        \"type\": \"checking\"\n    },\n    {\n        \"id\": 6633004,\n        \"name\": \"SBanken Poupança\",\n        \"institution_id\": \"cofrinho\",\n        \"institution_name\": \"SBanken\",\n        \"description\": null,\n        \"archived\": false,\n        \"created_at\": \"2023-04-07T13:11:16-03:00\",\n        \"updated_at\": \"2023-04-07T14:12:56-03:00\",\n        \"default\": false,\n        \"type\": \"savings\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Read Account",
+					"id": "7b132e5c-7ca8-4b0c-814a-2b492070e0a5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/accounts/:accountId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"accounts",
+								":accountId"
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "6633003"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "6be60389-e1a5-4528-9347-dd14b1ed4626",
+							"name": "Read Account",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/accounts/:accountId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"accounts",
+										":accountId"
+									],
+									"variable": [
+										{
+											"key": "accountId",
+											"value": "6633003"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:10:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"833a096775bfa1165a3b5fb57e3d6f73\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "b761acfdbc52d52d3a6ba3b81cb4af6c"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.026575"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=BEx4neYcgW9UAfNMZx2PeTwvYzjSPeuggt4ixORh0OcjGoa1JI5l5odJO3QvYNM8eLmIMRX1JS6vE4m1dveCAX3gTD%2FwqttNrovI6USilcoWH%2Fcp8mwWCHQMPVFu0Z7IqyVK5V4i\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b6f6e4cb93b86-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6633003,\n    \"name\": \"Nubank Conta Corrente\",\n    \"institution_id\": \"nuconta\",\n    \"institution_name\": \"Nubank\",\n    \"description\": null,\n    \"archived\": false,\n    \"created_at\": \"2023-04-07T13:10:51-03:00\",\n    \"updated_at\": \"2023-04-07T14:11:43-03:00\",\n    \"default\": false,\n    \"type\": \"checking\"\n}"
+						}
+					]
+				}
+			],
+			"id": "a5b15c6f-b094-49ac-a551-b5cac48555e2"
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "List Categories",
+					"id": "d9e088d7-641e-41cb-bb91-bc317c244cf7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "63aaede1-99f4-4f8e-87cd-3498abe25b3b",
+							"name": "List Categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/categories",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:37:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"fd1a2e17dd9fdf0241ff4ee6bc12fd2c\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "13ff09d4a17c1608e423597d7f961760"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.057537"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=97vuts2u4dCtFqwW3Gn0RoJGgYpSxYiSKmMTpl0joAqwCEZ4FYmlH5PNHYaSeTewmbdTIy8OtsbRPlZILovkP9ZiyXNFQrV%2FeZebOcjqp5sYcfyQhRr1wdlw%2F%2Bb8rQm1lVhfnfWq\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4befb7fce63ae4-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 120321144,\n        \"name\": \"Bares e restaurantes\",\n        \"color\": \"626491\",\n        \"group_id\": \"bars_and_restaurants\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321145,\n        \"name\": \"Roupas\",\n        \"color\": \"ff8258\",\n        \"group_id\": \"clothing\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321146,\n        \"name\": \"Dívidas e empréstimos\",\n        \"color\": \"ff6c6c\",\n        \"group_id\": \"debts_and_loans\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321147,\n        \"name\": \"Investimentos\",\n        \"color\": \"24B38A\",\n        \"group_id\": \"earning_investments\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321148,\n        \"name\": \"Educação\",\n        \"color\": \"6470ba\",\n        \"group_id\": \"education\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321149,\n        \"name\": \"Lazer e hobbies\",\n        \"color\": \"b8e64c\",\n        \"group_id\": \"entertainment\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321150,\n        \"name\": \"Família e filhos\",\n        \"color\": \"a6e88b\",\n        \"group_id\": \"family_and_children\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321151,\n        \"name\": \"Alimentação\",\n        \"color\": \"e274a8\",\n        \"group_id\": \"food\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321152,\n        \"name\": \"Presentes e doações\",\n        \"color\": \"6b6fff\",\n        \"group_id\": \"gifts_and_donations\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321153,\n        \"name\": \"Mercado\",\n        \"color\": \"ff8a72\",\n        \"group_id\": \"groceries\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321154,\n        \"name\": \"Saúde\",\n        \"color\": \"72b4ff\",\n        \"group_id\": \"health\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321155,\n        \"name\": \"Casa\",\n        \"color\": \"8193ff\",\n        \"group_id\": \"home\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321156,\n        \"name\": \"Investimentos\",\n        \"color\": \"ff70a1\",\n        \"group_id\": \"investments\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321157,\n        \"name\": \"Pagamento de fatura\",\n        \"color\": \"b3b3b3\",\n        \"group_id\": \"invoice_payment\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321158,\n        \"name\": \"Empréstimos\",\n        \"color\": \"27C498\",\n        \"group_id\": \"loans\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321159,\n        \"name\": \"Outros\",\n        \"color\": \"b3b3b3\",\n        \"group_id\": \"other\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321160,\n        \"name\": \"Outras receitas\",\n        \"color\": \"2BDCA9\",\n        \"group_id\": \"other_earnings\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321161,\n        \"name\": \"Cuidados pessoais\",\n        \"color\": \"ff676d\",\n        \"group_id\": \"personal_care\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321162,\n        \"name\": \"Pets\",\n        \"color\": \"ffbe57\",\n        \"group_id\": \"pets\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321163,\n        \"name\": \"Salário\",\n        \"color\": \"2EE8B3\",\n        \"group_id\": \"salary\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321164,\n        \"name\": \"Compras\",\n        \"color\": \"f67cff\",\n        \"group_id\": \"shopping\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321165,\n        \"name\": \"Assinaturas e serviços\",\n        \"color\": \"c671e4\",\n        \"group_id\": \"subscriptions_and_services\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321166,\n        \"name\": \"Impostos e Taxas\",\n        \"color\": \"ff977c\",\n        \"group_id\": \"taxes\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321167,\n        \"name\": \"Transferências\",\n        \"color\": \"b3b3b3\",\n        \"group_id\": \"transference\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321168,\n        \"name\": \"Transporte\",\n        \"color\": \"51bcff\",\n        \"group_id\": \"transportation\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321169,\n        \"name\": \"Viagem\",\n        \"color\": \"ff6b6b\",\n        \"group_id\": \"travel\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321170,\n        \"name\": \"Trabalho\",\n        \"color\": \"446ff5\",\n        \"group_id\": \"work\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321940,\n        \"name\": \"Aluguel\",\n        \"color\": \"8193ff\",\n        \"group_id\": \"home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321155\n    },\n    {\n        \"id\": 120321941,\n        \"name\": \"Empréstimo\",\n        \"color\": \"8193ff\",\n        \"group_id\": \"home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321155\n    },\n    {\n        \"id\": 120321944,\n        \"name\": \"Luz\",\n        \"color\": \"8193ff\",\n        \"group_id\": \"home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321155\n    },\n    {\n        \"id\": 120321945,\n        \"name\": \"Condominio\",\n        \"color\": \"8193ff\",\n        \"group_id\": \"home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321155\n    },\n    {\n        \"id\": 120323359,\n        \"name\": \"Seguro\",\n        \"color\": \"ff6b6b\",\n        \"group_id\": \"travel\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321169\n    },\n    {\n        \"id\": 120323388,\n        \"name\": \"Empréstimo Carro\",\n        \"color\": \"51bcff\",\n        \"group_id\": \"transportation\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321168\n    },\n    {\n        \"id\": 120323417,\n        \"name\": \"Seguro Carro\",\n        \"color\": \"51bcff\",\n        \"group_id\": \"transportation\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321168\n    },\n    {\n        \"id\": 120323419,\n        \"name\": \"Estacionamento\",\n        \"color\": \"51bcff\",\n        \"group_id\": \"transportation\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321168\n    },\n    {\n        \"id\": 120323420,\n        \"name\": \"Pedágio\",\n        \"color\": \"51bcff\",\n        \"group_id\": \"transportation\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321168\n    },\n    {\n        \"id\": 120323421,\n        \"name\": \"Casa\",\n        \"color\": \"5096de\",\n        \"group_id\": \"ear_home\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120323423,\n        \"name\": \"Aluguel\",\n        \"color\": \"5096de\",\n        \"group_id\": \"ear_home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120323421\n    },\n    {\n        \"id\": 120323424,\n        \"name\": \"Luz\",\n        \"color\": \"5096de\",\n        \"group_id\": \"ear_home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120323421\n    },\n    {\n        \"id\": 120324070,\n        \"name\": \"Telefone & Internet\",\n        \"color\": \"5161b9\",\n        \"group_id\": \"exp_desktop\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Read Category",
+					"id": "f2270066-c918-405a-bb28-b25ad3780da9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories/:categoryId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								":categoryId"
+							],
+							"variable": [
+								{
+									"key": "categoryId",
+									"value": "120323423"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "1e2fc5a7-4b9c-4fcd-a98f-862579492bc9",
+							"name": "Read Category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/categories/:categoryId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"categories",
+										":categoryId"
+									],
+									"variable": [
+										{
+											"key": "categoryId",
+											"value": "120323423"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:42:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"98d902faae7c45d15e6d470828edee46\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "b5332fd2e09cb543a9a4ea077530e5eb"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.041212"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=8begQ7me7B8J%2BFI9BzpW1%2BwS4RjoDjrXUBFsraP4dvRV%2FFuFKZjZM4Q8fb%2FUNN5uHvNolfiYYR0moSCiktwZe5IOmBsKLyG3o7WGBzkm5pr384MaSGSpgid7WnDdikMQMBHJXO85\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4bf6e93922f889-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 120323423,\n    \"name\": \"Aluguel\",\n    \"color\": \"5096de\",\n    \"group_id\": \"ear_home\",\n    \"fixed\": false,\n    \"available\": true,\n    \"essential\": false,\n    \"parent_id\": 120323421\n}"
+						}
+					]
+				}
+			],
+			"id": "7ee7a168-937f-4e48-8cb0-b23544dfe6ca"
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "List Users",
+					"id": "630e2d8e-88b1-4d11-b808-5dd3981c9d5e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read User",
+					"id": "38e4348c-d497-46b6-8ea5-6cf9d5b7a92a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/:userId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "4946248"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "c02f5430-d658-4cdf-a245-01ee6c47b9ab"
+		},
+		{
+			"name": "Credit Cards",
+			"item": [
+				{
+					"name": "List Credit Cards",
+					"id": "b63bbf96-d0fd-49c4-a07d-1516f44789be",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/credit_cards",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"credit_cards"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "9e103a55-fac4-4109-8e37-b38c15f8a631",
+							"name": "List Credit Cards",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/credit_cards",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"credit_cards"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:24:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"699f2b21a66f3dc25fe93db3da9c66e5\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "8704b4a21c6b7f20324b19578d9faced"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.027238"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=s0CGT1BdJoD%2FAykIyNHllRoQrEqX56VX381Ns01XO8OKVpXEzMvxa2MNfOVkg0SlaWe2QK6BpI%2FgTBy8PP5X5ZMRdbEIZzcODctf%2FklwnCYDA5ay%2FKt29E5DWMRN%2Fg%2Fl2vU8eutJ\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4bdc09580220ae-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1287765,\n        \"name\": \"Nubank\",\n        \"description\": null,\n        \"card_network\": \"default\",\n        \"closing_day\": 8,\n        \"due_day\": 15,\n        \"limit_cents\": 1965000,\n        \"archived\": false,\n        \"default\": false,\n        \"institution_id\": \"default\",\n        \"institution_name\": null,\n        \"created_at\": \"2023-04-07T11:36:48-03:00\",\n        \"updated_at\": \"2023-04-07T13:12:06-03:00\",\n        \"type\": \"credit_card\"\n    },\n    {\n        \"id\": 1287806,\n        \"name\": \"SBanken Credit\",\n        \"description\": null,\n        \"card_network\": \"default\",\n        \"closing_day\": 31,\n        \"due_day\": 20,\n        \"limit_cents\": 10000000,\n        \"archived\": false,\n        \"default\": false,\n        \"institution_id\": \"visa\",\n        \"institution_name\": null,\n        \"created_at\": \"2023-04-07T13:03:50-03:00\",\n        \"updated_at\": \"2023-04-07T13:03:50-03:00\",\n        \"type\": \"credit_card\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Read Credit Card",
+					"id": "5056f42f-ac0b-4556-a6f1-cdfcefe3a930",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/credit_cards/:creditCardId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"credit_cards",
+								":creditCardId"
+							],
+							"variable": [
+								{
+									"key": "creditCardId",
+									"value": "1287765"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "a0545805-e412-4553-bc8e-5f0ac3de5c96",
+							"name": "Read Credit Card",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/credit_cards/:creditCardId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"credit_cards",
+										":creditCardId"
+									],
+									"variable": [
+										{
+											"key": "creditCardId",
+											"value": "1287765"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:24:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"ed727936c0a4ca7e0fec2afc3d1cb6fa\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "6814058fd99c8f5f3d67877612d47162"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.026181"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=lrZBtYUsDpiRI1TA2GAU2vazSpY7W3nsP9dKlRUqOWV94tjiCiBsGLBbuSJfS%2Bgk6caKTtv9FFxl2txCOvywYWe%2B54zAgC9biQKMGO77oIscuD7%2BzGwYa7Rl2S9RhyqlJDZC7RKb\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4bdca93d403b71-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1287765,\n    \"name\": \"Nubank\",\n    \"description\": null,\n    \"card_network\": \"default\",\n    \"closing_day\": 8,\n    \"due_day\": 15,\n    \"limit_cents\": 1965000,\n    \"archived\": false,\n    \"default\": false,\n    \"institution_id\": \"default\",\n    \"institution_name\": null,\n    \"created_at\": \"2023-04-07T11:36:48-03:00\",\n    \"updated_at\": \"2023-04-07T13:12:06-03:00\",\n    \"type\": \"credit_card\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Credit Card Invoices",
+					"id": "50e5f947-9e01-4095-a28b-fc6058ca5973",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/credit_cards/:creditCardId/invoices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"credit_cards",
+								":creditCardId",
+								"invoices"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": null,
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "end_date",
+									"value": null,
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "creditCardId",
+									"value": "1287765"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "8d5838cb-e1f6-4091-8e84-9d7906e7f135",
+							"name": "List Credit Card Invoices",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/credit_cards/:creditCardId/invoices",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"credit_cards",
+										":creditCardId",
+										"invoices"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "end_date",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "creditCardId",
+											"value": "1287765"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:24:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"bdfd442810dcc4d5ee5530a73f80a016\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "6dff718593036ee168e0d04f1ff463e3"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.034002"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=pFo%2BmEq7RNdh68X5Q7%2Fg5IYqoefnDOsVg1LH0VtWShsOzb9%2B2cW6V0B9wqAnHotZ5PuR%2BPAIhY719qQCctNb8wQcoXFn5KUri3IuQkspFyLhw0pNihh%2BmbVTiOLeheMyUX5SwP6V\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4bdcdf6a5c201e-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 276,\n        \"date\": \"2023-01-15\",\n        \"starting_date\": \"2022-12-09\",\n        \"closing_date\": \"2023-01-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    },\n    {\n        \"id\": 277,\n        \"date\": \"2023-02-15\",\n        \"starting_date\": \"2023-01-09\",\n        \"closing_date\": \"2023-02-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    },\n    {\n        \"id\": 278,\n        \"date\": \"2023-03-15\",\n        \"starting_date\": \"2023-02-09\",\n        \"closing_date\": \"2023-03-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    },\n    {\n        \"id\": 279,\n        \"date\": \"2023-04-15\",\n        \"starting_date\": \"2023-03-09\",\n        \"closing_date\": \"2023-04-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    },\n    {\n        \"id\": 280,\n        \"date\": \"2023-05-15\",\n        \"starting_date\": \"2023-04-09\",\n        \"closing_date\": \"2023-05-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    },\n    {\n        \"id\": 281,\n        \"date\": \"2023-06-15\",\n        \"starting_date\": \"2023-05-09\",\n        \"closing_date\": \"2023-06-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    },\n    {\n        \"id\": 282,\n        \"date\": \"2023-07-15\",\n        \"starting_date\": \"2023-06-09\",\n        \"closing_date\": \"2023-07-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    },\n    {\n        \"id\": 283,\n        \"date\": \"2023-08-15\",\n        \"starting_date\": \"2023-07-09\",\n        \"closing_date\": \"2023-08-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    },\n    {\n        \"id\": 284,\n        \"date\": \"2023-09-15\",\n        \"starting_date\": \"2023-08-09\",\n        \"closing_date\": \"2023-09-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    },\n    {\n        \"id\": 285,\n        \"date\": \"2023-10-15\",\n        \"starting_date\": \"2023-09-09\",\n        \"closing_date\": \"2023-10-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    },\n    {\n        \"id\": 286,\n        \"date\": \"2023-11-15\",\n        \"starting_date\": \"2023-10-09\",\n        \"closing_date\": \"2023-11-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    },\n    {\n        \"id\": 287,\n        \"date\": \"2023-12-15\",\n        \"starting_date\": \"2023-11-09\",\n        \"closing_date\": \"2023-12-08\",\n        \"amount_cents\": 0,\n        \"payment_amount_cents\": 0,\n        \"balance_cents\": 0,\n        \"previous_balance_cents\": 0,\n        \"credit_card_id\": 1287765\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Read Credit Card Invoice",
+					"id": "b2501de7-d612-4daa-aa0b-c739fcfe638c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/credit_cards/:creditCardId/invoices/:invoiceId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"credit_cards",
+								":creditCardId",
+								"invoices",
+								":invoiceId"
+							],
+							"variable": [
+								{
+									"key": "creditCardId",
+									"value": "1287765"
+								},
+								{
+									"key": "invoiceId",
+									"value": "276"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "264bbc55-f529-454c-ac52-389e49b7346e",
+							"name": "Read Credit Card Invoice",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/credit_cards/:creditCardId/invoices/:invoiceId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"credit_cards",
+										":creditCardId",
+										"invoices",
+										":invoiceId"
+									],
+									"variable": [
+										{
+											"key": "creditCardId",
+											"value": "1287765"
+										},
+										{
+											"key": "invoiceId",
+											"value": "276"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:29:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"9dc49da34f0f89ff3daab98048864482\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "7c63614443a229c8588ca509371d9534"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.039529"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=NqI%2FEGQBH91dsKMeOEoyeCOAjYcDwO4%2FXcrz0U8pZizIY7U5RVpYB1WGqlF6Wx54E5U%2FuFRTDSNQgSYjh1bh4if9TKxqIKtK6BsCDeJA39z8ZHPAq7g%2FEFVJ%2FCXy7waFFHsISoNU\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4be3a6e956062b-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 276,\n    \"date\": \"2023-01-15\",\n    \"starting_date\": \"2022-12-09\",\n    \"closing_date\": \"2023-01-08\",\n    \"amount_cents\": 0,\n    \"payment_amount_cents\": 0,\n    \"balance_cents\": 0,\n    \"previous_balance_cents\": 0,\n    \"credit_card_id\": 1287765,\n    \"transactions\": [],\n    \"payments\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Read Credit Card Invoice Payments",
+					"id": "5b3194b2-04d8-424b-a8dc-7a86996c12fa",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/credit_cards/:creditCardId/invoices/:invoiceId/payments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"credit_cards",
+								":creditCardId",
+								"invoices",
+								":invoiceId",
+								"payments"
+							],
+							"variable": [
+								{
+									"key": "creditCardId",
+									"value": "1287765"
+								},
+								{
+									"key": "invoiceId",
+									"value": "276"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "27c998cd-75c2-4461-88c3-28707af6545a"
+		},
+		{
+			"name": "Budgets",
+			"item": [
+				{
+					"name": "List All Budgets",
+					"id": "429f4777-27ac-482c-a054-249d33f634aa",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/budgets",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"budgets"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "1bc6d102-4544-4e99-8e8e-087899f75faf",
+							"name": "List All Budgets",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/budgets",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"budgets"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:24:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"d751713988987e9331980363e24189ce\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "1ec10242e4ad4e16da9fe69806c0cac9"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.028932"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=EJVavLU5X4LtnmTFxTxf50dn4VkHmzBBYICJxdVz70K4lFkg%2B0sCoWUO64QuP3JWDk%2BpnFWyT66elIASEiOZrzCIG2KxECMJNeTfX2kkXyGnMkK%2FrIUMFwAjkBcjWt%2FX7VNNDifj\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4bdbc1ef037fee-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				}
+			],
+			"id": "c6eee928-5332-4a4c-a0c5-1e3342f2ddac"
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "List Transactions",
+					"id": "e53c75f6-70ae-421f-90ae-91f2799d403d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transactions?start_date=2015-09-01&end_date=2015-10-01&account_id=6632818",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2015-09-01",
+									"description": "ISO8601 Date with the start period for filtering"
+								},
+								{
+									"key": "end_date",
+									"value": "2015-10-01",
+									"description": "ISO8601 Date with the end period for filtering"
+								},
+								{
+									"key": "account_id",
+									"value": "6632818",
+									"description": "Account ID for filtering"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "defea2d4-1e71-40da-8173-42d3d4c44456",
+							"name": "List Transactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions?start_date=2015-09-01&end_date=2015-10-01",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2015-09-01",
+											"description": "ISO8601 Date with the start period for filtering",
+											"type": "text"
+										},
+										{
+											"key": "end_date",
+											"value": "2015-10-01",
+											"description": "ISO8601 Date with the end period for filtering",
+											"type": "text"
+										},
+										{
+											"key": "account_id",
+											"value": "",
+											"description": "Account ID for filtering",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:34:51 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "link",
+									"value": ""
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"6a49b7ebcbad27757c4bc6cdda39fd55\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "66ddfde97c143db2df6fe9cd6d02fc6f"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.035589"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=5V6rnaiV3957QW4fhQKMqMv8Mlnra9gDFZVV6db4ioRRVwAr1XDZ11QI4V2hSEzkNDO6heQ3jWkpBhHq4PFXKE7CbAaieJ6%2F9p%2Bz%2B%2FXhMe15qnr9mdSsBDBBEJJK9%2BRktiQMK7nP\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b93acca2b0637-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2477483422,\n        \"description\": \"Despesa fixa\",\n        \"date\": \"2015-09-16\",\n        \"paid\": true,\n        \"amount_cents\": 0,\n        \"total_installments\": 1,\n        \"installment\": 1,\n        \"recurring\": false,\n        \"account_id\": 6632818,\n        \"category_id\": 120321159,\n        \"notes\": \"Pagamento via boleto\",\n        \"attachments_count\": 0,\n        \"credit_card_id\": null,\n        \"credit_card_invoice_id\": null,\n        \"paid_credit_card_id\": null,\n        \"paid_credit_card_invoice_id\": null,\n        \"oposite_transaction_id\": null,\n        \"oposite_account_id\": null,\n        \"created_at\": \"2023-04-08T12:32:16-03:00\",\n        \"updated_at\": \"2023-04-08T12:32:16-03:00\",\n        \"tags\": [],\n        \"attachments\": []\n    },\n    {\n        \"id\": 2477483178,\n        \"description\": \"Test\",\n        \"date\": \"2015-09-16\",\n        \"paid\": true,\n        \"amount_cents\": 0,\n        \"total_installments\": 1,\n        \"installment\": 1,\n        \"recurring\": false,\n        \"account_id\": 6632818,\n        \"category_id\": 120321159,\n        \"notes\": \"Test\",\n        \"attachments_count\": 0,\n        \"credit_card_id\": null,\n        \"credit_card_invoice_id\": null,\n        \"paid_credit_card_id\": null,\n        \"paid_credit_card_invoice_id\": null,\n        \"oposite_transaction_id\": null,\n        \"oposite_account_id\": null,\n        \"created_at\": \"2023-04-08T12:30:58-03:00\",\n        \"updated_at\": \"2023-04-08T12:30:58-03:00\",\n        \"tags\": [],\n        \"attachments\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create Transaction",
+					"id": "fe42ddde-cb5e-45b0-978e-da933499e3f3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Computador\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/transactions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "60f79466-e301-4ff3-a73f-56eef8af610d",
+							"name": "Create Income Transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Computador\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"amount_cents\": 100000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transactions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:42:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "\"58be75cdbf928197993a916213001046\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "41fcbf2268e2b48671edf0b3c70ca43d"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.063846"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "invalidate, pass"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=mmtXjQd01Kj3nnCnsQ5auXOepYXNuXm9acl5jmtOs%2FY7OE7LF%2BqZiaganDg2ZWrmk6Hdq5W0xRNc6bEyoksixQKmSfb8p1R4ue7hwK3cVrMhLfiLaaSMoRY4XJoWMP7eE0lTtCwc\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b9e8d28fd2057-IAD"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2477487022,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": 100000,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321160,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:42:17-03:00\",\n    \"updated_at\": \"2023-04-08T12:42:17-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
+						},
+						{
+							"id": "1e9ad712-7470-41a3-8915-1287f72f61c3",
+							"name": "Create Expense Transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Computador\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"amount_cents\": -100000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transactions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:41:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "\"7a2a4e521f6a06bf827391eaf43095a4\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "c9ba65cafd97e346c15d977ba6dfb1d0"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.064414"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "invalidate, pass"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=PfZqzVlETBahBQ%2BJuzLVUFOLvQoCzUfqG4IVd9C6zBU2MnL3MtDP4FkZI8yGyyb7nU49D%2FXATNmb%2FrchrAffCH00dXXoWPUsqA0vhTA8%2Fr%2FZf5bKohsz3dNVlwquVq31g7SxF7a4\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b9cb63dd2393e-IAD"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2477486740,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": -100000,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:41:01-03:00\",\n    \"updated_at\": \"2023-04-08T12:41:01-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Read Transaction",
+					"id": "ff4ecd02-86db-4d3f-a73d-4cf43bab874d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transactions/:transactionId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions",
+								":transactionId"
+							],
+							"variable": [
+								{
+									"key": "transactionId",
+									"value": "2477489680",
+									"description": "ID of the Transaction"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "c2487c94-b249-4f62-b03e-3fa6ce0377bb",
+							"name": "Read Transaction",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:transactionId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "2477489680",
+											"description": "ID of the Transaction"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:53:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"46340523671383122447f465b8dc915d\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "f615cf544cc65f1e342a0c030b6b3a03"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.026186"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=902BKn6GPtZkcAreT4QqQBhrDBHUEOCm2hxbXH7mOn6OjMQn3Del5EMhE%2FstT%2FwyiqBgESIYWh3PDTdPd79KhAsmqAfELtNSbD3ObI7FDypj0RLnzG7wqSQT%2Bp2eH6kEjycDPji%2F\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4baeb64ee82d17-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2477489680,\n    \"description\": \"Updated parcelada via API\",\n    \"date\": \"2015-12-20\",\n    \"paid\": true,\n    \"amount_cents\": 20050,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:50:27-03:00\",\n    \"updated_at\": \"2023-04-08T12:52:05-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Transaction",
+					"id": "f9eee2d1-fcf3-48a5-b58a-298e2d1f0757",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Updated parcelada via API\",\n    \"notes\": \"Pagamento via boleto\",\n    \"amount_cents\": 20050,\n    \"date\": \"2015-12-20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/transactions/:transactionId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions",
+								":transactionId"
+							],
+							"variable": [
+								{
+									"key": "transactionId",
+									"value": "101",
+									"description": "ID of the Transaction"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "c04025cf-f473-4c52-bf2f-eddfcdca7dff",
+							"name": "Update Transaction",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Updated parcelada via API\",\n    \"notes\": \"Pagamento via boleto\",\n    \"amount_cents\": 20050,\n    \"date\": \"2015-12-20\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transactions/:transactionId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "2477489680",
+											"description": "ID of the Transaction"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:52:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "\"46340523671383122447f465b8dc915d\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "7735160ddd10a19c37f855b37e9909a8"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.067097"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "invalidate, pass"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=BW7MYyimEx1BDkVKjCk2BLJYaH67kCnS2rFhBQvd141nCcuTe3KW%2BTy1ImiHu%2FbYZNSGPcJ0iLIxzmTnuKnIQO3%2FLDuN4uoJ0UpCmCK%2FU1aMMO6%2BlrUmQJ35P2Xv7QQKg6BnpQmY\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4bacebed528254-IAD"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2477489680,\n    \"description\": \"Updated parcelada via API\",\n    \"date\": \"2015-12-20\",\n    \"paid\": true,\n    \"amount_cents\": 20050,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:50:27-03:00\",\n    \"updated_at\": \"2023-04-08T12:52:05-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Transaction",
+					"id": "943374cc-5dfa-4319-828c-971225cbb161",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transactions/:transactionId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions",
+								":transactionId"
+							],
+							"variable": [
+								{
+									"key": "transactionId",
+									"value": "101",
+									"description": "ID of the Transaction"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "1271a1ff-6268-44d6-bb7b-86119135ddfa",
+							"name": "Delete Transaction",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:transactionId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "2477483021",
+											"description": "ID of the Transaction"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:31:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"8a976d41197b92d1cc4fad7931dae10f\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "6ddacdbd5aec5ec514ab31e25bc92931"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.235340"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "invalidate, pass"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=5T7aP7nBeWHLl3xFUD6XErxOg14uV27aD9QBpr8jTfQnSCGB93XPN2XMdFhuZ%2Bamc8r8ct%2FMj2oVUK7GByIs3wp7QjAWq149Fo4GHpg67N10FLF%2FQvhIAYsh2f6UZS45LGmxDLmh\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b8ed87a8d3938-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2477483021,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": 0,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:30:43-03:00\",\n    \"updated_at\": \"2023-04-08T12:30:43-03:00\",\n    \"tags\": [],\n    \"attachments\": [],\n    \"deleted\": true\n}"
+						}
+					]
+				}
+			],
+			"id": "ab30dac3-1443-4235-bebd-3e43bfff5044"
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "{{username}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{api_key}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2e35524a-bb42-4673-a5db-f4b82f9ca97e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "743f3ca1-be88-4da7-b9a8-91bfa380fc85",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "b5a77121-3077-4468-a0c7-a6da834e3516",
+			"key": "base_url",
+			"value": "https://api.organizze.com.br/rest/v2",
+			"type": "string"
+		}
+	]
+}
