@@ -1,0 +1,560 @@
+openapi: 3.0.0
+info:
+  title: Organizze API
+  description: >-
+    Specification for the Organizze API described in
+    [https://github.com/organizze/api-doc](https://github.com/organizze/api-doc)
+  version: 1.0.0
+externalDocs:
+  url: https://github.com/organizze/api-doc
+  description: Official Organizze Docs
+servers:
+  - url: https://api.organizze.com.br/rest/v2
+    description: Organizze API
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        The username is your email. The password you can generate at [this
+        link](https://app.organizze.com.br/configuracoes/api-keys)
+security:
+  - basicAuth: []
+tags:
+  - name: Bank Accounts
+  - name: Categories
+  - name: Users
+  - name: Credit Cards
+  - name: Budgets
+  - name: Transactions
+paths:
+  /accounts:
+    get:
+      tags:
+        - Bank Accounts
+      summary: List Bank Accounts
+      operationId: listBankAccounts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 6632818
+                  name: SBanken
+                  institution_id: bank
+                  institution_name: SBanken
+                  description: SBanken Norway
+                  archived: false
+                  created_at: '2023-04-07T11:33:13-03:00'
+                  updated_at: '2023-04-07T14:12:34-03:00'
+                  default: true
+                  type: other
+                - id: 6633003
+                  name: Nubank Conta Corrente
+                  institution_id: nuconta
+                  institution_name: Nubank
+                  description: null
+                  archived: false
+                  created_at: '2023-04-07T13:10:51-03:00'
+                  updated_at: '2023-04-07T14:11:43-03:00'
+                  default: false
+                  type: checking
+                - id: 6633004
+                  name: SBanken Poupança
+                  institution_id: cofrinho
+                  institution_name: SBanken
+                  description: null
+                  archived: false
+                  created_at: '2023-04-07T13:11:16-03:00'
+                  updated_at: '2023-04-07T14:12:56-03:00'
+                  default: false
+                  type: savings
+  /accounts/{accountId}:
+    get:
+      tags:
+        - Bank Accounts
+      summary: Read Account
+      operationId: readAccount
+      parameters:
+        - name: accountId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '6633003'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 6633003
+                name: Nubank Conta Corrente
+                institution_id: nuconta
+                institution_name: Nubank
+                description: null
+                archived: false
+                created_at: '2023-04-07T13:10:51-03:00'
+                updated_at: '2023-04-07T14:11:43-03:00'
+                default: false
+                type: checking
+  /categories:
+    get:
+      tags:
+        - Categories
+      summary: List Categories
+      operationId: listCategories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /categories/{categoryId}:
+    get:
+      tags:
+        - Categories
+      summary: Read Category
+      operationId: readCategory
+      parameters:
+        - name: categoryId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120323423'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /users:
+    get:
+      tags:
+        - Users
+      summary: List Users
+      operationId: listUsers
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /users/{userId}:
+    get:
+      tags:
+        - Users
+      summary: Read User
+      operationId: readUser
+      parameters:
+        - name: userId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4946248'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /credit_cards:
+    get:
+      tags:
+        - Credit Cards
+      summary: List Credit Cards
+      operationId: listCreditCards
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /credit_cards/{creditCardId}:
+    get:
+      tags:
+        - Credit Cards
+      summary: Read Credit Card
+      operationId: readCreditCard
+      parameters:
+        - name: creditCardId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1287765'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /credit_cards/{creditCardId}/invoices:
+    get:
+      tags:
+        - Credit Cards
+      summary: List Credit Card Invoices
+      operationId: listCreditCardInvoices
+      parameters:
+        - name: creditCardId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1287765'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /credit_cards/{creditCardId}/invoices/{invoiceId}:
+    get:
+      tags:
+        - Credit Cards
+      summary: Read Credit Card Invoice
+      operationId: readCreditCardInvoice
+      parameters:
+        - name: creditCardId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1287765'
+        - name: invoiceId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '276'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /credit_cards/{creditCardId}/invoices/{invoiceId}/payments:
+    get:
+      tags:
+        - Credit Cards
+      summary: Read Credit Card Invoice Payments
+      operationId: readCreditCardInvoicePayments
+      parameters:
+        - name: creditCardId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1287765'
+        - name: invoiceId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '276'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /budgets:
+    get:
+      tags:
+        - Budgets
+      summary: List All Budgets
+      operationId: listAllBudgets
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /transactions:
+    get:
+      tags:
+        - Transactions
+      summary: List Transactions
+      operationId: listTransactions
+      parameters:
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          description: ISO8601 Date with the start period for filtering
+          example: '2015-09-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          description: ISO8601 Date with the end period for filtering
+          example: '2015-10-01'
+        - name: account_id
+          in: query
+          schema:
+            type: integer
+          description: Account ID for filtering
+          example: '6632818'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 2477483422
+                  description: Despesa fixa
+                  date: '2015-09-16'
+                  paid: true
+                  amount_cents: 0
+                  total_installments: 1
+                  installment: 1
+                  recurring: false
+                  account_id: 6632818
+                  category_id: 120321159
+                  notes: Pagamento via boleto
+                  attachments_count: 0
+                  credit_card_id: null
+                  credit_card_invoice_id: null
+                  paid_credit_card_id: null
+                  paid_credit_card_invoice_id: null
+                  oposite_transaction_id: null
+                  oposite_account_id: null
+                  created_at: '2023-04-08T12:32:16-03:00'
+                  updated_at: '2023-04-08T12:32:16-03:00'
+                  tags: []
+                  attachments: []
+                - id: 2477483178
+                  description: Test
+                  date: '2015-09-16'
+                  paid: true
+                  amount_cents: 0
+                  total_installments: 1
+                  installment: 1
+                  recurring: false
+                  account_id: 6632818
+                  category_id: 120321159
+                  notes: Test
+                  attachments_count: 0
+                  credit_card_id: null
+                  credit_card_invoice_id: null
+                  paid_credit_card_id: null
+                  paid_credit_card_invoice_id: null
+                  oposite_transaction_id: null
+                  oposite_account_id: null
+                  created_at: '2023-04-08T12:30:58-03:00'
+                  updated_at: '2023-04-08T12:30:58-03:00'
+                  tags: []
+                  attachments: []
+    post:
+      tags:
+        - Transactions
+      summary: Create Transaction
+      operationId: createTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                description: Computador
+                notes: Pagamento via boleto
+                date: '2015-09-16'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: Create Income Transaction
+                  value:
+                    id: 2477487022
+                    description: Computador
+                    date: '2015-09-16'
+                    paid: true
+                    amount_cents: 100000
+                    total_installments: 1
+                    installment: 1
+                    recurring: false
+                    account_id: 6632818
+                    category_id: 120321160
+                    notes: Pagamento via boleto
+                    attachments_count: 0
+                    credit_card_id: null
+                    credit_card_invoice_id: null
+                    paid_credit_card_id: null
+                    paid_credit_card_invoice_id: null
+                    oposite_transaction_id: null
+                    oposite_account_id: null
+                    created_at: '2023-04-08T12:42:17-03:00'
+                    updated_at: '2023-04-08T12:42:17-03:00'
+                    tags: []
+                    attachments: []
+                example-1:
+                  summary: Create Expense Transaction
+                  value:
+                    id: 2477486740
+                    description: Computador
+                    date: '2015-09-16'
+                    paid: true
+                    amount_cents: -100000
+                    total_installments: 1
+                    installment: 1
+                    recurring: false
+                    account_id: 6632818
+                    category_id: 120321159
+                    notes: Pagamento via boleto
+                    attachments_count: 0
+                    credit_card_id: null
+                    credit_card_invoice_id: null
+                    paid_credit_card_id: null
+                    paid_credit_card_invoice_id: null
+                    oposite_transaction_id: null
+                    oposite_account_id: null
+                    created_at: '2023-04-08T12:41:01-03:00'
+                    updated_at: '2023-04-08T12:41:01-03:00'
+                    tags: []
+                    attachments: []
+  /transactions/{transactionId}:
+    get:
+      tags:
+        - Transactions
+      summary: Read Transaction
+      operationId: readTransaction
+      parameters:
+        - name: transactionId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: ID of the Transaction
+          example: '2477489680'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 2477489680
+                description: Updated parcelada via API
+                date: '2015-12-20'
+                paid: true
+                amount_cents: 20050
+                total_installments: 1
+                installment: 1
+                recurring: false
+                account_id: 6632818
+                category_id: 120321159
+                notes: Pagamento via boleto
+                attachments_count: 0
+                credit_card_id: null
+                credit_card_invoice_id: null
+                paid_credit_card_id: null
+                paid_credit_card_invoice_id: null
+                oposite_transaction_id: null
+                oposite_account_id: null
+                created_at: '2023-04-08T12:50:27-03:00'
+                updated_at: '2023-04-08T12:52:05-03:00'
+                tags: []
+                attachments: []
+    put:
+      tags:
+        - Transactions
+      summary: Update Transaction
+      operationId: updateTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                description: Updated parcelada via API
+                notes: Pagamento via boleto
+                amount_cents: 20050
+                date: '2015-12-20'
+      parameters:
+        - name: transactionId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: ID of the Transaction
+          example: '101'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 2477489680
+                description: Updated parcelada via API
+                date: '2015-12-20'
+                paid: true
+                amount_cents: 20050
+                total_installments: 1
+                installment: 1
+                recurring: false
+                account_id: 6632818
+                category_id: 120321159
+                notes: Pagamento via boleto
+                attachments_count: 0
+                credit_card_id: null
+                credit_card_invoice_id: null
+                paid_credit_card_id: null
+                paid_credit_card_invoice_id: null
+                oposite_transaction_id: null
+                oposite_account_id: null
+                created_at: '2023-04-08T12:50:27-03:00'
+                updated_at: '2023-04-08T12:52:05-03:00'
+                tags: []
+                attachments: []
+    delete:
+      tags:
+        - Transactions
+      summary: Delete Transaction
+      operationId: deleteTransaction
+      parameters:
+        - name: transactionId
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: ID of the Transaction
+          example: '101'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 2477483021
+                description: Computador
+                date: '2015-09-16'
+                paid: true
+                amount_cents: 0
+                total_installments: 1
+                installment: 1
+                recurring: false
+                account_id: 6632818
+                category_id: 120321159
+                notes: Pagamento via boleto
+                attachments_count: 0
+                credit_card_id: null
+                credit_card_invoice_id: null
+                paid_credit_card_id: null
+                paid_credit_card_invoice_id: null
+                oposite_transaction_id: null
+                oposite_account_id: null
+                created_at: '2023-04-08T12:30:43-03:00'
+                updated_at: '2023-04-08T12:30:43-03:00'
+                tags: []
+                attachments: []
+                deleted: true
