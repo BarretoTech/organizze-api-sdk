@@ -444,7 +444,7 @@
 						},
 						{
 							"id": "845bc0b3-7afd-4e27-b22d-dd8c586e698e",
-							"name": "Create Recurring Transaction Copy",
+							"name": "Create Recurring Transaction Split in Installments",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -754,7 +754,7 @@
 	],
 	"variable": [
 		{
-			"id": "66b3c88d-c789-4352-9d90-11bf42fc4b1c",
+			"id": "b57e4abe-3bb0-416a-bce7-c2ae194274d8",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
