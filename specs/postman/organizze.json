@@ -712,7 +712,7 @@
 						},
 						{
 							"id": "e8b08739-8658-4a4d-aae8-4a5b44914aab",
-							"name": "Delete Transaction Copy",
+							"name": "Delete Recurring Transaction with All Future Transactions",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [
@@ -871,7 +871,7 @@
 	],
 	"variable": [
 		{
-			"id": "93705017-8164-4525-82e5-b1c36d97279d",
+			"id": "794570d7-7854-4585-8e3f-1e8aa7733a73",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
