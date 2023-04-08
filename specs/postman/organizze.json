@@ -924,7 +924,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"description\": \"Despesa fixa\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"recurrence_attributes\": {\"periodicity\": \"monthly\"}\n}",
+									"raw": "{\n    \"description\": \"Despesa fixa\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"amount_cents\": 50000,\n    \"recurrence_attributes\": {\"periodicity\": \"monthly\"}\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1415,7 +1415,7 @@
 	],
 	"variable": [
 		{
-			"id": "887483ff-56fc-4287-bb30-80c12e4e79df",
+			"id": "6b2dc469-b853-41e2-81bd-e3d7db88c425",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
