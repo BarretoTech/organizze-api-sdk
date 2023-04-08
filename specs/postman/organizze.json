@@ -798,7 +798,122 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"id": "f46e15d5-3806-49a0-b7a8-c44930a5e4e4",
+							"name": "Read Credit Card Invoice",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/credit_cards/:creditCardId/invoices/:invoiceId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"credit_cards",
+										":creditCardId",
+										"invoices",
+										":invoiceId"
+									],
+									"variable": [
+										{
+											"key": "creditCardId",
+											"value": "1287765"
+										},
+										{
+											"key": "invoiceId",
+											"value": "276"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:29:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"9dc49da34f0f89ff3daab98048864482\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "7c63614443a229c8588ca509371d9534"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.039529"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=NqI%2FEGQBH91dsKMeOEoyeCOAjYcDwO4%2FXcrz0U8pZizIY7U5RVpYB1WGqlF6Wx54E5U%2FuFRTDSNQgSYjh1bh4if9TKxqIKtK6BsCDeJA39z8ZHPAq7g%2FEFVJ%2FCXy7waFFHsISoNU\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4be3a6e956062b-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 276,\n    \"date\": \"2023-01-15\",\n    \"starting_date\": \"2022-12-09\",\n    \"closing_date\": \"2023-01-08\",\n    \"amount_cents\": 0,\n    \"payment_amount_cents\": 0,\n    \"balance_cents\": 0,\n    \"previous_balance_cents\": 0,\n    \"credit_card_id\": 1287765,\n    \"transactions\": [],\n    \"payments\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "Read Credit Card Invoice Payments",
@@ -1806,7 +1921,7 @@
 	],
 	"variable": [
 		{
-			"id": "bcce7f42-cab0-48b1-a18d-62c5bf1732aa",
+			"id": "69d39a9d-5989-4ec6-b997-5930ec98c937",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
