@@ -551,7 +551,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"description\": \"Updated parcelada via API\",\n    \"notes\": \"Pagamento via boleto\",\n    \"amount_cents\": 20050,\n    \"date\": \"2015-12-20\"\n}",
+									"raw": "{\n    \"description\": \"Updated parcelada via API\",\n    \"notes\": \"Pagamento via boleto\",\n    \"amount_cents\": 20050,\n    \"date\": \"2015-12-20\",\n    \"update_future\": true\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -833,7 +833,7 @@
 	],
 	"variable": [
 		{
-			"id": "062d09ea-f59a-4c54-b331-0ff3bf885491",
+			"id": "4531f773-e477-443a-b3d8-43e29df76e5e",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
