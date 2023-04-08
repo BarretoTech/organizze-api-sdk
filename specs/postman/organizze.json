@@ -976,7 +976,7 @@
 									"variable": [
 										{
 											"key": "transactionId",
-											"value": "101",
+											"value": "2477483021",
 											"description": "ID of the Transaction"
 										}
 									]
@@ -1117,7 +1117,7 @@
 	],
 	"variable": [
 		{
-			"id": "6b8705f6-ca2d-43e6-b66c-2e20d7ac9679",
+			"id": "8ed65b68-6c23-4c55-8d26-b334f95872c6",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
