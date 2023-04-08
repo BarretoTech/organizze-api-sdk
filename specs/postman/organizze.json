@@ -600,52 +600,6 @@
 					},
 					"response": [
 						{
-							"id": "30dfb332-8789-4753-8ed5-8911b9b50560",
-							"name": "Create Recurring Transaction",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"description\": \"Despesa fixa\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"recurrence_attributes\": {\"periodicity\": \"monthly\"}\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/transactions"
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "845bc0b3-7afd-4e27-b22d-dd8c586e698e",
-							"name": "Create Recurring Transaction Split in Installments",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"description\": \"Despesa parcelada\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"installments_attributes\": {\"periodicity\": \"monthly\", \"total\": 12}\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/transactions"
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
 							"id": "2cddf50c-8472-4256-a264-4febb3165aed",
 							"name": "Create Transaction",
 							"originalRequest": {
@@ -742,6 +696,150 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"id\": 2477483021,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": 0,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:30:43-03:00\",\n    \"updated_at\": \"2023-04-08T12:30:43-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
+						},
+						{
+							"id": "30dfb332-8789-4753-8ed5-8911b9b50560",
+							"name": "Create Recurring Transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Despesa fixa\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"recurrence_attributes\": {\"periodicity\": \"monthly\"}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "845bc0b3-7afd-4e27-b22d-dd8c586e698e",
+							"name": "Create Recurring Transaction Split in Installments",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Despesa parcelada\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"installments_attributes\": {\"periodicity\": \"monthly\", \"total\": 12}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "c0026759-07f6-4ac0-9043-482c89169f8e",
+							"name": "Create Transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Despesa fixa\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"recurrence_attributes\": {\"periodicity\": \"monthly\"}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:32:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "\"72f4dd728faa0c7496bc44f19b3335b5\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "0b29dc5f4b6cf119e17720841f704814"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.059947"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "invalidate, pass"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=7ViAlrCTMk3nX8QEDN4u96%2FTJxXojrQdl7kK0RIu%2FzMw37FnV0o6O7XC7vxb48pvZz1eam%2B4ynUbzNAXkSrus7KM1oWwNwy3YqQBIJT4yDRSCOwwmTfmGvk%2FlD%2FaAsi72eGPbH%2BA\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b8fe27846821a-IAD"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 2477483422,\n    \"description\": \"Despesa fixa\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": 0,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:32:16-03:00\",\n    \"updated_at\": \"2023-04-08T12:32:16-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
 						}
 					]
 				},
@@ -959,98 +1057,6 @@
 					},
 					"response": [
 						{
-							"id": "e8b08739-8658-4a4d-aae8-4a5b44914aab",
-							"name": "Delete Recurring Transaction with All Future Transactions",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"update_future\": true\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/transactions/:transactionId",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"transactions",
-										":transactionId"
-									],
-									"variable": [
-										{
-											"key": "transactionId",
-											"value": "101",
-											"description": "ID of the Transaction"
-										}
-									]
-								}
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "f6d952dc-9bcf-4490-95d0-8759286fd1ef",
-							"name": "Delete Recurring Transaction with All Related Transactions",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"update_all\": true\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/transactions/:transactionId",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"transactions",
-										":transactionId"
-									],
-									"variable": [
-										{
-											"key": "transactionId",
-											"value": "101",
-											"description": "ID of the Transaction"
-										}
-									]
-								}
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
 							"id": "bba602bd-02d4-4ea8-b853-47c51476bdc2",
 							"name": "Delete Transaction",
 							"originalRequest": {
@@ -1158,6 +1164,98 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"id\": 2477483021,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": 0,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:30:43-03:00\",\n    \"updated_at\": \"2023-04-08T12:30:43-03:00\",\n    \"tags\": [],\n    \"attachments\": [],\n    \"deleted\": true\n}"
+						},
+						{
+							"id": "e8b08739-8658-4a4d-aae8-4a5b44914aab",
+							"name": "Delete Recurring Transaction with All Future Transactions",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"update_future\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transactions/:transactionId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "101",
+											"description": "ID of the Transaction"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "f6d952dc-9bcf-4490-95d0-8759286fd1ef",
+							"name": "Delete Recurring Transaction with All Related Transactions",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"update_all\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transactions/:transactionId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "101",
+											"description": "ID of the Transaction"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
 						}
 					]
 				}
@@ -1196,7 +1294,7 @@
 	],
 	"variable": [
 		{
-			"id": "1c67cd5d-9d30-4f69-aea2-ec9834a7776a",
+			"id": "f83d394c-6b6c-4a65-b368-d3fcb3971254",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
