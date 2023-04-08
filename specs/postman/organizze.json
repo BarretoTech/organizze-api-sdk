@@ -20,7 +20,101 @@
 						"header": [],
 						"url": "{{base_url}}/accounts"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "a9663e74-c3c7-4bc8-b712-062eeb2bf7db",
+							"name": "List Bank Accounts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/accounts"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:09:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"9de36f42be15fc0ec85513881b8a493f\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "baea90a8f6150faa8851c72f6b8664fd"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.037067"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=vyISO%2FzVVGRixnLPDa0zf9hC1FcaVq70lzT6H8AD%2BnsHqKkJkvQzNuY6GmpfMbJ9UF3ok0WM5eQ5244D58bEOdHvrmM%2Bwhr8SZ%2FgqYr6EYJRM%2FY3e9GJrtUHoJBjfL%2Fj1tOFqhgD\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b6e80df82588a-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[\n    {\n        \"id\": 6632818,\n        \"name\": \"SBanken\",\n        \"institution_id\": \"bank\",\n        \"institution_name\": \"SBanken\",\n        \"description\": \"SBanken Norway\",\n        \"archived\": false,\n        \"created_at\": \"2023-04-07T11:33:13-03:00\",\n        \"updated_at\": \"2023-04-07T14:12:34-03:00\",\n        \"default\": true,\n        \"type\": \"other\"\n    },\n    {\n        \"id\": 6633003,\n        \"name\": \"Nubank Conta Corrente\",\n        \"institution_id\": \"nuconta\",\n        \"institution_name\": \"Nubank\",\n        \"description\": null,\n        \"archived\": false,\n        \"created_at\": \"2023-04-07T13:10:51-03:00\",\n        \"updated_at\": \"2023-04-07T14:11:43-03:00\",\n        \"default\": false,\n        \"type\": \"checking\"\n    },\n    {\n        \"id\": 6633004,\n        \"name\": \"SBanken Poupança\",\n        \"institution_id\": \"cofrinho\",\n        \"institution_name\": \"SBanken\",\n        \"description\": null,\n        \"archived\": false,\n        \"created_at\": \"2023-04-07T13:11:16-03:00\",\n        \"updated_at\": \"2023-04-07T14:12:56-03:00\",\n        \"default\": false,\n        \"type\": \"savings\"\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Read Account",
@@ -468,6 +562,35 @@
 					]
 				},
 				{
+					"name": "Read Transaction",
+					"id": "b421ade1-5ad0-49a9-b46b-ce8446f35e6f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transactions/:transactionId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions",
+								":transactionId"
+							],
+							"variable": [
+								{
+									"key": "transactionId",
+									"value": "2477070345",
+									"description": "ID of the Transaction"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Update Transaction",
 					"id": "05792115-6439-45f6-9e3e-0d58d5b67bb5",
 					"protocolProfileBehavior": {
@@ -622,35 +745,6 @@
 							"body": null
 						}
 					]
-				},
-				{
-					"name": "Read Transaction",
-					"id": "b421ade1-5ad0-49a9-b46b-ce8446f35e6f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/transactions/:transactionId",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"transactions",
-								":transactionId"
-							],
-							"variable": [
-								{
-									"key": "transactionId",
-									"value": "2477070345",
-									"description": "ID of the Transaction"
-								}
-							]
-						}
-					},
-					"response": []
 				},
 				{
 					"name": "Delete Transaction",
@@ -839,7 +933,7 @@
 	],
 	"variable": [
 		{
-			"id": "51ab0d46-63f2-452f-b366-1b1e2b472dd5",
+			"id": "e9c276c4-5f34-4e46-9db6-a34280a06246",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
