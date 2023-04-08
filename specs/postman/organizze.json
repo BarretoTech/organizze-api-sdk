@@ -526,7 +526,101 @@
 						"header": [],
 						"url": "{{base_url}}/budgets"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "8ed65250-4a02-4ef4-aa9e-01c9f0e8f0ee",
+							"name": "List All Budgets",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/budgets"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:24:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"d751713988987e9331980363e24189ce\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "1ec10242e4ad4e16da9fe69806c0cac9"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.028932"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=EJVavLU5X4LtnmTFxTxf50dn4VkHmzBBYICJxdVz70K4lFkg%2B0sCoWUO64QuP3JWDk%2BpnFWyT66elIASEiOZrzCIG2KxECMJNeTfX2kkXyGnMkK%2FrIUMFwAjkBcjWt%2FX7VNNDifj\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4bdbc1ef037fee-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[]"
+						}
+					]
 				}
 			],
 			"id": "ee34382f-10b1-45a7-8ed3-037ef739a9d4"
@@ -1384,7 +1478,7 @@
 	],
 	"variable": [
 		{
-			"id": "c1f38f35-4a7d-4c65-bcab-65a2e75c5c4b",
+			"id": "36a4f5a4-2e5a-40e1-bc5c-b4e7fddd3d54",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
