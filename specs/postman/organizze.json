@@ -441,30 +441,31 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": null
+						},
+						{
+							"id": "845bc0b3-7afd-4e27-b22d-dd8c586e698e",
+							"name": "Create Recurring Transaction Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Despesa fixa\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"recurrence_attributes\": {\"periodicity\": \"monthly\"}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
 						}
 					]
-				},
-				{
-					"name": "Create Recurring Transaction Copy",
-					"id": "4c922763-6c76-4c34-a2dc-1ef29ba5e467",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"description\": \"Despesa parcelada\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"installments_attributes\": {\"periodicity\": \"monthly\", \"total\": 12}\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/transactions"
-					},
-					"response": []
 				},
 				{
 					"name": "Update Transaction",
@@ -753,7 +754,7 @@
 	],
 	"variable": [
 		{
-			"id": "fb9533f6-45db-45f0-8e87-928927dce231",
+			"id": "ce2668c8-1ce2-493c-9e98-a3564e383e3a",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
