@@ -112,9 +112,332 @@ paths:
       operationId: listCategories
       responses:
         '200':
-          description: Successful response
+          description: OK
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 120321144
+                  name: Bares e restaurantes
+                  color: '626491'
+                  group_id: bars_and_restaurants
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321145
+                  name: Roupas
+                  color: ff8258
+                  group_id: clothing
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321146
+                  name: Dívidas e empréstimos
+                  color: ff6c6c
+                  group_id: debts_and_loans
+                  fixed: true
+                  available: true
+                  essential: true
+                  parent_id: null
+                - id: 120321147
+                  name: Investimentos
+                  color: 24B38A
+                  group_id: earning_investments
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321148
+                  name: Educação
+                  color: 6470ba
+                  group_id: education
+                  fixed: true
+                  available: true
+                  essential: true
+                  parent_id: null
+                - id: 120321149
+                  name: Lazer e hobbies
+                  color: b8e64c
+                  group_id: entertainment
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321150
+                  name: Família e filhos
+                  color: a6e88b
+                  group_id: family_and_children
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321151
+                  name: Alimentação
+                  color: e274a8
+                  group_id: food
+                  fixed: true
+                  available: true
+                  essential: true
+                  parent_id: null
+                - id: 120321152
+                  name: Presentes e doações
+                  color: 6b6fff
+                  group_id: gifts_and_donations
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321153
+                  name: Mercado
+                  color: ff8a72
+                  group_id: groceries
+                  fixed: true
+                  available: true
+                  essential: true
+                  parent_id: null
+                - id: 120321154
+                  name: Saúde
+                  color: 72b4ff
+                  group_id: health
+                  fixed: true
+                  available: true
+                  essential: true
+                  parent_id: null
+                - id: 120321155
+                  name: Casa
+                  color: 8193ff
+                  group_id: home
+                  fixed: true
+                  available: true
+                  essential: true
+                  parent_id: null
+                - id: 120321156
+                  name: Investimentos
+                  color: ff70a1
+                  group_id: investments
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321157
+                  name: Pagamento de fatura
+                  color: b3b3b3
+                  group_id: invoice_payment
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321158
+                  name: Empréstimos
+                  color: 27C498
+                  group_id: loans
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321159
+                  name: Outros
+                  color: b3b3b3
+                  group_id: other
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321160
+                  name: Outras receitas
+                  color: 2BDCA9
+                  group_id: other_earnings
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321161
+                  name: Cuidados pessoais
+                  color: ff676d
+                  group_id: personal_care
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321162
+                  name: Pets
+                  color: ffbe57
+                  group_id: pets
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321163
+                  name: Salário
+                  color: 2EE8B3
+                  group_id: salary
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321164
+                  name: Compras
+                  color: f67cff
+                  group_id: shopping
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321165
+                  name: Assinaturas e serviços
+                  color: c671e4
+                  group_id: subscriptions_and_services
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321166
+                  name: Impostos e Taxas
+                  color: ff977c
+                  group_id: taxes
+                  fixed: true
+                  available: true
+                  essential: true
+                  parent_id: null
+                - id: 120321167
+                  name: Transferências
+                  color: b3b3b3
+                  group_id: transference
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321168
+                  name: Transporte
+                  color: 51bcff
+                  group_id: transportation
+                  fixed: true
+                  available: true
+                  essential: true
+                  parent_id: null
+                - id: 120321169
+                  name: Viagem
+                  color: ff6b6b
+                  group_id: travel
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120321170
+                  name: Trabalho
+                  color: 446ff5
+                  group_id: work
+                  fixed: true
+                  available: true
+                  essential: true
+                  parent_id: null
+                - id: 120321940
+                  name: Aluguel
+                  color: 8193ff
+                  group_id: home
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: 120321155
+                - id: 120321941
+                  name: Empréstimo
+                  color: 8193ff
+                  group_id: home
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: 120321155
+                - id: 120321944
+                  name: Luz
+                  color: 8193ff
+                  group_id: home
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: 120321155
+                - id: 120321945
+                  name: Condominio
+                  color: 8193ff
+                  group_id: home
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: 120321155
+                - id: 120323359
+                  name: Seguro
+                  color: ff6b6b
+                  group_id: travel
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: 120321169
+                - id: 120323388
+                  name: Empréstimo Carro
+                  color: 51bcff
+                  group_id: transportation
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: 120321168
+                - id: 120323417
+                  name: Seguro Carro
+                  color: 51bcff
+                  group_id: transportation
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: 120321168
+                - id: 120323419
+                  name: Estacionamento
+                  color: 51bcff
+                  group_id: transportation
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: 120321168
+                - id: 120323420
+                  name: Pedágio
+                  color: 51bcff
+                  group_id: transportation
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: 120321168
+                - id: 120323421
+                  name: Casa
+                  color: 5096de
+                  group_id: ear_home
+                  fixed: true
+                  available: true
+                  essential: false
+                  parent_id: null
+                - id: 120323423
+                  name: Aluguel
+                  color: 5096de
+                  group_id: ear_home
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: 120323421
+                - id: 120323424
+                  name: Luz
+                  color: 5096de
+                  group_id: ear_home
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: 120323421
+                - id: 120324070
+                  name: Telefone & Internet
+                  color: 5161b9
+                  group_id: exp_desktop
+                  fixed: false
+                  available: true
+                  essential: false
+                  parent_id: null
   /categories/{categoryId}:
     get:
       tags:
@@ -130,9 +453,20 @@ paths:
           example: '120323423'
       responses:
         '200':
-          description: Successful response
+          description: OK
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 120323423
+                name: Aluguel
+                color: 5096de
+                group_id: ear_home
+                fixed: false
+                available: true
+                essential: false
+                parent_id: 120323421
   /users:
     get:
       tags:
@@ -170,9 +504,40 @@ paths:
       operationId: listCreditCards
       responses:
         '200':
-          description: Successful response
+          description: OK
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 1287765
+                  name: Nubank
+                  description: null
+                  card_network: default
+                  closing_day: 8
+                  due_day: 15
+                  limit_cents: 1965000
+                  archived: false
+                  default: false
+                  institution_id: default
+                  institution_name: null
+                  created_at: '2023-04-07T11:36:48-03:00'
+                  updated_at: '2023-04-07T13:12:06-03:00'
+                  type: credit_card
+                - id: 1287806
+                  name: SBanken Credit
+                  description: null
+                  card_network: default
+                  closing_day: 31
+                  due_day: 20
+                  limit_cents: 10000000
+                  archived: false
+                  default: false
+                  institution_id: visa
+                  institution_name: null
+                  created_at: '2023-04-07T13:03:50-03:00'
+                  updated_at: '2023-04-07T13:03:50-03:00'
+                  type: credit_card
   /credit_cards/{creditCardId}:
     get:
       tags:
@@ -188,9 +553,26 @@ paths:
           example: '1287765'
       responses:
         '200':
-          description: Successful response
+          description: OK
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 1287765
+                name: Nubank
+                description: null
+                card_network: default
+                closing_day: 8
+                due_day: 15
+                limit_cents: 1965000
+                archived: false
+                default: false
+                institution_id: default
+                institution_name: null
+                created_at: '2023-04-07T11:36:48-03:00'
+                updated_at: '2023-04-07T13:12:06-03:00'
+                type: credit_card
   /credit_cards/{creditCardId}/invoices:
     get:
       tags:
@@ -206,9 +588,120 @@ paths:
           example: '1287765'
       responses:
         '200':
-          description: Successful response
+          description: OK
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 276
+                  date: '2023-01-15'
+                  starting_date: '2022-12-09'
+                  closing_date: '2023-01-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
+                - id: 277
+                  date: '2023-02-15'
+                  starting_date: '2023-01-09'
+                  closing_date: '2023-02-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
+                - id: 278
+                  date: '2023-03-15'
+                  starting_date: '2023-02-09'
+                  closing_date: '2023-03-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
+                - id: 279
+                  date: '2023-04-15'
+                  starting_date: '2023-03-09'
+                  closing_date: '2023-04-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
+                - id: 280
+                  date: '2023-05-15'
+                  starting_date: '2023-04-09'
+                  closing_date: '2023-05-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
+                - id: 281
+                  date: '2023-06-15'
+                  starting_date: '2023-05-09'
+                  closing_date: '2023-06-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
+                - id: 282
+                  date: '2023-07-15'
+                  starting_date: '2023-06-09'
+                  closing_date: '2023-07-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
+                - id: 283
+                  date: '2023-08-15'
+                  starting_date: '2023-07-09'
+                  closing_date: '2023-08-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
+                - id: 284
+                  date: '2023-09-15'
+                  starting_date: '2023-08-09'
+                  closing_date: '2023-09-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
+                - id: 285
+                  date: '2023-10-15'
+                  starting_date: '2023-09-09'
+                  closing_date: '2023-10-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
+                - id: 286
+                  date: '2023-11-15'
+                  starting_date: '2023-10-09'
+                  closing_date: '2023-11-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
+                - id: 287
+                  date: '2023-12-15'
+                  starting_date: '2023-11-09'
+                  closing_date: '2023-12-08'
+                  amount_cents: 0
+                  payment_amount_cents: 0
+                  balance_cents: 0
+                  previous_balance_cents: 0
+                  credit_card_id: 1287765
   /credit_cards/{creditCardId}/invoices/{invoiceId}:
     get:
       tags:
@@ -230,9 +723,23 @@ paths:
           example: '276'
       responses:
         '200':
-          description: Successful response
+          description: OK
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 276
+                date: '2023-01-15'
+                starting_date: '2022-12-09'
+                closing_date: '2023-01-08'
+                amount_cents: 0
+                payment_amount_cents: 0
+                balance_cents: 0
+                previous_balance_cents: 0
+                credit_card_id: 1287765
+                transactions: []
+                payments: []
   /credit_cards/{creditCardId}/invoices/{invoiceId}/payments:
     get:
       tags:
@@ -265,9 +772,12 @@ paths:
       operationId: listAllBudgets
       responses:
         '200':
-          description: Successful response
+          description: OK
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example: []
   /transactions:
     get:
       tags:
