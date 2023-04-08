@@ -945,7 +945,117 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"id": "25cb810d-d2a3-4489-9aad-1f981fc0d133",
+							"name": "Read Transaction",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/transactions/:transactionId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "2477489680",
+											"description": "ID of the Transaction"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:53:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"46340523671383122447f465b8dc915d\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "f615cf544cc65f1e342a0c030b6b3a03"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.026186"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=902BKn6GPtZkcAreT4QqQBhrDBHUEOCm2hxbXH7mOn6OjMQn3Del5EMhE%2FstT%2FwyiqBgESIYWh3PDTdPd79KhAsmqAfELtNSbD3ObI7FDypj0RLnzG7wqSQT%2Bp2eH6kEjycDPji%2F\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4baeb64ee82d17-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 2477489680,\n    \"description\": \"Updated parcelada via API\",\n    \"date\": \"2015-12-20\",\n    \"paid\": true,\n    \"amount_cents\": 20050,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:50:27-03:00\",\n    \"updated_at\": \"2023-04-08T12:52:05-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "Update Transaction",
@@ -1274,7 +1384,7 @@
 	],
 	"variable": [
 		{
-			"id": "06924c08-828e-4922-b10f-6a8068b00569",
+			"id": "86f4c53b-e2f0-4e40-adbe-649ce8bc064f",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
