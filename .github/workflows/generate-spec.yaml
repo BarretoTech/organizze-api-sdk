@@ -7,6 +7,7 @@ on:
       - specs/postman/organizze.json
 permissions:
   contents: write
+  pull-requests: write
 jobs:
   generate-spec:
     name: Generate Spec
@@ -16,4 +17,10 @@ jobs:
         uses: actions/checkout@v3
       - name: Generate openapi file
         run: npx postman-to-openapi specs/postman/organizze.json -o specs/openapi/postman-conversion.json -f specs/openapi/openapi.yaml
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: Updated OpenAPI spec
+          branch: update-openapi-spec
+          title: "chore: updated OpenAPI spec"
+          delete-branch: true
