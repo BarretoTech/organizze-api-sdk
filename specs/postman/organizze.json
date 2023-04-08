@@ -270,7 +270,101 @@
 						"header": [],
 						"url": "{{base_url}}/categories"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "e977a977-08f1-489e-9940-ea5f69306172",
+							"name": "List Categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/categories"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:37:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"fd1a2e17dd9fdf0241ff4ee6bc12fd2c\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "13ff09d4a17c1608e423597d7f961760"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.057537"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=97vuts2u4dCtFqwW3Gn0RoJGgYpSxYiSKmMTpl0joAqwCEZ4FYmlH5PNHYaSeTewmbdTIy8OtsbRPlZILovkP9ZiyXNFQrV%2FeZebOcjqp5sYcfyQhRr1wdlw%2F%2Bb8rQm1lVhfnfWq\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4befb7fce63ae4-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[\n    {\n        \"id\": 120321144,\n        \"name\": \"Bares e restaurantes\",\n        \"color\": \"626491\",\n        \"group_id\": \"bars_and_restaurants\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321145,\n        \"name\": \"Roupas\",\n        \"color\": \"ff8258\",\n        \"group_id\": \"clothing\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321146,\n        \"name\": \"Dívidas e empréstimos\",\n        \"color\": \"ff6c6c\",\n        \"group_id\": \"debts_and_loans\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321147,\n        \"name\": \"Investimentos\",\n        \"color\": \"24B38A\",\n        \"group_id\": \"earning_investments\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321148,\n        \"name\": \"Educação\",\n        \"color\": \"6470ba\",\n        \"group_id\": \"education\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321149,\n        \"name\": \"Lazer e hobbies\",\n        \"color\": \"b8e64c\",\n        \"group_id\": \"entertainment\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321150,\n        \"name\": \"Família e filhos\",\n        \"color\": \"a6e88b\",\n        \"group_id\": \"family_and_children\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321151,\n        \"name\": \"Alimentação\",\n        \"color\": \"e274a8\",\n        \"group_id\": \"food\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321152,\n        \"name\": \"Presentes e doações\",\n        \"color\": \"6b6fff\",\n        \"group_id\": \"gifts_and_donations\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321153,\n        \"name\": \"Mercado\",\n        \"color\": \"ff8a72\",\n        \"group_id\": \"groceries\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321154,\n        \"name\": \"Saúde\",\n        \"color\": \"72b4ff\",\n        \"group_id\": \"health\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321155,\n        \"name\": \"Casa\",\n        \"color\": \"8193ff\",\n        \"group_id\": \"home\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321156,\n        \"name\": \"Investimentos\",\n        \"color\": \"ff70a1\",\n        \"group_id\": \"investments\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321157,\n        \"name\": \"Pagamento de fatura\",\n        \"color\": \"b3b3b3\",\n        \"group_id\": \"invoice_payment\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321158,\n        \"name\": \"Empréstimos\",\n        \"color\": \"27C498\",\n        \"group_id\": \"loans\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321159,\n        \"name\": \"Outros\",\n        \"color\": \"b3b3b3\",\n        \"group_id\": \"other\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321160,\n        \"name\": \"Outras receitas\",\n        \"color\": \"2BDCA9\",\n        \"group_id\": \"other_earnings\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321161,\n        \"name\": \"Cuidados pessoais\",\n        \"color\": \"ff676d\",\n        \"group_id\": \"personal_care\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321162,\n        \"name\": \"Pets\",\n        \"color\": \"ffbe57\",\n        \"group_id\": \"pets\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321163,\n        \"name\": \"Salário\",\n        \"color\": \"2EE8B3\",\n        \"group_id\": \"salary\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321164,\n        \"name\": \"Compras\",\n        \"color\": \"f67cff\",\n        \"group_id\": \"shopping\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321165,\n        \"name\": \"Assinaturas e serviços\",\n        \"color\": \"c671e4\",\n        \"group_id\": \"subscriptions_and_services\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321166,\n        \"name\": \"Impostos e Taxas\",\n        \"color\": \"ff977c\",\n        \"group_id\": \"taxes\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321167,\n        \"name\": \"Transferências\",\n        \"color\": \"b3b3b3\",\n        \"group_id\": \"transference\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321168,\n        \"name\": \"Transporte\",\n        \"color\": \"51bcff\",\n        \"group_id\": \"transportation\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321169,\n        \"name\": \"Viagem\",\n        \"color\": \"ff6b6b\",\n        \"group_id\": \"travel\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321170,\n        \"name\": \"Trabalho\",\n        \"color\": \"446ff5\",\n        \"group_id\": \"work\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": true,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120321940,\n        \"name\": \"Aluguel\",\n        \"color\": \"8193ff\",\n        \"group_id\": \"home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321155\n    },\n    {\n        \"id\": 120321941,\n        \"name\": \"Empréstimo\",\n        \"color\": \"8193ff\",\n        \"group_id\": \"home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321155\n    },\n    {\n        \"id\": 120321944,\n        \"name\": \"Luz\",\n        \"color\": \"8193ff\",\n        \"group_id\": \"home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321155\n    },\n    {\n        \"id\": 120321945,\n        \"name\": \"Condominio\",\n        \"color\": \"8193ff\",\n        \"group_id\": \"home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321155\n    },\n    {\n        \"id\": 120323359,\n        \"name\": \"Seguro\",\n        \"color\": \"ff6b6b\",\n        \"group_id\": \"travel\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321169\n    },\n    {\n        \"id\": 120323388,\n        \"name\": \"Empréstimo Carro\",\n        \"color\": \"51bcff\",\n        \"group_id\": \"transportation\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321168\n    },\n    {\n        \"id\": 120323417,\n        \"name\": \"Seguro Carro\",\n        \"color\": \"51bcff\",\n        \"group_id\": \"transportation\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321168\n    },\n    {\n        \"id\": 120323419,\n        \"name\": \"Estacionamento\",\n        \"color\": \"51bcff\",\n        \"group_id\": \"transportation\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321168\n    },\n    {\n        \"id\": 120323420,\n        \"name\": \"Pedágio\",\n        \"color\": \"51bcff\",\n        \"group_id\": \"transportation\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120321168\n    },\n    {\n        \"id\": 120323421,\n        \"name\": \"Casa\",\n        \"color\": \"5096de\",\n        \"group_id\": \"ear_home\",\n        \"fixed\": true,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    },\n    {\n        \"id\": 120323423,\n        \"name\": \"Aluguel\",\n        \"color\": \"5096de\",\n        \"group_id\": \"ear_home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120323421\n    },\n    {\n        \"id\": 120323424,\n        \"name\": \"Luz\",\n        \"color\": \"5096de\",\n        \"group_id\": \"ear_home\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": 120323421\n    },\n    {\n        \"id\": 120324070,\n        \"name\": \"Telefone & Internet\",\n        \"color\": \"5161b9\",\n        \"group_id\": \"exp_desktop\",\n        \"fixed\": false,\n        \"available\": true,\n        \"essential\": false,\n        \"parent_id\": null\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Read Category",
@@ -1921,7 +2015,7 @@
 	],
 	"variable": [
 		{
-			"id": "69d39a9d-5989-4ec6-b997-5930ec98c937",
+			"id": "a3e8a7b0-0498-4d06-b0cb-7ad6276ccefb",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
