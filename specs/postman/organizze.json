@@ -444,13 +444,13 @@
 						},
 						{
 							"id": "845bc0b3-7afd-4e27-b22d-dd8c586e698e",
-							"name": "Create Recurring Transaction Split in Installments",
+							"name": "Create Recurring Transaction Copy",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"description\": \"Despesa fixa\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"recurrence_attributes\": {\"periodicity\": \"monthly\"}\n}",
+									"raw": "{\n    \"description\": \"Despesa parcelada\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"installments_attributes\": {\"periodicity\": \"monthly\", \"total\": 12}\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -754,7 +754,7 @@
 	],
 	"variable": [
 		{
-			"id": "5574e599-dbad-4623-b743-2816051e8dbf",
+			"id": "66b3c88d-c789-4352-9d90-11bf42fc4b1c",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
