@@ -819,52 +819,6 @@
 							"body": "{\n    \"id\": 2477483021,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": 0,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:30:43-03:00\",\n    \"updated_at\": \"2023-04-08T12:30:43-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
 						},
 						{
-							"id": "30dfb332-8789-4753-8ed5-8911b9b50560",
-							"name": "Create Recurring Transaction",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"description\": \"Despesa fixa\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"recurrence_attributes\": {\"periodicity\": \"monthly\"}\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/transactions"
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
-							"id": "845bc0b3-7afd-4e27-b22d-dd8c586e698e",
-							"name": "Create Recurring Transaction Split in Installments",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"description\": \"Despesa parcelada\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"installments_attributes\": {\"periodicity\": \"monthly\", \"total\": 12}\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/transactions"
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
 							"id": "ee4c0c80-54d5-4b3f-85c3-51d058202360",
 							"name": "Create Expense Transaction",
 							"originalRequest": {
@@ -961,6 +915,150 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"id\": 2477486740,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": -100000,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:41:01-03:00\",\n    \"updated_at\": \"2023-04-08T12:41:01-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
+						},
+						{
+							"id": "30dfb332-8789-4753-8ed5-8911b9b50560",
+							"name": "Create Recurring Transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Despesa fixa\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"recurrence_attributes\": {\"periodicity\": \"monthly\"}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "845bc0b3-7afd-4e27-b22d-dd8c586e698e",
+							"name": "Create Recurring Transaction Split in Installments",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Despesa parcelada\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"installments_attributes\": {\"periodicity\": \"monthly\", \"total\": 12}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "0137a867-b058-4d61-bcb8-8d4642bb0b6a",
+							"name": "Create Transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Computador\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"amount_cents\": 100000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:42:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "\"58be75cdbf928197993a916213001046\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "41fcbf2268e2b48671edf0b3c70ca43d"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.063846"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "invalidate, pass"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=mmtXjQd01Kj3nnCnsQ5auXOepYXNuXm9acl5jmtOs%2FY7OE7LF%2BqZiaganDg2ZWrmk6Hdq5W0xRNc6bEyoksixQKmSfb8p1R4ue7hwK3cVrMhLfiLaaSMoRY4XJoWMP7eE0lTtCwc\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b9e8d28fd2057-IAD"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 2477487022,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": 100000,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321160,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:42:17-03:00\",\n    \"updated_at\": \"2023-04-08T12:42:17-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
 						}
 					]
 				},
@@ -1415,7 +1513,7 @@
 	],
 	"variable": [
 		{
-			"id": "cf27d433-4ce0-43f1-830d-35a046a47de7",
+			"id": "a5504510-2eed-4351-892b-9b902361fda6",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
