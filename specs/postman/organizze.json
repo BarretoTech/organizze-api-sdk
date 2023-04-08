@@ -964,7 +964,7 @@
 						},
 						{
 							"id": "ee4c0c80-54d5-4b3f-85c3-51d058202360",
-							"name": "Create Transaction",
+							"name": "Create Expense Transaction",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1513,7 +1513,7 @@
 	],
 	"variable": [
 		{
-			"id": "94597330-9783-4f56-8dd7-3f364c68af5c",
+			"id": "1acadcee-88c5-4476-90c3-20dc4c70e8f5",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
