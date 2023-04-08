@@ -803,45 +803,6 @@
 							"body": null
 						}
 					]
-				},
-				{
-					"name": "Delete Recurring Transaction with All Related Transactions",
-					"id": "237e5ce4-90c0-4df3-8965-89892d8b6b4b",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"update_all\": true\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/transactions/:transactionId",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"transactions",
-								":transactionId"
-							],
-							"variable": [
-								{
-									"id": "6ccabc5f-2e71-47fb-a132-acb7de08df9a",
-									"key": "transactionId",
-									"value": "101",
-									"description": "ID of the Transaction"
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			],
 			"id": "f589f63e-b024-4dc7-824b-effe3cdcbff5"
@@ -878,7 +839,7 @@
 	],
 	"variable": [
 		{
-			"id": "90565013-31d8-47de-be86-18b291e9fd37",
+			"id": "51ab0d46-63f2-452f-b366-1b1e2b472dd5",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
