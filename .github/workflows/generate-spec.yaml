@@ -1,0 +1,19 @@
+name: Generate OpenAPI Spec
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - specs/postman/organizze.json
+permissions:
+  contents: write
+jobs:
+  generate-spec:
+    name: Generate Spec
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Generate openapi file
+        run: npx postman-to-openapi specs/postman/organizze.json -o specs/openapi/postman-conversion.json -f specs/openapi/openapi.yaml
+      - uses: stefanzweifel/git-auto-commit-action@v4
