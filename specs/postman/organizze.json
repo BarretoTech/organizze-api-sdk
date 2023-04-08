@@ -142,7 +142,116 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"id": "07310bc7-78c4-4dbe-a1a2-3f966df4fcb7",
+							"name": "Read Account",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/accounts/:accountId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"accounts",
+										":accountId"
+									],
+									"variable": [
+										{
+											"key": "accountId",
+											"value": "6633003"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 15:10:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"833a096775bfa1165a3b5fb57e3d6f73\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "b761acfdbc52d52d3a6ba3b81cb4af6c"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.026575"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=BEx4neYcgW9UAfNMZx2PeTwvYzjSPeuggt4ixORh0OcjGoa1JI5l5odJO3QvYNM8eLmIMRX1JS6vE4m1dveCAX3gTD%2FwqttNrovI6USilcoWH%2Fcp8mwWCHQMPVFu0Z7IqyVK5V4i\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4b6f6e4cb93b86-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 6633003,\n    \"name\": \"Nubank Conta Corrente\",\n    \"institution_id\": \"nuconta\",\n    \"institution_name\": \"Nubank\",\n    \"description\": null,\n    \"archived\": false,\n    \"created_at\": \"2023-04-07T13:10:51-03:00\",\n    \"updated_at\": \"2023-04-07T14:11:43-03:00\",\n    \"default\": false,\n    \"type\": \"checking\"\n}"
+						}
+					]
 				}
 			],
 			"id": "fd520a22-7b1a-4fa9-b033-77442291bd90"
@@ -933,7 +1042,7 @@
 	],
 	"variable": [
 		{
-			"id": "e9c276c4-5f34-4e46-9db6-a34280a06246",
+			"id": "10e21916-b2ac-476e-9ccc-2a689dd507f2",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
