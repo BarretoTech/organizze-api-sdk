@@ -607,7 +607,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"description\": \"Computador\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\"\n}",
+									"raw": "{\n    \"description\": \"Test\",\n    \"notes\": \"Test\",\n    \"date\": \"2015-09-16\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1140,7 +1140,7 @@
 	],
 	"variable": [
 		{
-			"id": "529a0f1e-0e60-47d5-a6a2-905701b89cd5",
+			"id": "3f3eb484-e77c-43a4-89d3-66a66eb4e795",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
