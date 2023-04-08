@@ -584,7 +584,7 @@
 						},
 						{
 							"id": "47e1b021-8268-4607-9758-2b787d9dd9b4",
-							"name": "Update Transaction Copy",
+							"name": "Update Recurring Transaction with All Related Transactions",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -872,7 +872,7 @@
 	],
 	"variable": [
 		{
-			"id": "42299c8f-7603-4435-bd6a-dbb2be9805c1",
+			"id": "a0cc784e-f0bc-4cf5-9fb5-2261cc503a08",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
