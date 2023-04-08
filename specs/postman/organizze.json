@@ -392,7 +392,116 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"id": "781c7d2a-eeb0-4144-bc3b-8f09de562fc1",
+							"name": "Read Category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/categories/:categoryId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"categories",
+										":categoryId"
+									],
+									"variable": [
+										{
+											"key": "categoryId",
+											"value": "120323423"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:42:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"98d902faae7c45d15e6d470828edee46\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "b5332fd2e09cb543a9a4ea077530e5eb"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.041212"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=8begQ7me7B8J%2BFI9BzpW1%2BwS4RjoDjrXUBFsraP4dvRV%2FFuFKZjZM4Q8fb%2FUNN5uHvNolfiYYR0moSCiktwZe5IOmBsKLyG3o7WGBzkm5pr384MaSGSpgid7WnDdikMQMBHJXO85\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4bf6e93922f889-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 120323423,\n    \"name\": \"Aluguel\",\n    \"color\": \"5096de\",\n    \"group_id\": \"ear_home\",\n    \"fixed\": false,\n    \"available\": true,\n    \"essential\": false,\n    \"parent_id\": 120323421\n}"
+						}
+					]
 				}
 			],
 			"id": "1089e3c0-2385-4836-a120-85e1b4fc44e2"
@@ -2015,7 +2124,7 @@
 	],
 	"variable": [
 		{
-			"id": "a3e8a7b0-0498-4d06-b0cb-7ad6276ccefb",
+			"id": "59359043-5cb5-4a94-9ec9-89201e7ca23e",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
