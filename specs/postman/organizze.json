@@ -959,36 +959,6 @@
 					},
 					"response": [
 						{
-							"id": "3a97027c-2f8a-4d32-b5c9-d94f1e4f3739",
-							"name": "Delete Transaction",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/transactions/:transactionId",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"transactions",
-										":transactionId"
-									],
-									"variable": [
-										{
-											"key": "transactionId",
-											"value": "2477483021",
-											"description": "ID of the Transaction"
-										}
-									]
-								}
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
 							"id": "e8b08739-8658-4a4d-aae8-4a5b44914aab",
 							"name": "Delete Recurring Transaction with All Future Transactions",
 							"originalRequest": {
@@ -1226,7 +1196,7 @@
 	],
 	"variable": [
 		{
-			"id": "08b30558-259c-4666-8d2d-782c2db5b61c",
+			"id": "1c67cd5d-9d30-4f69-aea2-ec9834a7776a",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
