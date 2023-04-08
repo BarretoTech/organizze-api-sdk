@@ -486,7 +486,116 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"id": "90943012-9c29-4c01-9e08-726d917160e4",
+							"name": "Read Credit Card",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/credit_cards/:creditCardId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"credit_cards",
+										":creditCardId"
+									],
+									"variable": [
+										{
+											"key": "creditCardId",
+											"value": "1287765"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:24:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"ed727936c0a4ca7e0fec2afc3d1cb6fa\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "6814058fd99c8f5f3d67877612d47162"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.026181"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=lrZBtYUsDpiRI1TA2GAU2vazSpY7W3nsP9dKlRUqOWV94tjiCiBsGLBbuSJfS%2Bgk6caKTtv9FFxl2txCOvywYWe%2B54zAgC9biQKMGO77oIscuD7%2BzGwYa7Rl2S9RhyqlJDZC7RKb\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4bdca93d403b71-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 1287765,\n    \"name\": \"Nubank\",\n    \"description\": null,\n    \"card_network\": \"default\",\n    \"closing_day\": 8,\n    \"due_day\": 15,\n    \"limit_cents\": 1965000,\n    \"archived\": false,\n    \"default\": false,\n    \"institution_id\": \"default\",\n    \"institution_name\": null,\n    \"created_at\": \"2023-04-07T11:36:48-03:00\",\n    \"updated_at\": \"2023-04-07T13:12:06-03:00\",\n    \"type\": \"credit_card\"\n}"
+						}
+					]
 				},
 				{
 					"name": "List Credit Card Invoices",
@@ -1572,7 +1681,7 @@
 	],
 	"variable": [
 		{
-			"id": "98833bbe-fe9d-497a-923f-79a146f2391a",
+			"id": "949c73ff-d06c-41c9-9cbd-66d6f050414e",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
