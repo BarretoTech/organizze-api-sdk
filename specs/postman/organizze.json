@@ -445,28 +445,6 @@
 					]
 				},
 				{
-					"name": "Create Recurring Transaction",
-					"id": "5c17bba7-3b65-41c6-95c8-557b6ea93392",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"description\": \"Despesa fixa\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"recurrence_attributes\": {\"periodicity\": \"monthly\"}\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/transactions"
-					},
-					"response": []
-				},
-				{
 					"name": "Create Recurring Transaction Copy",
 					"id": "4c922763-6c76-4c34-a2dc-1ef29ba5e467",
 					"protocolProfileBehavior": {
@@ -775,7 +753,7 @@
 	],
 	"variable": [
 		{
-			"id": "b8454995-b361-4c45-8038-46846f23da0d",
+			"id": "fb9533f6-45db-45f0-8e87-928927dce231",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
