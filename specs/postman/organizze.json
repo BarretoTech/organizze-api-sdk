@@ -503,7 +503,47 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"id": "b740bc73-efb5-40c9-9149-605900a6f46a",
+							"name": "Update Transaction",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Updated parcelada via API\",\n    \"notes\": \"Pagamento via boleto\",\n    \"amount_cents\": 20050,\n    \"date\": \"2015-12-20\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transactions/:transactionId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "101",
+											"description": "ID of the Transaction"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
 				},
 				{
 					"name": "Update Recurring Transaction with All Future Transactions",
@@ -754,7 +794,7 @@
 	],
 	"variable": [
 		{
-			"id": "b57e4abe-3bb0-416a-bce7-c2ae194274d8",
+			"id": "397baf8c-a99b-41aa-9e9c-2f285464acec",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
