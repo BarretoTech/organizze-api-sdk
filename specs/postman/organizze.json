@@ -544,7 +544,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/transactions",
+							"raw": "{{base_url}}/transactions?start_date=2015-09-01&end_date=2015-10-01",
 							"host": [
 								"{{base_url}}"
 							],
@@ -554,17 +554,15 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "",
+									"value": "2015-09-01",
 									"description": "ISO8601 Date with the start period for filtering",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "end_date",
-									"value": "",
+									"value": "2015-10-01",
 									"description": "ISO8601 Date with the end period for filtering",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "account_id",
@@ -1421,7 +1419,7 @@
 	],
 	"variable": [
 		{
-			"id": "ee9cb67d-ab47-4640-a871-54e4324123c0",
+			"id": "b15df294-2f5a-4aff-8671-698d6166901e",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
