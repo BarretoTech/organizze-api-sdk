@@ -722,7 +722,7 @@
 					"response": [
 						{
 							"id": "2cddf50c-8472-4256-a264-4febb3165aed",
-							"name": "Create Transaction",
+							"name": "Create Income Transaction",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1317,7 +1317,7 @@
 	],
 	"variable": [
 		{
-			"id": "116f2bdb-7eb9-4b68-bb15-775b74544f08",
+			"id": "4e39f3ea-04b9-4a20-9d5c-fc045ccde170",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
