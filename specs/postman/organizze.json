@@ -11,7 +11,7 @@
 			"item": [
 				{
 					"name": "List Bank Accounts",
-					"_postman_id": "2a21d71d-139c-40aa-957d-6d00b725bf12",
+					"id": "2a21d71d-139c-40aa-957d-6d00b725bf12",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -24,7 +24,7 @@
 				},
 				{
 					"name": "Read Account",
-					"_postman_id": "93a0619e-dbf1-43e2-81f1-e595568e3fa8",
+					"id": "93a0619e-dbf1-43e2-81f1-e595568e3fa8",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -43,8 +43,7 @@
 							"variable": [
 								{
 									"key": "accountId",
-									"value": "6632818",
-									"type": "string"
+									"value": "6632818"
 								}
 							]
 						}
@@ -52,14 +51,14 @@
 					"response": []
 				}
 			],
-			"_postman_id": "fd520a22-7b1a-4fa9-b033-77442291bd90"
+			"id": "fd520a22-7b1a-4fa9-b033-77442291bd90"
 		},
 		{
 			"name": "Categories",
 			"item": [
 				{
 					"name": "List Categories",
-					"_postman_id": "7db31287-5d8e-4ca0-bbda-ce9331ab02a5",
+					"id": "7db31287-5d8e-4ca0-bbda-ce9331ab02a5",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -72,7 +71,7 @@
 				},
 				{
 					"name": "Read Category",
-					"_postman_id": "ed2c5e35-6b3d-4f75-884c-875227c679e9",
+					"id": "ed2c5e35-6b3d-4f75-884c-875227c679e9",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -91,8 +90,7 @@
 							"variable": [
 								{
 									"key": "categoryId",
-									"value": "120323423",
-									"type": "string"
+									"value": "120323423"
 								}
 							]
 						}
@@ -100,14 +98,14 @@
 					"response": []
 				}
 			],
-			"_postman_id": "1089e3c0-2385-4836-a120-85e1b4fc44e2"
+			"id": "1089e3c0-2385-4836-a120-85e1b4fc44e2"
 		},
 		{
 			"name": "Users",
 			"item": [
 				{
 					"name": "List Users",
-					"_postman_id": "4b601d0a-e46e-46da-ab34-9d6eb8704773",
+					"id": "4b601d0a-e46e-46da-ab34-9d6eb8704773",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -120,7 +118,7 @@
 				},
 				{
 					"name": "Read User",
-					"_postman_id": "f095fd15-00e3-4c54-ab85-0728a62eca26",
+					"id": "f095fd15-00e3-4c54-ab85-0728a62eca26",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -139,8 +137,7 @@
 							"variable": [
 								{
 									"key": "userId",
-									"value": "4946248",
-									"type": "string"
+									"value": "4946248"
 								}
 							]
 						}
@@ -148,14 +145,14 @@
 					"response": []
 				}
 			],
-			"_postman_id": "945ad059-2e95-418a-bd86-c4cdb507fe9c"
+			"id": "945ad059-2e95-418a-bd86-c4cdb507fe9c"
 		},
 		{
 			"name": "Credit Cards",
 			"item": [
 				{
 					"name": "List Credit Cards",
-					"_postman_id": "85f3dc59-2308-4e29-b912-05b41b37284f",
+					"id": "85f3dc59-2308-4e29-b912-05b41b37284f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -168,7 +165,7 @@
 				},
 				{
 					"name": "Read Credit Card",
-					"_postman_id": "1247594d-0363-41fb-9633-fd9346550c10",
+					"id": "1247594d-0363-41fb-9633-fd9346550c10",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -187,8 +184,7 @@
 							"variable": [
 								{
 									"key": "creditCardId",
-									"value": "1287765",
-									"type": "string"
+									"value": "1287765"
 								}
 							]
 						}
@@ -197,7 +193,7 @@
 				},
 				{
 					"name": "List Credit Card Invoices",
-					"_postman_id": "ab85d1df-3be6-495e-b2dd-db08bac50a95",
+					"id": "ab85d1df-3be6-495e-b2dd-db08bac50a95",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -232,8 +228,7 @@
 								{
 									"id": "ac57103f-48ce-4a71-9150-0790847a5a05",
 									"key": "creditCardId",
-									"value": "1287765",
-									"type": "string"
+									"value": "1287765"
 								}
 							]
 						}
@@ -242,7 +237,7 @@
 				},
 				{
 					"name": "Read Credit Card Invoice",
-					"_postman_id": "ea000777-51cd-4d90-aa51-d03c1d42813b",
+					"id": "ea000777-51cd-4d90-aa51-d03c1d42813b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -263,13 +258,11 @@
 							"variable": [
 								{
 									"key": "creditCardId",
-									"value": "1287765",
-									"type": "string"
+									"value": "1287765"
 								},
 								{
 									"key": "invoiceId",
-									"value": "276",
-									"type": "string"
+									"value": "276"
 								}
 							]
 						}
@@ -278,7 +271,7 @@
 				},
 				{
 					"name": "Read Credit Card Invoice Payments",
-					"_postman_id": "a4216973-277c-4ba9-9ae4-bf97279f2355",
+					"id": "a4216973-277c-4ba9-9ae4-bf97279f2355",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -301,14 +294,12 @@
 								{
 									"id": "8ad21899-b1ad-46e3-858b-476965a39616",
 									"key": "creditCardId",
-									"value": "1287765",
-									"type": "string"
+									"value": "1287765"
 								},
 								{
 									"id": "4b141cb9-11b7-4915-9567-3f8fbc8c382e",
 									"key": "invoiceId",
-									"value": "276",
-									"type": "string"
+									"value": "276"
 								}
 							]
 						}
@@ -316,14 +307,14 @@
 					"response": []
 				}
 			],
-			"_postman_id": "87b1f7c4-f37e-4edb-88a3-158543832358"
+			"id": "87b1f7c4-f37e-4edb-88a3-158543832358"
 		},
 		{
 			"name": "Budgets",
 			"item": [
 				{
 					"name": "List All Budgets",
-					"_postman_id": "d0821486-e183-4538-a3ee-ed441c5cc629",
+					"id": "d0821486-e183-4538-a3ee-ed441c5cc629",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -335,14 +326,14 @@
 					"response": []
 				}
 			],
-			"_postman_id": "ee34382f-10b1-45a7-8ed3-037ef739a9d4"
+			"id": "ee34382f-10b1-45a7-8ed3-037ef739a9d4"
 		},
 		{
 			"name": "Transactions",
 			"item": [
 				{
 					"name": "List Transactions",
-					"_postman_id": "0f296789-46d4-4bbb-a17a-235dd77d7b43",
+					"id": "0f296789-46d4-4bbb-a17a-235dd77d7b43",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -386,7 +377,7 @@
 				},
 				{
 					"name": "Create Transaction",
-					"_postman_id": "26bafd38-180c-4dda-820c-d3a57e0ffd3a",
+					"id": "26bafd38-180c-4dda-820c-d3a57e0ffd3a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -404,11 +395,35 @@
 						},
 						"url": "{{base_url}}/transactions"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "08f667b8-4f1d-448d-8b00-f44db6383191",
+							"name": "Create Transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Computador\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/transactions"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
 				},
 				{
 					"name": "Create Recurring Transaction",
-					"_postman_id": "5c17bba7-3b65-41c6-95c8-557b6ea93392",
+					"id": "5c17bba7-3b65-41c6-95c8-557b6ea93392",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -430,7 +445,7 @@
 				},
 				{
 					"name": "Create Recurring Transaction Copy",
-					"_postman_id": "4c922763-6c76-4c34-a2dc-1ef29ba5e467",
+					"id": "4c922763-6c76-4c34-a2dc-1ef29ba5e467",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -452,7 +467,7 @@
 				},
 				{
 					"name": "Update Transaction",
-					"_postman_id": "05792115-6439-45f6-9e3e-0d58d5b67bb5",
+					"id": "05792115-6439-45f6-9e3e-0d58d5b67bb5",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -481,8 +496,7 @@
 								{
 									"key": "transactionId",
 									"value": "101",
-									"description": "ID of the Transaction",
-									"type": "string"
+									"description": "ID of the Transaction"
 								}
 							]
 						}
@@ -491,7 +505,7 @@
 				},
 				{
 					"name": "Update Recurring Transaction with All Future Transactions",
-					"_postman_id": "0348bd59-d1ac-4dae-8ed2-37c7fdb5342c",
+					"id": "0348bd59-d1ac-4dae-8ed2-37c7fdb5342c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -521,8 +535,7 @@
 									"id": "d1c5447e-1b82-4727-a017-3e167fb3bcdf",
 									"key": "transactionId",
 									"value": "101",
-									"description": "ID of the Transaction",
-									"type": "string"
+									"description": "ID of the Transaction"
 								}
 							]
 						}
@@ -531,7 +544,7 @@
 				},
 				{
 					"name": "Update Recurring Transaction with All Related Transactions",
-					"_postman_id": "f7b279b8-9522-4773-b76a-6e75167d9595",
+					"id": "f7b279b8-9522-4773-b76a-6e75167d9595",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -561,8 +574,7 @@
 									"id": "d1c5447e-1b82-4727-a017-3e167fb3bcdf",
 									"key": "transactionId",
 									"value": "101",
-									"description": "ID of the Transaction",
-									"type": "string"
+									"description": "ID of the Transaction"
 								}
 							]
 						}
@@ -571,7 +583,7 @@
 				},
 				{
 					"name": "Read Transaction",
-					"_postman_id": "b421ade1-5ad0-49a9-b46b-ce8446f35e6f",
+					"id": "b421ade1-5ad0-49a9-b46b-ce8446f35e6f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -591,8 +603,7 @@
 								{
 									"key": "transactionId",
 									"value": "2477070345",
-									"description": "ID of the Transaction",
-									"type": "string"
+									"description": "ID of the Transaction"
 								}
 							]
 						}
@@ -601,7 +612,7 @@
 				},
 				{
 					"name": "Delete Transaction",
-					"_postman_id": "658a9c2a-c86c-4032-bea5-8d4a2929b061",
+					"id": "658a9c2a-c86c-4032-bea5-8d4a2929b061",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -621,8 +632,7 @@
 								{
 									"key": "transactionId",
 									"value": "101",
-									"description": "ID of the Transaction",
-									"type": "string"
+									"description": "ID of the Transaction"
 								}
 							]
 						}
@@ -631,7 +641,7 @@
 				},
 				{
 					"name": "Delete Recurring Transaction with All Future Transactions",
-					"_postman_id": "2a6415eb-61d2-4f11-b04f-f8b00add5f27",
+					"id": "2a6415eb-61d2-4f11-b04f-f8b00add5f27",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -661,8 +671,7 @@
 									"id": "6ccabc5f-2e71-47fb-a132-acb7de08df9a",
 									"key": "transactionId",
 									"value": "101",
-									"description": "ID of the Transaction",
-									"type": "string"
+									"description": "ID of the Transaction"
 								}
 							]
 						}
@@ -671,7 +680,7 @@
 				},
 				{
 					"name": "Delete Recurring Transaction with All Related Transactions",
-					"_postman_id": "237e5ce4-90c0-4df3-8965-89892d8b6b4b",
+					"id": "237e5ce4-90c0-4df3-8965-89892d8b6b4b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -701,8 +710,7 @@
 									"id": "6ccabc5f-2e71-47fb-a132-acb7de08df9a",
 									"key": "transactionId",
 									"value": "101",
-									"description": "ID of the Transaction",
-									"type": "string"
+									"description": "ID of the Transaction"
 								}
 							]
 						}
@@ -710,7 +718,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "f589f63e-b024-4dc7-824b-effe3cdcbff5"
+			"id": "f589f63e-b024-4dc7-824b-effe3cdcbff5"
 		}
 	],
 	"auth": {
@@ -744,7 +752,7 @@
 	],
 	"variable": [
 		{
-			"id": "78e14f25-feed-45ff-bd9b-beffd79882e8",
+			"id": "9053127d-41f3-4d0c-a409-6597dfd2676f",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
