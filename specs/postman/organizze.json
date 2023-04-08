@@ -600,29 +600,6 @@
 					},
 					"response": [
 						{
-							"id": "08f667b8-4f1d-448d-8b00-f44db6383191",
-							"name": "Create Transaction",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"description\": \"Test\",\n    \"notes\": \"Test\",\n    \"date\": \"2015-09-16\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/transactions"
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
 							"id": "30dfb332-8789-4753-8ed5-8911b9b50560",
 							"name": "Create Recurring Transaction",
 							"originalRequest": {
@@ -1140,7 +1117,7 @@
 	],
 	"variable": [
 		{
-			"id": "3f3eb484-e77c-43a4-89d3-66a66eb4e795",
+			"id": "6b8705f6-ca2d-43e6-b66c-2e20d7ac9679",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
