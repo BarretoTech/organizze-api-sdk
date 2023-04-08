@@ -915,29 +915,6 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"id\": 2477486740,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": -100000,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:41:01-03:00\",\n    \"updated_at\": \"2023-04-08T12:41:01-03:00\",\n    \"tags\": [],\n    \"attachments\": []\n}"
-						},
-						{
-							"id": "845bc0b3-7afd-4e27-b22d-dd8c586e698e",
-							"name": "Create Recurring Transaction Split in Installments",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"description\": \"Despesa parcelada\",\n    \"notes\": \"Pagamento via boleto\",\n    \"date\": \"2015-09-16\",\n    \"amount_cents\": 100000,\n    \"installments_attributes\": {\n        \"periodicity\": \"monthly\",\n        \"total\": 10\n    }\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{base_url}}/transactions"
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
 						}
 					]
 				},
@@ -1392,7 +1369,7 @@
 	],
 	"variable": [
 		{
-			"id": "32dd5a67-326c-4c47-9e65-e7d3b474dad3",
+			"id": "a6de9bd4-1beb-4f26-8147-abfb2be95794",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
