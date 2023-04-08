@@ -805,45 +805,6 @@
 					]
 				},
 				{
-					"name": "Delete Recurring Transaction with All Future Transactions",
-					"id": "2a6415eb-61d2-4f11-b04f-f8b00add5f27",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"update_future\": true\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/transactions/:transactionId",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"transactions",
-								":transactionId"
-							],
-							"variable": [
-								{
-									"id": "6ccabc5f-2e71-47fb-a132-acb7de08df9a",
-									"key": "transactionId",
-									"value": "101",
-									"description": "ID of the Transaction"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Delete Recurring Transaction with All Related Transactions",
 					"id": "237e5ce4-90c0-4df3-8965-89892d8b6b4b",
 					"protocolProfileBehavior": {
@@ -917,7 +878,7 @@
 	],
 	"variable": [
 		{
-			"id": "c14bfa28-c5ee-4ea3-8cbf-8e4eb73f9f6d",
+			"id": "90565013-31d8-47de-be86-18b291e9fd37",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
