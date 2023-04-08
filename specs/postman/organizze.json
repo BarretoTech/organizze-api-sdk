@@ -544,7 +544,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/transactions?start_date=2015-09-01&end_date=2015-10-01&account_id=",
+							"raw": "{{base_url}}/transactions?start_date=2015-09-01&end_date=2015-10-01&account_id=6632818",
 							"host": [
 								"{{base_url}}"
 							],
@@ -564,9 +564,8 @@
 								},
 								{
 									"key": "account_id",
-									"value": "",
-									"description": "Account ID for filtering",
-									"type": "text"
+									"value": "6632818",
+									"description": "Account ID for filtering"
 								}
 							]
 						}
@@ -1416,7 +1415,7 @@
 	],
 	"variable": [
 		{
-			"id": "b3a8d6f1-c4a0-42f3-a013-3fdd2a214cf0",
+			"id": "0163f120-2f5d-42a5-9615-0c95e24bc177",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
