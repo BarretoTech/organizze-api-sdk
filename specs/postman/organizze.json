@@ -364,7 +364,101 @@
 						"header": [],
 						"url": "{{base_url}}/credit_cards"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "58bbd3ca-5e6d-4bb1-8613-1e657ffd75b5",
+							"name": "List Credit Cards",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/credit_cards"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 08 Apr 2023 16:24:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "x-ua-compatible",
+									"value": "IE=Edge,chrome=1"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"699f2b21a66f3dc25fe93db3da9c66e5\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate, private, max-age=0"
+								},
+								{
+									"key": "x-request-id",
+									"value": "8704b4a21c6b7f20324b19578d9faced"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.027238"
+								},
+								{
+									"key": "x-rack-cache",
+									"value": "miss"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=s0CGT1BdJoD%2FAykIyNHllRoQrEqX56VX381Ns01XO8OKVpXEzMvxa2MNfOVkg0SlaWe2QK6BpI%2FgTBy8PP5X5ZMRdbEIZzcODctf%2FklwnCYDA5ay%2FKt29E5DWMRN%2Fg%2Fl2vU8eutJ\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7b4bdc09580220ae-IAD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[\n    {\n        \"id\": 1287765,\n        \"name\": \"Nubank\",\n        \"description\": null,\n        \"card_network\": \"default\",\n        \"closing_day\": 8,\n        \"due_day\": 15,\n        \"limit_cents\": 1965000,\n        \"archived\": false,\n        \"default\": false,\n        \"institution_id\": \"default\",\n        \"institution_name\": null,\n        \"created_at\": \"2023-04-07T11:36:48-03:00\",\n        \"updated_at\": \"2023-04-07T13:12:06-03:00\",\n        \"type\": \"credit_card\"\n    },\n    {\n        \"id\": 1287806,\n        \"name\": \"SBanken Credit\",\n        \"description\": null,\n        \"card_network\": \"default\",\n        \"closing_day\": 31,\n        \"due_day\": 20,\n        \"limit_cents\": 10000000,\n        \"archived\": false,\n        \"default\": false,\n        \"institution_id\": \"visa\",\n        \"institution_name\": null,\n        \"created_at\": \"2023-04-07T13:03:50-03:00\",\n        \"updated_at\": \"2023-04-07T13:03:50-03:00\",\n        \"type\": \"credit_card\"\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Read Credit Card",
@@ -1478,7 +1572,7 @@
 	],
 	"variable": [
 		{
-			"id": "36a4f5a4-2e5a-40e1-bc5c-b4e7fddd3d54",
+			"id": "98833bbe-fe9d-497a-923f-79a146f2391a",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
