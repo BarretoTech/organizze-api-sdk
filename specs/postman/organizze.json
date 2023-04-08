@@ -964,7 +964,7 @@
 						},
 						{
 							"id": "0137a867-b058-4d61-bcb8-8d4642bb0b6a",
-							"name": "Create Transaction",
+							"name": "Create Income Transaction",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1513,7 +1513,7 @@
 	],
 	"variable": [
 		{
-			"id": "a5504510-2eed-4351-892b-9b902361fda6",
+			"id": "ae43adcd-e34f-4f60-aea2-7d90b6916559",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
