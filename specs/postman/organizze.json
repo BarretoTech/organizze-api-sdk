@@ -1241,52 +1241,6 @@
 							"body": "{\n    \"id\": 2477483021,\n    \"description\": \"Computador\",\n    \"date\": \"2015-09-16\",\n    \"paid\": true,\n    \"amount_cents\": 0,\n    \"total_installments\": 1,\n    \"installment\": 1,\n    \"recurring\": false,\n    \"account_id\": 6632818,\n    \"category_id\": 120321159,\n    \"notes\": \"Pagamento via boleto\",\n    \"attachments_count\": 0,\n    \"credit_card_id\": null,\n    \"credit_card_invoice_id\": null,\n    \"paid_credit_card_id\": null,\n    \"paid_credit_card_invoice_id\": null,\n    \"oposite_transaction_id\": null,\n    \"oposite_account_id\": null,\n    \"created_at\": \"2023-04-08T12:30:43-03:00\",\n    \"updated_at\": \"2023-04-08T12:30:43-03:00\",\n    \"tags\": [],\n    \"attachments\": [],\n    \"deleted\": true\n}"
 						},
 						{
-							"id": "e8b08739-8658-4a4d-aae8-4a5b44914aab",
-							"name": "Delete Recurring Transaction with All Future Transactions",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"update_future\": true\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/transactions/:transactionId",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"transactions",
-										":transactionId"
-									],
-									"variable": [
-										{
-											"key": "transactionId",
-											"value": "101",
-											"description": "ID of the Transaction"
-										}
-									]
-								}
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"responseTime": null,
-							"body": null
-						},
-						{
 							"id": "f6d952dc-9bcf-4490-95d0-8759286fd1ef",
 							"name": "Delete Recurring Transaction with All Related Transactions",
 							"originalRequest": {
@@ -1369,7 +1323,7 @@
 	],
 	"variable": [
 		{
-			"id": "a6de9bd4-1beb-4f26-8147-abfb2be95794",
+			"id": "4838cc7f-21a1-4541-8fc4-4530a3f62f8d",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
