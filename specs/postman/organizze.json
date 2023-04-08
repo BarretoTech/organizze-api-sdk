@@ -581,6 +581,45 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": null
+						},
+						{
+							"id": "47e1b021-8268-4607-9758-2b787d9dd9b4",
+							"name": "Update Transaction Copy",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Updated parcelada via API\",\n    \"notes\": \"Pagamento via boleto\",\n    \"amount_cents\": 20050,\n    \"date\": \"2015-12-20\",\n    \"update_all\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transactions/:transactionId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "101",
+											"description": "ID of the Transaction"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
 						}
 					]
 				},
@@ -833,7 +872,7 @@
 	],
 	"variable": [
 		{
-			"id": "4531f773-e477-443a-b3d8-43e29df76e5e",
+			"id": "42299c8f-7603-4435-bd6a-dbb2be9805c1",
 			"key": "base_url",
 			"value": "https://api.organizze.com.br/rest/v2",
 			"type": "string"
