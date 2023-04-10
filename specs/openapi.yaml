@@ -125,266 +125,83 @@ paths:
       operationId: listCreditCards
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                - id: 1287765
-                  name: Nubank
-                  description: null
-                  card_network: default
-                  closing_day: 8
-                  due_day: 15
-                  limit_cents: 1965000
-                  archived: false
-                  default: false
-                  institution_id: default
-                  institution_name: null
-                  created_at: "2023-04-07T11:36:48-03:00"
-                  updated_at: "2023-04-07T13:12:06-03:00"
-                  type: credit_card
-                - id: 1287806
-                  name: SBanken Credit
-                  description: null
-                  card_network: default
-                  closing_day: 31
-                  due_day: 20
-                  limit_cents: 10000000
-                  archived: false
-                  default: false
-                  institution_id: visa
-                  institution_name: null
-                  created_at: "2023-04-07T13:03:50-03:00"
-                  updated_at: "2023-04-07T13:03:50-03:00"
-                  type: credit_card
-  /credit_cards/{creditCardId}:
+          $ref: "#/components/responses/ListCreditCardsResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /credit_cards/{creditCardID}:
     get:
       tags:
         - Credit Cards
       summary: Read Credit Card
       operationId: readCreditCard
       parameters:
-        - name: creditCardId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: "1287765"
+        - $ref: "#/components/parameters/CreditCardID"
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                id: 1287765
-                name: Nubank
-                description: null
-                card_network: default
-                closing_day: 8
-                due_day: 15
-                limit_cents: 1965000
-                archived: false
-                default: false
-                institution_id: default
-                institution_name: null
-                created_at: "2023-04-07T11:36:48-03:00"
-                updated_at: "2023-04-07T13:12:06-03:00"
-                type: credit_card
-  /credit_cards/{creditCardId}/invoices:
+          $ref: "#/components/responses/ReadCreditCardResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /credit_cards/{creditCardID}/invoices:
     get:
       tags:
         - Credit Cards
       summary: List Credit Card Invoices
       operationId: listCreditCardInvoices
       parameters:
-        - name: creditCardId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: "1287765"
+        - $ref: "#/components/parameters/CreditCardID"
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                - id: 276
-                  date: "2023-01-15"
-                  starting_date: "2022-12-09"
-                  closing_date: "2023-01-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-                - id: 277
-                  date: "2023-02-15"
-                  starting_date: "2023-01-09"
-                  closing_date: "2023-02-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-                - id: 278
-                  date: "2023-03-15"
-                  starting_date: "2023-02-09"
-                  closing_date: "2023-03-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-                - id: 279
-                  date: "2023-04-15"
-                  starting_date: "2023-03-09"
-                  closing_date: "2023-04-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-                - id: 280
-                  date: "2023-05-15"
-                  starting_date: "2023-04-09"
-                  closing_date: "2023-05-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-                - id: 281
-                  date: "2023-06-15"
-                  starting_date: "2023-05-09"
-                  closing_date: "2023-06-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-                - id: 282
-                  date: "2023-07-15"
-                  starting_date: "2023-06-09"
-                  closing_date: "2023-07-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-                - id: 283
-                  date: "2023-08-15"
-                  starting_date: "2023-07-09"
-                  closing_date: "2023-08-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-                - id: 284
-                  date: "2023-09-15"
-                  starting_date: "2023-08-09"
-                  closing_date: "2023-09-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-                - id: 285
-                  date: "2023-10-15"
-                  starting_date: "2023-09-09"
-                  closing_date: "2023-10-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-                - id: 286
-                  date: "2023-11-15"
-                  starting_date: "2023-10-09"
-                  closing_date: "2023-11-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-                - id: 287
-                  date: "2023-12-15"
-                  starting_date: "2023-11-09"
-                  closing_date: "2023-12-08"
-                  amount_cents: 0
-                  payment_amount_cents: 0
-                  balance_cents: 0
-                  previous_balance_cents: 0
-                  credit_card_id: 1287765
-  /credit_cards/{creditCardId}/invoices/{invoiceId}:
+          $ref: "#/components/responses/ListCreditCardInvoicesResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /credit_cards/{creditCardID}/invoices/{creditCardInvoiceID}:
     get:
       tags:
         - Credit Cards
       summary: Read Credit Card Invoice
       operationId: readCreditCardInvoice
       parameters:
-        - name: creditCardId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: "1287765"
-        - name: invoiceId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: "276"
+        - $ref: "#/components/parameters/CreditCardID"
+        - $ref: "#/components/parameters/CreditCardInvoiceID"
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                id: 276
-                date: "2023-01-15"
-                starting_date: "2022-12-09"
-                closing_date: "2023-01-08"
-                amount_cents: 0
-                payment_amount_cents: 0
-                balance_cents: 0
-                previous_balance_cents: 0
-                credit_card_id: 1287765
-                transactions: []
-                payments: []
-  /credit_cards/{creditCardId}/invoices/{invoiceId}/payments:
+          $ref: "#/components/responses/ReadCreditCardInvoiceResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /credit_cards/{creditCardID}/invoices/{creditCardInvoiceID}/payments:
     get:
       tags:
         - Credit Cards
-      summary: Read Credit Card Invoice Payments
-      operationId: readCreditCardInvoicePayments
+      summary: List Credit Card Invoice Payments
+      operationId: listCreditCardInvoicePayments
       parameters:
-        - name: creditCardId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: "1287765"
-        - name: invoiceId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: "276"
+        - $ref: "#/components/parameters/CreditCardID"
+        - $ref: "#/components/parameters/CreditCardInvoiceID"
       responses:
         "200":
-          description: Successful response
-          content:
-            application/json: {}
+          $ref: "#/components/responses/ListCreditCardInvoicesResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
   /budgets:
     get:
       tags:
@@ -823,7 +640,7 @@ components:
           type: integer
           format: int32
           minimum: 1
-          maximum: 2000000000
+          maximum: 2147483647
         name:
           type: string
         description:
@@ -883,7 +700,161 @@ components:
         created_at: "2023-04-07T11:36:48-03:00"
         updated_at: "2023-04-07T13:12:06-03:00"
         type: credit_card
+    CreditCardInvoice:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        starting_date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        closing_date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        amount_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        payment_amount_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        balance_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        previous_balance_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        credit_card_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+      example:
+        id: 276
+        date: "2023-01-15"
+        starting_date: "2022-12-09"
+        closing_date: "2023-01-08"
+        amount_cents: 0
+        payment_amount_cents: 0
+        balance_cents: 0
+        previous_balance_cents: 0
+        credit_card_id: 1287765
+    CreditCardInvoiceFull:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        starting_date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        closing_date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        amount_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        payment_amount_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        balance_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        previous_balance_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        credit_card_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        transactions:
+          type: array
+          minItems: 0
+          maxItems: 100
+          items:
+            type: object
+            # $ref: "#/components/schemas/Transaction"
+        payments:
+          type: array
+          minItems: 0
+          maxItems: 100
+          items:
+            type: object
+          #   $ref: "#/components/schemas/CreditCardPayment"
+      example:
+        id: 276
+        date: "2023-01-15"
+        starting_date: "2022-12-09"
+        closing_date: "2023-01-08"
+        amount_cents: 0
+        payment_amount_cents: 0
+        balance_cents: 0
+        previous_balance_cents: 0
+        credit_card_id: 1287765
+        transactions: []
+        payments: []
   parameters:
+    CreditCardID:
+      in: path
+      name: creditCardID
+      required: true
+      description: Credit Card ID
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 2147483647
+        example: 1
+    CreditCardInvoiceID:
+      in: path
+      name: creditCardInvoiceID
+      required: true
+      description: Credit Card Invoice ID
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 2147483647
+        example: 1
     UserID:
       in: path
       name: userID
@@ -918,6 +889,32 @@ components:
         maximum: 2147483647
         example: 1
   responses:
+    ListCreditCardInvoicePaymentsResponse:
+      description: List of Credit Card Invoice Payments
+      content:
+        application/json:
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 100
+            items:
+              $ref: "#/components/schemas/CreditCardInvoice"
+    ListCreditCardInvoicesResponse:
+      description: List of Credit Card Invoices
+      content:
+        application/json:
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 100
+            items:
+              $ref: "#/components/schemas/CreditCardInvoice"
+    ReadCreditCardInvoiceResponse:
+      description: Credit Card Invoice
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CreditCardInvoiceFull"
     ListCreditCardsResponse:
       description: List of Credit Cards
       content:
