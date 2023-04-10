@@ -1,0 +1,995 @@
+openapi: 3.0.0
+info:
+  title: Organizze API
+  description: >-
+    Specification for the Organizze API described in
+    [https://github.com/organizze/api-doc](https://github.com/organizze/api-doc)
+  version: 1.0.0
+externalDocs:
+  url: https://github.com/organizze/api-doc
+  description: Official Organizze Docs
+servers:
+  - url: https://api.organizze.com.br/rest/v2
+    description: Organizze API
+security:
+  - basicAuth: []
+tags:
+  - name: Bank Accounts
+  - name: Categories
+  - name: Users
+  - name: Credit Cards
+  - name: Budgets
+  - name: Transactions
+paths:
+  /accounts:
+    get:
+      tags:
+        - Bank Accounts
+      summary: List Bank Accounts
+      operationId: listBankAccounts
+      responses:
+        "200":
+          $ref: "#/components/responses/ListBankAccountsResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /accounts/{bankAccountID}:
+    get:
+      tags:
+        - Bank Accounts
+      summary: Read Account
+      operationId: readBankAccount
+      parameters:
+        - $ref: "#/components/parameters/BankAccountID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadBankAccountResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /categories:
+    get:
+      tags:
+        - Categories
+      summary: List Categories
+      operationId: listCategories
+      responses:
+        "200":
+          $ref: "#/components/responses/ListCategoriesResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /categories/{categoryID}:
+    get:
+      tags:
+        - Categories
+      summary: Read Category
+      operationId: readCategory
+      parameters:
+        - $ref: "#/components/parameters/CategoryID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadCategoryResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /users:
+    get:
+      tags:
+        - Users
+      summary: List Users
+      operationId: listUsers
+      responses:
+        "200":
+          $ref: "#/components/responses/ListUsersResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /users/{userID}:
+    get:
+      tags:
+        - Users
+      summary: Read User
+      operationId: readUser
+      parameters:
+        - $ref: "#/components/parameters/UserID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadUserResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /credit_cards:
+    get:
+      tags:
+        - Credit Cards
+      summary: List Credit Cards
+      operationId: listCreditCards
+      responses:
+        "200":
+          $ref: "#/components/responses/ListCreditCardsResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /credit_cards/{creditCardID}:
+    get:
+      tags:
+        - Credit Cards
+      summary: Read Credit Card
+      operationId: readCreditCard
+      parameters:
+        - $ref: "#/components/parameters/CreditCardID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadCreditCardResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /credit_cards/{creditCardID}/invoices:
+    get:
+      tags:
+        - Credit Cards
+      summary: List Credit Card Invoices
+      operationId: listCreditCardInvoices
+      parameters:
+        - $ref: "#/components/parameters/CreditCardID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ListCreditCardInvoicesResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /credit_cards/{creditCardID}/invoices/{creditCardInvoiceID}:
+    get:
+      tags:
+        - Credit Cards
+      summary: Read Credit Card Invoice
+      operationId: readCreditCardInvoice
+      parameters:
+        - $ref: "#/components/parameters/CreditCardID"
+        - $ref: "#/components/parameters/CreditCardInvoiceID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadCreditCardInvoiceResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /credit_cards/{creditCardID}/invoices/{creditCardInvoiceID}/payments:
+    get:
+      tags:
+        - Credit Cards
+      summary: List Credit Card Invoice Payments
+      operationId: listCreditCardInvoicePayments
+      parameters:
+        - $ref: "#/components/parameters/CreditCardID"
+        - $ref: "#/components/parameters/CreditCardInvoiceID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ListCreditCardInvoicePaymentsResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /transactions:
+    get:
+      tags:
+        - Transactions
+      summary: List Transactions
+      operationId: listTransactions
+      parameters:
+        - $ref: "#/components/parameters/StartDate"
+        - $ref: "#/components/parameters/EndDate"
+        - $ref: "#/components/parameters/AccountID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ListTransactionsResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+    post:
+      tags:
+        - Transactions
+      summary: Create Transaction
+      operationId: createTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transaction"
+      responses:
+        "201":
+          $ref: "#/components/responses/ReadTransactionResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /transactions/{transactionID}:
+    get:
+      tags:
+        - Transactions
+      summary: Read Transaction
+      operationId: readTransaction
+      parameters:
+        - $ref: "#/components/parameters/TransactionID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadTransactionResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+    put:
+      tags:
+        - Transactions
+      summary: Update Transaction
+      operationId: updateTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transaction"
+      parameters:
+        - $ref: "#/components/parameters/TransactionID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadTransactionResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+    delete:
+      tags:
+        - Transactions
+      summary: Delete Transaction
+      operationId: deleteTransaction
+      parameters:
+        - $ref: "#/components/parameters/TransactionID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadTransactionResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        The username is your email. The password you can generate at [this
+        link](https://app.organizze.com.br/configuracoes/api-keys)
+  schemas:
+    Transaction:
+      title: Transaction
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          description: ID of the Bank Account
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        paid:
+          type: boolean
+        amount_cents:
+          type: integer
+          format: int32
+          minimum: -2147483647
+          maximum: 2147483647
+        total_installments:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        recurring:
+          type: boolean
+        account_id:
+          description: ID of the Bank Account
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        category_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        notes:
+          type: string
+          nullable: true
+        attachments_count:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+        credit_card_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        credit_card_invoice_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        paid_credit_card_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        paid_credit_card_invoice_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        oposite_transaction_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        oposite_account_id:
+          description: ID of the Bank Account
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        created_at:
+          type: string
+          pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+          minLength: 20
+          maxLength: 29
+        updated_at:
+          type: string
+          pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+          minLength: 20
+          maxLength: 29
+        tags:
+          type: array
+          minItems: 0
+          maxItems: 100
+          items:
+            type: string
+        attachments:
+          type: array
+          minItems: 0
+          maxItems: 100
+          items:
+            type: string
+      example:
+        id: 2477483422
+        description: Despesa fixa
+        date: "2015-09-16"
+        paid: true
+        amount_cents: 0
+        total_installments: 1
+        installment: 1
+        recurring: false
+        account_id: 6632818
+        category_id: 120321159
+        notes: Pagamento via boleto
+        attachments_count: 0
+        credit_card_id: null
+        credit_card_invoice_id: null
+        paid_credit_card_id: null
+        paid_credit_card_invoice_id: null
+        oposite_transaction_id: null
+        oposite_account_id: null
+        created_at: "2023-04-08T12:32:16-03:00"
+        updated_at: "2023-04-08T12:32:16-03:00"
+        tags: []
+        attachments: []
+    BankAccount:
+      title: Bank Account
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          description: ID of the Bank Account
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        name:
+          description: Name of the Bank Account
+          type: string
+          maxLength: 10000
+        institution_id:
+          type: string
+          maxLength: 10000
+        institution_name:
+          type: string
+          maxLength: 10000
+        description:
+          type: string
+          maxLength: 10000
+          nullable: true
+        archived:
+          type: boolean
+        created_at:
+          type: string
+          pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+          minLength: 20
+          maxLength: 29
+        updated_at:
+          type: string
+          pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+          minLength: 20
+          maxLength: 29
+        default:
+          type: boolean
+        type:
+          type: string
+          enum:
+            - checking
+            - savings
+            - other
+      example:
+        id: 6633003
+        name: Nubank Conta Corrente
+        institution_id: nuconta
+        institution_name: Nubank
+        description: null
+        archived: false
+        created_at: "2023-04-07T13:10:51-03:00"
+        updated_at: "2023-04-07T14:11:43-03:00"
+        default: false
+        type: checking
+    Category:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        name:
+          type: string
+        color:
+          type: string
+          minLength: 6
+          maxLength: 6
+          pattern: ^[a-f0-9]{6}$
+        group_id:
+          type: string
+        fixed:
+          type: boolean
+        available:
+          type: boolean
+        essential:
+          type: boolean
+        parent_id:
+          type: integer
+          nullable: true
+          minimum: 1
+          maximum: 2147483647
+      example:
+        id: 120321144
+        name: Bares e restaurantes
+        color: "626491"
+        group_id: bars_and_restaurants
+        fixed: true
+        available: true
+        essential: false
+        parent_id: null
+    User:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          enum:
+            - sheldon
+      example:
+        id: 4946248
+        name: Rhuan Barreto
+        email: test@test.com
+        role: sheldon
+    CreditCard:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        card_network:
+          type: string
+        closing_day:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 31
+        due_day:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 31
+        limit_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        archived:
+          type: boolean
+        default:
+          type: boolean
+        institution_id:
+          type: string
+        institution_name:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+          minLength: 20
+          maxLength: 29
+        updated_at:
+          type: string
+          pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+          minLength: 20
+          maxLength: 29
+        type:
+          type: string
+          enum:
+            - credit_card
+      example:
+        id: 1287765
+        name: Nubank
+        description: null
+        card_network: default
+        closing_day: 8
+        due_day: 15
+        limit_cents: 1965000
+        archived: false
+        default: false
+        institution_id: default
+        institution_name: null
+        created_at: "2023-04-07T11:36:48-03:00"
+        updated_at: "2023-04-07T13:12:06-03:00"
+        type: credit_card
+    CreditCardInvoice:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        starting_date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        closing_date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        amount_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        payment_amount_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        balance_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        previous_balance_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        credit_card_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+      example:
+        id: 276
+        date: "2023-01-15"
+        starting_date: "2022-12-09"
+        closing_date: "2023-01-08"
+        amount_cents: 0
+        payment_amount_cents: 0
+        balance_cents: 0
+        previous_balance_cents: 0
+        credit_card_id: 1287765
+    CreditCardInvoiceFull:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        starting_date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        closing_date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        amount_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        payment_amount_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        balance_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        previous_balance_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        credit_card_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        transactions:
+          type: array
+          minItems: 0
+          maxItems: 100
+          items:
+            $ref: "#/components/schemas/Transaction"
+        payments:
+          type: array
+          minItems: 0
+          maxItems: 100
+          items:
+            $ref: "#/components/schemas/Transaction"
+      example:
+        id: 276
+        date: "2023-01-15"
+        starting_date: "2022-12-09"
+        closing_date: "2023-01-08"
+        amount_cents: 0
+        payment_amount_cents: 0
+        balance_cents: 0
+        previous_balance_cents: 0
+        credit_card_id: 1287765
+        transactions: []
+        payments: []
+  parameters:
+    StartDate:
+      name: start_date
+      in: query
+      schema:
+        type: string
+        format: date
+        pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+        minLength: 10
+        maxLength: 10
+      description: ISO8601 Date with the start period for filtering
+      example: "2015-09-01"
+    EndDate:
+      name: end_date
+      in: query
+      schema:
+        type: string
+        format: date
+        pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+        minLength: 10
+        maxLength: 10
+      description: ISO8601 Date with the end period for filtering
+      example: "2015-10-01"
+    AccountID:
+      name: account_id
+      in: query
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 2147483647
+        example: 1
+      description: Account ID for filtering
+    TransactionID:
+      in: path
+      name: transactionID
+      required: true
+      description: Transaction ID
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 2147483647
+        example: 1
+    CreditCardID:
+      in: path
+      name: creditCardID
+      required: true
+      description: Credit Card ID
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 2147483647
+        example: 1
+    CreditCardInvoiceID:
+      in: path
+      name: creditCardInvoiceID
+      required: true
+      description: Credit Card Invoice ID
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 2147483647
+        example: 1
+    UserID:
+      in: path
+      name: userID
+      required: true
+      description: User ID
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 2147483647
+        example: 1
+    CategoryID:
+      in: path
+      name: categoryID
+      required: true
+      description: Category ID
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 2147483647
+        example: 1
+    BankAccountID:
+      in: path
+      name: bankAccountID
+      required: true
+      description: Bank Account ID
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 2147483647
+        example: 1
+  responses:
+    ReadTransactionResponse:
+      description: Transaction
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Transaction"
+    ListTransactionsResponse:
+      description: List of Transactions
+      content:
+        application/json:
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 100
+            items:
+              $ref: "#/components/schemas/Transaction"
+    ListCreditCardInvoicePaymentsResponse:
+      description: List of Credit Card Invoice Payments
+      content:
+        application/json:
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 100
+            items:
+              $ref: "#/components/schemas/Transaction"
+    ListCreditCardInvoicesResponse:
+      description: List of Credit Card Invoices
+      content:
+        application/json:
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 100
+            items:
+              $ref: "#/components/schemas/CreditCardInvoice"
+    ReadCreditCardInvoiceResponse:
+      description: Credit Card Invoice
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CreditCardInvoiceFull"
+    ListCreditCardsResponse:
+      description: List of Credit Cards
+      content:
+        application/json:
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 100
+            items:
+              $ref: "#/components/schemas/CreditCard"
+    ReadCreditCardResponse:
+      description: Credit Card
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CreditCard"
+    ListUsersResponse:
+      description: List of Users
+      content:
+        application/json:
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 100
+            items:
+              $ref: "#/components/schemas/User"
+    ReadUserResponse:
+      description: User
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/User"
+    ListCategoriesResponse:
+      description: List of Categories
+      content:
+        application/json:
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 100
+            items:
+              $ref: "#/components/schemas/Category"
+    ReadCategoryResponse:
+      description: Category
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Category"
+    ListBankAccountsResponse:
+      description: List of Bank Accounts
+      content:
+        application/json:
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 100
+            items:
+              $ref: "#/components/schemas/BankAccount"
+    ReadBankAccountResponse:
+      description: Bank Account
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/BankAccount"
+    ItemNotFound:
+      description: Item Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              error:
+                type: string
+                enum:
+                  - registro não encontrado
+            example:
+              error: registro não encontrado
+    Unauthorized:
+      description: Authentication issues
+      content:
+        application/json:
+          schema:
+            description: Failed Authentication
+            type: object
+            additionalProperties: false
+            properties:
+              error:
+                type: string
+                enum:
+                  - Não autorizado
+            example:
+              error: Não autorizado
+        text/html:
+          schema:
+            description: Missing Authentication
+            type: string
+            enum: ["HTTP Basic: Access denied."]
+            example: "HTTP Basic: Access denied."
