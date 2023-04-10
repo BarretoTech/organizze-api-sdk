@@ -195,27 +195,13 @@ paths:
         - $ref: "#/components/parameters/CreditCardInvoiceID"
       responses:
         "200":
-          $ref: "#/components/responses/ListCreditCardInvoicesResponse"
+          $ref: "#/components/responses/ListCreditCardInvoicePaymentsResponse"
         "404":
           $ref: "#/components/responses/ItemNotFound"
         "401":
           $ref: "#/components/responses/Unauthorized"
         default:
           $ref: "#/components/responses/Unauthorized"
-  /budgets:
-    get:
-      tags:
-        - Budgets
-      summary: List All Budgets
-      operationId: listAllBudgets
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example: []
   /transactions:
     get:
       tags:
@@ -223,76 +209,18 @@ paths:
       summary: List Transactions
       operationId: listTransactions
       parameters:
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          description: ISO8601 Date with the start period for filtering
-          example: "2015-09-01"
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          description: ISO8601 Date with the end period for filtering
-          example: "2015-10-01"
-        - name: account_id
-          in: query
-          schema:
-            type: integer
-          description: Account ID for filtering
-          example: "6632818"
+        - $ref: "#/components/parameters/StartDate"
+        - $ref: "#/components/parameters/EndDate"
+        - $ref: "#/components/parameters/AccountID"
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                - id: 2477483422
-                  description: Despesa fixa
-                  date: "2015-09-16"
-                  paid: true
-                  amount_cents: 0
-                  total_installments: 1
-                  installment: 1
-                  recurring: false
-                  account_id: 6632818
-                  category_id: 120321159
-                  notes: Pagamento via boleto
-                  attachments_count: 0
-                  credit_card_id: null
-                  credit_card_invoice_id: null
-                  paid_credit_card_id: null
-                  paid_credit_card_invoice_id: null
-                  oposite_transaction_id: null
-                  oposite_account_id: null
-                  created_at: "2023-04-08T12:32:16-03:00"
-                  updated_at: "2023-04-08T12:32:16-03:00"
-                  tags: []
-                  attachments: []
-                - id: 2477483178
-                  description: Test
-                  date: "2015-09-16"
-                  paid: true
-                  amount_cents: 0
-                  total_installments: 1
-                  installment: 1
-                  recurring: false
-                  account_id: 6632818
-                  category_id: 120321159
-                  notes: Test
-                  attachments_count: 0
-                  credit_card_id: null
-                  credit_card_invoice_id: null
-                  paid_credit_card_id: null
-                  paid_credit_card_invoice_id: null
-                  oposite_transaction_id: null
-                  oposite_account_id: null
-                  created_at: "2023-04-08T12:30:58-03:00"
-                  updated_at: "2023-04-08T12:30:58-03:00"
-                  tags: []
-                  attachments: []
+          $ref: "#/components/responses/ListTransactionsResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
     post:
       tags:
         - Transactions
@@ -302,113 +230,33 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                description: Computador
-                notes: Pagamento via boleto
-                date: "2015-09-16"
+              $ref: "#/components/schemas/Transaction"
       responses:
         "201":
-          description: Created
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                example-0:
-                  summary: Create Income Transaction
-                  value:
-                    id: 2477487022
-                    description: Computador
-                    date: "2015-09-16"
-                    paid: true
-                    amount_cents: 100000
-                    total_installments: 1
-                    installment: 1
-                    recurring: false
-                    account_id: 6632818
-                    category_id: 120321160
-                    notes: Pagamento via boleto
-                    attachments_count: 0
-                    credit_card_id: null
-                    credit_card_invoice_id: null
-                    paid_credit_card_id: null
-                    paid_credit_card_invoice_id: null
-                    oposite_transaction_id: null
-                    oposite_account_id: null
-                    created_at: "2023-04-08T12:42:17-03:00"
-                    updated_at: "2023-04-08T12:42:17-03:00"
-                    tags: []
-                    attachments: []
-                example-1:
-                  summary: Create Expense Transaction
-                  value:
-                    id: 2477486740
-                    description: Computador
-                    date: "2015-09-16"
-                    paid: true
-                    amount_cents: -100000
-                    total_installments: 1
-                    installment: 1
-                    recurring: false
-                    account_id: 6632818
-                    category_id: 120321159
-                    notes: Pagamento via boleto
-                    attachments_count: 0
-                    credit_card_id: null
-                    credit_card_invoice_id: null
-                    paid_credit_card_id: null
-                    paid_credit_card_invoice_id: null
-                    oposite_transaction_id: null
-                    oposite_account_id: null
-                    created_at: "2023-04-08T12:41:01-03:00"
-                    updated_at: "2023-04-08T12:41:01-03:00"
-                    tags: []
-                    attachments: []
-  /transactions/{transactionId}:
+          $ref: "#/components/responses/ReadTransactionResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /transactions/{transactionID}:
     get:
       tags:
         - Transactions
       summary: Read Transaction
       operationId: readTransaction
       parameters:
-        - name: transactionId
-          in: path
-          schema:
-            type: integer
-          required: true
-          description: ID of the Transaction
-          example: "2477489680"
+        - $ref: "#/components/parameters/TransactionID"
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                id: 2477489680
-                description: Updated parcelada via API
-                date: "2015-12-20"
-                paid: true
-                amount_cents: 20050
-                total_installments: 1
-                installment: 1
-                recurring: false
-                account_id: 6632818
-                category_id: 120321159
-                notes: Pagamento via boleto
-                attachments_count: 0
-                credit_card_id: null
-                credit_card_invoice_id: null
-                paid_credit_card_id: null
-                paid_credit_card_invoice_id: null
-                oposite_transaction_id: null
-                oposite_account_id: null
-                created_at: "2023-04-08T12:50:27-03:00"
-                updated_at: "2023-04-08T12:52:05-03:00"
-                tags: []
-                attachments: []
+          $ref: "#/components/responses/ReadTransactionResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
     put:
       tags:
         - Transactions
@@ -418,94 +266,34 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                description: Updated parcelada via API
-                notes: Pagamento via boleto
-                amount_cents: 20050
-                date: "2015-12-20"
+              $ref: "#/components/schemas/Transaction"
       parameters:
-        - name: transactionId
-          in: path
-          schema:
-            type: integer
-          required: true
-          description: ID of the Transaction
-          example: "101"
+        - $ref: "#/components/parameters/TransactionID"
       responses:
-        "201":
-          description: Created
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                id: 2477489680
-                description: Updated parcelada via API
-                date: "2015-12-20"
-                paid: true
-                amount_cents: 20050
-                total_installments: 1
-                installment: 1
-                recurring: false
-                account_id: 6632818
-                category_id: 120321159
-                notes: Pagamento via boleto
-                attachments_count: 0
-                credit_card_id: null
-                credit_card_invoice_id: null
-                paid_credit_card_id: null
-                paid_credit_card_invoice_id: null
-                oposite_transaction_id: null
-                oposite_account_id: null
-                created_at: "2023-04-08T12:50:27-03:00"
-                updated_at: "2023-04-08T12:52:05-03:00"
-                tags: []
-                attachments: []
+        "200":
+          $ref: "#/components/responses/ReadTransactionResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
     delete:
       tags:
         - Transactions
       summary: Delete Transaction
       operationId: deleteTransaction
       parameters:
-        - name: transactionId
-          in: path
-          schema:
-            type: integer
-          required: true
-          description: ID of the Transaction
-          example: "101"
+        - $ref: "#/components/parameters/TransactionID"
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                id: 2477483021
-                description: Computador
-                date: "2015-09-16"
-                paid: true
-                amount_cents: 0
-                total_installments: 1
-                installment: 1
-                recurring: false
-                account_id: 6632818
-                category_id: 120321159
-                notes: Pagamento via boleto
-                attachments_count: 0
-                credit_card_id: null
-                credit_card_invoice_id: null
-                paid_credit_card_id: null
-                paid_credit_card_invoice_id: null
-                oposite_transaction_id: null
-                oposite_account_id: null
-                created_at: "2023-04-08T12:30:43-03:00"
-                updated_at: "2023-04-08T12:30:43-03:00"
-                tags: []
-                attachments: []
-                deleted: true
+          $ref: "#/components/responses/ReadTransactionResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
 components:
   securitySchemes:
     basicAuth:
@@ -515,6 +303,140 @@ components:
         The username is your email. The password you can generate at [this
         link](https://app.organizze.com.br/configuracoes/api-keys)
   schemas:
+    Transaction:
+      title: Transaction
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          description: ID of the Bank Account
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        paid:
+          type: boolean
+        amount_cents:
+          type: integer
+          format: int32
+          minimum: -2147483647
+          maximum: 2147483647
+        total_installments:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        recurring:
+          type: boolean
+        account_id:
+          description: ID of the Bank Account
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        category_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        notes:
+          type: string
+          nullable: true
+        attachments_count:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+        credit_card_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        credit_card_invoice_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        paid_credit_card_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        paid_credit_card_invoice_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        oposite_transaction_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        oposite_account_id:
+          description: ID of the Bank Account
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        created_at:
+          type: string
+          pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+          minLength: 20
+          maxLength: 29
+        updated_at:
+          type: string
+          pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+          minLength: 20
+          maxLength: 29
+        tags:
+          type: array
+          minItems: 0
+          maxItems: 100
+          items:
+            type: string
+        attachments:
+          type: array
+          minItems: 0
+          maxItems: 100
+          items:
+            type: string
+      example:
+        id: 2477483422
+        description: Despesa fixa
+        date: "2015-09-16"
+        paid: true
+        amount_cents: 0
+        total_installments: 1
+        installment: 1
+        recurring: false
+        account_id: 6632818
+        category_id: 120321159
+        notes: Pagamento via boleto
+        attachments_count: 0
+        credit_card_id: null
+        credit_card_invoice_id: null
+        paid_credit_card_id: null
+        paid_credit_card_invoice_id: null
+        oposite_transaction_id: null
+        oposite_account_id: null
+        created_at: "2023-04-08T12:32:16-03:00"
+        updated_at: "2023-04-08T12:32:16-03:00"
+        tags: []
+        attachments: []
     BankAccount:
       title: Bank Account
       type: object
@@ -811,15 +733,13 @@ components:
           minItems: 0
           maxItems: 100
           items:
-            type: object
-            # $ref: "#/components/schemas/Transaction"
+            $ref: "#/components/schemas/Transaction"
         payments:
           type: array
           minItems: 0
           maxItems: 100
           items:
-            type: object
-          #   $ref: "#/components/schemas/CreditCardPayment"
+            $ref: "#/components/schemas/Transaction"
       example:
         id: 276
         date: "2023-01-15"
@@ -833,6 +753,49 @@ components:
         transactions: []
         payments: []
   parameters:
+    StartDate:
+      name: start_date
+      in: query
+      schema:
+        type: string
+        format: date
+        pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+        minLength: 10
+        maxLength: 10
+      description: ISO8601 Date with the start period for filtering
+      example: "2015-09-01"
+    EndDate:
+      name: end_date
+      in: query
+      schema:
+        type: string
+        format: date
+        pattern: ^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+        minLength: 10
+        maxLength: 10
+      description: ISO8601 Date with the end period for filtering
+      example: "2015-10-01"
+    AccountID:
+      name: account_id
+      in: query
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 2147483647
+        example: 1
+      description: Account ID for filtering
+    TransactionID:
+      in: path
+      name: transactionID
+      required: true
+      description: Transaction ID
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 2147483647
+        example: 1
     CreditCardID:
       in: path
       name: creditCardID
@@ -889,6 +852,22 @@ components:
         maximum: 2147483647
         example: 1
   responses:
+    ReadTransactionResponse:
+      description: Transaction
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Transaction"
+    ListTransactionsResponse:
+      description: List of Transactions
+      content:
+        application/json:
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 100
+            items:
+              $ref: "#/components/schemas/Transaction"
     ListCreditCardInvoicePaymentsResponse:
       description: List of Credit Card Invoice Payments
       content:
@@ -898,7 +877,7 @@ components:
             minItems: 0
             maxItems: 100
             items:
-              $ref: "#/components/schemas/CreditCardInvoice"
+              $ref: "#/components/schemas/Transaction"
     ListCreditCardInvoicesResponse:
       description: List of Credit Card Invoices
       content:
