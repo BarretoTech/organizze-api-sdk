@@ -1,0 +1,24 @@
+name: Generate OpenAPI Spec
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - specs/openapi.yaml
+jobs:
+  generate-ts-client:
+    name: Generate Typescript Client
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Generate Typescript Client
+        run: npx @openapitools/openapi-generator-cli generate -i specs/openapi.yaml -g typescript-fetch -o clients/typescript -c clients/typescript-config.json
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.CREATE_PR_TOKEN }}
+          commit-message: Updated OpenAPI spec
+          branch: update-openapi-spec
+          title: "chore: updated OpenAPI spec"
+          delete-branch: true
