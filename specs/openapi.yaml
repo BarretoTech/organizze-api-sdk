@@ -963,6 +963,7 @@ components:
       content:
         application/json:
           schema:
+            title: Not Found
             type: object
             additionalProperties: false
             properties:
@@ -977,6 +978,7 @@ components:
       content:
         application/json:
           schema:
+            title: Failed Authentication
             description: Failed Authentication
             type: object
             additionalProperties: false
