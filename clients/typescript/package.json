@@ -1,0 +1,37 @@
+{
+  "name": "organizze-api-sdk",
+  "version": "0.0.1-alpha.0",
+  "description": "SDK to interface with the Organizze REST API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhuanbarreto/organizze-api-sdk.git"
+  },
+  "keywords": [
+    "organizze",
+    "api",
+    "sdk"
+  ],
+  "author": {
+    "name": "Rhuan Barreto",
+    "url": "https://rhuan.com.br"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rhuanbarreto/organizze-api-sdk/issues"
+  },
+  "homepage": "https://github.com/rhuanbarreto/organizze-api-sdk#readme",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
