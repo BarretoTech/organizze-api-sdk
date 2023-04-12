@@ -13,9 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Generate Typescript Client
-        run: |
-          rm -rf ./clients/typescript
-          npx @openapitools/openapi-generator-cli generate -i specs/openapi.yaml -g typescript-fetch -o clients/typescript -c clients/config/typescript.json
+        run: npx @openapitools/openapi-generator-cli generate -i specs/openapi.yaml -g typescript-fetch -o clients/typescript -c clients/config/typescript.json
+      - name: Bump Version
+        run: npm version prerelease
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
