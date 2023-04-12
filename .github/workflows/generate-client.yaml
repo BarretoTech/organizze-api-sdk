@@ -15,7 +15,7 @@ jobs:
       - name: Generate Typescript Client
         run: |
           rm -rf ./clients/typescript
-          npx @openapitools/openapi-generator-cli generate -i specs/openapi.yaml -g typescript-fetch -o clients/typescript -c clients/typescript-config.json
+          npx @openapitools/openapi-generator-cli generate -i specs/openapi.yaml -g typescript-fetch -o clients/typescript -c clients/config/typescript.json
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
