@@ -1,4 +1,4 @@
-name: Generate OpenAPI Spec
+name: NPM Version Bump
 on:
   workflow_dispatch:
     inputs:
@@ -7,8 +7,8 @@ on:
         required: true
         default: "prerelease"
 jobs:
-  generate-ts-client:
-    name: Generate Typescript Client
+  npm-version-bump:
+    name: NPM Version Bump
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
