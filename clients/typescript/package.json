@@ -5,13 +5,16 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
   ],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "rm -rf ./dist && tsc",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
