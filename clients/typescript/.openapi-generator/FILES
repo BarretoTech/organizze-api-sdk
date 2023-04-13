@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 apis/BankAccountsApi.ts
 apis/CategoriesApi.ts
 apis/CreditCardsApi.ts

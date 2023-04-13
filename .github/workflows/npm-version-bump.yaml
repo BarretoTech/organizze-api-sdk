@@ -1,10 +1,11 @@
 name: Generate OpenAPI Spec
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - specs/openapi.yaml
+  workflow_dispatch:
+    inputs:
+      release:
+        description: "major, minor or patch"
+        required: true
+        default: "prerelease"
 jobs:
   generate-ts-client:
     name: Generate Typescript Client
@@ -12,15 +13,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Generate Typescript Client
-        run: npx @openapitools/openapi-generator-cli generate -i specs/openapi.yaml -g typescript-fetch -o clients/typescript -c clients/config/typescript.json
       - name: Bump Version
-        run: npm version prerelease
+        working-directory: clients/typescript
+        run: npm version ${{ github.event.inputs.release }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.CREATE_PR_TOKEN }}
           commit-message: Updated OpenAPI spec
           branch: update-openapi-spec
-          title: "chore: updated OpenAPI spec"
+          title: "bump: ${{ github.event.inputs.release }} version"
           delete-branch: true
