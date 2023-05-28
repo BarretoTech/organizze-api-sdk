@@ -11,15 +11,23 @@ jobs:
     name: NPM Version Bump
     runs-on: ubuntu-latest
     steps:
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.GH_APP_APP_ID }}
+          private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
       - name: Bump Version
         working-directory: clients/typescript
         run: npm version ${{ github.event.inputs.release }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.CREATE_PR_TOKEN }}
+          token: ${{ steps.generate_token.outputs.token }}
           commit-message: Updated OpenAPI spec
           branch: update-openapi-spec
           title: "bump: ${{ github.event.inputs.release }} version"
