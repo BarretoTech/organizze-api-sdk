@@ -36,12 +36,65 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         default:
           $ref: "#/components/responses/Unauthorized"
+    post:
+      tags:
+        - Bank Accounts
+      summary: Create Bank Account
+      operationId: createBankAccount
+      requestBody:
+        $ref: "#/components/requestBodies/BankAccount"
+      responses:
+        "201":
+          $ref: "#/components/responses/ReadBankAccountResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
   /accounts/{bankAccountID}:
     get:
       tags:
         - Bank Accounts
       summary: Read Account
       operationId: readBankAccount
+      parameters:
+        - $ref: "#/components/parameters/BankAccountID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadBankAccountResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+    put:
+      tags:
+        - Bank Accounts
+      summary: Update Bank Account
+      operationId: updateBankAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BankAccount"
+      parameters:
+        - $ref: "#/components/parameters/BankAccountID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadBankAccountResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+    delete:
+      tags:
+        - Bank Accounts
+      summary: Delete Bank Account
+      operationId: deleteBankAccount
       parameters:
         - $ref: "#/components/parameters/BankAccountID"
       responses:
@@ -68,12 +121,62 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         default:
           $ref: "#/components/responses/Unauthorized"
+    post:
+      tags:
+        - Categories
+      summary: Create Category
+      operationId: createCategory
+      requestBody:
+        $ref: "#/components/requestBodies/Category"
+      responses:
+        "201":
+          $ref: "#/components/responses/ReadCategoryResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
   /categories/{categoryID}:
     get:
       tags:
         - Categories
       summary: Read Category
       operationId: readCategory
+      parameters:
+        - $ref: "#/components/parameters/CategoryID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadCategoryResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+    put:
+      tags:
+        - Categories
+      summary: Update Category
+      operationId: updateCategory
+      requestBody:
+        $ref: "#/components/requestBodies/Category"
+      parameters:
+        - $ref: "#/components/parameters/CategoryID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadCategoryResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+    delete:
+      tags:
+        - Categories
+      summary: Delete Category
+      operationId: deleteCategory
       parameters:
         - $ref: "#/components/parameters/CategoryID"
       responses:
@@ -132,12 +235,62 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         default:
           $ref: "#/components/responses/Unauthorized"
+    post:
+      tags:
+        - Credit Cards
+      summary: Create Credit Card
+      operationId: createCreditCard
+      requestBody:
+        $ref: "#/components/requestBodies/CreditCard"
+      responses:
+        "201":
+          $ref: "#/components/responses/ReadCreditCardResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
   /credit_cards/{creditCardID}:
     get:
       tags:
         - Credit Cards
       summary: Read Credit Card
       operationId: readCreditCard
+      parameters:
+        - $ref: "#/components/parameters/CreditCardID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadCreditCardResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+    put:
+      tags:
+        - Credit Cards
+      summary: Update Credit Card
+      operationId: updateCreditCard
+      requestBody:
+        $ref: "#/components/requestBodies/CreditCard"
+      parameters:
+        - $ref: "#/components/parameters/CreditCardID"
+      responses:
+        "200":
+          $ref: "#/components/responses/ReadCreditCardResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+    delete:
+      tags:
+        - Credit Cards
+      summary: Delete Credit Card
+      operationId: deleteCreditCard
       parameters:
         - $ref: "#/components/parameters/CreditCardID"
       responses:
@@ -227,10 +380,7 @@ paths:
       summary: Create Transaction
       operationId: createTransaction
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Transaction"
+        $ref: "#/components/requestBodies/Transaction"
       responses:
         "201":
           $ref: "#/components/responses/ReadTransactionResponse"
@@ -263,10 +413,7 @@ paths:
       summary: Update Transaction
       operationId: updateTransaction
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Transaction"
+        $ref: "#/components/requestBodies/UpdateTransaction"
       parameters:
         - $ref: "#/components/parameters/TransactionID"
       responses:
@@ -283,6 +430,8 @@ paths:
         - Transactions
       summary: Delete Transaction
       operationId: deleteTransaction
+      requestBody:
+        $ref: "#/components/requestBodies/DeleteTransaction"
       parameters:
         - $ref: "#/components/parameters/TransactionID"
       responses:
@@ -437,6 +586,67 @@ components:
         updated_at: "2023-04-08T12:32:16-03:00"
         tags: []
         attachments: []
+    RecurringTransaction:
+      title: Recurring Transaction
+      description: Recurring Transaction
+      allOf:
+        - $ref: "#/components/schemas/Transaction"
+        - type: object
+          additionalProperties: false
+          required:
+            - description
+            - notes
+            - date
+            - recurrence_attributes
+          properties:
+            recurrence_attributes:
+              type: object
+              additionalProperties: false
+              required:
+                - periodicity
+              properties:
+                periodicity:
+                  type: string
+                  enum:
+                    - monthly
+                    - yearly
+                    - weekly
+                    - biweekly
+                    - bimonthly
+                    - trimonthly
+    InstallmentTransaction:
+      title: Installment Transaction
+      description: Installment Transaction
+      allOf:
+        - $ref: "#/components/schemas/Transaction"
+        - type: object
+          additionalProperties: false
+          required:
+            - description
+            - notes
+            - date
+            - recurrence_attributes
+          properties:
+            installments_attributes:
+              type: object
+              additionalProperties: false
+              required:
+                - periodicity
+                - total
+              properties:
+                total:
+                  type: integer
+                  minimum: 1
+                  maximum: 2147483647
+                periodicity:
+                  type: string
+                  enum:
+                    - monthly
+                    - yearly
+                    - weekly
+                    - biweekly
+                    - bimonthly
+                    - trimonthly
     BankAccount:
       title: Bank Account
       type: object
@@ -555,6 +765,7 @@ components:
         email: test@test.com
         role: sheldon
     CreditCard:
+      title: Credit Card
       type: object
       additionalProperties: false
       properties:
@@ -623,6 +834,7 @@ components:
         updated_at: "2023-04-07T13:12:06-03:00"
         type: credit_card
     CreditCardInvoice:
+      title: Credit Card Invoice
       type: object
       additionalProperties: false
       properties:
@@ -851,6 +1063,66 @@ components:
         minimum: 1
         maximum: 2147483647
         example: 1
+  requestBodies:
+    Transaction:
+      required: true
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: "#/components/schemas/Transaction"
+              - $ref: "#/components/schemas/InstallmentTransaction"
+              - $ref: "#/components/schemas/RecurringTransaction"
+    RecurringTransaction:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/RecurringTransaction"
+    UpdateTransaction:
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/Transaction"
+              - type: object
+                additionalProperties: false
+                properties:
+                  update_future:
+                    type: boolean
+                  update_all:
+                    type: boolean
+    DeleteTransaction:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              update_future:
+                type: boolean
+              update_all:
+                type: boolean
+    BankAccount:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/BankAccount"
+    Category:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Category"
+    CreditCard:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CreditCard"
   responses:
     ReadTransactionResponse:
       description: Transaction
