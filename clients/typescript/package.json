@@ -1,6 +1,6 @@
 {
   "name": "organizze-api-sdk",
-  "version": "0.0.1-alpha.1",
+  "version": "1.0.0",
   "description": "SDK to interface with the Organizze REST API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
