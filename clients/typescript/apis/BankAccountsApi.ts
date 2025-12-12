@@ -18,6 +18,7 @@ import type {
   BankAccount,
   FailedAuthentication,
   NotFound,
+  ValidationError,
 } from '../models';
 import {
     BankAccountFromJSON,
@@ -26,16 +27,108 @@ import {
     FailedAuthenticationToJSON,
     NotFoundFromJSON,
     NotFoundToJSON,
+    ValidationErrorFromJSON,
+    ValidationErrorToJSON,
 } from '../models';
+
+export interface CreateBankAccountRequest {
+    bankAccount: BankAccount;
+}
+
+export interface DeleteBankAccountRequest {
+    bankAccountID: number;
+}
 
 export interface ReadBankAccountRequest {
     bankAccountID: number;
+}
+
+export interface UpdateBankAccountRequest {
+    bankAccountID: number;
+    bankAccount?: BankAccount;
 }
 
 /**
  * 
  */
 export class BankAccountsApi extends runtime.BaseAPI {
+
+    /**
+     * Create Bank Account
+     */
+    async createBankAccountRaw(requestParameters: CreateBankAccountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BankAccount>> {
+        if (requestParameters.bankAccount === null || requestParameters.bankAccount === undefined) {
+            throw new runtime.RequiredError('bankAccount','Required parameter requestParameters.bankAccount was null or undefined when calling createBankAccount.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
+        const response = await this.request({
+            path: `/accounts`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: BankAccountToJSON(requestParameters.bankAccount),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BankAccountFromJSON(jsonValue));
+    }
+
+    /**
+     * Create Bank Account
+     */
+    async createBankAccount(requestParameters: CreateBankAccountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BankAccount> {
+        const response = await this.createBankAccountRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete Bank Account
+     */
+    async deleteBankAccountRaw(requestParameters: DeleteBankAccountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BankAccount>> {
+        if (requestParameters.bankAccountID === null || requestParameters.bankAccountID === undefined) {
+            throw new runtime.RequiredError('bankAccountID','Required parameter requestParameters.bankAccountID was null or undefined when calling deleteBankAccount.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
+        const response = await this.request({
+            path: `/accounts/{bankAccountID}`.replace(`{${"bankAccountID"}}`, encodeURIComponent(String(requestParameters.bankAccountID))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BankAccountFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete Bank Account
+     */
+    async deleteBankAccount(requestParameters: DeleteBankAccountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BankAccount> {
+        const response = await this.deleteBankAccountRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * List Bank Accounts
@@ -48,6 +141,10 @@ export class BankAccountsApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/accounts`,
             method: 'GET',
@@ -81,6 +178,10 @@ export class BankAccountsApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/accounts/{bankAccountID}`.replace(`{${"bankAccountID"}}`, encodeURIComponent(String(requestParameters.bankAccountID))),
             method: 'GET',
@@ -96,6 +197,46 @@ export class BankAccountsApi extends runtime.BaseAPI {
      */
     async readBankAccount(requestParameters: ReadBankAccountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BankAccount> {
         const response = await this.readBankAccountRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update Bank Account
+     */
+    async updateBankAccountRaw(requestParameters: UpdateBankAccountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BankAccount>> {
+        if (requestParameters.bankAccountID === null || requestParameters.bankAccountID === undefined) {
+            throw new runtime.RequiredError('bankAccountID','Required parameter requestParameters.bankAccountID was null or undefined when calling updateBankAccount.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
+        const response = await this.request({
+            path: `/accounts/{bankAccountID}`.replace(`{${"bankAccountID"}}`, encodeURIComponent(String(requestParameters.bankAccountID))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: BankAccountToJSON(requestParameters.bankAccount),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BankAccountFromJSON(jsonValue));
+    }
+
+    /**
+     * Update Bank Account
+     */
+    async updateBankAccount(requestParameters: UpdateBankAccountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BankAccount> {
+        const response = await this.updateBankAccountRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

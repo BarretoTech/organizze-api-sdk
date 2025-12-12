@@ -21,6 +21,7 @@ import type {
   FailedAuthentication,
   NotFound,
   Transaction,
+  ValidationError,
 } from '../models';
 import {
     CreditCardFromJSON,
@@ -35,7 +36,17 @@ import {
     NotFoundToJSON,
     TransactionFromJSON,
     TransactionToJSON,
+    ValidationErrorFromJSON,
+    ValidationErrorToJSON,
 } from '../models';
+
+export interface CreateCreditCardRequest {
+    creditCard: CreditCard;
+}
+
+export interface DeleteCreditCardRequest {
+    creditCardID: number;
+}
 
 export interface ListCreditCardInvoicePaymentsRequest {
     creditCardID: number;
@@ -55,10 +66,92 @@ export interface ReadCreditCardInvoiceRequest {
     creditCardInvoiceID: number;
 }
 
+export interface UpdateCreditCardRequest {
+    creditCardID: number;
+    creditCard: CreditCard;
+}
+
 /**
  * 
  */
 export class CreditCardsApi extends runtime.BaseAPI {
+
+    /**
+     * Create Credit Card
+     */
+    async createCreditCardRaw(requestParameters: CreateCreditCardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditCard>> {
+        if (requestParameters.creditCard === null || requestParameters.creditCard === undefined) {
+            throw new runtime.RequiredError('creditCard','Required parameter requestParameters.creditCard was null or undefined when calling createCreditCard.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
+        const response = await this.request({
+            path: `/credit_cards`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreditCardToJSON(requestParameters.creditCard),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreditCardFromJSON(jsonValue));
+    }
+
+    /**
+     * Create Credit Card
+     */
+    async createCreditCard(requestParameters: CreateCreditCardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditCard> {
+        const response = await this.createCreditCardRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete Credit Card
+     */
+    async deleteCreditCardRaw(requestParameters: DeleteCreditCardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditCard>> {
+        if (requestParameters.creditCardID === null || requestParameters.creditCardID === undefined) {
+            throw new runtime.RequiredError('creditCardID','Required parameter requestParameters.creditCardID was null or undefined when calling deleteCreditCard.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
+        const response = await this.request({
+            path: `/credit_cards/{creditCardID}`.replace(`{${"creditCardID"}}`, encodeURIComponent(String(requestParameters.creditCardID))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreditCardFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete Credit Card
+     */
+    async deleteCreditCard(requestParameters: DeleteCreditCardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditCard> {
+        const response = await this.deleteCreditCardRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * List Credit Card Invoice Payments
@@ -79,6 +172,10 @@ export class CreditCardsApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/credit_cards/{creditCardID}/invoices/{creditCardInvoiceID}/payments`.replace(`{${"creditCardID"}}`, encodeURIComponent(String(requestParameters.creditCardID))).replace(`{${"creditCardInvoiceID"}}`, encodeURIComponent(String(requestParameters.creditCardInvoiceID))),
             method: 'GET',
@@ -112,6 +209,10 @@ export class CreditCardsApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/credit_cards/{creditCardID}/invoices`.replace(`{${"creditCardID"}}`, encodeURIComponent(String(requestParameters.creditCardID))),
             method: 'GET',
@@ -141,6 +242,10 @@ export class CreditCardsApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/credit_cards`,
             method: 'GET',
@@ -174,6 +279,10 @@ export class CreditCardsApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/credit_cards/{creditCardID}`.replace(`{${"creditCardID"}}`, encodeURIComponent(String(requestParameters.creditCardID))),
             method: 'GET',
@@ -211,6 +320,10 @@ export class CreditCardsApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/credit_cards/{creditCardID}/invoices/{creditCardInvoiceID}`.replace(`{${"creditCardID"}}`, encodeURIComponent(String(requestParameters.creditCardID))).replace(`{${"creditCardInvoiceID"}}`, encodeURIComponent(String(requestParameters.creditCardInvoiceID))),
             method: 'GET',
@@ -226,6 +339,50 @@ export class CreditCardsApi extends runtime.BaseAPI {
      */
     async readCreditCardInvoice(requestParameters: ReadCreditCardInvoiceRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditCardInvoiceFull> {
         const response = await this.readCreditCardInvoiceRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update Credit Card
+     */
+    async updateCreditCardRaw(requestParameters: UpdateCreditCardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreditCard>> {
+        if (requestParameters.creditCardID === null || requestParameters.creditCardID === undefined) {
+            throw new runtime.RequiredError('creditCardID','Required parameter requestParameters.creditCardID was null or undefined when calling updateCreditCard.');
+        }
+
+        if (requestParameters.creditCard === null || requestParameters.creditCard === undefined) {
+            throw new runtime.RequiredError('creditCard','Required parameter requestParameters.creditCard was null or undefined when calling updateCreditCard.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
+        const response = await this.request({
+            path: `/credit_cards/{creditCardID}`.replace(`{${"creditCardID"}}`, encodeURIComponent(String(requestParameters.creditCardID))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreditCardToJSON(requestParameters.creditCard),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreditCardFromJSON(jsonValue));
+    }
+
+    /**
+     * Update Credit Card
+     */
+    async updateCreditCard(requestParameters: UpdateCreditCardRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreditCard> {
+        const response = await this.updateCreditCardRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

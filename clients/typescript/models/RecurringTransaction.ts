@@ -13,184 +13,201 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { RecurringTransactionAllOfRecurrenceAttributes } from './RecurringTransactionAllOfRecurrenceAttributes';
+import {
+    RecurringTransactionAllOfRecurrenceAttributesFromJSON,
+    RecurringTransactionAllOfRecurrenceAttributesFromJSONTyped,
+    RecurringTransactionAllOfRecurrenceAttributesToJSON,
+} from './RecurringTransactionAllOfRecurrenceAttributes';
+
 /**
- * 
+ * Recurring Transaction
  * @export
- * @interface Transaction
+ * @interface RecurringTransaction
  */
-export interface Transaction {
+export interface RecurringTransaction {
     /**
      * ID of the Bank Account
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     id?: number;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
-    description?: string;
+    description: string;
     /**
      * 
      * @type {Date}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
-    date?: Date;
+    date: Date;
     /**
      * 
      * @type {boolean}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     paid?: boolean;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     amountCents?: number;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     totalInstallments?: number;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     installment?: number;
     /**
      * 
      * @type {boolean}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     recurring?: boolean;
     /**
      * ID of the Bank Account
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     accountId?: number;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
-    accountType?: TransactionAccountTypeEnum;
+    accountType?: RecurringTransactionAccountTypeEnum;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     categoryId?: number;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
-    notes?: string | null;
+    notes: string | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     attachmentsCount?: number;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     creditCardId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     creditCardInvoiceId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     paidCreditCardId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     paidCreditCardInvoiceId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     opositeTransactionId?: number | null;
     /**
      * ID of the Bank Account
      * @type {number}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     opositeAccountId?: number | null;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     createdAt?: string;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     updatedAt?: string;
     /**
      * 
      * @type {Array<string>}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     tags?: Array<string>;
     /**
      * 
      * @type {Array<string>}
-     * @memberof Transaction
+     * @memberof RecurringTransaction
      */
     attachments?: Array<string>;
+    /**
+     * 
+     * @type {RecurringTransactionAllOfRecurrenceAttributes}
+     * @memberof RecurringTransaction
+     */
+    recurrenceAttributes: RecurringTransactionAllOfRecurrenceAttributes;
 }
 
 /**
 * @export
 * @enum {string}
 */
-export enum TransactionAccountTypeEnum {
+export enum RecurringTransactionAccountTypeEnum {
     Account = 'Account',
     CreditCard = 'CreditCard'
 }
 
 
 /**
- * Check if a given object implements the Transaction interface.
+ * Check if a given object implements the RecurringTransaction interface.
  */
-export function instanceOfTransaction(value: object): boolean {
+export function instanceOfRecurringTransaction(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "description" in value;
+    isInstance = isInstance && "date" in value;
+    isInstance = isInstance && "notes" in value;
+    isInstance = isInstance && "recurrenceAttributes" in value;
 
     return isInstance;
 }
 
-export function TransactionFromJSON(json: any): Transaction {
-    return TransactionFromJSONTyped(json, false);
+export function RecurringTransactionFromJSON(json: any): RecurringTransaction {
+    return RecurringTransactionFromJSONTyped(json, false);
 }
 
-export function TransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean): Transaction {
+export function RecurringTransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean): RecurringTransaction {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'date': !exists(json, 'date') ? undefined : (new Date(json['date'])),
+        'description': json['description'],
+        'date': (new Date(json['date'])),
         'paid': !exists(json, 'paid') ? undefined : json['paid'],
         'amountCents': !exists(json, 'amount_cents') ? undefined : json['amount_cents'],
         'totalInstallments': !exists(json, 'total_installments') ? undefined : json['total_installments'],
@@ -199,7 +216,7 @@ export function TransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'accountId': !exists(json, 'account_id') ? undefined : json['account_id'],
         'accountType': !exists(json, 'account_type') ? undefined : json['account_type'],
         'categoryId': !exists(json, 'category_id') ? undefined : json['category_id'],
-        'notes': !exists(json, 'notes') ? undefined : json['notes'],
+        'notes': json['notes'],
         'attachmentsCount': !exists(json, 'attachments_count') ? undefined : json['attachments_count'],
         'creditCardId': !exists(json, 'credit_card_id') ? undefined : json['credit_card_id'],
         'creditCardInvoiceId': !exists(json, 'credit_card_invoice_id') ? undefined : json['credit_card_invoice_id'],
@@ -211,10 +228,11 @@ export function TransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'updatedAt': !exists(json, 'updated_at') ? undefined : json['updated_at'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'attachments': !exists(json, 'attachments') ? undefined : json['attachments'],
+        'recurrenceAttributes': RecurringTransactionAllOfRecurrenceAttributesFromJSON(json['recurrence_attributes']),
     };
 }
 
-export function TransactionToJSON(value?: Transaction | null): any {
+export function RecurringTransactionToJSON(value?: RecurringTransaction | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -225,7 +243,7 @@ export function TransactionToJSON(value?: Transaction | null): any {
         
         'id': value.id,
         'description': value.description,
-        'date': value.date === undefined ? undefined : (value.date.toISOString().substr(0,10)),
+        'date': (value.date.toISOString().substr(0,10)),
         'paid': value.paid,
         'amount_cents': value.amountCents,
         'total_installments': value.totalInstallments,
@@ -246,6 +264,7 @@ export function TransactionToJSON(value?: Transaction | null): any {
         'updated_at': value.updatedAt,
         'tags': value.tags,
         'attachments': value.attachments,
+        'recurrence_attributes': RecurringTransactionAllOfRecurrenceAttributesToJSON(value.recurrenceAttributes),
     };
 }
 

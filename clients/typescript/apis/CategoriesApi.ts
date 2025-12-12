@@ -18,6 +18,7 @@ import type {
   Category,
   FailedAuthentication,
   NotFound,
+  ValidationError,
 } from '../models';
 import {
     CategoryFromJSON,
@@ -26,16 +27,108 @@ import {
     FailedAuthenticationToJSON,
     NotFoundFromJSON,
     NotFoundToJSON,
+    ValidationErrorFromJSON,
+    ValidationErrorToJSON,
 } from '../models';
+
+export interface CreateCategoryRequest {
+    category: Category;
+}
+
+export interface DeleteCategoryRequest {
+    categoryID: number;
+}
 
 export interface ReadCategoryRequest {
     categoryID: number;
+}
+
+export interface UpdateCategoryRequest {
+    categoryID: number;
+    category: Category;
 }
 
 /**
  * 
  */
 export class CategoriesApi extends runtime.BaseAPI {
+
+    /**
+     * Create Category
+     */
+    async createCategoryRaw(requestParameters: CreateCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Category>> {
+        if (requestParameters.category === null || requestParameters.category === undefined) {
+            throw new runtime.RequiredError('category','Required parameter requestParameters.category was null or undefined when calling createCategory.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
+        const response = await this.request({
+            path: `/categories`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CategoryToJSON(requestParameters.category),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CategoryFromJSON(jsonValue));
+    }
+
+    /**
+     * Create Category
+     */
+    async createCategory(requestParameters: CreateCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Category> {
+        const response = await this.createCategoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete Category
+     */
+    async deleteCategoryRaw(requestParameters: DeleteCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Category>> {
+        if (requestParameters.categoryID === null || requestParameters.categoryID === undefined) {
+            throw new runtime.RequiredError('categoryID','Required parameter requestParameters.categoryID was null or undefined when calling deleteCategory.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
+        const response = await this.request({
+            path: `/categories/{categoryID}`.replace(`{${"categoryID"}}`, encodeURIComponent(String(requestParameters.categoryID))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CategoryFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete Category
+     */
+    async deleteCategory(requestParameters: DeleteCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Category> {
+        const response = await this.deleteCategoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * List Categories
@@ -48,6 +141,10 @@ export class CategoriesApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/categories`,
             method: 'GET',
@@ -81,6 +178,10 @@ export class CategoriesApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/categories/{categoryID}`.replace(`{${"categoryID"}}`, encodeURIComponent(String(requestParameters.categoryID))),
             method: 'GET',
@@ -96,6 +197,50 @@ export class CategoriesApi extends runtime.BaseAPI {
      */
     async readCategory(requestParameters: ReadCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Category> {
         const response = await this.readCategoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update Category
+     */
+    async updateCategoryRaw(requestParameters: UpdateCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Category>> {
+        if (requestParameters.categoryID === null || requestParameters.categoryID === undefined) {
+            throw new runtime.RequiredError('categoryID','Required parameter requestParameters.categoryID was null or undefined when calling updateCategory.');
+        }
+
+        if (requestParameters.category === null || requestParameters.category === undefined) {
+            throw new runtime.RequiredError('category','Required parameter requestParameters.category was null or undefined when calling updateCategory.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
+            headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
+        const response = await this.request({
+            path: `/categories/{categoryID}`.replace(`{${"categoryID"}}`, encodeURIComponent(String(requestParameters.categoryID))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CategoryToJSON(requestParameters.category),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CategoryFromJSON(jsonValue));
+    }
+
+    /**
+     * Update Category
+     */
+    async updateCategory(requestParameters: UpdateCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Category> {
+        const response = await this.updateCategoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

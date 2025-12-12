@@ -16,173 +16,185 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Transaction
+ * @interface UpdateTransactionRequest
  */
-export interface Transaction {
+export interface UpdateTransactionRequest {
     /**
      * ID of the Bank Account
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     id?: number;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     description?: string;
     /**
      * 
      * @type {Date}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     date?: Date;
     /**
      * 
      * @type {boolean}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     paid?: boolean;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     amountCents?: number;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     totalInstallments?: number;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     installment?: number;
     /**
      * 
      * @type {boolean}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     recurring?: boolean;
     /**
      * ID of the Bank Account
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     accountId?: number;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
-    accountType?: TransactionAccountTypeEnum;
+    accountType?: UpdateTransactionRequestAccountTypeEnum;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     categoryId?: number;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     notes?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     attachmentsCount?: number;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     creditCardId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     creditCardInvoiceId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     paidCreditCardId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     paidCreditCardInvoiceId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     opositeTransactionId?: number | null;
     /**
      * ID of the Bank Account
      * @type {number}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     opositeAccountId?: number | null;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     createdAt?: string;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     updatedAt?: string;
     /**
      * 
      * @type {Array<string>}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     tags?: Array<string>;
     /**
      * 
      * @type {Array<string>}
-     * @memberof Transaction
+     * @memberof UpdateTransactionRequest
      */
     attachments?: Array<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateTransactionRequest
+     */
+    updateFuture?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateTransactionRequest
+     */
+    updateAll?: boolean;
 }
 
 /**
 * @export
 * @enum {string}
 */
-export enum TransactionAccountTypeEnum {
+export enum UpdateTransactionRequestAccountTypeEnum {
     Account = 'Account',
     CreditCard = 'CreditCard'
 }
 
 
 /**
- * Check if a given object implements the Transaction interface.
+ * Check if a given object implements the UpdateTransactionRequest interface.
  */
-export function instanceOfTransaction(value: object): boolean {
+export function instanceOfUpdateTransactionRequest(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function TransactionFromJSON(json: any): Transaction {
-    return TransactionFromJSONTyped(json, false);
+export function UpdateTransactionRequestFromJSON(json: any): UpdateTransactionRequest {
+    return UpdateTransactionRequestFromJSONTyped(json, false);
 }
 
-export function TransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean): Transaction {
+export function UpdateTransactionRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): UpdateTransactionRequest {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -211,10 +223,12 @@ export function TransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'updatedAt': !exists(json, 'updated_at') ? undefined : json['updated_at'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'attachments': !exists(json, 'attachments') ? undefined : json['attachments'],
+        'updateFuture': !exists(json, 'update_future') ? undefined : json['update_future'],
+        'updateAll': !exists(json, 'update_all') ? undefined : json['update_all'],
     };
 }
 
-export function TransactionToJSON(value?: Transaction | null): any {
+export function UpdateTransactionRequestToJSON(value?: UpdateTransactionRequest | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -246,6 +260,8 @@ export function TransactionToJSON(value?: Transaction | null): any {
         'updated_at': value.updatedAt,
         'tags': value.tags,
         'attachments': value.attachments,
+        'update_future': value.updateFuture,
+        'update_all': value.updateAll,
     };
 }
 

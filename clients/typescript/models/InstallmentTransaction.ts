@@ -13,184 +13,200 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { InstallmentTransactionAllOfInstallmentsAttributes } from './InstallmentTransactionAllOfInstallmentsAttributes';
+import {
+    InstallmentTransactionAllOfInstallmentsAttributesFromJSON,
+    InstallmentTransactionAllOfInstallmentsAttributesFromJSONTyped,
+    InstallmentTransactionAllOfInstallmentsAttributesToJSON,
+} from './InstallmentTransactionAllOfInstallmentsAttributes';
+
 /**
- * 
+ * Installment Transaction
  * @export
- * @interface Transaction
+ * @interface InstallmentTransaction
  */
-export interface Transaction {
+export interface InstallmentTransaction {
     /**
      * ID of the Bank Account
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     id?: number;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
-    description?: string;
+    description: string;
     /**
      * 
      * @type {Date}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
-    date?: Date;
+    date: Date;
     /**
      * 
      * @type {boolean}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     paid?: boolean;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     amountCents?: number;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     totalInstallments?: number;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     installment?: number;
     /**
      * 
      * @type {boolean}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     recurring?: boolean;
     /**
      * ID of the Bank Account
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     accountId?: number;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
-    accountType?: TransactionAccountTypeEnum;
+    accountType?: InstallmentTransactionAccountTypeEnum;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     categoryId?: number;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
-    notes?: string | null;
+    notes: string | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     attachmentsCount?: number;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     creditCardId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     creditCardInvoiceId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     paidCreditCardId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     paidCreditCardInvoiceId?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     opositeTransactionId?: number | null;
     /**
      * ID of the Bank Account
      * @type {number}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     opositeAccountId?: number | null;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     createdAt?: string;
     /**
      * 
      * @type {string}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     updatedAt?: string;
     /**
      * 
      * @type {Array<string>}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     tags?: Array<string>;
     /**
      * 
      * @type {Array<string>}
-     * @memberof Transaction
+     * @memberof InstallmentTransaction
      */
     attachments?: Array<string>;
+    /**
+     * 
+     * @type {InstallmentTransactionAllOfInstallmentsAttributes}
+     * @memberof InstallmentTransaction
+     */
+    installmentsAttributes?: InstallmentTransactionAllOfInstallmentsAttributes;
 }
 
 /**
 * @export
 * @enum {string}
 */
-export enum TransactionAccountTypeEnum {
+export enum InstallmentTransactionAccountTypeEnum {
     Account = 'Account',
     CreditCard = 'CreditCard'
 }
 
 
 /**
- * Check if a given object implements the Transaction interface.
+ * Check if a given object implements the InstallmentTransaction interface.
  */
-export function instanceOfTransaction(value: object): boolean {
+export function instanceOfInstallmentTransaction(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "description" in value;
+    isInstance = isInstance && "date" in value;
+    isInstance = isInstance && "notes" in value;
 
     return isInstance;
 }
 
-export function TransactionFromJSON(json: any): Transaction {
-    return TransactionFromJSONTyped(json, false);
+export function InstallmentTransactionFromJSON(json: any): InstallmentTransaction {
+    return InstallmentTransactionFromJSONTyped(json, false);
 }
 
-export function TransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean): Transaction {
+export function InstallmentTransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean): InstallmentTransaction {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'date': !exists(json, 'date') ? undefined : (new Date(json['date'])),
+        'description': json['description'],
+        'date': (new Date(json['date'])),
         'paid': !exists(json, 'paid') ? undefined : json['paid'],
         'amountCents': !exists(json, 'amount_cents') ? undefined : json['amount_cents'],
         'totalInstallments': !exists(json, 'total_installments') ? undefined : json['total_installments'],
@@ -199,7 +215,7 @@ export function TransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'accountId': !exists(json, 'account_id') ? undefined : json['account_id'],
         'accountType': !exists(json, 'account_type') ? undefined : json['account_type'],
         'categoryId': !exists(json, 'category_id') ? undefined : json['category_id'],
-        'notes': !exists(json, 'notes') ? undefined : json['notes'],
+        'notes': json['notes'],
         'attachmentsCount': !exists(json, 'attachments_count') ? undefined : json['attachments_count'],
         'creditCardId': !exists(json, 'credit_card_id') ? undefined : json['credit_card_id'],
         'creditCardInvoiceId': !exists(json, 'credit_card_invoice_id') ? undefined : json['credit_card_invoice_id'],
@@ -211,10 +227,11 @@ export function TransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'updatedAt': !exists(json, 'updated_at') ? undefined : json['updated_at'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'attachments': !exists(json, 'attachments') ? undefined : json['attachments'],
+        'installmentsAttributes': !exists(json, 'installments_attributes') ? undefined : InstallmentTransactionAllOfInstallmentsAttributesFromJSON(json['installments_attributes']),
     };
 }
 
-export function TransactionToJSON(value?: Transaction | null): any {
+export function InstallmentTransactionToJSON(value?: InstallmentTransaction | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -225,7 +242,7 @@ export function TransactionToJSON(value?: Transaction | null): any {
         
         'id': value.id,
         'description': value.description,
-        'date': value.date === undefined ? undefined : (value.date.toISOString().substr(0,10)),
+        'date': (value.date.toISOString().substr(0,10)),
         'paid': value.paid,
         'amount_cents': value.amountCents,
         'total_installments': value.totalInstallments,
@@ -246,6 +263,7 @@ export function TransactionToJSON(value?: Transaction | null): any {
         'updated_at': value.updatedAt,
         'tags': value.tags,
         'attachments': value.attachments,
+        'installments_attributes': InstallmentTransactionAllOfInstallmentsAttributesToJSON(value.installmentsAttributes),
     };
 }
 

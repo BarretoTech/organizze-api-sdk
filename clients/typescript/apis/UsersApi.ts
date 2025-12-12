@@ -48,6 +48,10 @@ export class UsersApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/users`,
             method: 'GET',
@@ -81,6 +85,10 @@ export class UsersApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/users/{userID}`.replace(`{${"userID"}}`, encodeURIComponent(String(requestParameters.userID))),
             method: 'GET',

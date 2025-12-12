@@ -15,25 +15,38 @@
 
 import * as runtime from '../runtime';
 import type {
+  CreateTransactionRequest,
   FailedAuthentication,
   NotFound,
   Transaction,
+  UpdateTransactionRequest,
+  UpdateTransactionRequestAllOf,
+  ValidationError,
 } from '../models';
 import {
+    CreateTransactionRequestFromJSON,
+    CreateTransactionRequestToJSON,
     FailedAuthenticationFromJSON,
     FailedAuthenticationToJSON,
     NotFoundFromJSON,
     NotFoundToJSON,
     TransactionFromJSON,
     TransactionToJSON,
+    UpdateTransactionRequestFromJSON,
+    UpdateTransactionRequestToJSON,
+    UpdateTransactionRequestAllOfFromJSON,
+    UpdateTransactionRequestAllOfToJSON,
+    ValidationErrorFromJSON,
+    ValidationErrorToJSON,
 } from '../models';
 
-export interface CreateTransactionRequest {
-    transaction?: Transaction;
+export interface CreateTransactionOperationRequest {
+    createTransactionRequest: CreateTransactionRequest;
 }
 
 export interface DeleteTransactionRequest {
     transactionID: number;
+    updateTransactionRequestAllOf: UpdateTransactionRequestAllOf;
 }
 
 export interface ListTransactionsRequest {
@@ -46,9 +59,9 @@ export interface ReadTransactionRequest {
     transactionID: number;
 }
 
-export interface UpdateTransactionRequest {
+export interface UpdateTransactionOperationRequest {
     transactionID: number;
-    transaction?: Transaction;
+    updateTransactionRequest: UpdateTransactionRequest;
 }
 
 /**
@@ -59,7 +72,11 @@ export class TransactionsApi extends runtime.BaseAPI {
     /**
      * Create Transaction
      */
-    async createTransactionRaw(requestParameters: CreateTransactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Transaction>> {
+    async createTransactionRaw(requestParameters: CreateTransactionOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Transaction>> {
+        if (requestParameters.createTransactionRequest === null || requestParameters.createTransactionRequest === undefined) {
+            throw new runtime.RequiredError('createTransactionRequest','Required parameter requestParameters.createTransactionRequest was null or undefined when calling createTransaction.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -69,12 +86,16 @@ export class TransactionsApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/transactions`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: TransactionToJSON(requestParameters.transaction),
+            body: CreateTransactionRequestToJSON(requestParameters.createTransactionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TransactionFromJSON(jsonValue));
@@ -83,7 +104,7 @@ export class TransactionsApi extends runtime.BaseAPI {
     /**
      * Create Transaction
      */
-    async createTransaction(requestParameters: CreateTransactionRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Transaction> {
+    async createTransaction(requestParameters: CreateTransactionOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Transaction> {
         const response = await this.createTransactionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -96,18 +117,29 @@ export class TransactionsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('transactionID','Required parameter requestParameters.transactionID was null or undefined when calling deleteTransaction.');
         }
 
+        if (requestParameters.updateTransactionRequestAllOf === null || requestParameters.updateTransactionRequestAllOf === undefined) {
+            throw new runtime.RequiredError('updateTransactionRequestAllOf','Required parameter requestParameters.updateTransactionRequestAllOf was null or undefined when calling deleteTransaction.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/transactions/{transactionID}`.replace(`{${"transactionID"}}`, encodeURIComponent(String(requestParameters.transactionID))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateTransactionRequestAllOfToJSON(requestParameters.updateTransactionRequestAllOf),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TransactionFromJSON(jsonValue));
@@ -144,6 +176,10 @@ export class TransactionsApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/transactions`,
             method: 'GET',
@@ -177,6 +213,10 @@ export class TransactionsApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/transactions/{transactionID}`.replace(`{${"transactionID"}}`, encodeURIComponent(String(requestParameters.transactionID))),
             method: 'GET',
@@ -198,9 +238,13 @@ export class TransactionsApi extends runtime.BaseAPI {
     /**
      * Update Transaction
      */
-    async updateTransactionRaw(requestParameters: UpdateTransactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Transaction>> {
+    async updateTransactionRaw(requestParameters: UpdateTransactionOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Transaction>> {
         if (requestParameters.transactionID === null || requestParameters.transactionID === undefined) {
             throw new runtime.RequiredError('transactionID','Required parameter requestParameters.transactionID was null or undefined when calling updateTransaction.');
+        }
+
+        if (requestParameters.updateTransactionRequest === null || requestParameters.updateTransactionRequest === undefined) {
+            throw new runtime.RequiredError('updateTransactionRequest','Required parameter requestParameters.updateTransactionRequest was null or undefined when calling updateTransaction.');
         }
 
         const queryParameters: any = {};
@@ -212,12 +256,16 @@ export class TransactionsApi extends runtime.BaseAPI {
         if (this.configuration && (this.configuration.username !== undefined || this.configuration.password !== undefined)) {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+        }
+
         const response = await this.request({
             path: `/transactions/{transactionID}`.replace(`{${"transactionID"}}`, encodeURIComponent(String(requestParameters.transactionID))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: TransactionToJSON(requestParameters.transaction),
+            body: UpdateTransactionRequestToJSON(requestParameters.updateTransactionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TransactionFromJSON(jsonValue));
@@ -226,7 +274,7 @@ export class TransactionsApi extends runtime.BaseAPI {
     /**
      * Update Transaction
      */
-    async updateTransaction(requestParameters: UpdateTransactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Transaction> {
+    async updateTransaction(requestParameters: UpdateTransactionOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Transaction> {
         const response = await this.updateTransactionRaw(requestParameters, initOverrides);
         return await response.value();
     }
