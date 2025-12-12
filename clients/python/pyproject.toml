@@ -1,6 +1,6 @@
 [project]
 name = "organizze_api"
-version = "1.0.0"
+version = "1.0.1"
 description = "Organizze API SDK"
 authors = [{ name = "Rhuan Barreto", email = "rhuan@barreto.work" }]
 readme = "README.md"
