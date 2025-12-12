@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.api.budgets_api import BudgetsApi
+from organizze_api.api.budgets_api import BudgetsApi
 
 
 class TestBudgetsApi(unittest.TestCase):

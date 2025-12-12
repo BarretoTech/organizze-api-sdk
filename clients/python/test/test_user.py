@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.user import User
+from organizze_api.models.user import User
 
 class TestUser(unittest.TestCase):
     """User unit test stubs"""

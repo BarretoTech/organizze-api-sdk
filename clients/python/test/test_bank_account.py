@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.bank_account import BankAccount
+from organizze_api.models.bank_account import BankAccount
 
 class TestBankAccount(unittest.TestCase):
     """BankAccount unit test stubs"""

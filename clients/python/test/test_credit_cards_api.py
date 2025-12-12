@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.api.credit_cards_api import CreditCardsApi
+from organizze_api.api.credit_cards_api import CreditCardsApi
 
 
 class TestCreditCardsApi(unittest.TestCase):

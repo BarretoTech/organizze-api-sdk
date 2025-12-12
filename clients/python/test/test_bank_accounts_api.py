@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.api.bank_accounts_api import BankAccountsApi
+from organizze_api.api.bank_accounts_api import BankAccountsApi
 
 
 class TestBankAccountsApi(unittest.TestCase):

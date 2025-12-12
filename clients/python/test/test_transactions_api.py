@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.api.transactions_api import TransactionsApi
+from organizze_api.api.transactions_api import TransactionsApi
 
 
 class TestTransactionsApi(unittest.TestCase):

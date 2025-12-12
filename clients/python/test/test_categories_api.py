@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.api.categories_api import CategoriesApi
+from organizze_api.api.categories_api import CategoriesApi
 
 
 class TestCategoriesApi(unittest.TestCase):

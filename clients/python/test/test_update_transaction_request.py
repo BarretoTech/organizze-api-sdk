@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.update_transaction_request import UpdateTransactionRequest
+from organizze_api.models.update_transaction_request import UpdateTransactionRequest
 
 class TestUpdateTransactionRequest(unittest.TestCase):
     """UpdateTransactionRequest unit test stubs"""

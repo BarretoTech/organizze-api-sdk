@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.budget import Budget
+from organizze_api.models.budget import Budget
 
 class TestBudget(unittest.TestCase):
     """Budget unit test stubs"""

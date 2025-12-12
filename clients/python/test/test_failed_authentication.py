@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.failed_authentication import FailedAuthentication
+from organizze_api.models.failed_authentication import FailedAuthentication
 
 class TestFailedAuthentication(unittest.TestCase):
     """FailedAuthentication unit test stubs"""

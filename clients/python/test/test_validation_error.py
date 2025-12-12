@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.validation_error import ValidationError
+from organizze_api.models.validation_error import ValidationError
 
 class TestValidationError(unittest.TestCase):
     """ValidationError unit test stubs"""

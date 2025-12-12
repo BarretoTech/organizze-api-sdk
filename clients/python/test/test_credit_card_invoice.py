@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.credit_card_invoice import CreditCardInvoice
+from organizze_api.models.credit_card_invoice import CreditCardInvoice
 
 class TestCreditCardInvoice(unittest.TestCase):
     """CreditCardInvoice unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.not_found import NotFound
+from organizze_api.models.not_found import NotFound
 
 class TestNotFound(unittest.TestCase):
     """NotFound unit test stubs"""

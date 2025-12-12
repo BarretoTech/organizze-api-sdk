@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.recurring_transaction_all_of_recurrence_attributes import RecurringTransactionAllOfRecurrenceAttributes
+from organizze_api.models.recurring_transaction_all_of_recurrence_attributes import RecurringTransactionAllOfRecurrenceAttributes
 
 class TestRecurringTransactionAllOfRecurrenceAttributes(unittest.TestCase):
     """RecurringTransactionAllOfRecurrenceAttributes unit test stubs"""

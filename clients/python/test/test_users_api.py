@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.api.users_api import UsersApi
+from organizze_api.api.users_api import UsersApi
 
 
 class TestUsersApi(unittest.TestCase):

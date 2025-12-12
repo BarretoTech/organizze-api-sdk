@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.transaction import Transaction
+from organizze_api.models.transaction import Transaction
 
 class TestTransaction(unittest.TestCase):
     """Transaction unit test stubs"""

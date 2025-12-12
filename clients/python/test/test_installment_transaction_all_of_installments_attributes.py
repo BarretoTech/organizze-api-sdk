@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.installment_transaction_all_of_installments_attributes import InstallmentTransactionAllOfInstallmentsAttributes
+from organizze_api.models.installment_transaction_all_of_installments_attributes import InstallmentTransactionAllOfInstallmentsAttributes
 
 class TestInstallmentTransactionAllOfInstallmentsAttributes(unittest.TestCase):
     """InstallmentTransactionAllOfInstallmentsAttributes unit test stubs"""

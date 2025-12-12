@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.recurring_transaction import RecurringTransaction
+from organizze_api.models.recurring_transaction import RecurringTransaction
 
 class TestRecurringTransaction(unittest.TestCase):
     """RecurringTransaction unit test stubs"""

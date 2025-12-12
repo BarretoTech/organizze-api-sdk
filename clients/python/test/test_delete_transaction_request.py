@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.delete_transaction_request import DeleteTransactionRequest
+from organizze_api.models.delete_transaction_request import DeleteTransactionRequest
 
 class TestDeleteTransactionRequest(unittest.TestCase):
     """DeleteTransactionRequest unit test stubs"""

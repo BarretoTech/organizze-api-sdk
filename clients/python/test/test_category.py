@@ -14,7 +14,7 @@
 
 import unittest
 
-from organizze_api_sdk.models.category import Category
+from organizze_api.models.category import Category
 
 class TestCategory(unittest.TestCase):
     """Category unit test stubs"""
