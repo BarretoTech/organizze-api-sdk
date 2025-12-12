@@ -13,9 +13,8 @@ More legal information about license and liabilities, please check the [license 
 
 | Language              | Status | Package                                                | Source                                        |
 | --------------------- | ------ | ------------------------------------------------------ | --------------------------------------------- |
-| Javascript/Typescript | ✅      | [NPM](https://www.npmjs.com/package/organizze-api-sdk) | [`clients/typescript`](./clients/typescript/) |
-| Python                | ✅      | Local ([setup instructions](#python))                  | [`clients/python`](./clients/python/)         |
-| Ruby                  | 🔜      | TBA                                                    | TBA                                           |
+| Javascript/Typescript | ✅     | [NPM](https://www.npmjs.com/package/organizze-api-sdk) | [`clients/typescript`](./clients/typescript/) |
+| Python                | ✅     | Local ([setup instructions](#python))                  | [`clients/python`](./clients/python/)         |
 
 ## Features
 
@@ -41,16 +40,20 @@ npm install organizze-api-sdk
 #### Usage
 
 ```typescript
-import { Configuration, BankAccountsApi, TransactionsApi } from 'organizze-api-sdk';
+import {
+  Configuration,
+  BankAccountsApi,
+  TransactionsApi,
+} from "organizze-api-sdk";
 
 // Configure authentication
 const config = new Configuration({
-  basePath: 'https://api.organizze.com.br/rest/v2',
-  username: 'your.email@example.com',
-  password: 'your_api_token',
+  basePath: "https://api.organizze.com.br/rest/v2",
+  username: "your.email@example.com",
+  password: "your_api_token",
   headers: {
-    'User-Agent': 'MyApp (your.email@example.com)'
-  }
+    "User-Agent": "MyApp (your.email@example.com)",
+  },
 });
 
 // List bank accounts
@@ -60,11 +63,11 @@ const accounts = await bankAccountsApi.listBankAccounts();
 // Create a transaction
 const transactionsApi = new TransactionsApi(config);
 const transaction = await transactionsApi.createTransaction({
-  description: 'Groceries',
-  date: '2025-12-12',
+  description: "Groceries",
+  date: "2025-12-12",
   amount_cents: -5000,
   category_id: 123,
-  account_id: 456
+  account_id: 456,
 });
 ```
 
@@ -124,6 +127,7 @@ with organizze_api.ApiClient(configuration) as api_client:
 All Organizze API requests require:
 
 1. **HTTP Basic Auth**
+
    - Username: Your Organizze account email
    - Password: API token from [https://app.organizze.com.br/configuracoes/api-keys](https://app.organizze.com.br/configuracoes/api-keys)
 
@@ -167,6 +171,7 @@ npx @openapitools/openapi-generator-cli generate \
 The OpenAPI specification is located at [`specs/openapi.yaml`](./specs/openapi.yaml).
 
 To update it:
+
 1. Edit the `specs/openapi.yaml` file
 2. Regenerate the clients using the commands above
 3. Test the generated clients
