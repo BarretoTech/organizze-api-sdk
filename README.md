@@ -14,7 +14,7 @@ More legal information about license and liabilities, please check the [license 
 | Language              | Status | Package                                                | Source                                        |
 | --------------------- | ------ | ------------------------------------------------------ | --------------------------------------------- |
 | Javascript/Typescript | ✅     | [NPM](https://www.npmjs.com/package/organizze-api-sdk) | [`clients/typescript`](./clients/typescript/) |
-| Python                | ✅     | Local ([setup instructions](#python))                  | [`clients/python`](./clients/python/)         |
+| Python                | ✅     | [PyPI](https://pypi.org/project/organizze_api/)        | [`clients/python`](./clients/python/)         |
 
 ## Features
 
@@ -76,12 +76,15 @@ const transaction = await transactionsApi.createTransaction({
 #### Installation
 
 ```bash
-# From source
+# From PyPI (recommended)
+pip install organizze_api
+
+# Or from source
 cd clients/python
 pip install -e .
 
-# Or install directly from git
-pip install git+https://github.com/rhuan-pk/organizze-api-sdk.git#subdirectory=clients/python
+# Or directly from git
+pip install git+https://github.com/BarretoTech/organizze-api-sdk.git#subdirectory=clients/python
 ```
 
 #### Usage
