@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from organizze_api.models.transaction import Transaction
@@ -33,10 +33,10 @@ class CreditCardInvoiceFull(BaseModel):
     var_date: Optional[date] = Field(default=None, alias="date")
     starting_date: Optional[date] = None
     closing_date: Optional[date] = None
-    amount_cents: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    payment_amount_cents: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    balance_cents: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
-    previous_balance_cents: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    amount_cents: Optional[StrictInt] = None
+    payment_amount_cents: Optional[StrictInt] = None
+    balance_cents: Optional[StrictInt] = None
+    previous_balance_cents: Optional[StrictInt] = None
     credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     transactions: Optional[Annotated[List[Transaction], Field(min_length=0, max_length=100)]] = None
     payments: Optional[Annotated[List[Transaction], Field(min_length=0, max_length=100)]] = None
@@ -47,7 +47,9 @@ class CreditCardInvoiceFull(BaseModel):
         """Validates the regular expression"""
         if value is None:
             return value
-
+        # Handle both string and date objects
+        if isinstance(value, date):
+            return value
         if not re.match(r"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$", value):
             raise ValueError(r"must validate the regular expression /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/")
         return value
@@ -57,7 +59,9 @@ class CreditCardInvoiceFull(BaseModel):
         """Validates the regular expression"""
         if value is None:
             return value
-
+        # Handle both string and date objects
+        if isinstance(value, date):
+            return value
         if not re.match(r"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$", value):
             raise ValueError(r"must validate the regular expression /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/")
         return value
@@ -67,7 +71,9 @@ class CreditCardInvoiceFull(BaseModel):
         """Validates the regular expression"""
         if value is None:
             return value
-
+        # Handle both string and date objects
+        if isinstance(value, date):
+            return value
         if not re.match(r"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$", value):
             raise ValueError(r"must validate the regular expression /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/")
         return value

@@ -43,8 +43,8 @@ class Category(BaseModel):
         if value is None:
             return value
 
-        if not re.match(r"^[a-f0-9]{6}$", value):
-            raise ValueError(r"must validate the regular expression /^[a-f0-9]{6}$/")
+        if not re.match(r"^[a-fA-F0-9]{6}$", value):
+            raise ValueError(r"must validate the regular expression /^[a-fA-F0-9]{6}$/")
         return value
 
     model_config = ConfigDict(

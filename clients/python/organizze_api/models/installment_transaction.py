@@ -29,7 +29,7 @@ class InstallmentTransaction(BaseModel):
     """
     Installment Transaction
     """ # noqa: E501
-    id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
+    id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]] = Field(default=None, description="ID of the Transaction")
     description: StrictStr
     var_date: date = Field(alias="date")
     paid: Optional[StrictBool] = None
@@ -46,7 +46,7 @@ class InstallmentTransaction(BaseModel):
     credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     paid_credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     paid_credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    oposite_transaction_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
+    oposite_transaction_id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]] = None
     oposite_account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
     created_at: Optional[Annotated[str, Field(min_length=20, strict=True, max_length=29)]] = None
     updated_at: Optional[Annotated[str, Field(min_length=20, strict=True, max_length=29)]] = None

@@ -10,7 +10,8 @@
 
 .travis.yml
 .gitlab-ci.yml
-.github/\*\*
 git_push.sh
 tox.ini
 LICENSE
+.github/workflows/
+pyproject.toml

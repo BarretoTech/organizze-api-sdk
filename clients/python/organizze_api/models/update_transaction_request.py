@@ -28,7 +28,7 @@ class UpdateTransactionRequest(BaseModel):
     """
     UpdateTransactionRequest
     """ # noqa: E501
-    id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
+    id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]] = Field(default=None, description="ID of the Transaction")
     description: Optional[StrictStr] = None
     var_date: Optional[date] = Field(default=None, alias="date")
     paid: Optional[StrictBool] = None
@@ -45,7 +45,7 @@ class UpdateTransactionRequest(BaseModel):
     credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     paid_credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     paid_credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    oposite_transaction_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
+    oposite_transaction_id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]] = None
     oposite_account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
     created_at: Optional[Annotated[str, Field(min_length=20, strict=True, max_length=29)]] = None
     updated_at: Optional[Annotated[str, Field(min_length=20, strict=True, max_length=29)]] = None
@@ -60,7 +60,9 @@ class UpdateTransactionRequest(BaseModel):
         """Validates the regular expression"""
         if value is None:
             return value
-
+        # Handle both string and date objects
+        if isinstance(value, date):
+            return value
         if not re.match(r"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$", value):
             raise ValueError(r"must validate the regular expression /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/")
         return value

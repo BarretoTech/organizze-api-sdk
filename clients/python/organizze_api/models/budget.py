@@ -42,9 +42,11 @@ class Budget(BaseModel):
         """Validates the regular expression"""
         if value is None:
             return value
-
-        if not re.match(r"^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$", value):
-            raise ValueError(r"must validate the regular expression /^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$/")
+        # Handle both string and date objects
+        if isinstance(value, date):
+            return value
+        if not re.match(r"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$", value):
+            raise ValueError(r"must validate the regular expression /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/")
         return value
 
     model_config = ConfigDict(

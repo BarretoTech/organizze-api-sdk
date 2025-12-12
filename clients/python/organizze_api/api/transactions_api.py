@@ -332,7 +332,7 @@ class TransactionsApi:
     @validate_call
     def delete_transaction(
         self,
-        transaction_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Transaction ID")],
+        transaction_id: Annotated[int, Field(le=9223372036854775807, strict=True, ge=1, description="Transaction ID")],
         delete_transaction_request: DeleteTransactionRequest,
         _request_timeout: Union[
             None,
@@ -404,7 +404,7 @@ class TransactionsApi:
     @validate_call
     def delete_transaction_with_http_info(
         self,
-        transaction_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Transaction ID")],
+        transaction_id: Annotated[int, Field(le=9223372036854775807, strict=True, ge=1, description="Transaction ID")],
         delete_transaction_request: DeleteTransactionRequest,
         _request_timeout: Union[
             None,
@@ -476,7 +476,7 @@ class TransactionsApi:
     @validate_call
     def delete_transaction_without_preload_content(
         self,
-        transaction_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Transaction ID")],
+        transaction_id: Annotated[int, Field(le=9223372036854775807, strict=True, ge=1, description="Transaction ID")],
         delete_transaction_request: DeleteTransactionRequest,
         _request_timeout: Union[
             None,
@@ -946,7 +946,7 @@ class TransactionsApi:
     @validate_call
     def read_transaction(
         self,
-        transaction_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Transaction ID")],
+        transaction_id: Annotated[int, Field(le=9223372036854775807, strict=True, ge=1, description="Transaction ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1014,7 +1014,7 @@ class TransactionsApi:
     @validate_call
     def read_transaction_with_http_info(
         self,
-        transaction_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Transaction ID")],
+        transaction_id: Annotated[int, Field(le=9223372036854775807, strict=True, ge=1, description="Transaction ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1082,7 +1082,7 @@ class TransactionsApi:
     @validate_call
     def read_transaction_without_preload_content(
         self,
-        transaction_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Transaction ID")],
+        transaction_id: Annotated[int, Field(le=9223372036854775807, strict=True, ge=1, description="Transaction ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1212,7 +1212,7 @@ class TransactionsApi:
     @validate_call
     def update_transaction(
         self,
-        transaction_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Transaction ID")],
+        transaction_id: Annotated[int, Field(le=9223372036854775807, strict=True, ge=1, description="Transaction ID")],
         update_transaction_request: UpdateTransactionRequest,
         _request_timeout: Union[
             None,
@@ -1286,7 +1286,7 @@ class TransactionsApi:
     @validate_call
     def update_transaction_with_http_info(
         self,
-        transaction_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Transaction ID")],
+        transaction_id: Annotated[int, Field(le=9223372036854775807, strict=True, ge=1, description="Transaction ID")],
         update_transaction_request: UpdateTransactionRequest,
         _request_timeout: Union[
             None,
@@ -1360,7 +1360,7 @@ class TransactionsApi:
     @validate_call
     def update_transaction_without_preload_content(
         self,
-        transaction_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Transaction ID")],
+        transaction_id: Annotated[int, Field(le=9223372036854775807, strict=True, ge=1, description="Transaction ID")],
         update_transaction_request: UpdateTransactionRequest,
         _request_timeout: Union[
             None,

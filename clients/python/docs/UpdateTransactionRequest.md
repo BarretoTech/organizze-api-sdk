@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | ID of the Bank Account | [optional] 
+**id** | **int** | ID of the Transaction | [optional] 
 **description** | **str** |  | [optional] 
 **var_date** | **date** |  | [optional] 
 **paid** | **bool** |  | [optional] 
