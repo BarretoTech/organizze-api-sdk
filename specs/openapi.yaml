@@ -13,6 +13,7 @@ servers:
     description: Organizze API
 security:
   - basicAuth: []
+  - userAgent: []
 tags:
   - name: Bank Accounts
   - name: Categories
@@ -46,10 +47,14 @@ paths:
       responses:
         "201":
           $ref: "#/components/responses/ReadBankAccountResponse"
-        "404":
-          $ref: "#/components/responses/ItemNotFound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
         default:
           $ref: "#/components/responses/Unauthorized"
   /accounts/{bankAccountID}:
@@ -84,10 +89,14 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/ReadBankAccountResponse"
-        "404":
-          $ref: "#/components/responses/ItemNotFound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
         default:
           $ref: "#/components/responses/Unauthorized"
     delete:
@@ -131,10 +140,14 @@ paths:
       responses:
         "201":
           $ref: "#/components/responses/ReadCategoryResponse"
-        "404":
-          $ref: "#/components/responses/ItemNotFound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
         default:
           $ref: "#/components/responses/Unauthorized"
   /categories/{categoryID}:
@@ -166,10 +179,14 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/ReadCategoryResponse"
-        "404":
-          $ref: "#/components/responses/ItemNotFound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
         default:
           $ref: "#/components/responses/Unauthorized"
     delete:
@@ -245,10 +262,14 @@ paths:
       responses:
         "201":
           $ref: "#/components/responses/ReadCreditCardResponse"
-        "404":
-          $ref: "#/components/responses/ItemNotFound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
         default:
           $ref: "#/components/responses/Unauthorized"
   /credit_cards/{creditCardID}:
@@ -280,10 +301,14 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/ReadCreditCardResponse"
-        "404":
-          $ref: "#/components/responses/ItemNotFound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
         default:
           $ref: "#/components/responses/Unauthorized"
     delete:
@@ -384,10 +409,14 @@ paths:
       responses:
         "201":
           $ref: "#/components/responses/ReadTransactionResponse"
-        "404":
-          $ref: "#/components/responses/ItemNotFound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
         default:
           $ref: "#/components/responses/Unauthorized"
   /transactions/{transactionID}:
@@ -419,10 +448,14 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/ReadTransactionResponse"
-        "404":
-          $ref: "#/components/responses/ItemNotFound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
         default:
           $ref: "#/components/responses/Unauthorized"
     delete:
@@ -443,6 +476,56 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         default:
           $ref: "#/components/responses/Unauthorized"
+  /budgets:
+    get:
+      tags:
+        - Budgets
+      summary: Get Current Month Budgets
+      operationId: listCurrentMonthBudgets
+      responses:
+        "200":
+          $ref: "#/components/responses/ListBudgetsResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /budgets/{year}:
+    get:
+      tags:
+        - Budgets
+      summary: Get Annual Budgets
+      operationId: listAnnualBudgets
+      parameters:
+        - $ref: "#/components/parameters/Year"
+      responses:
+        "200":
+          $ref: "#/components/responses/ListBudgetsResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
+  /budgets/{year}/{month}:
+    get:
+      tags:
+        - Budgets
+      summary: Get Monthly Budgets
+      operationId: listMonthlyBudgets
+      parameters:
+        - $ref: "#/components/parameters/Year"
+        - $ref: "#/components/parameters/Month"
+      responses:
+        "200":
+          $ref: "#/components/responses/ListBudgetsResponse"
+        "404":
+          $ref: "#/components/responses/ItemNotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        default:
+          $ref: "#/components/responses/Unauthorized"
 components:
   securitySchemes:
     basicAuth:
@@ -451,6 +534,13 @@ components:
       description: >-
         The username is your email. The password you can generate at [this
         link](https://app.organizze.com.br/configuracoes/api-keys)
+    userAgent:
+      type: apiKey
+      in: header
+      name: User-Agent
+      description: >-
+        Required header with format: 'ApplicationName (email@example.com)'.
+        Omitting this header returns 400 Bad Request.
   schemas:
     Transaction:
       title: Transaction
@@ -483,6 +573,11 @@ components:
           format: int32
           minimum: 1
           maximum: 2147483647
+        installment:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
         recurring:
           type: boolean
         account_id:
@@ -491,6 +586,11 @@ components:
           format: int32
           minimum: 1
           maximum: 2147483647
+        account_type:
+          type: string
+          enum:
+            - Account
+            - CreditCard
         category_id:
           type: integer
           format: int32
@@ -964,6 +1064,46 @@ components:
         credit_card_id: 1287765
         transactions: []
         payments: []
+    Budget:
+      title: Budget
+      type: object
+      additionalProperties: false
+      properties:
+        amount_in_cents:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+        category_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        date:
+          type: string
+          format: date
+          pattern: ^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$
+          minLength: 10
+          maxLength: 10
+        activity_type:
+          type: integer
+          format: int32
+        total:
+          type: integer
+          format: int32
+        predicted_total:
+          type: integer
+          format: int32
+        percentage:
+          type: string
+      example:
+        amount_in_cents: 150000
+        category_id: 17
+        date: "2018-08-01"
+        activity_type: 0
+        total: 0
+        predicted_total: 0
+        percentage: "0.0"
   parameters:
     StartDate:
       name: start_date
@@ -1063,6 +1203,28 @@ components:
         minimum: 1
         maximum: 2147483647
         example: 1
+    Year:
+      in: path
+      name: year
+      required: true
+      description: Year (YYYY)
+      schema:
+        type: integer
+        format: int32
+        minimum: 1900
+        maximum: 2100
+        example: 2018
+    Month:
+      in: path
+      name: month
+      required: true
+      description: Month (1-12 or 01-12)
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 12
+        example: 8
   requestBodies:
     Transaction:
       required: true
@@ -1230,6 +1392,16 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/BankAccount"
+    ListBudgetsResponse:
+      description: List of Budgets
+      content:
+        application/json:
+          schema:
+            type: array
+            minItems: 0
+            maxItems: 100
+            items:
+              $ref: "#/components/schemas/Budget"
     ItemNotFound:
       description: Item Not Found
       content:
@@ -1267,3 +1439,31 @@ components:
             type: string
             enum: ["HTTP Basic: Access denied."]
             example: "HTTP Basic: Access denied."
+    UnprocessableEntity:
+      description: Validation errors
+      content:
+        application/json:
+          schema:
+            title: Validation Error
+            description: Validation failures
+            type: object
+            additionalProperties: true
+            properties:
+              errors:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string
+            example:
+              id: null
+              name: null
+              errors:
+                name: ["não pode estar em branco"]
+    BadRequest:
+      description: Bad request (e.g., missing User-Agent header)
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: "Bad Request"
