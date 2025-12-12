@@ -548,11 +548,11 @@ components:
       additionalProperties: false
       properties:
         id:
-          description: ID of the Bank Account
+          description: ID of the Transaction
           type: integer
-          format: int32
+          format: int64
           minimum: 1
-          maximum: 2147483647
+          maximum: 9223372036854775807
         description:
           type: string
         date:
@@ -630,9 +630,9 @@ components:
           nullable: true
         oposite_transaction_id:
           type: integer
-          format: int32
+          format: int64
           minimum: 1
-          maximum: 2147483647
+          maximum: 9223372036854775807
           nullable: true
         oposite_account_id:
           description: ID of the Bank Account
@@ -818,7 +818,7 @@ components:
           type: string
           minLength: 6
           maxLength: 6
-          pattern: ^[a-f0-9]{6}$
+          pattern: ^[a-fA-F0-9]{6}$
         group_id:
           type: string
         fixed:
@@ -964,19 +964,15 @@ components:
         amount_cents:
           type: integer
           format: int32
-          minimum: 0
         payment_amount_cents:
           type: integer
           format: int32
-          minimum: 0
         balance_cents:
           type: integer
           format: int32
-          minimum: 0
         previous_balance_cents:
           type: integer
           format: int32
-          minimum: 0
         credit_card_id:
           type: integer
           format: int32
@@ -1022,19 +1018,15 @@ components:
         amount_cents:
           type: integer
           format: int32
-          minimum: 0
         payment_amount_cents:
           type: integer
           format: int32
-          minimum: 0
         balance_cents:
           type: integer
           format: int32
-          minimum: 0
         previous_balance_cents:
           type: integer
           format: int32
-          minimum: 0
         credit_card_id:
           type: integer
           format: int32
@@ -1144,9 +1136,9 @@ components:
       description: Transaction ID
       schema:
         type: integer
-        format: int32
+        format: int64
         minimum: 1
-        maximum: 2147483647
+        maximum: 9223372036854775807
         example: 1
     CreditCardID:
       in: path
