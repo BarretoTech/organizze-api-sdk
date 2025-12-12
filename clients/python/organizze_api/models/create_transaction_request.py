@@ -20,7 +20,7 @@ from typing import Any, List, Optional
 from organizze_api.models.installment_transaction import InstallmentTransaction
 from organizze_api.models.recurring_transaction import RecurringTransaction
 from organizze_api.models.transaction import Transaction
-from pydantic import StrictStr, Field
+from pydantic import StrictStr, Field, field_validator
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
