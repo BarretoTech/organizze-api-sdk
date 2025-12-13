@@ -12,6 +12,7 @@ Do not edit the class manually.
 """  # noqa: E501
 
 from setuptools import setup, find_packages  # noqa: H301
+from pathlib import Path
 
 # To install the library, run the following
 #
@@ -19,8 +20,21 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
+
+
+# Read version from pyproject.toml (compatible with Python 3.9+)
+def get_version():
+    """Read version from pyproject.toml without requiring tomllib"""
+    pyproject_path = Path(__file__).parent / "pyproject.toml"
+    with open(pyproject_path, "r") as f:
+        for line in f:
+            if line.startswith("version ="):
+                return line.split("=")[1].strip().strip('"').strip("'")
+    return "0.0.0"
+
+
 NAME = "organizze_api"
-VERSION = "1.0.0"
+VERSION = get_version()
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [
     "urllib3 >= 2.1.0, < 3.0.0",
@@ -32,7 +46,7 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="Organizze API",
+    description="SDK to interface with the Organizze REST API",
     author="Rhuan Barreto",
     author_email="rhuan@barreto.work",
     url="https://pypi.org/project/organizze_api/",

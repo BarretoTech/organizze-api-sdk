@@ -16,3 +16,4 @@ LICENSE
 .github/workflows/
 README.md
 pyproject.toml
+setup.py
