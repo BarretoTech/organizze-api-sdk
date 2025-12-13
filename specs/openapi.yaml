@@ -662,6 +662,12 @@ components:
           maxItems: 100
           items:
             type: string
+        recurrence_id:
+          type: integer
+          format: int64
+          minimum: 1
+          maximum: 9223372036854775807
+          nullable: true
       example:
         id: 2477483422
         description: Despesa fixa
@@ -685,6 +691,7 @@ components:
         updated_at: "2023-04-08T12:32:16-03:00"
         tags: []
         attachments: []
+        recurrence_id: null
     RecurringTransaction:
       title: Recurring Transaction
       description: Recurring Transaction
@@ -767,9 +774,13 @@ components:
         institution_name:
           type: string
           maxLength: 10000
+          nullable: true
         description:
           type: string
           maxLength: 10000
+          nullable: true
+        kind:
+          type: string
           nullable: true
         archived:
           type: boolean
@@ -792,16 +803,17 @@ components:
             - savings
             - other
       example:
-        id: 6633003
-        name: Nubank Conta Corrente
-        institution_id: nuconta
-        institution_name: Nubank
+        id: 8706712
+        name: Conta Nubank
+        institution_id: nubank
+        institution_name: null
         description: null
+        kind: null
         archived: false
-        created_at: "2023-04-07T13:10:51-03:00"
-        updated_at: "2023-04-07T14:11:43-03:00"
+        created_at: "2025-05-20T07:49:44.000-03:00"
+        updated_at: "2025-12-13T16:46:01.000-03:00"
         default: false
-        type: checking
+        type: other
     Category:
       type: object
       additionalProperties: false
@@ -838,6 +850,7 @@ components:
           enum:
             - expenses
             - earnings
+            - none
         archived:
           type: boolean
       example:
@@ -866,15 +879,10 @@ components:
         email:
           type: string
           format: email
-        role:
-          type: string
-          enum:
-            - sheldon
       example:
         id: 4946248
         name: Rhuan Barreto
         email: test@test.com
-        role: sheldon
     CreditCard:
       title: Credit Card
       type: object
