@@ -19,25 +19,25 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, f
 from typing import Any, List, Optional
 from organizze_api.models.installment_transaction import InstallmentTransaction
 from organizze_api.models.recurring_transaction import RecurringTransaction
-from organizze_api.models.transaction import Transaction
+from organizze_api.models.transaction_input import TransactionInput
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-CREATETRANSACTIONREQUEST_ONE_OF_SCHEMAS = ["InstallmentTransaction", "RecurringTransaction", "Transaction"]
+CREATETRANSACTIONREQUEST_ONE_OF_SCHEMAS = ["InstallmentTransaction", "RecurringTransaction", "TransactionInput"]
 
 class CreateTransactionRequest(BaseModel):
     """
     CreateTransactionRequest
     """
-    # data type: Transaction
-    oneof_schema_1_validator: Optional[Transaction] = None
+    # data type: TransactionInput
+    oneof_schema_1_validator: Optional[TransactionInput] = None
     # data type: InstallmentTransaction
     oneof_schema_2_validator: Optional[InstallmentTransaction] = None
     # data type: RecurringTransaction
     oneof_schema_3_validator: Optional[RecurringTransaction] = None
-    actual_instance: Optional[Union[InstallmentTransaction, RecurringTransaction, Transaction]] = None
-    one_of_schemas: Set[str] = { "InstallmentTransaction", "RecurringTransaction", "Transaction" }
+    actual_instance: Optional[Union[InstallmentTransaction, RecurringTransaction, TransactionInput]] = None
+    one_of_schemas: Set[str] = { "InstallmentTransaction", "RecurringTransaction", "TransactionInput" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -60,9 +60,9 @@ class CreateTransactionRequest(BaseModel):
         instance = CreateTransactionRequest.model_construct()
         error_messages = []
         match = 0
-        # validate data type: Transaction
-        if not isinstance(v, Transaction):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Transaction`")
+        # validate data type: TransactionInput
+        if not isinstance(v, TransactionInput):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `TransactionInput`")
         else:
             match += 1
         # validate data type: InstallmentTransaction
@@ -77,10 +77,10 @@ class CreateTransactionRequest(BaseModel):
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in CreateTransactionRequest with oneOf schemas: InstallmentTransaction, RecurringTransaction, Transaction. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in CreateTransactionRequest with oneOf schemas: InstallmentTransaction, RecurringTransaction, TransactionInput. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in CreateTransactionRequest with oneOf schemas: InstallmentTransaction, RecurringTransaction, Transaction. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in CreateTransactionRequest with oneOf schemas: InstallmentTransaction, RecurringTransaction, TransactionInput. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -95,9 +95,9 @@ class CreateTransactionRequest(BaseModel):
         error_messages = []
         match = 0
 
-        # deserialize data into Transaction
+        # deserialize data into TransactionInput
         try:
-            instance.actual_instance = Transaction.from_json(json_str)
+            instance.actual_instance = TransactionInput.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -116,10 +116,10 @@ class CreateTransactionRequest(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into CreateTransactionRequest with oneOf schemas: InstallmentTransaction, RecurringTransaction, Transaction. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into CreateTransactionRequest with oneOf schemas: InstallmentTransaction, RecurringTransaction, TransactionInput. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into CreateTransactionRequest with oneOf schemas: InstallmentTransaction, RecurringTransaction, Transaction. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into CreateTransactionRequest with oneOf schemas: InstallmentTransaction, RecurringTransaction, TransactionInput. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -133,7 +133,7 @@ class CreateTransactionRequest(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], InstallmentTransaction, RecurringTransaction, Transaction]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], InstallmentTransaction, RecurringTransaction, TransactionInput]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create_bank_account**
-> BankAccount create_bank_account(bank_account)
+> BankAccount create_bank_account(bank_account_input)
 
 Create Bank Account
 
@@ -24,6 +24,7 @@ Create Bank Account
 ```python
 import organizze_api
 from organizze_api.models.bank_account import BankAccount
+from organizze_api.models.bank_account_input import BankAccountInput
 from organizze_api.rest import ApiException
 from pprint import pprint
 
@@ -54,11 +55,11 @@ configuration.api_key['userAgent'] = os.environ["API_KEY"]
 with organizze_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = organizze_api.BankAccountsApi(api_client)
-    bank_account = organizze_api.BankAccount() # BankAccount | 
+    bank_account_input = organizze_api.BankAccountInput() # BankAccountInput | 
 
     try:
         # Create Bank Account
-        api_response = api_instance.create_bank_account(bank_account)
+        api_response = api_instance.create_bank_account(bank_account_input)
         print("The response of BankAccountsApi->create_bank_account:\n")
         pprint(api_response)
     except Exception as e:
@@ -72,7 +73,7 @@ with organizze_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bank_account** | [**BankAccount**](BankAccount.md)|  | 
+ **bank_account_input** | [**BankAccountInput**](BankAccountInput.md)|  | 
 
 ### Return type
 
@@ -358,7 +359,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_bank_account**
-> BankAccount update_bank_account(bank_account_id, bank_account=bank_account)
+> BankAccount update_bank_account(bank_account_id, bank_account_input=bank_account_input)
 
 Update Bank Account
 
@@ -370,6 +371,7 @@ Update Bank Account
 ```python
 import organizze_api
 from organizze_api.models.bank_account import BankAccount
+from organizze_api.models.bank_account_input import BankAccountInput
 from organizze_api.rest import ApiException
 from pprint import pprint
 
@@ -401,11 +403,11 @@ with organizze_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = organizze_api.BankAccountsApi(api_client)
     bank_account_id = 1 # int | Bank Account ID
-    bank_account = organizze_api.BankAccount() # BankAccount |  (optional)
+    bank_account_input = organizze_api.BankAccountInput() # BankAccountInput |  (optional)
 
     try:
         # Update Bank Account
-        api_response = api_instance.update_bank_account(bank_account_id, bank_account=bank_account)
+        api_response = api_instance.update_bank_account(bank_account_id, bank_account_input=bank_account_input)
         print("The response of BankAccountsApi->update_bank_account:\n")
         pprint(api_response)
     except Exception as e:
@@ -420,7 +422,7 @@ with organizze_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bank_account_id** | **int**| Bank Account ID | 
- **bank_account** | [**BankAccount**](BankAccount.md)|  | [optional] 
+ **bank_account_input** | [**BankAccountInput**](BankAccountInput.md)|  | [optional] 
 
 ### Return type
 

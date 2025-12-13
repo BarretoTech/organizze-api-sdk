@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date, datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from datetime import date
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from organizze_api.models.tag import Tag
@@ -29,42 +29,18 @@ class UpdateTransactionRequest(BaseModel):
     """
     UpdateTransactionRequest
     """ # noqa: E501
-    id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]] = Field(default=None, description="ID of the Transaction")
-    description: Optional[StrictStr] = None
-    var_date: Optional[date] = Field(default=None, alias="date")
+    description: StrictStr
+    var_date: date = Field(alias="date")
     paid: Optional[StrictBool] = None
-    amount_cents: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483647)]] = None
-    total_installments: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    installment: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    recurring: Optional[StrictBool] = None
+    amount_cents: Annotated[int, Field(le=2147483647, strict=True, ge=-2147483647)]
     account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
-    account_type: Optional[StrictStr] = None
-    category_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
+    category_id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
     notes: Optional[StrictStr] = None
-    attachments_count: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=0)]] = None
     credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    paid_credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    paid_credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    oposite_transaction_id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]] = None
-    oposite_account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
     tags: Optional[Annotated[List[Tag], Field(min_length=0, max_length=100)]] = None
-    attachments: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]] = None
     update_future: Optional[StrictBool] = None
     update_all: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["id", "description", "date", "paid", "amount_cents", "total_installments", "installment", "recurring", "account_id", "account_type", "category_id", "notes", "attachments_count", "credit_card_id", "credit_card_invoice_id", "paid_credit_card_id", "paid_credit_card_invoice_id", "oposite_transaction_id", "oposite_account_id", "created_at", "updated_at", "tags", "attachments", "update_future", "update_all"]
-
-    @field_validator('account_type')
-    def account_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['Account', 'CreditCard']):
-            raise ValueError("must be one of enum values ('Account', 'CreditCard')")
-        return value
+    __properties: ClassVar[List[str]] = ["description", "date", "paid", "amount_cents", "account_id", "category_id", "notes", "credit_card_id", "tags", "update_future", "update_all"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -122,31 +98,6 @@ class UpdateTransactionRequest(BaseModel):
         if self.credit_card_id is None and "credit_card_id" in self.model_fields_set:
             _dict['credit_card_id'] = None
 
-        # set to None if credit_card_invoice_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.credit_card_invoice_id is None and "credit_card_invoice_id" in self.model_fields_set:
-            _dict['credit_card_invoice_id'] = None
-
-        # set to None if paid_credit_card_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.paid_credit_card_id is None and "paid_credit_card_id" in self.model_fields_set:
-            _dict['paid_credit_card_id'] = None
-
-        # set to None if paid_credit_card_invoice_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.paid_credit_card_invoice_id is None and "paid_credit_card_invoice_id" in self.model_fields_set:
-            _dict['paid_credit_card_invoice_id'] = None
-
-        # set to None if oposite_transaction_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.oposite_transaction_id is None and "oposite_transaction_id" in self.model_fields_set:
-            _dict['oposite_transaction_id'] = None
-
-        # set to None if oposite_account_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.oposite_account_id is None and "oposite_account_id" in self.model_fields_set:
-            _dict['oposite_account_id'] = None
-
         return _dict
 
     @classmethod
@@ -159,29 +110,15 @@ class UpdateTransactionRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
             "description": obj.get("description"),
             "date": obj.get("date"),
             "paid": obj.get("paid"),
             "amount_cents": obj.get("amount_cents"),
-            "total_installments": obj.get("total_installments"),
-            "installment": obj.get("installment"),
-            "recurring": obj.get("recurring"),
             "account_id": obj.get("account_id"),
-            "account_type": obj.get("account_type"),
             "category_id": obj.get("category_id"),
             "notes": obj.get("notes"),
-            "attachments_count": obj.get("attachments_count"),
             "credit_card_id": obj.get("credit_card_id"),
-            "credit_card_invoice_id": obj.get("credit_card_invoice_id"),
-            "paid_credit_card_id": obj.get("paid_credit_card_id"),
-            "paid_credit_card_invoice_id": obj.get("paid_credit_card_invoice_id"),
-            "oposite_transaction_id": obj.get("oposite_transaction_id"),
-            "oposite_account_id": obj.get("oposite_account_id"),
-            "created_at": obj.get("created_at"),
-            "updated_at": obj.get("updated_at"),
             "tags": [Tag.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
-            "attachments": obj.get("attachments"),
             "update_future": obj.get("update_future"),
             "update_all": obj.get("update_all")
         })

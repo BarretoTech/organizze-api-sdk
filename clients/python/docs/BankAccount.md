@@ -5,15 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | ID of the Bank Account | [optional] 
-**name** | **str** | Name of the Bank Account | [optional] 
-**institution_id** | **str** |  | [optional] 
-**institution_name** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**archived** | **bool** |  | [optional] 
-**created_at** | **datetime** |  | [optional] 
-**updated_at** | **datetime** |  | [optional] 
-**default** | **bool** |  | [optional] 
+**id** | **int** | ID of the Bank Account | 
+**name** | **str** | Name of the Bank Account | 
+**institution_id** | **str** |  | 
+**institution_name** | **str** |  | 
+**description** | **str** |  | 
+**kind** | **str** |  | [optional] 
+**archived** | **bool** |  | 
+**created_at** | **datetime** |  | 
+**updated_at** | **datetime** |  | 
+**default** | **bool** |  | 
 **type** | **str** |  | [optional] 
 
 ## Example

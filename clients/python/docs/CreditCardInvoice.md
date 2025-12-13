@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**var_date** | **date** |  | [optional] 
-**starting_date** | **date** |  | [optional] 
-**closing_date** | **date** |  | [optional] 
-**amount_cents** | **int** |  | [optional] 
-**payment_amount_cents** | **int** |  | [optional] 
-**balance_cents** | **int** |  | [optional] 
-**previous_balance_cents** | **int** |  | [optional] 
-**credit_card_id** | **int** |  | [optional] 
+**id** | **int** |  | 
+**var_date** | **date** |  | 
+**starting_date** | **date** |  | 
+**closing_date** | **date** |  | 
+**amount_cents** | **int** |  | 
+**payment_amount_cents** | **int** |  | 
+**balance_cents** | **int** |  | 
+**previous_balance_cents** | **int** |  | 
+**credit_card_id** | **int** |  | 
 
 ## Example
 

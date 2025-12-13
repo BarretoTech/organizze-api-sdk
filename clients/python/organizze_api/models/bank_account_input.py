@@ -17,38 +17,32 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class CreditCard(BaseModel):
+class BankAccountInput(BaseModel):
     """
-    CreditCard
+    Schema for creating or updating a bank account
     """ # noqa: E501
-    id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
-    name: StrictStr
-    description: Optional[StrictStr]
-    card_network: StrictStr
-    closing_day: Annotated[int, Field(le=31, strict=True, ge=1)]
-    due_day: Annotated[int, Field(le=31, strict=True, ge=1)]
-    limit_cents: Annotated[int, Field(strict=True, ge=0)]
-    archived: StrictBool
-    default: StrictBool
-    institution_id: StrictStr
-    institution_name: Optional[StrictStr]
-    created_at: datetime
-    updated_at: datetime
-    type: StrictStr
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "card_network", "closing_day", "due_day", "limit_cents", "archived", "default", "institution_id", "institution_name", "created_at", "updated_at", "type"]
+    name: Annotated[str, Field(strict=True, max_length=10000)] = Field(description="Name of the Bank Account")
+    institution_id: Optional[Annotated[str, Field(strict=True, max_length=10000)]] = None
+    description: Optional[Annotated[str, Field(strict=True, max_length=10000)]] = None
+    archived: Optional[StrictBool] = None
+    default: Optional[StrictBool] = None
+    type: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["name", "institution_id", "description", "archived", "default", "type"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['credit_card']):
-            raise ValueError("must be one of enum values ('credit_card')")
+        if value is None:
+            return value
+
+        if value not in set(['checking', 'savings', 'other']):
+            raise ValueError("must be one of enum values ('checking', 'savings', 'other')")
         return value
 
     model_config = ConfigDict(
@@ -69,7 +63,7 @@ class CreditCard(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CreditCard from a JSON string"""
+        """Create an instance of BankAccountInput from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -95,16 +89,11 @@ class CreditCard(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
-        # set to None if institution_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.institution_name is None and "institution_name" in self.model_fields_set:
-            _dict['institution_name'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CreditCard from a dict"""
+        """Create an instance of BankAccountInput from a dict"""
         if obj is None:
             return None
 
@@ -112,19 +101,11 @@ class CreditCard(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
             "name": obj.get("name"),
+            "institution_id": obj.get("institution_id"),
             "description": obj.get("description"),
-            "card_network": obj.get("card_network"),
-            "closing_day": obj.get("closing_day"),
-            "due_day": obj.get("due_day"),
-            "limit_cents": obj.get("limit_cents"),
             "archived": obj.get("archived"),
             "default": obj.get("default"),
-            "institution_id": obj.get("institution_id"),
-            "institution_name": obj.get("institution_name"),
-            "created_at": obj.get("created_at"),
-            "updated_at": obj.get("updated_at"),
             "type": obj.get("type")
         })
         return _obj

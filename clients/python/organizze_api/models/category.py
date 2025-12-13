@@ -27,25 +27,22 @@ class Category(BaseModel):
     """
     Category
     """ # noqa: E501
-    id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    name: Optional[StrictStr] = None
-    color: Optional[Annotated[str, Field(min_length=6, strict=True, max_length=6)]] = None
-    parent_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    group_id: Optional[StrictStr] = None
-    fixed: Optional[StrictBool] = None
-    essential: Optional[StrictBool] = None
-    default: Optional[StrictBool] = None
-    uuid: Optional[StrictStr] = None
-    kind: Optional[StrictStr] = None
-    archived: Optional[StrictBool] = None
+    id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
+    name: StrictStr
+    color: Annotated[str, Field(min_length=6, strict=True, max_length=6)]
+    parent_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]]
+    group_id: StrictStr
+    fixed: StrictBool
+    essential: StrictBool
+    default: StrictBool
+    uuid: StrictStr
+    kind: StrictStr
+    archived: StrictBool
     __properties: ClassVar[List[str]] = ["id", "name", "color", "parent_id", "group_id", "fixed", "essential", "default", "uuid", "kind", "archived"]
 
     @field_validator('color')
     def color_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if value is None:
-            return value
-
         if not re.match(r"^[a-fA-F0-9]{6}$", value):
             raise ValueError(r"must validate the regular expression /^[a-fA-F0-9]{6}$/")
         return value
@@ -53,11 +50,8 @@ class Category(BaseModel):
     @field_validator('kind')
     def kind_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['expenses', 'earnings']):
-            raise ValueError("must be one of enum values ('expenses', 'earnings')")
+        if value not in set(['expenses', 'earnings', 'none']):
+            raise ValueError("must be one of enum values ('expenses', 'earnings', 'none')")
         return value
 
     model_config = ConfigDict(

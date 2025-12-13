@@ -20,6 +20,7 @@ from pydantic import Field
 from typing import List, Optional
 from typing_extensions import Annotated
 from organizze_api.models.bank_account import BankAccount
+from organizze_api.models.bank_account_input import BankAccountInput
 
 from organizze_api.api_client import ApiClient, RequestSerialized
 from organizze_api.api_response import ApiResponse
@@ -42,7 +43,7 @@ class BankAccountsApi:
     @validate_call
     def create_bank_account(
         self,
-        bank_account: BankAccount,
+        bank_account_input: BankAccountInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,8 +60,8 @@ class BankAccountsApi:
         """Create Bank Account
 
 
-        :param bank_account: (required)
-        :type bank_account: BankAccount
+        :param bank_account_input: (required)
+        :type bank_account_input: BankAccountInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +85,7 @@ class BankAccountsApi:
         """ # noqa: E501
 
         _param = self._create_bank_account_serialize(
-            bank_account=bank_account,
+            bank_account_input=bank_account_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -112,7 +113,7 @@ class BankAccountsApi:
     @validate_call
     def create_bank_account_with_http_info(
         self,
-        bank_account: BankAccount,
+        bank_account_input: BankAccountInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,8 +130,8 @@ class BankAccountsApi:
         """Create Bank Account
 
 
-        :param bank_account: (required)
-        :type bank_account: BankAccount
+        :param bank_account_input: (required)
+        :type bank_account_input: BankAccountInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -154,7 +155,7 @@ class BankAccountsApi:
         """ # noqa: E501
 
         _param = self._create_bank_account_serialize(
-            bank_account=bank_account,
+            bank_account_input=bank_account_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -182,7 +183,7 @@ class BankAccountsApi:
     @validate_call
     def create_bank_account_without_preload_content(
         self,
-        bank_account: BankAccount,
+        bank_account_input: BankAccountInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -199,8 +200,8 @@ class BankAccountsApi:
         """Create Bank Account
 
 
-        :param bank_account: (required)
-        :type bank_account: BankAccount
+        :param bank_account_input: (required)
+        :type bank_account_input: BankAccountInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -224,7 +225,7 @@ class BankAccountsApi:
         """ # noqa: E501
 
         _param = self._create_bank_account_serialize(
-            bank_account=bank_account,
+            bank_account_input=bank_account_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -247,7 +248,7 @@ class BankAccountsApi:
 
     def _create_bank_account_serialize(
         self,
-        bank_account,
+        bank_account_input,
         _request_auth,
         _content_type,
         _headers,
@@ -273,8 +274,8 @@ class BankAccountsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bank_account is not None:
-            _body_params = bank_account
+        if bank_account_input is not None:
+            _body_params = bank_account_input
 
 
         # set the HTTP header `Accept`
@@ -1112,7 +1113,7 @@ class BankAccountsApi:
     def update_bank_account(
         self,
         bank_account_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Bank Account ID")],
-        bank_account: Optional[BankAccount] = None,
+        bank_account_input: Optional[BankAccountInput] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1131,8 +1132,8 @@ class BankAccountsApi:
 
         :param bank_account_id: Bank Account ID (required)
         :type bank_account_id: int
-        :param bank_account:
-        :type bank_account: BankAccount
+        :param bank_account_input:
+        :type bank_account_input: BankAccountInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1157,7 +1158,7 @@ class BankAccountsApi:
 
         _param = self._update_bank_account_serialize(
             bank_account_id=bank_account_id,
-            bank_account=bank_account,
+            bank_account_input=bank_account_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1186,7 +1187,7 @@ class BankAccountsApi:
     def update_bank_account_with_http_info(
         self,
         bank_account_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Bank Account ID")],
-        bank_account: Optional[BankAccount] = None,
+        bank_account_input: Optional[BankAccountInput] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1205,8 +1206,8 @@ class BankAccountsApi:
 
         :param bank_account_id: Bank Account ID (required)
         :type bank_account_id: int
-        :param bank_account:
-        :type bank_account: BankAccount
+        :param bank_account_input:
+        :type bank_account_input: BankAccountInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1231,7 +1232,7 @@ class BankAccountsApi:
 
         _param = self._update_bank_account_serialize(
             bank_account_id=bank_account_id,
-            bank_account=bank_account,
+            bank_account_input=bank_account_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1260,7 +1261,7 @@ class BankAccountsApi:
     def update_bank_account_without_preload_content(
         self,
         bank_account_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Bank Account ID")],
-        bank_account: Optional[BankAccount] = None,
+        bank_account_input: Optional[BankAccountInput] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1279,8 +1280,8 @@ class BankAccountsApi:
 
         :param bank_account_id: Bank Account ID (required)
         :type bank_account_id: int
-        :param bank_account:
-        :type bank_account: BankAccount
+        :param bank_account_input:
+        :type bank_account_input: BankAccountInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1305,7 +1306,7 @@ class BankAccountsApi:
 
         _param = self._update_bank_account_serialize(
             bank_account_id=bank_account_id,
-            bank_account=bank_account,
+            bank_account_input=bank_account_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1329,7 +1330,7 @@ class BankAccountsApi:
     def _update_bank_account_serialize(
         self,
         bank_account_id,
-        bank_account,
+        bank_account_input,
         _request_auth,
         _content_type,
         _headers,
@@ -1357,8 +1358,8 @@ class BankAccountsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bank_account is not None:
-            _body_params = bank_account
+        if bank_account_input is not None:
+            _body_params = bank_account_input
 
 
         # set the HTTP header `Accept`

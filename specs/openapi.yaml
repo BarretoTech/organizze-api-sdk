@@ -83,7 +83,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/BankAccount"
+              $ref: "#/components/schemas/BankAccountInput"
       parameters:
         - $ref: "#/components/parameters/BankAccountID"
       responses:
@@ -546,6 +546,30 @@ components:
       title: Transaction
       type: object
       additionalProperties: false
+      required:
+        - id
+        - description
+        - date
+        - paid
+        - amount_cents
+        - total_installments
+        - installment
+        - recurring
+        - account_id
+        - category_id
+        - notes
+        - attachments_count
+        - credit_card_id
+        - credit_card_invoice_id
+        - paid_credit_card_id
+        - paid_credit_card_invoice_id
+        - oposite_transaction_id
+        - oposite_account_id
+        - created_at
+        - updated_at
+        - tags
+        - attachments
+        - recurrence_id
       properties:
         id:
           description: ID of the Transaction
@@ -585,11 +609,6 @@ components:
           format: int32
           minimum: 1
           maximum: 2147483647
-        account_type:
-          type: string
-          enum:
-            - Account
-            - CreditCard
         category_id:
           type: integer
           format: int32
@@ -651,11 +670,15 @@ components:
           minLength: 20
           maxLength: 29
         tags:
-          type: array
-          minItems: 0
-          maxItems: 100
-          items:
-            $ref: "#/components/schemas/Tag"
+          oneOf:
+            - type: string
+              description: Empty string when returned in invoice transactions
+            - type: array
+              minItems: 0
+              maxItems: 100
+              items:
+                $ref: "#/components/schemas/Tag"
+              description: Array of tags when returned in transaction list/detail endpoints
         attachments:
           type: array
           minItems: 0
@@ -692,6 +715,66 @@ components:
         tags: []
         attachments: []
         recurrence_id: null
+    TransactionInput:
+      title: Transaction Input
+      description: Schema for creating a transaction
+      type: object
+      additionalProperties: false
+      required:
+        - description
+        - date
+        - amount_cents
+        - category_id
+      properties:
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+          minLength: 10
+          maxLength: 10
+        paid:
+          type: boolean
+        amount_cents:
+          type: integer
+          format: int32
+          minimum: -2147483647
+          maximum: 2147483647
+        account_id:
+          description: ID of the Bank Account
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        category_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+        notes:
+          type: string
+          nullable: true
+        credit_card_id:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 2147483647
+          nullable: true
+        tags:
+          type: array
+          minItems: 0
+          maxItems: 100
+          items:
+            $ref: "#/components/schemas/Tag"
+      example:
+        description: Despesa fixa
+        date: "2015-09-16"
+        paid: true
+        amount_cents: 0
+        account_id: 6632818
+        category_id: 120321159
+        notes: Pagamento via boleto
+        tags: []
     RecurringTransaction:
       title: Recurring Transaction
       description: Recurring Transaction
@@ -757,6 +840,16 @@ components:
       title: Bank Account
       type: object
       additionalProperties: false
+      required:
+        - id
+        - name
+        - institution_id
+        - institution_name
+        - description
+        - archived
+        - created_at
+        - updated_at
+        - default
       properties:
         id:
           description: ID of the Bank Account
@@ -798,6 +891,7 @@ components:
           type: boolean
         type:
           type: string
+          nullable: true
           enum:
             - checking
             - savings
@@ -814,9 +908,57 @@ components:
         updated_at: "2025-12-13T16:46:01.000-03:00"
         default: false
         type: other
+    BankAccountInput:
+      title: Bank Account Input
+      description: Schema for creating or updating a bank account
+      type: object
+      additionalProperties: false
+      required:
+        - name
+      properties:
+        name:
+          description: Name of the Bank Account
+          type: string
+          maxLength: 10000
+        institution_id:
+          type: string
+          maxLength: 10000
+        description:
+          type: string
+          maxLength: 10000
+          nullable: true
+        archived:
+          type: boolean
+        default:
+          type: boolean
+        type:
+          type: string
+          enum:
+            - checking
+            - savings
+            - other
+      example:
+        name: Conta Nubank
+        institution_id: nubank
+        description: null
+        archived: false
+        default: false
+        type: other
     Category:
       type: object
       additionalProperties: false
+      required:
+        - id
+        - name
+        - color
+        - parent_id
+        - group_id
+        - fixed
+        - essential
+        - default
+        - uuid
+        - kind
+        - archived
       properties:
         id:
           type: integer
@@ -865,9 +1007,47 @@ components:
         uuid: 5c2bbbc42a5bf8b4faa558cfeb55cec93b6f40ca
         kind: expenses
         archived: false
+    CategoryInput:
+      title: Category Input
+      description: Schema for creating or updating a category
+      type: object
+      additionalProperties: false
+      required:
+        - name
+        - color
+      properties:
+        name:
+          type: string
+        color:
+          type: string
+          minLength: 6
+          maxLength: 6
+          pattern: ^[a-fA-F0-9]{6}$
+        parent_id:
+          type: integer
+          nullable: true
+          minimum: 1
+          maximum: 2147483647
+        group_id:
+          type: string
+        fixed:
+          type: boolean
+        essential:
+          type: boolean
+      example:
+        name: Bares e restaurantes
+        color: "626491"
+        parent_id: null
+        group_id: bars_and_restaurants
+        fixed: false
+        essential: false
     User:
       type: object
       additionalProperties: false
+      required:
+        - id
+        - name
+        - email
       properties:
         id:
           type: integer
@@ -887,6 +1067,21 @@ components:
       title: Credit Card
       type: object
       additionalProperties: false
+      required:
+        - id
+        - name
+        - description
+        - card_network
+        - closing_day
+        - due_day
+        - limit_cents
+        - archived
+        - default
+        - institution_id
+        - institution_name
+        - created_at
+        - updated_at
+        - type
       properties:
         id:
           type: integer
@@ -952,10 +1147,67 @@ components:
         created_at: "2023-04-07T11:36:48-03:00"
         updated_at: "2023-04-07T13:12:06-03:00"
         type: credit_card
+    CreditCardInput:
+      title: Credit Card Input
+      description: Schema for creating or updating a credit card
+      type: object
+      additionalProperties: false
+      required:
+        - name
+        - closing_day
+        - due_day
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        card_network:
+          type: string
+        closing_day:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 31
+        due_day:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 31
+        limit_cents:
+          type: integer
+          format: int32
+          minimum: 0
+        archived:
+          type: boolean
+        default:
+          type: boolean
+        institution_id:
+          type: string
+      example:
+        name: Nubank
+        description: null
+        card_network: default
+        closing_day: 8
+        due_day: 15
+        limit_cents: 1965000
+        archived: false
+        default: false
+        institution_id: default
     CreditCardInvoice:
       title: Credit Card Invoice
       type: object
       additionalProperties: false
+      required:
+        - id
+        - date
+        - starting_date
+        - closing_date
+        - amount_cents
+        - payment_amount_cents
+        - balance_cents
+        - previous_balance_cents
+        - credit_card_id
       properties:
         id:
           type: integer
@@ -1007,6 +1259,18 @@ components:
     CreditCardInvoiceFull:
       type: object
       additionalProperties: false
+      required:
+        - id
+        - date
+        - starting_date
+        - closing_date
+        - amount_cents
+        - payment_amount_cents
+        - balance_cents
+        - previous_balance_cents
+        - credit_card_id
+        - transactions
+        - payments
       properties:
         id:
           type: integer
@@ -1243,7 +1507,7 @@ components:
         application/json:
           schema:
             oneOf:
-              - $ref: "#/components/schemas/Transaction"
+              - $ref: "#/components/schemas/TransactionInput"
               - $ref: "#/components/schemas/InstallmentTransaction"
               - $ref: "#/components/schemas/RecurringTransaction"
     RecurringTransaction:
@@ -1258,7 +1522,7 @@ components:
         application/json:
           schema:
             allOf:
-              - $ref: "#/components/schemas/Transaction"
+              - $ref: "#/components/schemas/TransactionInput"
               - type: object
                 additionalProperties: false
                 properties:
@@ -1283,19 +1547,19 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/BankAccount"
+            $ref: "#/components/schemas/BankAccountInput"
     Category:
       required: true
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Category"
+            $ref: "#/components/schemas/CategoryInput"
     CreditCard:
       required: true
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/CreditCard"
+            $ref: "#/components/schemas/CreditCardInput"
   responses:
     ReadTransactionResponse:
       description: Transaction

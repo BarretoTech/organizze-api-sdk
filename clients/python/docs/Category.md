@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**name** | **str** |  | [optional] 
-**color** | **str** |  | [optional] 
-**parent_id** | **int** |  | [optional] 
-**group_id** | **str** |  | [optional] 
-**fixed** | **bool** |  | [optional] 
-**essential** | **bool** |  | [optional] 
-**default** | **bool** |  | [optional] 
-**uuid** | **str** |  | [optional] 
-**kind** | **str** |  | [optional] 
-**archived** | **bool** |  | [optional] 
+**id** | **int** |  | 
+**name** | **str** |  | 
+**color** | **str** |  | 
+**parent_id** | **int** |  | 
+**group_id** | **str** |  | 
+**fixed** | **bool** |  | 
+**essential** | **bool** |  | 
+**default** | **bool** |  | 
+**uuid** | **str** |  | 
+**kind** | **str** |  | 
+**archived** | **bool** |  | 
 
 ## Example
 

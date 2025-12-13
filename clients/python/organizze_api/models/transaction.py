@@ -18,10 +18,10 @@ import re  # noqa: F401
 import json
 
 from datetime import date, datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from organizze_api.models.tag import Tag
+from organizze_api.models.transaction_tags import TransactionTags
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,40 +29,30 @@ class Transaction(BaseModel):
     """
     Transaction
     """ # noqa: E501
-    id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]] = Field(default=None, description="ID of the Transaction")
-    description: Optional[StrictStr] = None
-    var_date: Optional[date] = Field(default=None, alias="date")
-    paid: Optional[StrictBool] = None
-    amount_cents: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483647)]] = None
-    total_installments: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    installment: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    recurring: Optional[StrictBool] = None
-    account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
-    account_type: Optional[StrictStr] = None
-    category_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    notes: Optional[StrictStr] = None
-    attachments_count: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=0)]] = None
-    credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    paid_credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    paid_credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    oposite_transaction_id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]] = None
-    oposite_account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
-    tags: Optional[Annotated[List[Tag], Field(min_length=0, max_length=100)]] = None
-    attachments: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]] = None
-    __properties: ClassVar[List[str]] = ["id", "description", "date", "paid", "amount_cents", "total_installments", "installment", "recurring", "account_id", "account_type", "category_id", "notes", "attachments_count", "credit_card_id", "credit_card_invoice_id", "paid_credit_card_id", "paid_credit_card_invoice_id", "oposite_transaction_id", "oposite_account_id", "created_at", "updated_at", "tags", "attachments"]
-
-    @field_validator('account_type')
-    def account_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['Account', 'CreditCard']):
-            raise ValueError("must be one of enum values ('Account', 'CreditCard')")
-        return value
+    id: Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)] = Field(description="ID of the Transaction")
+    description: StrictStr
+    var_date: date = Field(alias="date")
+    paid: StrictBool
+    amount_cents: Annotated[int, Field(le=2147483647, strict=True, ge=-2147483647)]
+    total_installments: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
+    installment: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
+    recurring: StrictBool
+    account_id: Annotated[int, Field(le=2147483647, strict=True, ge=1)] = Field(description="ID of the Bank Account")
+    category_id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
+    notes: Optional[StrictStr]
+    attachments_count: Annotated[int, Field(le=2147483647, strict=True, ge=0)]
+    credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]]
+    credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]]
+    paid_credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]]
+    paid_credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]]
+    oposite_transaction_id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]]
+    oposite_account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(description="ID of the Bank Account")
+    created_at: datetime
+    updated_at: datetime
+    tags: TransactionTags
+    attachments: Annotated[List[StrictStr], Field(min_length=0, max_length=100)]
+    recurrence_id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]]
+    __properties: ClassVar[List[str]] = ["id", "description", "date", "paid", "amount_cents", "total_installments", "installment", "recurring", "account_id", "category_id", "notes", "attachments_count", "credit_card_id", "credit_card_invoice_id", "paid_credit_card_id", "paid_credit_card_invoice_id", "oposite_transaction_id", "oposite_account_id", "created_at", "updated_at", "tags", "attachments", "recurrence_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,13 +93,9 @@ class Transaction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of tags
         if self.tags:
-            for _item_tags in self.tags:
-                if _item_tags:
-                    _items.append(_item_tags.to_dict())
-            _dict['tags'] = _items
+            _dict['tags'] = self.tags.to_dict()
         # set to None if notes (nullable) is None
         # and model_fields_set contains the field
         if self.notes is None and "notes" in self.model_fields_set:
@@ -145,6 +131,11 @@ class Transaction(BaseModel):
         if self.oposite_account_id is None and "oposite_account_id" in self.model_fields_set:
             _dict['oposite_account_id'] = None
 
+        # set to None if recurrence_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.recurrence_id is None and "recurrence_id" in self.model_fields_set:
+            _dict['recurrence_id'] = None
+
         return _dict
 
     @classmethod
@@ -166,7 +157,6 @@ class Transaction(BaseModel):
             "installment": obj.get("installment"),
             "recurring": obj.get("recurring"),
             "account_id": obj.get("account_id"),
-            "account_type": obj.get("account_type"),
             "category_id": obj.get("category_id"),
             "notes": obj.get("notes"),
             "attachments_count": obj.get("attachments_count"),
@@ -178,8 +168,9 @@ class Transaction(BaseModel):
             "oposite_account_id": obj.get("oposite_account_id"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),
-            "tags": [Tag.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
-            "attachments": obj.get("attachments")
+            "tags": TransactionTags.from_dict(obj["tags"]) if obj.get("tags") is not None else None,
+            "attachments": obj.get("attachments"),
+            "recurrence_id": obj.get("recurrence_id")
         })
         return _obj
 

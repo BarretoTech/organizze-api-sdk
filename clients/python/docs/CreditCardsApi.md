@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **create_credit_card**
-> CreditCard create_credit_card(credit_card)
+> CreditCard create_credit_card(credit_card_input)
 
 Create Credit Card
 
@@ -27,6 +27,7 @@ Create Credit Card
 ```python
 import organizze_api
 from organizze_api.models.credit_card import CreditCard
+from organizze_api.models.credit_card_input import CreditCardInput
 from organizze_api.rest import ApiException
 from pprint import pprint
 
@@ -57,11 +58,11 @@ configuration.api_key['userAgent'] = os.environ["API_KEY"]
 with organizze_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = organizze_api.CreditCardsApi(api_client)
-    credit_card = organizze_api.CreditCard() # CreditCard | 
+    credit_card_input = organizze_api.CreditCardInput() # CreditCardInput | 
 
     try:
         # Create Credit Card
-        api_response = api_instance.create_credit_card(credit_card)
+        api_response = api_instance.create_credit_card(credit_card_input)
         print("The response of CreditCardsApi->create_credit_card:\n")
         pprint(api_response)
     except Exception as e:
@@ -75,7 +76,7 @@ with organizze_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **credit_card** | [**CreditCard**](CreditCard.md)|  | 
+ **credit_card_input** | [**CreditCardInput**](CreditCardInput.md)|  | 
 
 ### Return type
 
@@ -626,7 +627,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_credit_card**
-> CreditCard update_credit_card(credit_card_id, credit_card)
+> CreditCard update_credit_card(credit_card_id, credit_card_input)
 
 Update Credit Card
 
@@ -638,6 +639,7 @@ Update Credit Card
 ```python
 import organizze_api
 from organizze_api.models.credit_card import CreditCard
+from organizze_api.models.credit_card_input import CreditCardInput
 from organizze_api.rest import ApiException
 from pprint import pprint
 
@@ -669,11 +671,11 @@ with organizze_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = organizze_api.CreditCardsApi(api_client)
     credit_card_id = 1 # int | Credit Card ID
-    credit_card = organizze_api.CreditCard() # CreditCard | 
+    credit_card_input = organizze_api.CreditCardInput() # CreditCardInput | 
 
     try:
         # Update Credit Card
-        api_response = api_instance.update_credit_card(credit_card_id, credit_card)
+        api_response = api_instance.update_credit_card(credit_card_id, credit_card_input)
         print("The response of CreditCardsApi->update_credit_card:\n")
         pprint(api_response)
     except Exception as e:
@@ -688,7 +690,7 @@ with organizze_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **credit_card_id** | **int**| Credit Card ID | 
- **credit_card** | [**CreditCard**](CreditCard.md)|  | 
+ **credit_card_input** | [**CreditCardInput**](CreditCardInput.md)|  | 
 
 ### Return type
 

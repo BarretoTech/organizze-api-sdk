@@ -34,10 +34,13 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "BankAccount",
+    "BankAccountInput",
     "Budget",
     "Category",
+    "CategoryInput",
     "CreateTransactionRequest",
     "CreditCard",
+    "CreditCardInput",
     "CreditCardInvoice",
     "CreditCardInvoiceFull",
     "DeleteTransactionRequest",
@@ -49,6 +52,8 @@ __all__ = [
     "RecurringTransactionAllOfRecurrenceAttributes",
     "Tag",
     "Transaction",
+    "TransactionInput",
+    "TransactionTags",
     "UpdateTransactionRequest",
     "User",
     "ValidationError",
@@ -75,10 +80,13 @@ from organizze_api.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from organizze_api.models.bank_account import BankAccount as BankAccount
+from organizze_api.models.bank_account_input import BankAccountInput as BankAccountInput
 from organizze_api.models.budget import Budget as Budget
 from organizze_api.models.category import Category as Category
+from organizze_api.models.category_input import CategoryInput as CategoryInput
 from organizze_api.models.create_transaction_request import CreateTransactionRequest as CreateTransactionRequest
 from organizze_api.models.credit_card import CreditCard as CreditCard
+from organizze_api.models.credit_card_input import CreditCardInput as CreditCardInput
 from organizze_api.models.credit_card_invoice import CreditCardInvoice as CreditCardInvoice
 from organizze_api.models.credit_card_invoice_full import CreditCardInvoiceFull as CreditCardInvoiceFull
 from organizze_api.models.delete_transaction_request import DeleteTransactionRequest as DeleteTransactionRequest
@@ -90,6 +98,8 @@ from organizze_api.models.recurring_transaction import RecurringTransaction as R
 from organizze_api.models.recurring_transaction_all_of_recurrence_attributes import RecurringTransactionAllOfRecurrenceAttributes as RecurringTransactionAllOfRecurrenceAttributes
 from organizze_api.models.tag import Tag as Tag
 from organizze_api.models.transaction import Transaction as Transaction
+from organizze_api.models.transaction_input import TransactionInput as TransactionInput
+from organizze_api.models.transaction_tags import TransactionTags as TransactionTags
 from organizze_api.models.update_transaction_request import UpdateTransactionRequest as UpdateTransactionRequest
 from organizze_api.models.user import User as User
 from organizze_api.models.validation_error import ValidationError as ValidationError

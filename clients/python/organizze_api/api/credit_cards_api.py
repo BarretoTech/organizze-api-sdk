@@ -20,6 +20,7 @@ from pydantic import Field
 from typing import List
 from typing_extensions import Annotated
 from organizze_api.models.credit_card import CreditCard
+from organizze_api.models.credit_card_input import CreditCardInput
 from organizze_api.models.credit_card_invoice import CreditCardInvoice
 from organizze_api.models.credit_card_invoice_full import CreditCardInvoiceFull
 from organizze_api.models.transaction import Transaction
@@ -45,7 +46,7 @@ class CreditCardsApi:
     @validate_call
     def create_credit_card(
         self,
-        credit_card: CreditCard,
+        credit_card_input: CreditCardInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,8 +63,8 @@ class CreditCardsApi:
         """Create Credit Card
 
 
-        :param credit_card: (required)
-        :type credit_card: CreditCard
+        :param credit_card_input: (required)
+        :type credit_card_input: CreditCardInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,7 +88,7 @@ class CreditCardsApi:
         """ # noqa: E501
 
         _param = self._create_credit_card_serialize(
-            credit_card=credit_card,
+            credit_card_input=credit_card_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -115,7 +116,7 @@ class CreditCardsApi:
     @validate_call
     def create_credit_card_with_http_info(
         self,
-        credit_card: CreditCard,
+        credit_card_input: CreditCardInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,8 +133,8 @@ class CreditCardsApi:
         """Create Credit Card
 
 
-        :param credit_card: (required)
-        :type credit_card: CreditCard
+        :param credit_card_input: (required)
+        :type credit_card_input: CreditCardInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -157,7 +158,7 @@ class CreditCardsApi:
         """ # noqa: E501
 
         _param = self._create_credit_card_serialize(
-            credit_card=credit_card,
+            credit_card_input=credit_card_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -185,7 +186,7 @@ class CreditCardsApi:
     @validate_call
     def create_credit_card_without_preload_content(
         self,
-        credit_card: CreditCard,
+        credit_card_input: CreditCardInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -202,8 +203,8 @@ class CreditCardsApi:
         """Create Credit Card
 
 
-        :param credit_card: (required)
-        :type credit_card: CreditCard
+        :param credit_card_input: (required)
+        :type credit_card_input: CreditCardInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -227,7 +228,7 @@ class CreditCardsApi:
         """ # noqa: E501
 
         _param = self._create_credit_card_serialize(
-            credit_card=credit_card,
+            credit_card_input=credit_card_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -250,7 +251,7 @@ class CreditCardsApi:
 
     def _create_credit_card_serialize(
         self,
-        credit_card,
+        credit_card_input,
         _request_auth,
         _content_type,
         _headers,
@@ -276,8 +277,8 @@ class CreditCardsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if credit_card is not None:
-            _body_params = credit_card
+        if credit_card_input is not None:
+            _body_params = credit_card_input
 
 
         # set the HTTP header `Accept`
@@ -1943,7 +1944,7 @@ class CreditCardsApi:
     def update_credit_card(
         self,
         credit_card_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Credit Card ID")],
-        credit_card: CreditCard,
+        credit_card_input: CreditCardInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1962,8 +1963,8 @@ class CreditCardsApi:
 
         :param credit_card_id: Credit Card ID (required)
         :type credit_card_id: int
-        :param credit_card: (required)
-        :type credit_card: CreditCard
+        :param credit_card_input: (required)
+        :type credit_card_input: CreditCardInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1988,7 +1989,7 @@ class CreditCardsApi:
 
         _param = self._update_credit_card_serialize(
             credit_card_id=credit_card_id,
-            credit_card=credit_card,
+            credit_card_input=credit_card_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2017,7 +2018,7 @@ class CreditCardsApi:
     def update_credit_card_with_http_info(
         self,
         credit_card_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Credit Card ID")],
-        credit_card: CreditCard,
+        credit_card_input: CreditCardInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2036,8 +2037,8 @@ class CreditCardsApi:
 
         :param credit_card_id: Credit Card ID (required)
         :type credit_card_id: int
-        :param credit_card: (required)
-        :type credit_card: CreditCard
+        :param credit_card_input: (required)
+        :type credit_card_input: CreditCardInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2062,7 +2063,7 @@ class CreditCardsApi:
 
         _param = self._update_credit_card_serialize(
             credit_card_id=credit_card_id,
-            credit_card=credit_card,
+            credit_card_input=credit_card_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2091,7 +2092,7 @@ class CreditCardsApi:
     def update_credit_card_without_preload_content(
         self,
         credit_card_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Credit Card ID")],
-        credit_card: CreditCard,
+        credit_card_input: CreditCardInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2110,8 +2111,8 @@ class CreditCardsApi:
 
         :param credit_card_id: Credit Card ID (required)
         :type credit_card_id: int
-        :param credit_card: (required)
-        :type credit_card: CreditCard
+        :param credit_card_input: (required)
+        :type credit_card_input: CreditCardInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2136,7 +2137,7 @@ class CreditCardsApi:
 
         _param = self._update_credit_card_serialize(
             credit_card_id=credit_card_id,
-            credit_card=credit_card,
+            credit_card_input=credit_card_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2160,7 +2161,7 @@ class CreditCardsApi:
     def _update_credit_card_serialize(
         self,
         credit_card_id,
-        credit_card,
+        credit_card_input,
         _request_auth,
         _content_type,
         _headers,
@@ -2188,8 +2189,8 @@ class CreditCardsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if credit_card is not None:
-            _body_params = credit_card
+        if credit_card_input is not None:
+            _body_params = credit_card_input
 
 
         # set the HTTP header `Accept`

@@ -5,20 +5,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**name** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**card_network** | **str** |  | [optional] 
-**closing_day** | **int** |  | [optional] 
-**due_day** | **int** |  | [optional] 
-**limit_cents** | **int** |  | [optional] 
-**archived** | **bool** |  | [optional] 
-**default** | **bool** |  | [optional] 
-**institution_id** | **str** |  | [optional] 
-**institution_name** | **str** |  | [optional] 
-**created_at** | **datetime** |  | [optional] 
-**updated_at** | **datetime** |  | [optional] 
-**type** | **str** |  | [optional] 
+**id** | **int** |  | 
+**name** | **str** |  | 
+**description** | **str** |  | 
+**card_network** | **str** |  | 
+**closing_day** | **int** |  | 
+**due_day** | **int** |  | 
+**limit_cents** | **int** |  | 
+**archived** | **bool** |  | 
+**default** | **bool** |  | 
+**institution_id** | **str** |  | 
+**institution_name** | **str** |  | 
+**created_at** | **datetime** |  | 
+**updated_at** | **datetime** |  | 
+**type** | **str** |  | 
 
 ## Example
 

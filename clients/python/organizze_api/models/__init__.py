@@ -14,10 +14,13 @@
 
 # import models into model package
 from organizze_api.models.bank_account import BankAccount
+from organizze_api.models.bank_account_input import BankAccountInput
 from organizze_api.models.budget import Budget
 from organizze_api.models.category import Category
+from organizze_api.models.category_input import CategoryInput
 from organizze_api.models.create_transaction_request import CreateTransactionRequest
 from organizze_api.models.credit_card import CreditCard
+from organizze_api.models.credit_card_input import CreditCardInput
 from organizze_api.models.credit_card_invoice import CreditCardInvoice
 from organizze_api.models.credit_card_invoice_full import CreditCardInvoiceFull
 from organizze_api.models.delete_transaction_request import DeleteTransactionRequest
@@ -29,6 +32,8 @@ from organizze_api.models.recurring_transaction import RecurringTransaction
 from organizze_api.models.recurring_transaction_all_of_recurrence_attributes import RecurringTransactionAllOfRecurrenceAttributes
 from organizze_api.models.tag import Tag
 from organizze_api.models.transaction import Transaction
+from organizze_api.models.transaction_input import TransactionInput
+from organizze_api.models.transaction_tags import TransactionTags
 from organizze_api.models.update_transaction_request import UpdateTransactionRequest
 from organizze_api.models.user import User
 from organizze_api.models.validation_error import ValidationError

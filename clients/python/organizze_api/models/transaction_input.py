@@ -17,39 +17,28 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from datetime import date
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from organizze_api.models.tag import Tag
 from typing import Optional, Set
 from typing_extensions import Self
 
-class CreditCard(BaseModel):
+class TransactionInput(BaseModel):
     """
-    CreditCard
+    Schema for creating a transaction
     """ # noqa: E501
-    id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
-    name: StrictStr
-    description: Optional[StrictStr]
-    card_network: StrictStr
-    closing_day: Annotated[int, Field(le=31, strict=True, ge=1)]
-    due_day: Annotated[int, Field(le=31, strict=True, ge=1)]
-    limit_cents: Annotated[int, Field(strict=True, ge=0)]
-    archived: StrictBool
-    default: StrictBool
-    institution_id: StrictStr
-    institution_name: Optional[StrictStr]
-    created_at: datetime
-    updated_at: datetime
-    type: StrictStr
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "card_network", "closing_day", "due_day", "limit_cents", "archived", "default", "institution_id", "institution_name", "created_at", "updated_at", "type"]
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['credit_card']):
-            raise ValueError("must be one of enum values ('credit_card')")
-        return value
+    description: StrictStr
+    var_date: date = Field(alias="date")
+    paid: Optional[StrictBool] = None
+    amount_cents: Annotated[int, Field(le=2147483647, strict=True, ge=-2147483647)]
+    account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
+    category_id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
+    notes: Optional[StrictStr] = None
+    credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
+    tags: Optional[Annotated[List[Tag], Field(min_length=0, max_length=100)]] = None
+    __properties: ClassVar[List[str]] = ["description", "date", "paid", "amount_cents", "account_id", "category_id", "notes", "credit_card_id", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,7 +58,7 @@ class CreditCard(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CreditCard from a JSON string"""
+        """Create an instance of TransactionInput from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -90,21 +79,28 @@ class CreditCard(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if description (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
+        _items = []
+        if self.tags:
+            for _item_tags in self.tags:
+                if _item_tags:
+                    _items.append(_item_tags.to_dict())
+            _dict['tags'] = _items
+        # set to None if notes (nullable) is None
         # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
-            _dict['description'] = None
+        if self.notes is None and "notes" in self.model_fields_set:
+            _dict['notes'] = None
 
-        # set to None if institution_name (nullable) is None
+        # set to None if credit_card_id (nullable) is None
         # and model_fields_set contains the field
-        if self.institution_name is None and "institution_name" in self.model_fields_set:
-            _dict['institution_name'] = None
+        if self.credit_card_id is None and "credit_card_id" in self.model_fields_set:
+            _dict['credit_card_id'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CreditCard from a dict"""
+        """Create an instance of TransactionInput from a dict"""
         if obj is None:
             return None
 
@@ -112,20 +108,15 @@ class CreditCard(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
             "description": obj.get("description"),
-            "card_network": obj.get("card_network"),
-            "closing_day": obj.get("closing_day"),
-            "due_day": obj.get("due_day"),
-            "limit_cents": obj.get("limit_cents"),
-            "archived": obj.get("archived"),
-            "default": obj.get("default"),
-            "institution_id": obj.get("institution_id"),
-            "institution_name": obj.get("institution_name"),
-            "created_at": obj.get("created_at"),
-            "updated_at": obj.get("updated_at"),
-            "type": obj.get("type")
+            "date": obj.get("date"),
+            "paid": obj.get("paid"),
+            "amount_cents": obj.get("amount_cents"),
+            "account_id": obj.get("account_id"),
+            "category_id": obj.get("category_id"),
+            "notes": obj.get("notes"),
+            "credit_card_id": obj.get("credit_card_id"),
+            "tags": [Tag.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None
         })
         return _obj
 

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create_category**
-> Category create_category(category)
+> Category create_category(category_input)
 
 Create Category
 
@@ -24,6 +24,7 @@ Create Category
 ```python
 import organizze_api
 from organizze_api.models.category import Category
+from organizze_api.models.category_input import CategoryInput
 from organizze_api.rest import ApiException
 from pprint import pprint
 
@@ -54,11 +55,11 @@ configuration.api_key['userAgent'] = os.environ["API_KEY"]
 with organizze_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = organizze_api.CategoriesApi(api_client)
-    category = organizze_api.Category() # Category | 
+    category_input = organizze_api.CategoryInput() # CategoryInput | 
 
     try:
         # Create Category
-        api_response = api_instance.create_category(category)
+        api_response = api_instance.create_category(category_input)
         print("The response of CategoriesApi->create_category:\n")
         pprint(api_response)
     except Exception as e:
@@ -72,7 +73,7 @@ with organizze_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **category** | [**Category**](Category.md)|  | 
+ **category_input** | [**CategoryInput**](CategoryInput.md)|  | 
 
 ### Return type
 
@@ -358,7 +359,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_category**
-> Category update_category(category_id, category)
+> Category update_category(category_id, category_input)
 
 Update Category
 
@@ -370,6 +371,7 @@ Update Category
 ```python
 import organizze_api
 from organizze_api.models.category import Category
+from organizze_api.models.category_input import CategoryInput
 from organizze_api.rest import ApiException
 from pprint import pprint
 
@@ -401,11 +403,11 @@ with organizze_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = organizze_api.CategoriesApi(api_client)
     category_id = 1 # int | Category ID
-    category = organizze_api.Category() # Category | 
+    category_input = organizze_api.CategoryInput() # CategoryInput | 
 
     try:
         # Update Category
-        api_response = api_instance.update_category(category_id, category)
+        api_response = api_instance.update_category(category_id, category_input)
         print("The response of CategoriesApi->update_category:\n")
         pprint(api_response)
     except Exception as e:
@@ -420,7 +422,7 @@ with organizze_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **category_id** | **int**| Category ID | 
- **category** | [**Category**](Category.md)|  | 
+ **category_input** | [**CategoryInput**](CategoryInput.md)|  | 
 
 ### Return type
 

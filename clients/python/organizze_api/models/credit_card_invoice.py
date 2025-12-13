@@ -19,7 +19,7 @@ import json
 
 from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,15 +28,15 @@ class CreditCardInvoice(BaseModel):
     """
     CreditCardInvoice
     """ # noqa: E501
-    id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    var_date: Optional[date] = Field(default=None, alias="date")
-    starting_date: Optional[date] = None
-    closing_date: Optional[date] = None
-    amount_cents: Optional[StrictInt] = None
-    payment_amount_cents: Optional[StrictInt] = None
-    balance_cents: Optional[StrictInt] = None
-    previous_balance_cents: Optional[StrictInt] = None
-    credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
+    id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
+    var_date: date = Field(alias="date")
+    starting_date: date
+    closing_date: date
+    amount_cents: StrictInt
+    payment_amount_cents: StrictInt
+    balance_cents: StrictInt
+    previous_balance_cents: StrictInt
+    credit_card_id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
     __properties: ClassVar[List[str]] = ["id", "date", "starting_date", "closing_date", "amount_cents", "payment_amount_cents", "balance_cents", "previous_balance_cents", "credit_card_id"]
 
     model_config = ConfigDict(

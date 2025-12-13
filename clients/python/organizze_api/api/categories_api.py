@@ -20,6 +20,7 @@ from pydantic import Field
 from typing import List
 from typing_extensions import Annotated
 from organizze_api.models.category import Category
+from organizze_api.models.category_input import CategoryInput
 
 from organizze_api.api_client import ApiClient, RequestSerialized
 from organizze_api.api_response import ApiResponse
@@ -42,7 +43,7 @@ class CategoriesApi:
     @validate_call
     def create_category(
         self,
-        category: Category,
+        category_input: CategoryInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,8 +60,8 @@ class CategoriesApi:
         """Create Category
 
 
-        :param category: (required)
-        :type category: Category
+        :param category_input: (required)
+        :type category_input: CategoryInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +85,7 @@ class CategoriesApi:
         """ # noqa: E501
 
         _param = self._create_category_serialize(
-            category=category,
+            category_input=category_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -112,7 +113,7 @@ class CategoriesApi:
     @validate_call
     def create_category_with_http_info(
         self,
-        category: Category,
+        category_input: CategoryInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,8 +130,8 @@ class CategoriesApi:
         """Create Category
 
 
-        :param category: (required)
-        :type category: Category
+        :param category_input: (required)
+        :type category_input: CategoryInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -154,7 +155,7 @@ class CategoriesApi:
         """ # noqa: E501
 
         _param = self._create_category_serialize(
-            category=category,
+            category_input=category_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -182,7 +183,7 @@ class CategoriesApi:
     @validate_call
     def create_category_without_preload_content(
         self,
-        category: Category,
+        category_input: CategoryInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -199,8 +200,8 @@ class CategoriesApi:
         """Create Category
 
 
-        :param category: (required)
-        :type category: Category
+        :param category_input: (required)
+        :type category_input: CategoryInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -224,7 +225,7 @@ class CategoriesApi:
         """ # noqa: E501
 
         _param = self._create_category_serialize(
-            category=category,
+            category_input=category_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -247,7 +248,7 @@ class CategoriesApi:
 
     def _create_category_serialize(
         self,
-        category,
+        category_input,
         _request_auth,
         _content_type,
         _headers,
@@ -273,8 +274,8 @@ class CategoriesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if category is not None:
-            _body_params = category
+        if category_input is not None:
+            _body_params = category_input
 
 
         # set the HTTP header `Accept`
@@ -1112,7 +1113,7 @@ class CategoriesApi:
     def update_category(
         self,
         category_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Category ID")],
-        category: Category,
+        category_input: CategoryInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1131,8 +1132,8 @@ class CategoriesApi:
 
         :param category_id: Category ID (required)
         :type category_id: int
-        :param category: (required)
-        :type category: Category
+        :param category_input: (required)
+        :type category_input: CategoryInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1157,7 +1158,7 @@ class CategoriesApi:
 
         _param = self._update_category_serialize(
             category_id=category_id,
-            category=category,
+            category_input=category_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1186,7 +1187,7 @@ class CategoriesApi:
     def update_category_with_http_info(
         self,
         category_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Category ID")],
-        category: Category,
+        category_input: CategoryInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1205,8 +1206,8 @@ class CategoriesApi:
 
         :param category_id: Category ID (required)
         :type category_id: int
-        :param category: (required)
-        :type category: Category
+        :param category_input: (required)
+        :type category_input: CategoryInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1231,7 +1232,7 @@ class CategoriesApi:
 
         _param = self._update_category_serialize(
             category_id=category_id,
-            category=category,
+            category_input=category_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1260,7 +1261,7 @@ class CategoriesApi:
     def update_category_without_preload_content(
         self,
         category_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Category ID")],
-        category: Category,
+        category_input: CategoryInput,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1279,8 +1280,8 @@ class CategoriesApi:
 
         :param category_id: Category ID (required)
         :type category_id: int
-        :param category: (required)
-        :type category: Category
+        :param category_input: (required)
+        :type category_input: CategoryInput
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1305,7 +1306,7 @@ class CategoriesApi:
 
         _param = self._update_category_serialize(
             category_id=category_id,
-            category=category,
+            category_input=category_input,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1329,7 +1330,7 @@ class CategoriesApi:
     def _update_category_serialize(
         self,
         category_id,
-        category,
+        category_input,
         _request_auth,
         _content_type,
         _headers,
@@ -1357,8 +1358,8 @@ class CategoriesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if category is not None:
-            _body_params = category
+        if category_input is not None:
+            _body_params = category_input
 
 
         # set the HTTP header `Accept`

@@ -28,17 +28,18 @@ class BankAccount(BaseModel):
     """
     BankAccount
     """ # noqa: E501
-    id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
-    name: Optional[Annotated[str, Field(strict=True, max_length=10000)]] = Field(default=None, description="Name of the Bank Account")
-    institution_id: Optional[Annotated[str, Field(strict=True, max_length=10000)]] = None
-    institution_name: Optional[Annotated[str, Field(strict=True, max_length=10000)]] = None
-    description: Optional[Annotated[str, Field(strict=True, max_length=10000)]] = None
-    archived: Optional[StrictBool] = None
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
-    default: Optional[StrictBool] = None
+    id: Annotated[int, Field(le=2147483647, strict=True, ge=1)] = Field(description="ID of the Bank Account")
+    name: Annotated[str, Field(strict=True, max_length=10000)] = Field(description="Name of the Bank Account")
+    institution_id: Annotated[str, Field(strict=True, max_length=10000)]
+    institution_name: Optional[Annotated[str, Field(strict=True, max_length=10000)]]
+    description: Optional[Annotated[str, Field(strict=True, max_length=10000)]]
+    kind: Optional[StrictStr] = None
+    archived: StrictBool
+    created_at: datetime
+    updated_at: datetime
+    default: StrictBool
     type: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "institution_id", "institution_name", "description", "archived", "created_at", "updated_at", "default", "type"]
+    __properties: ClassVar[List[str]] = ["id", "name", "institution_id", "institution_name", "description", "kind", "archived", "created_at", "updated_at", "default", "type"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -89,10 +90,25 @@ class BankAccount(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if institution_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.institution_name is None and "institution_name" in self.model_fields_set:
+            _dict['institution_name'] = None
+
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
+
+        # set to None if kind (nullable) is None
+        # and model_fields_set contains the field
+        if self.kind is None and "kind" in self.model_fields_set:
+            _dict['kind'] = None
+
+        # set to None if type (nullable) is None
+        # and model_fields_set contains the field
+        if self.type is None and "type" in self.model_fields_set:
+            _dict['type'] = None
 
         return _dict
 
@@ -111,6 +127,7 @@ class BankAccount(BaseModel):
             "institution_id": obj.get("institution_id"),
             "institution_name": obj.get("institution_name"),
             "description": obj.get("description"),
+            "kind": obj.get("kind"),
             "archived": obj.get("archived"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),

@@ -1,12 +1,15 @@
 .gitignore
 docs/BankAccount.md
+docs/BankAccountInput.md
 docs/BankAccountsApi.md
 docs/Budget.md
 docs/BudgetsApi.md
 docs/CategoriesApi.md
 docs/Category.md
+docs/CategoryInput.md
 docs/CreateTransactionRequest.md
 docs/CreditCard.md
+docs/CreditCardInput.md
 docs/CreditCardInvoice.md
 docs/CreditCardInvoiceFull.md
 docs/CreditCardsApi.md
@@ -19,6 +22,8 @@ docs/RecurringTransaction.md
 docs/RecurringTransactionAllOfRecurrenceAttributes.md
 docs/Tag.md
 docs/Transaction.md
+docs/TransactionInput.md
+docs/TransactionTags.md
 docs/TransactionsApi.md
 docs/UpdateTransactionRequest.md
 docs/User.md
@@ -38,10 +43,13 @@ organizze_api/configuration.py
 organizze_api/exceptions.py
 organizze_api/models/__init__.py
 organizze_api/models/bank_account.py
+organizze_api/models/bank_account_input.py
 organizze_api/models/budget.py
 organizze_api/models/category.py
+organizze_api/models/category_input.py
 organizze_api/models/create_transaction_request.py
 organizze_api/models/credit_card.py
+organizze_api/models/credit_card_input.py
 organizze_api/models/credit_card_invoice.py
 organizze_api/models/credit_card_invoice_full.py
 organizze_api/models/delete_transaction_request.py
@@ -53,6 +61,8 @@ organizze_api/models/recurring_transaction.py
 organizze_api/models/recurring_transaction_all_of_recurrence_attributes.py
 organizze_api/models/tag.py
 organizze_api/models/transaction.py
+organizze_api/models/transaction_input.py
+organizze_api/models/transaction_tags.py
 organizze_api/models/update_transaction_request.py
 organizze_api/models/user.py
 organizze_api/models/validation_error.py
@@ -62,3 +72,4 @@ requirements.txt
 setup.cfg
 test-requirements.txt
 test/__init__.py
+test/test_transaction_tags.py

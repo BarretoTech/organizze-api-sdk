@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,21 +27,10 @@ class User(BaseModel):
     """
     User
     """ # noqa: E501
-    id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    name: Optional[StrictStr] = None
-    email: Optional[StrictStr] = None
-    role: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "email", "role"]
-
-    @field_validator('role')
-    def role_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['sheldon']):
-            raise ValueError("must be one of enum values ('sheldon')")
-        return value
+    id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
+    name: StrictStr
+    email: StrictStr
+    __properties: ClassVar[List[str]] = ["id", "name", "email"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,8 +85,7 @@ class User(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
-            "email": obj.get("email"),
-            "role": obj.get("role")
+            "email": obj.get("email")
         })
         return _obj
 

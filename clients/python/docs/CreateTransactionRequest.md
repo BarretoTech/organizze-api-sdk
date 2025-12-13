@@ -5,29 +5,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | ID of the Transaction | [optional] 
 **description** | **str** |  | 
 **var_date** | **date** |  | 
-**paid** | **bool** |  | [optional] 
-**amount_cents** | **int** |  | [optional] 
-**total_installments** | **int** |  | [optional] 
-**installment** | **int** |  | [optional] 
-**recurring** | **bool** |  | [optional] 
-**account_id** | **int** | ID of the Bank Account | [optional] 
-**account_type** | **str** |  | [optional] 
-**category_id** | **int** |  | [optional] 
+**paid** | **bool** |  | 
+**amount_cents** | **int** |  | 
+**account_id** | **int** | ID of the Bank Account | 
+**category_id** | **int** |  | 
 **notes** | **str** |  | 
-**attachments_count** | **int** |  | [optional] 
-**credit_card_id** | **int** |  | [optional] 
-**credit_card_invoice_id** | **int** |  | [optional] 
-**paid_credit_card_id** | **int** |  | [optional] 
-**paid_credit_card_invoice_id** | **int** |  | [optional] 
-**oposite_transaction_id** | **int** |  | [optional] 
-**oposite_account_id** | **int** | ID of the Bank Account | [optional] 
-**created_at** | **datetime** |  | [optional] 
-**updated_at** | **datetime** |  | [optional] 
-**tags** | [**List[Tag]**](Tag.md) |  | [optional] 
-**attachments** | **List[str]** |  | [optional] 
+**credit_card_id** | **int** |  | 
+**tags** | [**TransactionTags**](TransactionTags.md) |  | 
+**id** | **int** | ID of the Transaction | 
+**total_installments** | **int** |  | 
+**installment** | **int** |  | 
+**recurring** | **bool** |  | 
+**attachments_count** | **int** |  | 
+**credit_card_invoice_id** | **int** |  | 
+**paid_credit_card_id** | **int** |  | 
+**paid_credit_card_invoice_id** | **int** |  | 
+**oposite_transaction_id** | **int** |  | 
+**oposite_account_id** | **int** | ID of the Bank Account | 
+**created_at** | **datetime** |  | 
+**updated_at** | **datetime** |  | 
+**attachments** | **List[str]** |  | 
+**recurrence_id** | **int** |  | 
 **installments_attributes** | [**InstallmentTransactionAllOfInstallmentsAttributes**](InstallmentTransactionAllOfInstallmentsAttributes.md) |  | [optional] 
 **recurrence_attributes** | [**RecurringTransactionAllOfRecurrenceAttributes**](RecurringTransactionAllOfRecurrenceAttributes.md) |  | 
 

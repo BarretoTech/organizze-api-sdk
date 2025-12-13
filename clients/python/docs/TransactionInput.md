@@ -1,5 +1,6 @@
-# UpdateTransactionRequest
+# TransactionInput
 
+Schema for creating a transaction
 
 ## Properties
 
@@ -14,25 +15,23 @@ Name | Type | Description | Notes
 **notes** | **str** |  | [optional] 
 **credit_card_id** | **int** |  | [optional] 
 **tags** | [**List[Tag]**](Tag.md) |  | [optional] 
-**update_future** | **bool** |  | [optional] 
-**update_all** | **bool** |  | [optional] 
 
 ## Example
 
 ```python
-from organizze_api.models.update_transaction_request import UpdateTransactionRequest
+from organizze_api.models.transaction_input import TransactionInput
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of UpdateTransactionRequest from a JSON string
-update_transaction_request_instance = UpdateTransactionRequest.from_json(json)
+# create an instance of TransactionInput from a JSON string
+transaction_input_instance = TransactionInput.from_json(json)
 # print the JSON string representation of the object
-print(UpdateTransactionRequest.to_json())
+print(TransactionInput.to_json())
 
 # convert the object into a dict
-update_transaction_request_dict = update_transaction_request_instance.to_dict()
-# create an instance of UpdateTransactionRequest from a dict
-update_transaction_request_from_dict = UpdateTransactionRequest.from_dict(update_transaction_request_dict)
+transaction_input_dict = transaction_input_instance.to_dict()
+# create an instance of TransactionInput from a dict
+transaction_input_from_dict = TransactionInput.from_dict(transaction_input_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
