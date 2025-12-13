@@ -655,7 +655,7 @@ components:
           minItems: 0
           maxItems: 100
           items:
-            type: string
+            $ref: "#/components/schemas/Tag"
         attachments:
           type: array
           minItems: 0
@@ -1088,6 +1088,15 @@ components:
         total: 0
         predicted_total: 0
         percentage: "0.0"
+    Tag:
+      title: Tag
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+      example:
+        name: "expenses"
   parameters:
     StartDate:
       name: start_date

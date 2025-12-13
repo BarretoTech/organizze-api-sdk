@@ -27,6 +27,7 @@ from organizze_api.models.installment_transaction_all_of_installments_attributes
 from organizze_api.models.not_found import NotFound
 from organizze_api.models.recurring_transaction import RecurringTransaction
 from organizze_api.models.recurring_transaction_all_of_recurrence_attributes import RecurringTransactionAllOfRecurrenceAttributes
+from organizze_api.models.tag import Tag
 from organizze_api.models.transaction import Transaction
 from organizze_api.models.update_transaction_request import UpdateTransactionRequest
 from organizze_api.models.user import User

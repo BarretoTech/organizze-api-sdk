@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from organizze_api.models.installment_transaction_all_of_installments_attributes import InstallmentTransactionAllOfInstallmentsAttributes
+from organizze_api.models.tag import Tag
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -50,7 +51,7 @@ class InstallmentTransaction(BaseModel):
     oposite_account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
-    tags: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]] = None
+    tags: Optional[Annotated[List[Tag], Field(min_length=0, max_length=100)]] = None
     attachments: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]] = None
     installments_attributes: Optional[InstallmentTransactionAllOfInstallmentsAttributes] = None
     __properties: ClassVar[List[str]] = ["id", "description", "date", "paid", "amount_cents", "total_installments", "installment", "recurring", "account_id", "account_type", "category_id", "notes", "attachments_count", "credit_card_id", "credit_card_invoice_id", "paid_credit_card_id", "paid_credit_card_invoice_id", "oposite_transaction_id", "oposite_account_id", "created_at", "updated_at", "tags", "attachments", "installments_attributes"]
@@ -104,6 +105,13 @@ class InstallmentTransaction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
+        _items = []
+        if self.tags:
+            for _item_tags in self.tags:
+                if _item_tags:
+                    _items.append(_item_tags.to_dict())
+            _dict['tags'] = _items
         # override the default output from pydantic by calling `to_dict()` of installments_attributes
         if self.installments_attributes:
             _dict['installments_attributes'] = self.installments_attributes.to_dict()
@@ -175,7 +183,7 @@ class InstallmentTransaction(BaseModel):
             "oposite_account_id": obj.get("oposite_account_id"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),
-            "tags": obj.get("tags"),
+            "tags": [Tag.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
             "attachments": obj.get("attachments"),
             "installments_attributes": InstallmentTransactionAllOfInstallmentsAttributes.from_dict(obj["installments_attributes"]) if obj.get("installments_attributes") is not None else None
         })

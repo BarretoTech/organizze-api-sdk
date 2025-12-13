@@ -21,6 +21,7 @@ from datetime import date, datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from organizze_api.models.tag import Tag
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -49,7 +50,7 @@ class UpdateTransactionRequest(BaseModel):
     oposite_account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
-    tags: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]] = None
+    tags: Optional[Annotated[List[Tag], Field(min_length=0, max_length=100)]] = None
     attachments: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]] = None
     update_future: Optional[StrictBool] = None
     update_all: Optional[StrictBool] = None
@@ -104,6 +105,13 @@ class UpdateTransactionRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
+        _items = []
+        if self.tags:
+            for _item_tags in self.tags:
+                if _item_tags:
+                    _items.append(_item_tags.to_dict())
+            _dict['tags'] = _items
         # set to None if notes (nullable) is None
         # and model_fields_set contains the field
         if self.notes is None and "notes" in self.model_fields_set:
@@ -172,7 +180,7 @@ class UpdateTransactionRequest(BaseModel):
             "oposite_account_id": obj.get("oposite_account_id"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),
-            "tags": obj.get("tags"),
+            "tags": [Tag.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
             "attachments": obj.get("attachments"),
             "update_future": obj.get("update_future"),
             "update_all": obj.get("update_all")

@@ -13,8 +13,10 @@
 
 
 import unittest
+import datetime
 
 from organizze_api.models.transaction import Transaction
+from organizze_api.models.tag import Tag
 
 class TestTransaction(unittest.TestCase):
     """Transaction unit test stubs"""
@@ -30,13 +32,10 @@ class TestTransaction(unittest.TestCase):
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Transaction`
-        """
-        model = Transaction()
         if include_optional:
             return Transaction(
                 id = 1,
-                description = '',
+                description = 'Test transaction',
                 var_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
                 paid = True,
                 amount_cents = -2147483647,
@@ -46,7 +45,7 @@ class TestTransaction(unittest.TestCase):
                 account_id = 1,
                 account_type = 'Account',
                 category_id = 1,
-                notes = '',
+                notes = 'Test notes',
                 attachments_count = 0,
                 credit_card_id = 1,
                 credit_card_invoice_id = 1,
@@ -54,24 +53,84 @@ class TestTransaction(unittest.TestCase):
                 paid_credit_card_invoice_id = 1,
                 oposite_transaction_id = 1,
                 oposite_account_id = 1,
-                created_at = '-8072i_0408 20012345678910111213141516171819',
-                updated_at = '-8072i_0408 20012345678910111213141516171819',
+                created_at = datetime.datetime.now(),
+                updated_at = datetime.datetime.now(),
                 tags = [
-                    ''
-                    ],
-                attachments = [
-                    ''
-                    ]
+                    Tag(name='expenses'),
+                    Tag(name='groceries')
+                ],
+                attachments = []
             )
         else:
-            return Transaction(
-        )
-        """
+            return Transaction()
 
     def testTransaction(self):
         """Test Transaction"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        self.make_instance(include_optional=False)
+        self.make_instance(include_optional=True)
+
+    def testTransactionWithTags(self):
+        """Test Transaction with Tag objects"""
+        tag1 = Tag(name="expenses")
+        tag2 = Tag(name="groceries")
+
+        transaction = Transaction(
+            description="Supermarket purchase",
+            tags=[tag1, tag2]
+        )
+
+        self.assertIsNotNone(transaction.tags)
+        self.assertEqual(len(transaction.tags), 2)
+        self.assertEqual(transaction.tags[0].name, "expenses")
+        self.assertEqual(transaction.tags[1].name, "groceries")
+
+    def testTransactionFromDictWithTags(self):
+        """Test Transaction deserialization with tags as objects (API format)"""
+        transaction_dict = {
+            "id": 2477483422,
+            "description": "Despesa fixa",
+            "date": "2015-09-16",
+            "paid": True,
+            "amount_cents": 0,
+            "total_installments": 1,
+            "installment": 1,
+            "recurring": False,
+            "account_id": 6632818,
+            "category_id": 120321159,
+            "notes": "Pagamento via boleto",
+            "attachments_count": 0,
+            "tags": [
+                {"name": "expenses"},
+                {"name": "recurring"}
+            ],
+            "attachments": []
+        }
+
+        transaction = Transaction.from_dict(transaction_dict)
+
+        self.assertIsNotNone(transaction)
+        self.assertIsNotNone(transaction.tags)
+        self.assertEqual(len(transaction.tags), 2)
+        self.assertIsInstance(transaction.tags[0], Tag)
+        self.assertEqual(transaction.tags[0].name, "expenses")
+        self.assertEqual(transaction.tags[1].name, "recurring")
+
+    def testTransactionToDict(self):
+        """Test Transaction serialization with tags"""
+        tag1 = Tag(name="expenses")
+        tag2 = Tag(name="groceries")
+
+        transaction = Transaction(
+            description="Test transaction",
+            tags=[tag1, tag2]
+        )
+
+        transaction_dict = transaction.to_dict()
+
+        self.assertIn("tags", transaction_dict)
+        self.assertEqual(len(transaction_dict["tags"]), 2)
+        self.assertEqual(transaction_dict["tags"][0]["name"], "expenses")
+        self.assertEqual(transaction_dict["tags"][1]["name"], "groceries")
 
 if __name__ == '__main__':
     unittest.main()

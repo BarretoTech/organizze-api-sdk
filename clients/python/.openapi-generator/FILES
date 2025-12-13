@@ -1,5 +1,4 @@
 .gitignore
-README.md
 docs/BankAccount.md
 docs/BankAccountsApi.md
 docs/Budget.md
@@ -18,6 +17,7 @@ docs/InstallmentTransactionAllOfInstallmentsAttributes.md
 docs/NotFound.md
 docs/RecurringTransaction.md
 docs/RecurringTransactionAllOfRecurrenceAttributes.md
+docs/Tag.md
 docs/Transaction.md
 docs/TransactionsApi.md
 docs/UpdateTransactionRequest.md
@@ -51,15 +51,15 @@ organizze_api/models/installment_transaction_all_of_installments_attributes.py
 organizze_api/models/not_found.py
 organizze_api/models/recurring_transaction.py
 organizze_api/models/recurring_transaction_all_of_recurrence_attributes.py
+organizze_api/models/tag.py
 organizze_api/models/transaction.py
 organizze_api/models/update_transaction_request.py
 organizze_api/models/user.py
 organizze_api/models/validation_error.py
 organizze_api/py.typed
 organizze_api/rest.py
-pyproject.toml
 requirements.txt
 setup.cfg
-setup.py
 test-requirements.txt
 test/__init__.py
+test/test_tag.py

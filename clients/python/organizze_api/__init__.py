@@ -47,6 +47,7 @@ __all__ = [
     "NotFound",
     "RecurringTransaction",
     "RecurringTransactionAllOfRecurrenceAttributes",
+    "Tag",
     "Transaction",
     "UpdateTransactionRequest",
     "User",
@@ -87,6 +88,7 @@ from organizze_api.models.installment_transaction_all_of_installments_attributes
 from organizze_api.models.not_found import NotFound as NotFound
 from organizze_api.models.recurring_transaction import RecurringTransaction as RecurringTransaction
 from organizze_api.models.recurring_transaction_all_of_recurrence_attributes import RecurringTransactionAllOfRecurrenceAttributes as RecurringTransactionAllOfRecurrenceAttributes
+from organizze_api.models.tag import Tag as Tag
 from organizze_api.models.transaction import Transaction as Transaction
 from organizze_api.models.update_transaction_request import UpdateTransactionRequest as UpdateTransactionRequest
 from organizze_api.models.user import User as User
