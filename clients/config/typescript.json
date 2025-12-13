@@ -1,4 +1,6 @@
 {
   "supportsES6": true,
-  "stringEnums": true
+  "stringEnums": true,
+  "gitUserId": "BarretoTech",
+  "gitRepoId": "organizze-api-sdk"
 }

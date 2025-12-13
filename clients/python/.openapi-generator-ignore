@@ -14,4 +14,5 @@ git_push.sh
 tox.ini
 LICENSE
 .github/workflows/
+README.md
 pyproject.toml

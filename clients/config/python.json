@@ -1,5 +1,8 @@
 {
   "packageName": "organizze_api",
-  "projectName": "organizze-api-sdk",
-  "packageVersion": "1.0.0"
+  "projectName": "organizze_api",
+  "packageUrl": "https://pypi.org/project/organizze_api/",
+  "gitUserId": "BarretoTech",
+  "gitRepoId": "organizze-api-sdk",
+  "projectDescription": "SDK to interface with the Organizze REST API"
 }
