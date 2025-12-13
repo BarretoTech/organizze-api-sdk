@@ -8,11 +8,14 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **color** | **str** |  | [optional] 
+**parent_id** | **int** |  | [optional] 
 **group_id** | **str** |  | [optional] 
 **fixed** | **bool** |  | [optional] 
-**available** | **bool** |  | [optional] 
 **essential** | **bool** |  | [optional] 
-**parent_id** | **int** |  | [optional] 
+**default** | **bool** |  | [optional] 
+**uuid** | **str** |  | [optional] 
+**kind** | **str** |  | [optional] 
+**archived** | **bool** |  | [optional] 
 
 ## Example
 

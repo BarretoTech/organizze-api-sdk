@@ -818,28 +818,40 @@ components:
           minLength: 6
           maxLength: 6
           pattern: ^[a-fA-F0-9]{6}$
-        group_id:
-          type: string
-        fixed:
-          type: boolean
-        available:
-          type: boolean
-        essential:
-          type: boolean
         parent_id:
           type: integer
           nullable: true
           minimum: 1
           maximum: 2147483647
+        group_id:
+          type: string
+        fixed:
+          type: boolean
+        essential:
+          type: boolean
+        default:
+          type: boolean
+        uuid:
+          type: string
+        kind:
+          type: string
+          enum:
+            - expenses
+            - earnings
+        archived:
+          type: boolean
       example:
-        id: 120321144
+        id: 122625244
         name: Bares e restaurantes
         color: "626491"
-        group_id: bars_and_restaurants
-        fixed: true
-        available: true
-        essential: false
         parent_id: null
+        group_id: bars_and_restaurants
+        fixed: false
+        essential: false
+        default: false
+        uuid: 5c2bbbc42a5bf8b4faa558cfeb55cec93b6f40ca
+        kind: expenses
+        archived: false
     User:
       type: object
       additionalProperties: false

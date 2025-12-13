@@ -30,12 +30,15 @@ class Category(BaseModel):
     id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     name: Optional[StrictStr] = None
     color: Optional[Annotated[str, Field(min_length=6, strict=True, max_length=6)]] = None
+    parent_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     group_id: Optional[StrictStr] = None
     fixed: Optional[StrictBool] = None
-    available: Optional[StrictBool] = None
     essential: Optional[StrictBool] = None
-    parent_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "color", "group_id", "fixed", "available", "essential", "parent_id"]
+    default: Optional[StrictBool] = None
+    uuid: Optional[StrictStr] = None
+    kind: Optional[StrictStr] = None
+    archived: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "color", "parent_id", "group_id", "fixed", "essential", "default", "uuid", "kind", "archived"]
 
     @field_validator('color')
     def color_validate_regular_expression(cls, value):
@@ -45,6 +48,16 @@ class Category(BaseModel):
 
         if not re.match(r"^[a-fA-F0-9]{6}$", value):
             raise ValueError(r"must validate the regular expression /^[a-fA-F0-9]{6}$/")
+        return value
+
+    @field_validator('kind')
+    def kind_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['expenses', 'earnings']):
+            raise ValueError("must be one of enum values ('expenses', 'earnings')")
         return value
 
     model_config = ConfigDict(
@@ -106,11 +119,14 @@ class Category(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "color": obj.get("color"),
+            "parent_id": obj.get("parent_id"),
             "group_id": obj.get("group_id"),
             "fixed": obj.get("fixed"),
-            "available": obj.get("available"),
             "essential": obj.get("essential"),
-            "parent_id": obj.get("parent_id")
+            "default": obj.get("default"),
+            "uuid": obj.get("uuid"),
+            "kind": obj.get("kind"),
+            "archived": obj.get("archived")
         })
         return _obj
 
