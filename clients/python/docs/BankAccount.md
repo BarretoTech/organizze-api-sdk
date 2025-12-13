@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **institution_name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **archived** | **bool** |  | [optional] 
-**created_at** | **str** |  | [optional] 
-**updated_at** | **str** |  | [optional] 
+**created_at** | **datetime** |  | [optional] 
+**updated_at** | **datetime** |  | [optional] 
 **default** | **bool** |  | [optional] 
 **type** | **str** |  | [optional] 
 

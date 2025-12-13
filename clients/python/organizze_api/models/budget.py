@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -36,18 +36,6 @@ class Budget(BaseModel):
     predicted_total: Optional[StrictInt] = None
     percentage: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["amount_in_cents", "category_id", "date", "activity_type", "total", "predicted_total", "percentage"]
-
-    @field_validator('var_date')
-    def var_date_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-        # Handle both string and date objects
-        if isinstance(value, date):
-            return value
-        if not re.match(r"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$", value):
-            raise ValueError(r"must validate the regular expression /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

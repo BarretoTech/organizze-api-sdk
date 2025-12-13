@@ -24,8 +24,8 @@ Name | Type | Description | Notes
 **paid_credit_card_invoice_id** | **int** |  | [optional] 
 **oposite_transaction_id** | **int** |  | [optional] 
 **oposite_account_id** | **int** | ID of the Bank Account | [optional] 
-**created_at** | **str** |  | [optional] 
-**updated_at** | **str** |  | [optional] 
+**created_at** | **datetime** |  | [optional] 
+**updated_at** | **datetime** |  | [optional] 
 **tags** | **List[str]** |  | [optional] 
 **attachments** | **List[str]** |  | [optional] 
 

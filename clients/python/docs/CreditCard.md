@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **default** | **bool** |  | [optional] 
 **institution_id** | **str** |  | [optional] 
 **institution_name** | **str** |  | [optional] 
-**created_at** | **str** |  | [optional] 
-**updated_at** | **str** |  | [optional] 
+**created_at** | **datetime** |  | [optional] 
+**updated_at** | **datetime** |  | [optional] 
 **type** | **str** |  | [optional] 
 
 ## Example

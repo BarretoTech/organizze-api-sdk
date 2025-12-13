@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -38,42 +38,6 @@ class CreditCardInvoice(BaseModel):
     previous_balance_cents: Optional[StrictInt] = None
     credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     __properties: ClassVar[List[str]] = ["id", "date", "starting_date", "closing_date", "amount_cents", "payment_amount_cents", "balance_cents", "previous_balance_cents", "credit_card_id"]
-
-    @field_validator('var_date')
-    def var_date_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-        # Handle both string and date objects
-        if isinstance(value, date):
-            return value
-        if not re.match(r"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$", value):
-            raise ValueError(r"must validate the regular expression /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/")
-        return value
-
-    @field_validator('starting_date')
-    def starting_date_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-        # Handle both string and date objects
-        if isinstance(value, date):
-            return value
-        if not re.match(r"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$", value):
-            raise ValueError(r"must validate the regular expression /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/")
-        return value
-
-    @field_validator('closing_date')
-    def closing_date_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-        # Handle both string and date objects
-        if isinstance(value, date):
-            return value
-        if not re.match(r"^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$", value):
-            raise ValueError(r"must validate the regular expression /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
