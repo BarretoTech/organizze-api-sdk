@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -50,12 +50,10 @@ export enum InstallmentTransactionAllOfInstallmentsAttributesPeriodicityEnum {
 /**
  * Check if a given object implements the InstallmentTransactionAllOfInstallmentsAttributes interface.
  */
-export function instanceOfInstallmentTransactionAllOfInstallmentsAttributes(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "total" in value;
-    isInstance = isInstance && "periodicity" in value;
-
-    return isInstance;
+export function instanceOfInstallmentTransactionAllOfInstallmentsAttributes(value: object): value is InstallmentTransactionAllOfInstallmentsAttributes {
+    if (!('total' in value) || value['total'] === undefined) return false;
+    if (!('periodicity' in value) || value['periodicity'] === undefined) return false;
+    return true;
 }
 
 export function InstallmentTransactionAllOfInstallmentsAttributesFromJSON(json: any): InstallmentTransactionAllOfInstallmentsAttributes {
@@ -63,7 +61,7 @@ export function InstallmentTransactionAllOfInstallmentsAttributesFromJSON(json: 
 }
 
 export function InstallmentTransactionAllOfInstallmentsAttributesFromJSONTyped(json: any, ignoreDiscriminator: boolean): InstallmentTransactionAllOfInstallmentsAttributes {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -73,17 +71,19 @@ export function InstallmentTransactionAllOfInstallmentsAttributesFromJSONTyped(j
     };
 }
 
-export function InstallmentTransactionAllOfInstallmentsAttributesToJSON(value?: InstallmentTransactionAllOfInstallmentsAttributes | null): any {
-    if (value === undefined) {
-        return undefined;
+export function InstallmentTransactionAllOfInstallmentsAttributesToJSON(json: any): InstallmentTransactionAllOfInstallmentsAttributes {
+    return InstallmentTransactionAllOfInstallmentsAttributesToJSONTyped(json, false);
+}
+
+export function InstallmentTransactionAllOfInstallmentsAttributesToJSONTyped(value?: InstallmentTransactionAllOfInstallmentsAttributes | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'total': value.total,
-        'periodicity': value.periodicity,
+        'total': value['total'],
+        'periodicity': value['periodicity'],
     };
 }
 

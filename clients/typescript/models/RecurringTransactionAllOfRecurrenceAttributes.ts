@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -44,11 +44,9 @@ export enum RecurringTransactionAllOfRecurrenceAttributesPeriodicityEnum {
 /**
  * Check if a given object implements the RecurringTransactionAllOfRecurrenceAttributes interface.
  */
-export function instanceOfRecurringTransactionAllOfRecurrenceAttributes(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "periodicity" in value;
-
-    return isInstance;
+export function instanceOfRecurringTransactionAllOfRecurrenceAttributes(value: object): value is RecurringTransactionAllOfRecurrenceAttributes {
+    if (!('periodicity' in value) || value['periodicity'] === undefined) return false;
+    return true;
 }
 
 export function RecurringTransactionAllOfRecurrenceAttributesFromJSON(json: any): RecurringTransactionAllOfRecurrenceAttributes {
@@ -56,7 +54,7 @@ export function RecurringTransactionAllOfRecurrenceAttributesFromJSON(json: any)
 }
 
 export function RecurringTransactionAllOfRecurrenceAttributesFromJSONTyped(json: any, ignoreDiscriminator: boolean): RecurringTransactionAllOfRecurrenceAttributes {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -65,16 +63,18 @@ export function RecurringTransactionAllOfRecurrenceAttributesFromJSONTyped(json:
     };
 }
 
-export function RecurringTransactionAllOfRecurrenceAttributesToJSON(value?: RecurringTransactionAllOfRecurrenceAttributes | null): any {
-    if (value === undefined) {
-        return undefined;
+export function RecurringTransactionAllOfRecurrenceAttributesToJSON(json: any): RecurringTransactionAllOfRecurrenceAttributes {
+    return RecurringTransactionAllOfRecurrenceAttributesToJSONTyped(json, false);
+}
+
+export function RecurringTransactionAllOfRecurrenceAttributesToJSONTyped(value?: RecurringTransactionAllOfRecurrenceAttributes | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'periodicity': value.periodicity,
+        'periodicity': value['periodicity'],
     };
 }
 

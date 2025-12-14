@@ -12,64 +12,78 @@
  * Do not edit the class manually.
  */
 
+import type { InstallmentTransaction } from './InstallmentTransaction';
 import {
-    InstallmentTransaction,
     instanceOfInstallmentTransaction,
     InstallmentTransactionFromJSON,
     InstallmentTransactionFromJSONTyped,
     InstallmentTransactionToJSON,
 } from './InstallmentTransaction';
+import type { RecurringTransaction } from './RecurringTransaction';
 import {
-    RecurringTransaction,
     instanceOfRecurringTransaction,
     RecurringTransactionFromJSON,
     RecurringTransactionFromJSONTyped,
     RecurringTransactionToJSON,
 } from './RecurringTransaction';
+import type { TransactionInput } from './TransactionInput';
 import {
-    Transaction,
-    instanceOfTransaction,
-    TransactionFromJSON,
-    TransactionFromJSONTyped,
-    TransactionToJSON,
-} from './Transaction';
+    instanceOfTransactionInput,
+    TransactionInputFromJSON,
+    TransactionInputFromJSONTyped,
+    TransactionInputToJSON,
+} from './TransactionInput';
 
 /**
  * @type CreateTransactionRequest
  * 
  * @export
  */
-export type CreateTransactionRequest = InstallmentTransaction | RecurringTransaction | Transaction;
+export type CreateTransactionRequest = InstallmentTransaction | RecurringTransaction | TransactionInput;
 
 export function CreateTransactionRequestFromJSON(json: any): CreateTransactionRequest {
     return CreateTransactionRequestFromJSONTyped(json, false);
 }
 
 export function CreateTransactionRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateTransactionRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
-    return { ...InstallmentTransactionFromJSONTyped(json, true), ...RecurringTransactionFromJSONTyped(json, true), ...TransactionFromJSONTyped(json, true) };
+    if (typeof json !== 'object') {
+        return json;
+    }
+    if (instanceOfInstallmentTransaction(json)) {
+        return InstallmentTransactionFromJSONTyped(json, true);
+    }
+    if (instanceOfRecurringTransaction(json)) {
+        return RecurringTransactionFromJSONTyped(json, true);
+    }
+    if (instanceOfTransactionInput(json)) {
+        return TransactionInputFromJSONTyped(json, true);
+    }
+    return {} as any;
 }
 
-export function CreateTransactionRequestToJSON(value?: CreateTransactionRequest | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
-    }
+export function CreateTransactionRequestToJSON(json: any): any {
+    return CreateTransactionRequestToJSONTyped(json, false);
+}
 
+export function CreateTransactionRequestToJSONTyped(value?: CreateTransactionRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
+    }
+    if (typeof value !== 'object') {
+        return value;
+    }
     if (instanceOfInstallmentTransaction(value)) {
         return InstallmentTransactionToJSON(value as InstallmentTransaction);
     }
     if (instanceOfRecurringTransaction(value)) {
         return RecurringTransactionToJSON(value as RecurringTransaction);
     }
-    if (instanceOfTransaction(value)) {
-        return TransactionToJSON(value as Transaction);
+    if (instanceOfTransactionInput(value)) {
+        return TransactionInputToJSON(value as TransactionInput);
     }
-
     return {};
 }
 

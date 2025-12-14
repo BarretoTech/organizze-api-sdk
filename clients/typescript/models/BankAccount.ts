@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -24,61 +24,67 @@ export interface BankAccount {
      * @type {number}
      * @memberof BankAccount
      */
-    id?: number;
+    id: number;
     /**
      * Name of the Bank Account
      * @type {string}
      * @memberof BankAccount
      */
-    name?: string;
+    name: string;
     /**
      * 
      * @type {string}
      * @memberof BankAccount
      */
-    institutionId?: string;
+    institutionId: string;
     /**
      * 
      * @type {string}
      * @memberof BankAccount
      */
-    institutionName?: string;
+    institutionName: string | null;
     /**
      * 
      * @type {string}
      * @memberof BankAccount
      */
-    description?: string | null;
+    description: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof BankAccount
+     */
+    kind?: string | null;
     /**
      * 
      * @type {boolean}
      * @memberof BankAccount
      */
-    archived?: boolean;
+    archived: boolean;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof BankAccount
      */
-    createdAt?: string;
+    createdAt: Date;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof BankAccount
      */
-    updatedAt?: string;
+    updatedAt: Date;
     /**
      * 
      * @type {boolean}
      * @memberof BankAccount
      */
-    _default?: boolean;
+    _default: boolean;
     /**
      * 
      * @type {string}
      * @memberof BankAccount
      */
-    type?: BankAccountTypeEnum;
+    type?: BankAccountTypeEnum | null;
 }
 
 /**
@@ -95,10 +101,17 @@ export enum BankAccountTypeEnum {
 /**
  * Check if a given object implements the BankAccount interface.
  */
-export function instanceOfBankAccount(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBankAccount(value: object): value is BankAccount {
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('institutionId' in value) || value['institutionId'] === undefined) return false;
+    if (!('institutionName' in value) || value['institutionName'] === undefined) return false;
+    if (!('description' in value) || value['description'] === undefined) return false;
+    if (!('archived' in value) || value['archived'] === undefined) return false;
+    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
+    if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
+    if (!('_default' in value) || value['_default'] === undefined) return false;
+    return true;
 }
 
 export function BankAccountFromJSON(json: any): BankAccount {
@@ -106,43 +119,47 @@ export function BankAccountFromJSON(json: any): BankAccount {
 }
 
 export function BankAccountFromJSONTyped(json: any, ignoreDiscriminator: boolean): BankAccount {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'institutionId': !exists(json, 'institution_id') ? undefined : json['institution_id'],
-        'institutionName': !exists(json, 'institution_name') ? undefined : json['institution_name'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'archived': !exists(json, 'archived') ? undefined : json['archived'],
-        'createdAt': !exists(json, 'created_at') ? undefined : json['created_at'],
-        'updatedAt': !exists(json, 'updated_at') ? undefined : json['updated_at'],
-        '_default': !exists(json, 'default') ? undefined : json['default'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'name': json['name'],
+        'institutionId': json['institution_id'],
+        'institutionName': json['institution_name'],
+        'description': json['description'],
+        'kind': json['kind'] == null ? undefined : json['kind'],
+        'archived': json['archived'],
+        'createdAt': (new Date(json['created_at'])),
+        'updatedAt': (new Date(json['updated_at'])),
+        '_default': json['default'],
+        'type': json['type'] == null ? undefined : json['type'],
     };
 }
 
-export function BankAccountToJSON(value?: BankAccount | null): any {
-    if (value === undefined) {
-        return undefined;
+export function BankAccountToJSON(json: any): BankAccount {
+    return BankAccountToJSONTyped(json, false);
+}
+
+export function BankAccountToJSONTyped(value?: BankAccount | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'id': value.id,
-        'name': value.name,
-        'institution_id': value.institutionId,
-        'institution_name': value.institutionName,
-        'description': value.description,
-        'archived': value.archived,
-        'created_at': value.createdAt,
-        'updated_at': value.updatedAt,
-        'default': value._default,
-        'type': value.type,
+        'id': value['id'],
+        'name': value['name'],
+        'institution_id': value['institutionId'],
+        'institution_name': value['institutionName'],
+        'description': value['description'],
+        'kind': value['kind'],
+        'archived': value['archived'],
+        'created_at': value['createdAt'].toISOString(),
+        'updated_at': value['updatedAt'].toISOString(),
+        'default': value['_default'],
+        'type': value['type'],
     };
 }
 

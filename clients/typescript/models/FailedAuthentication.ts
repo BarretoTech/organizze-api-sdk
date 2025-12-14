@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * Failed Authentication
  * @export
@@ -39,10 +39,8 @@ export enum FailedAuthenticationErrorEnum {
 /**
  * Check if a given object implements the FailedAuthentication interface.
  */
-export function instanceOfFailedAuthentication(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfFailedAuthentication(value: object): value is FailedAuthentication {
+    return true;
 }
 
 export function FailedAuthenticationFromJSON(json: any): FailedAuthentication {
@@ -50,25 +48,27 @@ export function FailedAuthenticationFromJSON(json: any): FailedAuthentication {
 }
 
 export function FailedAuthenticationFromJSONTyped(json: any, ignoreDiscriminator: boolean): FailedAuthentication {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'error': !exists(json, 'error') ? undefined : json['error'],
+        'error': json['error'] == null ? undefined : json['error'],
     };
 }
 
-export function FailedAuthenticationToJSON(value?: FailedAuthentication | null): any {
-    if (value === undefined) {
-        return undefined;
+export function FailedAuthenticationToJSON(json: any): FailedAuthentication {
+    return FailedAuthenticationToJSONTyped(json, false);
+}
+
+export function FailedAuthenticationToJSONTyped(value?: FailedAuthentication | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'error': value.error,
+        'error': value['error'],
     };
 }
 

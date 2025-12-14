@@ -16,23 +16,26 @@
 import * as runtime from '../runtime';
 import type {
   Category,
+  CategoryInput,
   FailedAuthentication,
   NotFound,
   ValidationError,
-} from '../models';
+} from '../models/index';
 import {
     CategoryFromJSON,
     CategoryToJSON,
+    CategoryInputFromJSON,
+    CategoryInputToJSON,
     FailedAuthenticationFromJSON,
     FailedAuthenticationToJSON,
     NotFoundFromJSON,
     NotFoundToJSON,
     ValidationErrorFromJSON,
     ValidationErrorToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface CreateCategoryRequest {
-    category: Category;
+    categoryInput: CategoryInput;
 }
 
 export interface DeleteCategoryRequest {
@@ -45,7 +48,7 @@ export interface ReadCategoryRequest {
 
 export interface UpdateCategoryRequest {
     categoryID: number;
-    category: Category;
+    categoryInput: CategoryInput;
 }
 
 /**
@@ -57,8 +60,11 @@ export class CategoriesApi extends runtime.BaseAPI {
      * Create Category
      */
     async createCategoryRaw(requestParameters: CreateCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Category>> {
-        if (requestParameters.category === null || requestParameters.category === undefined) {
-            throw new runtime.RequiredError('category','Required parameter requestParameters.category was null or undefined when calling createCategory.');
+        if (requestParameters['categoryInput'] == null) {
+            throw new runtime.RequiredError(
+                'categoryInput',
+                'Required parameter "categoryInput" was null or undefined when calling createCategory().'
+            );
         }
 
         const queryParameters: any = {};
@@ -71,15 +77,18 @@ export class CategoriesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/categories`;
+
         const response = await this.request({
-            path: `/categories`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CategoryToJSON(requestParameters.category),
+            body: CategoryInputToJSON(requestParameters['categoryInput']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CategoryFromJSON(jsonValue));
@@ -97,8 +106,11 @@ export class CategoriesApi extends runtime.BaseAPI {
      * Delete Category
      */
     async deleteCategoryRaw(requestParameters: DeleteCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Category>> {
-        if (requestParameters.categoryID === null || requestParameters.categoryID === undefined) {
-            throw new runtime.RequiredError('categoryID','Required parameter requestParameters.categoryID was null or undefined when calling deleteCategory.');
+        if (requestParameters['categoryID'] == null) {
+            throw new runtime.RequiredError(
+                'categoryID',
+                'Required parameter "categoryID" was null or undefined when calling deleteCategory().'
+            );
         }
 
         const queryParameters: any = {};
@@ -109,11 +121,15 @@ export class CategoriesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/categories/{categoryID}`;
+        urlPath = urlPath.replace(`{${"categoryID"}}`, encodeURIComponent(String(requestParameters['categoryID'])));
+
         const response = await this.request({
-            path: `/categories/{categoryID}`.replace(`{${"categoryID"}}`, encodeURIComponent(String(requestParameters.categoryID))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -142,11 +158,14 @@ export class CategoriesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/categories`;
+
         const response = await this.request({
-            path: `/categories`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -167,8 +186,11 @@ export class CategoriesApi extends runtime.BaseAPI {
      * Read Category
      */
     async readCategoryRaw(requestParameters: ReadCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Category>> {
-        if (requestParameters.categoryID === null || requestParameters.categoryID === undefined) {
-            throw new runtime.RequiredError('categoryID','Required parameter requestParameters.categoryID was null or undefined when calling readCategory.');
+        if (requestParameters['categoryID'] == null) {
+            throw new runtime.RequiredError(
+                'categoryID',
+                'Required parameter "categoryID" was null or undefined when calling readCategory().'
+            );
         }
 
         const queryParameters: any = {};
@@ -179,11 +201,15 @@ export class CategoriesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/categories/{categoryID}`;
+        urlPath = urlPath.replace(`{${"categoryID"}}`, encodeURIComponent(String(requestParameters['categoryID'])));
+
         const response = await this.request({
-            path: `/categories/{categoryID}`.replace(`{${"categoryID"}}`, encodeURIComponent(String(requestParameters.categoryID))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -204,12 +230,18 @@ export class CategoriesApi extends runtime.BaseAPI {
      * Update Category
      */
     async updateCategoryRaw(requestParameters: UpdateCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Category>> {
-        if (requestParameters.categoryID === null || requestParameters.categoryID === undefined) {
-            throw new runtime.RequiredError('categoryID','Required parameter requestParameters.categoryID was null or undefined when calling updateCategory.');
+        if (requestParameters['categoryID'] == null) {
+            throw new runtime.RequiredError(
+                'categoryID',
+                'Required parameter "categoryID" was null or undefined when calling updateCategory().'
+            );
         }
 
-        if (requestParameters.category === null || requestParameters.category === undefined) {
-            throw new runtime.RequiredError('category','Required parameter requestParameters.category was null or undefined when calling updateCategory.');
+        if (requestParameters['categoryInput'] == null) {
+            throw new runtime.RequiredError(
+                'categoryInput',
+                'Required parameter "categoryInput" was null or undefined when calling updateCategory().'
+            );
         }
 
         const queryParameters: any = {};
@@ -222,15 +254,19 @@ export class CategoriesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/categories/{categoryID}`;
+        urlPath = urlPath.replace(`{${"categoryID"}}`, encodeURIComponent(String(requestParameters['categoryID'])));
+
         const response = await this.request({
-            path: `/categories/{categoryID}`.replace(`{${"categoryID"}}`, encodeURIComponent(String(requestParameters.categoryID))),
+            path: urlPath,
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: CategoryToJSON(requestParameters.category),
+            body: CategoryInputToJSON(requestParameters['categoryInput']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CategoryFromJSON(jsonValue));

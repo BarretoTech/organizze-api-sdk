@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Transaction } from './Transaction';
 import {
     TransactionFromJSON,
     TransactionFromJSONTyped,
     TransactionToJSON,
+    TransactionToJSONTyped,
 } from './Transaction';
 
 /**
@@ -31,76 +32,85 @@ export interface CreditCardInvoiceFull {
      * @type {number}
      * @memberof CreditCardInvoiceFull
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {Date}
      * @memberof CreditCardInvoiceFull
      */
-    date?: Date;
+    date: Date;
     /**
      * 
      * @type {Date}
      * @memberof CreditCardInvoiceFull
      */
-    startingDate?: Date;
+    startingDate: Date;
     /**
      * 
      * @type {Date}
      * @memberof CreditCardInvoiceFull
      */
-    closingDate?: Date;
+    closingDate: Date;
     /**
      * 
      * @type {number}
      * @memberof CreditCardInvoiceFull
      */
-    amountCents?: number;
+    amountCents: number;
     /**
      * 
      * @type {number}
      * @memberof CreditCardInvoiceFull
      */
-    paymentAmountCents?: number;
+    paymentAmountCents: number;
     /**
      * 
      * @type {number}
      * @memberof CreditCardInvoiceFull
      */
-    balanceCents?: number;
+    balanceCents: number;
     /**
      * 
      * @type {number}
      * @memberof CreditCardInvoiceFull
      */
-    previousBalanceCents?: number;
+    previousBalanceCents: number;
     /**
      * 
      * @type {number}
      * @memberof CreditCardInvoiceFull
      */
-    creditCardId?: number;
+    creditCardId: number;
     /**
      * 
      * @type {Array<Transaction>}
      * @memberof CreditCardInvoiceFull
      */
-    transactions?: Array<Transaction>;
+    transactions: Array<Transaction>;
     /**
      * 
      * @type {Array<Transaction>}
      * @memberof CreditCardInvoiceFull
      */
-    payments?: Array<Transaction>;
+    payments: Array<Transaction>;
 }
 
 /**
  * Check if a given object implements the CreditCardInvoiceFull interface.
  */
-export function instanceOfCreditCardInvoiceFull(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCreditCardInvoiceFull(value: object): value is CreditCardInvoiceFull {
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('date' in value) || value['date'] === undefined) return false;
+    if (!('startingDate' in value) || value['startingDate'] === undefined) return false;
+    if (!('closingDate' in value) || value['closingDate'] === undefined) return false;
+    if (!('amountCents' in value) || value['amountCents'] === undefined) return false;
+    if (!('paymentAmountCents' in value) || value['paymentAmountCents'] === undefined) return false;
+    if (!('balanceCents' in value) || value['balanceCents'] === undefined) return false;
+    if (!('previousBalanceCents' in value) || value['previousBalanceCents'] === undefined) return false;
+    if (!('creditCardId' in value) || value['creditCardId'] === undefined) return false;
+    if (!('transactions' in value) || value['transactions'] === undefined) return false;
+    if (!('payments' in value) || value['payments'] === undefined) return false;
+    return true;
 }
 
 export function CreditCardInvoiceFullFromJSON(json: any): CreditCardInvoiceFull {
@@ -108,45 +118,47 @@ export function CreditCardInvoiceFullFromJSON(json: any): CreditCardInvoiceFull 
 }
 
 export function CreditCardInvoiceFullFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreditCardInvoiceFull {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'date': !exists(json, 'date') ? undefined : (new Date(json['date'])),
-        'startingDate': !exists(json, 'starting_date') ? undefined : (new Date(json['starting_date'])),
-        'closingDate': !exists(json, 'closing_date') ? undefined : (new Date(json['closing_date'])),
-        'amountCents': !exists(json, 'amount_cents') ? undefined : json['amount_cents'],
-        'paymentAmountCents': !exists(json, 'payment_amount_cents') ? undefined : json['payment_amount_cents'],
-        'balanceCents': !exists(json, 'balance_cents') ? undefined : json['balance_cents'],
-        'previousBalanceCents': !exists(json, 'previous_balance_cents') ? undefined : json['previous_balance_cents'],
-        'creditCardId': !exists(json, 'credit_card_id') ? undefined : json['credit_card_id'],
-        'transactions': !exists(json, 'transactions') ? undefined : ((json['transactions'] as Array<any>).map(TransactionFromJSON)),
-        'payments': !exists(json, 'payments') ? undefined : ((json['payments'] as Array<any>).map(TransactionFromJSON)),
+        'id': json['id'],
+        'date': (new Date(json['date'])),
+        'startingDate': (new Date(json['starting_date'])),
+        'closingDate': (new Date(json['closing_date'])),
+        'amountCents': json['amount_cents'],
+        'paymentAmountCents': json['payment_amount_cents'],
+        'balanceCents': json['balance_cents'],
+        'previousBalanceCents': json['previous_balance_cents'],
+        'creditCardId': json['credit_card_id'],
+        'transactions': ((json['transactions'] as Array<any>).map(TransactionFromJSON)),
+        'payments': ((json['payments'] as Array<any>).map(TransactionFromJSON)),
     };
 }
 
-export function CreditCardInvoiceFullToJSON(value?: CreditCardInvoiceFull | null): any {
-    if (value === undefined) {
-        return undefined;
+export function CreditCardInvoiceFullToJSON(json: any): CreditCardInvoiceFull {
+    return CreditCardInvoiceFullToJSONTyped(json, false);
+}
+
+export function CreditCardInvoiceFullToJSONTyped(value?: CreditCardInvoiceFull | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'id': value.id,
-        'date': value.date === undefined ? undefined : (value.date.toISOString().substr(0,10)),
-        'starting_date': value.startingDate === undefined ? undefined : (value.startingDate.toISOString().substr(0,10)),
-        'closing_date': value.closingDate === undefined ? undefined : (value.closingDate.toISOString().substr(0,10)),
-        'amount_cents': value.amountCents,
-        'payment_amount_cents': value.paymentAmountCents,
-        'balance_cents': value.balanceCents,
-        'previous_balance_cents': value.previousBalanceCents,
-        'credit_card_id': value.creditCardId,
-        'transactions': value.transactions === undefined ? undefined : ((value.transactions as Array<any>).map(TransactionToJSON)),
-        'payments': value.payments === undefined ? undefined : ((value.payments as Array<any>).map(TransactionToJSON)),
+        'id': value['id'],
+        'date': value['date'].toISOString().substring(0,10),
+        'starting_date': value['startingDate'].toISOString().substring(0,10),
+        'closing_date': value['closingDate'].toISOString().substring(0,10),
+        'amount_cents': value['amountCents'],
+        'payment_amount_cents': value['paymentAmountCents'],
+        'balance_cents': value['balanceCents'],
+        'previous_balance_cents': value['previousBalanceCents'],
+        'credit_card_id': value['creditCardId'],
+        'transactions': ((value['transactions'] as Array<any>).map(TransactionToJSON)),
+        'payments': ((value['payments'] as Array<any>).map(TransactionToJSON)),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -66,10 +66,8 @@ export interface Budget {
 /**
  * Check if a given object implements the Budget interface.
  */
-export function instanceOfBudget(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBudget(value: object): value is Budget {
+    return true;
 }
 
 export function BudgetFromJSON(json: any): Budget {
@@ -77,37 +75,39 @@ export function BudgetFromJSON(json: any): Budget {
 }
 
 export function BudgetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Budget {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'amountInCents': !exists(json, 'amount_in_cents') ? undefined : json['amount_in_cents'],
-        'categoryId': !exists(json, 'category_id') ? undefined : json['category_id'],
-        'date': !exists(json, 'date') ? undefined : (new Date(json['date'])),
-        'activityType': !exists(json, 'activity_type') ? undefined : json['activity_type'],
-        'total': !exists(json, 'total') ? undefined : json['total'],
-        'predictedTotal': !exists(json, 'predicted_total') ? undefined : json['predicted_total'],
-        'percentage': !exists(json, 'percentage') ? undefined : json['percentage'],
+        'amountInCents': json['amount_in_cents'] == null ? undefined : json['amount_in_cents'],
+        'categoryId': json['category_id'] == null ? undefined : json['category_id'],
+        'date': json['date'] == null ? undefined : (new Date(json['date'])),
+        'activityType': json['activity_type'] == null ? undefined : json['activity_type'],
+        'total': json['total'] == null ? undefined : json['total'],
+        'predictedTotal': json['predicted_total'] == null ? undefined : json['predicted_total'],
+        'percentage': json['percentage'] == null ? undefined : json['percentage'],
     };
 }
 
-export function BudgetToJSON(value?: Budget | null): any {
-    if (value === undefined) {
-        return undefined;
+export function BudgetToJSON(json: any): Budget {
+    return BudgetToJSONTyped(json, false);
+}
+
+export function BudgetToJSONTyped(value?: Budget | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'amount_in_cents': value.amountInCents,
-        'category_id': value.categoryId,
-        'date': value.date === undefined ? undefined : (value.date.toISOString().substr(0,10)),
-        'activity_type': value.activityType,
-        'total': value.total,
-        'predicted_total': value.predictedTotal,
-        'percentage': value.percentage,
+        'amount_in_cents': value['amountInCents'],
+        'category_id': value['categoryId'],
+        'date': value['date'] == null ? value['date'] : value['date'].toISOString().substring(0,10),
+        'activity_type': value['activityType'],
+        'total': value['total'],
+        'predicted_total': value['predictedTotal'],
+        'percentage': value['percentage'],
     };
 }
 

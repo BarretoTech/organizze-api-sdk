@@ -16,16 +16,18 @@
 import * as runtime from '../runtime';
 import type {
   CreateTransactionRequest,
+  DeleteTransactionRequest,
   FailedAuthentication,
   NotFound,
   Transaction,
   UpdateTransactionRequest,
-  UpdateTransactionRequestAllOf,
   ValidationError,
-} from '../models';
+} from '../models/index';
 import {
     CreateTransactionRequestFromJSON,
     CreateTransactionRequestToJSON,
+    DeleteTransactionRequestFromJSON,
+    DeleteTransactionRequestToJSON,
     FailedAuthenticationFromJSON,
     FailedAuthenticationToJSON,
     NotFoundFromJSON,
@@ -34,19 +36,17 @@ import {
     TransactionToJSON,
     UpdateTransactionRequestFromJSON,
     UpdateTransactionRequestToJSON,
-    UpdateTransactionRequestAllOfFromJSON,
-    UpdateTransactionRequestAllOfToJSON,
     ValidationErrorFromJSON,
     ValidationErrorToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface CreateTransactionOperationRequest {
     createTransactionRequest: CreateTransactionRequest;
 }
 
-export interface DeleteTransactionRequest {
+export interface DeleteTransactionOperationRequest {
     transactionID: number;
-    updateTransactionRequestAllOf: UpdateTransactionRequestAllOf;
+    deleteTransactionRequest: DeleteTransactionRequest;
 }
 
 export interface ListTransactionsRequest {
@@ -73,8 +73,11 @@ export class TransactionsApi extends runtime.BaseAPI {
      * Create Transaction
      */
     async createTransactionRaw(requestParameters: CreateTransactionOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Transaction>> {
-        if (requestParameters.createTransactionRequest === null || requestParameters.createTransactionRequest === undefined) {
-            throw new runtime.RequiredError('createTransactionRequest','Required parameter requestParameters.createTransactionRequest was null or undefined when calling createTransaction.');
+        if (requestParameters['createTransactionRequest'] == null) {
+            throw new runtime.RequiredError(
+                'createTransactionRequest',
+                'Required parameter "createTransactionRequest" was null or undefined when calling createTransaction().'
+            );
         }
 
         const queryParameters: any = {};
@@ -87,15 +90,18 @@ export class TransactionsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/transactions`;
+
         const response = await this.request({
-            path: `/transactions`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateTransactionRequestToJSON(requestParameters.createTransactionRequest),
+            body: CreateTransactionRequestToJSON(requestParameters['createTransactionRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TransactionFromJSON(jsonValue));
@@ -112,13 +118,19 @@ export class TransactionsApi extends runtime.BaseAPI {
     /**
      * Delete Transaction
      */
-    async deleteTransactionRaw(requestParameters: DeleteTransactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Transaction>> {
-        if (requestParameters.transactionID === null || requestParameters.transactionID === undefined) {
-            throw new runtime.RequiredError('transactionID','Required parameter requestParameters.transactionID was null or undefined when calling deleteTransaction.');
+    async deleteTransactionRaw(requestParameters: DeleteTransactionOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Transaction>> {
+        if (requestParameters['transactionID'] == null) {
+            throw new runtime.RequiredError(
+                'transactionID',
+                'Required parameter "transactionID" was null or undefined when calling deleteTransaction().'
+            );
         }
 
-        if (requestParameters.updateTransactionRequestAllOf === null || requestParameters.updateTransactionRequestAllOf === undefined) {
-            throw new runtime.RequiredError('updateTransactionRequestAllOf','Required parameter requestParameters.updateTransactionRequestAllOf was null or undefined when calling deleteTransaction.');
+        if (requestParameters['deleteTransactionRequest'] == null) {
+            throw new runtime.RequiredError(
+                'deleteTransactionRequest',
+                'Required parameter "deleteTransactionRequest" was null or undefined when calling deleteTransaction().'
+            );
         }
 
         const queryParameters: any = {};
@@ -131,15 +143,19 @@ export class TransactionsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/transactions/{transactionID}`;
+        urlPath = urlPath.replace(`{${"transactionID"}}`, encodeURIComponent(String(requestParameters['transactionID'])));
+
         const response = await this.request({
-            path: `/transactions/{transactionID}`.replace(`{${"transactionID"}}`, encodeURIComponent(String(requestParameters.transactionID))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
-            body: UpdateTransactionRequestAllOfToJSON(requestParameters.updateTransactionRequestAllOf),
+            body: DeleteTransactionRequestToJSON(requestParameters['deleteTransactionRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TransactionFromJSON(jsonValue));
@@ -148,7 +164,7 @@ export class TransactionsApi extends runtime.BaseAPI {
     /**
      * Delete Transaction
      */
-    async deleteTransaction(requestParameters: DeleteTransactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Transaction> {
+    async deleteTransaction(requestParameters: DeleteTransactionOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Transaction> {
         const response = await this.deleteTransactionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -159,16 +175,16 @@ export class TransactionsApi extends runtime.BaseAPI {
     async listTransactionsRaw(requestParameters: ListTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Transaction>>> {
         const queryParameters: any = {};
 
-        if (requestParameters.startDate !== undefined) {
-            queryParameters['start_date'] = (requestParameters.startDate as any).toISOString().substr(0,10);
+        if (requestParameters['startDate'] != null) {
+            queryParameters['start_date'] = requestParameters['startDate'];
         }
 
-        if (requestParameters.endDate !== undefined) {
-            queryParameters['end_date'] = (requestParameters.endDate as any).toISOString().substr(0,10);
+        if (requestParameters['endDate'] != null) {
+            queryParameters['end_date'] = requestParameters['endDate'];
         }
 
-        if (requestParameters.accountId !== undefined) {
-            queryParameters['account_id'] = requestParameters.accountId;
+        if (requestParameters['accountId'] != null) {
+            queryParameters['account_id'] = requestParameters['accountId'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -177,11 +193,14 @@ export class TransactionsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/transactions`;
+
         const response = await this.request({
-            path: `/transactions`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -202,8 +221,11 @@ export class TransactionsApi extends runtime.BaseAPI {
      * Read Transaction
      */
     async readTransactionRaw(requestParameters: ReadTransactionRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Transaction>> {
-        if (requestParameters.transactionID === null || requestParameters.transactionID === undefined) {
-            throw new runtime.RequiredError('transactionID','Required parameter requestParameters.transactionID was null or undefined when calling readTransaction.');
+        if (requestParameters['transactionID'] == null) {
+            throw new runtime.RequiredError(
+                'transactionID',
+                'Required parameter "transactionID" was null or undefined when calling readTransaction().'
+            );
         }
 
         const queryParameters: any = {};
@@ -214,11 +236,15 @@ export class TransactionsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/transactions/{transactionID}`;
+        urlPath = urlPath.replace(`{${"transactionID"}}`, encodeURIComponent(String(requestParameters['transactionID'])));
+
         const response = await this.request({
-            path: `/transactions/{transactionID}`.replace(`{${"transactionID"}}`, encodeURIComponent(String(requestParameters.transactionID))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -239,12 +265,18 @@ export class TransactionsApi extends runtime.BaseAPI {
      * Update Transaction
      */
     async updateTransactionRaw(requestParameters: UpdateTransactionOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Transaction>> {
-        if (requestParameters.transactionID === null || requestParameters.transactionID === undefined) {
-            throw new runtime.RequiredError('transactionID','Required parameter requestParameters.transactionID was null or undefined when calling updateTransaction.');
+        if (requestParameters['transactionID'] == null) {
+            throw new runtime.RequiredError(
+                'transactionID',
+                'Required parameter "transactionID" was null or undefined when calling updateTransaction().'
+            );
         }
 
-        if (requestParameters.updateTransactionRequest === null || requestParameters.updateTransactionRequest === undefined) {
-            throw new runtime.RequiredError('updateTransactionRequest','Required parameter requestParameters.updateTransactionRequest was null or undefined when calling updateTransaction.');
+        if (requestParameters['updateTransactionRequest'] == null) {
+            throw new runtime.RequiredError(
+                'updateTransactionRequest',
+                'Required parameter "updateTransactionRequest" was null or undefined when calling updateTransaction().'
+            );
         }
 
         const queryParameters: any = {};
@@ -257,15 +289,19 @@ export class TransactionsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/transactions/{transactionID}`;
+        urlPath = urlPath.replace(`{${"transactionID"}}`, encodeURIComponent(String(requestParameters['transactionID'])));
+
         const response = await this.request({
-            path: `/transactions/{transactionID}`.replace(`{${"transactionID"}}`, encodeURIComponent(String(requestParameters.transactionID))),
+            path: urlPath,
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: UpdateTransactionRequestToJSON(requestParameters.updateTransactionRequest),
+            body: UpdateTransactionRequestToJSON(requestParameters['updateTransactionRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TransactionFromJSON(jsonValue));

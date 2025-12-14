@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -39,10 +39,8 @@ export enum NotFoundErrorEnum {
 /**
  * Check if a given object implements the NotFound interface.
  */
-export function instanceOfNotFound(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfNotFound(value: object): value is NotFound {
+    return true;
 }
 
 export function NotFoundFromJSON(json: any): NotFound {
@@ -50,25 +48,27 @@ export function NotFoundFromJSON(json: any): NotFound {
 }
 
 export function NotFoundFromJSONTyped(json: any, ignoreDiscriminator: boolean): NotFound {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'error': !exists(json, 'error') ? undefined : json['error'],
+        'error': json['error'] == null ? undefined : json['error'],
     };
 }
 
-export function NotFoundToJSON(value?: NotFound | null): any {
-    if (value === undefined) {
-        return undefined;
+export function NotFoundToJSON(json: any): NotFound {
+    return NotFoundToJSONTyped(json, false);
+}
+
+export function NotFoundToJSONTyped(value?: NotFound | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'error': value.error,
+        'error': value['error'],
     };
 }
 

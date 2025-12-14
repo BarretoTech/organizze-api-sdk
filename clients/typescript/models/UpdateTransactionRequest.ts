@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
+import type { Tag } from './Tag';
+import {
+    TagFromJSON,
+    TagFromJSONTyped,
+    TagToJSON,
+    TagToJSONTyped,
+} from './Tag';
+
 /**
  * 
  * @export
  * @interface UpdateTransactionRequest
  */
 export interface UpdateTransactionRequest {
-    /**
-     * ID of the Bank Account
-     * @type {number}
-     * @memberof UpdateTransactionRequest
-     */
-    id?: number;
     /**
      * 
      * @type {string}
@@ -50,35 +52,11 @@ export interface UpdateTransactionRequest {
      */
     amountCents?: number;
     /**
-     * 
-     * @type {number}
-     * @memberof UpdateTransactionRequest
-     */
-    totalInstallments?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateTransactionRequest
-     */
-    installment?: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateTransactionRequest
-     */
-    recurring?: boolean;
-    /**
      * ID of the Bank Account
      * @type {number}
      * @memberof UpdateTransactionRequest
      */
     accountId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateTransactionRequest
-     */
-    accountType?: UpdateTransactionRequestAccountTypeEnum;
     /**
      * 
      * @type {number}
@@ -96,67 +74,13 @@ export interface UpdateTransactionRequest {
      * @type {number}
      * @memberof UpdateTransactionRequest
      */
-    attachmentsCount?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateTransactionRequest
-     */
     creditCardId?: number | null;
     /**
      * 
-     * @type {number}
+     * @type {Array<Tag>}
      * @memberof UpdateTransactionRequest
      */
-    creditCardInvoiceId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateTransactionRequest
-     */
-    paidCreditCardId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateTransactionRequest
-     */
-    paidCreditCardInvoiceId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateTransactionRequest
-     */
-    opositeTransactionId?: number | null;
-    /**
-     * ID of the Bank Account
-     * @type {number}
-     * @memberof UpdateTransactionRequest
-     */
-    opositeAccountId?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateTransactionRequest
-     */
-    createdAt?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateTransactionRequest
-     */
-    updatedAt?: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof UpdateTransactionRequest
-     */
-    tags?: Array<string>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof UpdateTransactionRequest
-     */
-    attachments?: Array<string>;
+    tags?: Array<Tag>;
     /**
      * 
      * @type {boolean}
@@ -172,22 +96,10 @@ export interface UpdateTransactionRequest {
 }
 
 /**
-* @export
-* @enum {string}
-*/
-export enum UpdateTransactionRequestAccountTypeEnum {
-    Account = 'Account',
-    CreditCard = 'CreditCard'
-}
-
-
-/**
  * Check if a given object implements the UpdateTransactionRequest interface.
  */
-export function instanceOfUpdateTransactionRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfUpdateTransactionRequest(value: object): value is UpdateTransactionRequest {
+    return true;
 }
 
 export function UpdateTransactionRequestFromJSON(json: any): UpdateTransactionRequest {
@@ -195,73 +107,47 @@ export function UpdateTransactionRequestFromJSON(json: any): UpdateTransactionRe
 }
 
 export function UpdateTransactionRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): UpdateTransactionRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'date': !exists(json, 'date') ? undefined : (new Date(json['date'])),
-        'paid': !exists(json, 'paid') ? undefined : json['paid'],
-        'amountCents': !exists(json, 'amount_cents') ? undefined : json['amount_cents'],
-        'totalInstallments': !exists(json, 'total_installments') ? undefined : json['total_installments'],
-        'installment': !exists(json, 'installment') ? undefined : json['installment'],
-        'recurring': !exists(json, 'recurring') ? undefined : json['recurring'],
-        'accountId': !exists(json, 'account_id') ? undefined : json['account_id'],
-        'accountType': !exists(json, 'account_type') ? undefined : json['account_type'],
-        'categoryId': !exists(json, 'category_id') ? undefined : json['category_id'],
-        'notes': !exists(json, 'notes') ? undefined : json['notes'],
-        'attachmentsCount': !exists(json, 'attachments_count') ? undefined : json['attachments_count'],
-        'creditCardId': !exists(json, 'credit_card_id') ? undefined : json['credit_card_id'],
-        'creditCardInvoiceId': !exists(json, 'credit_card_invoice_id') ? undefined : json['credit_card_invoice_id'],
-        'paidCreditCardId': !exists(json, 'paid_credit_card_id') ? undefined : json['paid_credit_card_id'],
-        'paidCreditCardInvoiceId': !exists(json, 'paid_credit_card_invoice_id') ? undefined : json['paid_credit_card_invoice_id'],
-        'opositeTransactionId': !exists(json, 'oposite_transaction_id') ? undefined : json['oposite_transaction_id'],
-        'opositeAccountId': !exists(json, 'oposite_account_id') ? undefined : json['oposite_account_id'],
-        'createdAt': !exists(json, 'created_at') ? undefined : json['created_at'],
-        'updatedAt': !exists(json, 'updated_at') ? undefined : json['updated_at'],
-        'tags': !exists(json, 'tags') ? undefined : json['tags'],
-        'attachments': !exists(json, 'attachments') ? undefined : json['attachments'],
-        'updateFuture': !exists(json, 'update_future') ? undefined : json['update_future'],
-        'updateAll': !exists(json, 'update_all') ? undefined : json['update_all'],
+        'description': json['description'] == null ? undefined : json['description'],
+        'date': json['date'] == null ? undefined : (new Date(json['date'])),
+        'paid': json['paid'] == null ? undefined : json['paid'],
+        'amountCents': json['amount_cents'] == null ? undefined : json['amount_cents'],
+        'accountId': json['account_id'] == null ? undefined : json['account_id'],
+        'categoryId': json['category_id'] == null ? undefined : json['category_id'],
+        'notes': json['notes'] == null ? undefined : json['notes'],
+        'creditCardId': json['credit_card_id'] == null ? undefined : json['credit_card_id'],
+        'tags': json['tags'] == null ? undefined : ((json['tags'] as Array<any>).map(TagFromJSON)),
+        'updateFuture': json['update_future'] == null ? undefined : json['update_future'],
+        'updateAll': json['update_all'] == null ? undefined : json['update_all'],
     };
 }
 
-export function UpdateTransactionRequestToJSON(value?: UpdateTransactionRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+export function UpdateTransactionRequestToJSON(json: any): UpdateTransactionRequest {
+    return UpdateTransactionRequestToJSONTyped(json, false);
+}
+
+export function UpdateTransactionRequestToJSONTyped(value?: UpdateTransactionRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'id': value.id,
-        'description': value.description,
-        'date': value.date === undefined ? undefined : (value.date.toISOString().substr(0,10)),
-        'paid': value.paid,
-        'amount_cents': value.amountCents,
-        'total_installments': value.totalInstallments,
-        'installment': value.installment,
-        'recurring': value.recurring,
-        'account_id': value.accountId,
-        'account_type': value.accountType,
-        'category_id': value.categoryId,
-        'notes': value.notes,
-        'attachments_count': value.attachmentsCount,
-        'credit_card_id': value.creditCardId,
-        'credit_card_invoice_id': value.creditCardInvoiceId,
-        'paid_credit_card_id': value.paidCreditCardId,
-        'paid_credit_card_invoice_id': value.paidCreditCardInvoiceId,
-        'oposite_transaction_id': value.opositeTransactionId,
-        'oposite_account_id': value.opositeAccountId,
-        'created_at': value.createdAt,
-        'updated_at': value.updatedAt,
-        'tags': value.tags,
-        'attachments': value.attachments,
-        'update_future': value.updateFuture,
-        'update_all': value.updateAll,
+        'description': value['description'],
+        'date': value['date'] == null ? value['date'] : value['date'].toISOString().substring(0,10),
+        'paid': value['paid'],
+        'amount_cents': value['amountCents'],
+        'account_id': value['accountId'],
+        'category_id': value['categoryId'],
+        'notes': value['notes'],
+        'credit_card_id': value['creditCardId'],
+        'tags': value['tags'] == null ? undefined : ((value['tags'] as Array<any>).map(TagToJSON)),
+        'update_future': value['updateFuture'],
+        'update_all': value['updateAll'],
     };
 }
 

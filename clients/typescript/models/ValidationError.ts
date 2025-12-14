@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * Validation failures
  * @export
@@ -31,10 +31,8 @@ export interface ValidationError {
 /**
  * Check if a given object implements the ValidationError interface.
  */
-export function instanceOfValidationError(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfValidationError(value: object): value is ValidationError {
+    return true;
 }
 
 export function ValidationErrorFromJSON(json: any): ValidationError {
@@ -42,27 +40,29 @@ export function ValidationErrorFromJSON(json: any): ValidationError {
 }
 
 export function ValidationErrorFromJSONTyped(json: any, ignoreDiscriminator: boolean): ValidationError {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
             ...json,
-        'errors': !exists(json, 'errors') ? undefined : json['errors'],
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
-export function ValidationErrorToJSON(value?: ValidationError | null): any {
-    if (value === undefined) {
-        return undefined;
+export function ValidationErrorToJSON(json: any): ValidationError {
+    return ValidationErrorToJSONTyped(json, false);
+}
+
+export function ValidationErrorToJSONTyped(value?: ValidationError | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
             ...value,
-        'errors': value.errors,
+        'errors': value['errors'],
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -24,85 +24,85 @@ export interface CreditCard {
      * @type {number}
      * @memberof CreditCard
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof CreditCard
      */
-    name?: string;
+    name: string;
     /**
      * 
      * @type {string}
      * @memberof CreditCard
      */
-    description?: string | null;
+    description: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreditCard
      */
-    cardNetwork?: string;
+    cardNetwork: string;
     /**
      * 
      * @type {number}
      * @memberof CreditCard
      */
-    closingDay?: number;
+    closingDay: number;
     /**
      * 
      * @type {number}
      * @memberof CreditCard
      */
-    dueDay?: number;
+    dueDay: number;
     /**
      * 
      * @type {number}
      * @memberof CreditCard
      */
-    limitCents?: number;
+    limitCents: number;
     /**
      * 
      * @type {boolean}
      * @memberof CreditCard
      */
-    archived?: boolean;
+    archived: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof CreditCard
      */
-    _default?: boolean;
+    _default: boolean;
     /**
      * 
      * @type {string}
      * @memberof CreditCard
      */
-    institutionId?: string;
+    institutionId: string;
     /**
      * 
      * @type {string}
      * @memberof CreditCard
      */
-    institutionName?: string | null;
+    institutionName: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CreditCard
+     */
+    createdAt: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CreditCard
+     */
+    updatedAt: Date;
     /**
      * 
      * @type {string}
      * @memberof CreditCard
      */
-    createdAt?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreditCard
-     */
-    updatedAt?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreditCard
-     */
-    type?: CreditCardTypeEnum;
+    type: CreditCardTypeEnum;
 }
 
 /**
@@ -117,10 +117,22 @@ export enum CreditCardTypeEnum {
 /**
  * Check if a given object implements the CreditCard interface.
  */
-export function instanceOfCreditCard(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCreditCard(value: object): value is CreditCard {
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('description' in value) || value['description'] === undefined) return false;
+    if (!('cardNetwork' in value) || value['cardNetwork'] === undefined) return false;
+    if (!('closingDay' in value) || value['closingDay'] === undefined) return false;
+    if (!('dueDay' in value) || value['dueDay'] === undefined) return false;
+    if (!('limitCents' in value) || value['limitCents'] === undefined) return false;
+    if (!('archived' in value) || value['archived'] === undefined) return false;
+    if (!('_default' in value) || value['_default'] === undefined) return false;
+    if (!('institutionId' in value) || value['institutionId'] === undefined) return false;
+    if (!('institutionName' in value) || value['institutionName'] === undefined) return false;
+    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
+    if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
+    if (!('type' in value) || value['type'] === undefined) return false;
+    return true;
 }
 
 export function CreditCardFromJSON(json: any): CreditCard {
@@ -128,51 +140,53 @@ export function CreditCardFromJSON(json: any): CreditCard {
 }
 
 export function CreditCardFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreditCard {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'cardNetwork': !exists(json, 'card_network') ? undefined : json['card_network'],
-        'closingDay': !exists(json, 'closing_day') ? undefined : json['closing_day'],
-        'dueDay': !exists(json, 'due_day') ? undefined : json['due_day'],
-        'limitCents': !exists(json, 'limit_cents') ? undefined : json['limit_cents'],
-        'archived': !exists(json, 'archived') ? undefined : json['archived'],
-        '_default': !exists(json, 'default') ? undefined : json['default'],
-        'institutionId': !exists(json, 'institution_id') ? undefined : json['institution_id'],
-        'institutionName': !exists(json, 'institution_name') ? undefined : json['institution_name'],
-        'createdAt': !exists(json, 'created_at') ? undefined : json['created_at'],
-        'updatedAt': !exists(json, 'updated_at') ? undefined : json['updated_at'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'name': json['name'],
+        'description': json['description'],
+        'cardNetwork': json['card_network'],
+        'closingDay': json['closing_day'],
+        'dueDay': json['due_day'],
+        'limitCents': json['limit_cents'],
+        'archived': json['archived'],
+        '_default': json['default'],
+        'institutionId': json['institution_id'],
+        'institutionName': json['institution_name'],
+        'createdAt': (new Date(json['created_at'])),
+        'updatedAt': (new Date(json['updated_at'])),
+        'type': json['type'],
     };
 }
 
-export function CreditCardToJSON(value?: CreditCard | null): any {
-    if (value === undefined) {
-        return undefined;
+export function CreditCardToJSON(json: any): CreditCard {
+    return CreditCardToJSONTyped(json, false);
+}
+
+export function CreditCardToJSONTyped(value?: CreditCard | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'id': value.id,
-        'name': value.name,
-        'description': value.description,
-        'card_network': value.cardNetwork,
-        'closing_day': value.closingDay,
-        'due_day': value.dueDay,
-        'limit_cents': value.limitCents,
-        'archived': value.archived,
-        'default': value._default,
-        'institution_id': value.institutionId,
-        'institution_name': value.institutionName,
-        'created_at': value.createdAt,
-        'updated_at': value.updatedAt,
-        'type': value.type,
+        'id': value['id'],
+        'name': value['name'],
+        'description': value['description'],
+        'card_network': value['cardNetwork'],
+        'closing_day': value['closingDay'],
+        'due_day': value['dueDay'],
+        'limit_cents': value['limitCents'],
+        'archived': value['archived'],
+        'default': value['_default'],
+        'institution_id': value['institutionId'],
+        'institution_name': value['institutionName'],
+        'created_at': value['createdAt'].toISOString(),
+        'updated_at': value['updatedAt'].toISOString(),
+        'type': value['type'],
     };
 }
 

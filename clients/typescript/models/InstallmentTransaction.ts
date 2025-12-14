@@ -12,13 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { InstallmentTransactionAllOfInstallmentsAttributes } from './InstallmentTransactionAllOfInstallmentsAttributes';
 import {
     InstallmentTransactionAllOfInstallmentsAttributesFromJSON,
     InstallmentTransactionAllOfInstallmentsAttributesFromJSONTyped,
     InstallmentTransactionAllOfInstallmentsAttributesToJSON,
+    InstallmentTransactionAllOfInstallmentsAttributesToJSONTyped,
 } from './InstallmentTransactionAllOfInstallmentsAttributes';
+import type { Tag } from './Tag';
+import {
+    TagFromJSON,
+    TagFromJSONTyped,
+    TagToJSON,
+    TagToJSONTyped,
+} from './Tag';
 
 /**
  * Installment Transaction
@@ -27,11 +35,11 @@ import {
  */
 export interface InstallmentTransaction {
     /**
-     * ID of the Bank Account
+     * ID of the Transaction
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
@@ -49,49 +57,43 @@ export interface InstallmentTransaction {
      * @type {boolean}
      * @memberof InstallmentTransaction
      */
-    paid?: boolean;
+    paid: boolean;
     /**
      * 
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    amountCents?: number;
+    amountCents: number;
     /**
      * 
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    totalInstallments?: number;
+    totalInstallments: number;
     /**
      * 
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    installment?: number;
+    installment: number;
     /**
      * 
      * @type {boolean}
      * @memberof InstallmentTransaction
      */
-    recurring?: boolean;
+    recurring: boolean;
     /**
      * ID of the Bank Account
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    accountId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof InstallmentTransaction
-     */
-    accountType?: InstallmentTransactionAccountTypeEnum;
+    accountId: number;
     /**
      * 
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    categoryId?: number;
+    categoryId: number;
     /**
      * 
      * @type {string}
@@ -103,67 +105,73 @@ export interface InstallmentTransaction {
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    attachmentsCount?: number;
+    attachmentsCount: number;
     /**
      * 
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    creditCardId?: number | null;
+    creditCardId: number | null;
     /**
      * 
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    creditCardInvoiceId?: number | null;
+    creditCardInvoiceId: number | null;
     /**
      * 
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    paidCreditCardId?: number | null;
+    paidCreditCardId: number | null;
     /**
      * 
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    paidCreditCardInvoiceId?: number | null;
+    paidCreditCardInvoiceId: number | null;
     /**
      * 
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    opositeTransactionId?: number | null;
+    opositeTransactionId: number | null;
     /**
      * ID of the Bank Account
      * @type {number}
      * @memberof InstallmentTransaction
      */
-    opositeAccountId?: number | null;
+    opositeAccountId: number | null;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof InstallmentTransaction
      */
-    createdAt?: string;
+    createdAt: Date;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof InstallmentTransaction
      */
-    updatedAt?: string;
+    updatedAt: Date;
+    /**
+     * 
+     * @type {Array<Tag>}
+     * @memberof InstallmentTransaction
+     */
+    tags: Array<Tag>;
     /**
      * 
      * @type {Array<string>}
      * @memberof InstallmentTransaction
      */
-    tags?: Array<string>;
+    attachments: Array<string>;
     /**
      * 
-     * @type {Array<string>}
+     * @type {number}
      * @memberof InstallmentTransaction
      */
-    attachments?: Array<string>;
+    recurrenceId: number | null;
     /**
      * 
      * @type {InstallmentTransactionAllOfInstallmentsAttributes}
@@ -173,25 +181,33 @@ export interface InstallmentTransaction {
 }
 
 /**
-* @export
-* @enum {string}
-*/
-export enum InstallmentTransactionAccountTypeEnum {
-    Account = 'Account',
-    CreditCard = 'CreditCard'
-}
-
-
-/**
  * Check if a given object implements the InstallmentTransaction interface.
  */
-export function instanceOfInstallmentTransaction(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "description" in value;
-    isInstance = isInstance && "date" in value;
-    isInstance = isInstance && "notes" in value;
-
-    return isInstance;
+export function instanceOfInstallmentTransaction(value: object): value is InstallmentTransaction {
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('description' in value) || value['description'] === undefined) return false;
+    if (!('date' in value) || value['date'] === undefined) return false;
+    if (!('paid' in value) || value['paid'] === undefined) return false;
+    if (!('amountCents' in value) || value['amountCents'] === undefined) return false;
+    if (!('totalInstallments' in value) || value['totalInstallments'] === undefined) return false;
+    if (!('installment' in value) || value['installment'] === undefined) return false;
+    if (!('recurring' in value) || value['recurring'] === undefined) return false;
+    if (!('accountId' in value) || value['accountId'] === undefined) return false;
+    if (!('categoryId' in value) || value['categoryId'] === undefined) return false;
+    if (!('notes' in value) || value['notes'] === undefined) return false;
+    if (!('attachmentsCount' in value) || value['attachmentsCount'] === undefined) return false;
+    if (!('creditCardId' in value) || value['creditCardId'] === undefined) return false;
+    if (!('creditCardInvoiceId' in value) || value['creditCardInvoiceId'] === undefined) return false;
+    if (!('paidCreditCardId' in value) || value['paidCreditCardId'] === undefined) return false;
+    if (!('paidCreditCardInvoiceId' in value) || value['paidCreditCardInvoiceId'] === undefined) return false;
+    if (!('opositeTransactionId' in value) || value['opositeTransactionId'] === undefined) return false;
+    if (!('opositeAccountId' in value) || value['opositeAccountId'] === undefined) return false;
+    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
+    if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
+    if (!('tags' in value) || value['tags'] === undefined) return false;
+    if (!('attachments' in value) || value['attachments'] === undefined) return false;
+    if (!('recurrenceId' in value) || value['recurrenceId'] === undefined) return false;
+    return true;
 }
 
 export function InstallmentTransactionFromJSON(json: any): InstallmentTransaction {
@@ -199,71 +215,73 @@ export function InstallmentTransactionFromJSON(json: any): InstallmentTransactio
 }
 
 export function InstallmentTransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean): InstallmentTransaction {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'description': json['description'],
         'date': (new Date(json['date'])),
-        'paid': !exists(json, 'paid') ? undefined : json['paid'],
-        'amountCents': !exists(json, 'amount_cents') ? undefined : json['amount_cents'],
-        'totalInstallments': !exists(json, 'total_installments') ? undefined : json['total_installments'],
-        'installment': !exists(json, 'installment') ? undefined : json['installment'],
-        'recurring': !exists(json, 'recurring') ? undefined : json['recurring'],
-        'accountId': !exists(json, 'account_id') ? undefined : json['account_id'],
-        'accountType': !exists(json, 'account_type') ? undefined : json['account_type'],
-        'categoryId': !exists(json, 'category_id') ? undefined : json['category_id'],
+        'paid': json['paid'],
+        'amountCents': json['amount_cents'],
+        'totalInstallments': json['total_installments'],
+        'installment': json['installment'],
+        'recurring': json['recurring'],
+        'accountId': json['account_id'],
+        'categoryId': json['category_id'],
         'notes': json['notes'],
-        'attachmentsCount': !exists(json, 'attachments_count') ? undefined : json['attachments_count'],
-        'creditCardId': !exists(json, 'credit_card_id') ? undefined : json['credit_card_id'],
-        'creditCardInvoiceId': !exists(json, 'credit_card_invoice_id') ? undefined : json['credit_card_invoice_id'],
-        'paidCreditCardId': !exists(json, 'paid_credit_card_id') ? undefined : json['paid_credit_card_id'],
-        'paidCreditCardInvoiceId': !exists(json, 'paid_credit_card_invoice_id') ? undefined : json['paid_credit_card_invoice_id'],
-        'opositeTransactionId': !exists(json, 'oposite_transaction_id') ? undefined : json['oposite_transaction_id'],
-        'opositeAccountId': !exists(json, 'oposite_account_id') ? undefined : json['oposite_account_id'],
-        'createdAt': !exists(json, 'created_at') ? undefined : json['created_at'],
-        'updatedAt': !exists(json, 'updated_at') ? undefined : json['updated_at'],
-        'tags': !exists(json, 'tags') ? undefined : json['tags'],
-        'attachments': !exists(json, 'attachments') ? undefined : json['attachments'],
-        'installmentsAttributes': !exists(json, 'installments_attributes') ? undefined : InstallmentTransactionAllOfInstallmentsAttributesFromJSON(json['installments_attributes']),
+        'attachmentsCount': json['attachments_count'],
+        'creditCardId': json['credit_card_id'],
+        'creditCardInvoiceId': json['credit_card_invoice_id'],
+        'paidCreditCardId': json['paid_credit_card_id'],
+        'paidCreditCardInvoiceId': json['paid_credit_card_invoice_id'],
+        'opositeTransactionId': json['oposite_transaction_id'],
+        'opositeAccountId': json['oposite_account_id'],
+        'createdAt': (new Date(json['created_at'])),
+        'updatedAt': (new Date(json['updated_at'])),
+        'tags': ((json['tags'] as Array<any>).map(TagFromJSON)),
+        'attachments': json['attachments'],
+        'recurrenceId': json['recurrence_id'],
+        'installmentsAttributes': json['installments_attributes'] == null ? undefined : InstallmentTransactionAllOfInstallmentsAttributesFromJSON(json['installments_attributes']),
     };
 }
 
-export function InstallmentTransactionToJSON(value?: InstallmentTransaction | null): any {
-    if (value === undefined) {
-        return undefined;
+export function InstallmentTransactionToJSON(json: any): InstallmentTransaction {
+    return InstallmentTransactionToJSONTyped(json, false);
+}
+
+export function InstallmentTransactionToJSONTyped(value?: InstallmentTransaction | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'id': value.id,
-        'description': value.description,
-        'date': (value.date.toISOString().substr(0,10)),
-        'paid': value.paid,
-        'amount_cents': value.amountCents,
-        'total_installments': value.totalInstallments,
-        'installment': value.installment,
-        'recurring': value.recurring,
-        'account_id': value.accountId,
-        'account_type': value.accountType,
-        'category_id': value.categoryId,
-        'notes': value.notes,
-        'attachments_count': value.attachmentsCount,
-        'credit_card_id': value.creditCardId,
-        'credit_card_invoice_id': value.creditCardInvoiceId,
-        'paid_credit_card_id': value.paidCreditCardId,
-        'paid_credit_card_invoice_id': value.paidCreditCardInvoiceId,
-        'oposite_transaction_id': value.opositeTransactionId,
-        'oposite_account_id': value.opositeAccountId,
-        'created_at': value.createdAt,
-        'updated_at': value.updatedAt,
-        'tags': value.tags,
-        'attachments': value.attachments,
-        'installments_attributes': InstallmentTransactionAllOfInstallmentsAttributesToJSON(value.installmentsAttributes),
+        'id': value['id'],
+        'description': value['description'],
+        'date': value['date'].toISOString().substring(0,10),
+        'paid': value['paid'],
+        'amount_cents': value['amountCents'],
+        'total_installments': value['totalInstallments'],
+        'installment': value['installment'],
+        'recurring': value['recurring'],
+        'account_id': value['accountId'],
+        'category_id': value['categoryId'],
+        'notes': value['notes'],
+        'attachments_count': value['attachmentsCount'],
+        'credit_card_id': value['creditCardId'],
+        'credit_card_invoice_id': value['creditCardInvoiceId'],
+        'paid_credit_card_id': value['paidCreditCardId'],
+        'paid_credit_card_invoice_id': value['paidCreditCardInvoiceId'],
+        'oposite_transaction_id': value['opositeTransactionId'],
+        'oposite_account_id': value['opositeAccountId'],
+        'created_at': value['createdAt'].toISOString(),
+        'updated_at': value['updatedAt'].toISOString(),
+        'tags': ((value['tags'] as Array<any>).map(TagToJSON)),
+        'attachments': value['attachments'],
+        'recurrence_id': value['recurrenceId'],
+        'installments_attributes': InstallmentTransactionAllOfInstallmentsAttributesToJSON(value['installmentsAttributes']),
     };
 }
 

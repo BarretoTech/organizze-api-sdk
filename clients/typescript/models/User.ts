@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -24,43 +24,29 @@ export interface User {
      * @type {number}
      * @memberof User
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof User
      */
-    name?: string;
+    name: string;
     /**
      * 
      * @type {string}
      * @memberof User
      */
-    email?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
-    role?: UserRoleEnum;
+    email: string;
 }
-
-/**
-* @export
-* @enum {string}
-*/
-export enum UserRoleEnum {
-    Sheldon = 'sheldon'
-}
-
 
 /**
  * Check if a given object implements the User interface.
  */
-export function instanceOfUser(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfUser(value: object): value is User {
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('email' in value) || value['email'] === undefined) return false;
+    return true;
 }
 
 export function UserFromJSON(json: any): User {
@@ -68,31 +54,31 @@ export function UserFromJSON(json: any): User {
 }
 
 export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'email': !exists(json, 'email') ? undefined : json['email'],
-        'role': !exists(json, 'role') ? undefined : json['role'],
+        'id': json['id'],
+        'name': json['name'],
+        'email': json['email'],
     };
 }
 
-export function UserToJSON(value?: User | null): any {
-    if (value === undefined) {
-        return undefined;
+export function UserToJSON(json: any): User {
+    return UserToJSONTyped(json, false);
+}
+
+export function UserToJSONTyped(value?: User | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'id': value.id,
-        'name': value.name,
-        'email': value.email,
-        'role': value.role,
+        'id': value['id'],
+        'name': value['name'],
+        'email': value['email'],
     };
 }
 

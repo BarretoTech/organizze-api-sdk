@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -24,64 +24,71 @@ export interface CreditCardInvoice {
      * @type {number}
      * @memberof CreditCardInvoice
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {Date}
      * @memberof CreditCardInvoice
      */
-    date?: Date;
+    date: Date;
     /**
      * 
      * @type {Date}
      * @memberof CreditCardInvoice
      */
-    startingDate?: Date;
+    startingDate: Date;
     /**
      * 
      * @type {Date}
      * @memberof CreditCardInvoice
      */
-    closingDate?: Date;
+    closingDate: Date;
     /**
      * 
      * @type {number}
      * @memberof CreditCardInvoice
      */
-    amountCents?: number;
+    amountCents: number;
     /**
      * 
      * @type {number}
      * @memberof CreditCardInvoice
      */
-    paymentAmountCents?: number;
+    paymentAmountCents: number;
     /**
      * 
      * @type {number}
      * @memberof CreditCardInvoice
      */
-    balanceCents?: number;
+    balanceCents: number;
     /**
      * 
      * @type {number}
      * @memberof CreditCardInvoice
      */
-    previousBalanceCents?: number;
+    previousBalanceCents: number;
     /**
      * 
      * @type {number}
      * @memberof CreditCardInvoice
      */
-    creditCardId?: number;
+    creditCardId: number;
 }
 
 /**
  * Check if a given object implements the CreditCardInvoice interface.
  */
-export function instanceOfCreditCardInvoice(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCreditCardInvoice(value: object): value is CreditCardInvoice {
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('date' in value) || value['date'] === undefined) return false;
+    if (!('startingDate' in value) || value['startingDate'] === undefined) return false;
+    if (!('closingDate' in value) || value['closingDate'] === undefined) return false;
+    if (!('amountCents' in value) || value['amountCents'] === undefined) return false;
+    if (!('paymentAmountCents' in value) || value['paymentAmountCents'] === undefined) return false;
+    if (!('balanceCents' in value) || value['balanceCents'] === undefined) return false;
+    if (!('previousBalanceCents' in value) || value['previousBalanceCents'] === undefined) return false;
+    if (!('creditCardId' in value) || value['creditCardId'] === undefined) return false;
+    return true;
 }
 
 export function CreditCardInvoiceFromJSON(json: any): CreditCardInvoice {
@@ -89,41 +96,43 @@ export function CreditCardInvoiceFromJSON(json: any): CreditCardInvoice {
 }
 
 export function CreditCardInvoiceFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreditCardInvoice {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'date': !exists(json, 'date') ? undefined : (new Date(json['date'])),
-        'startingDate': !exists(json, 'starting_date') ? undefined : (new Date(json['starting_date'])),
-        'closingDate': !exists(json, 'closing_date') ? undefined : (new Date(json['closing_date'])),
-        'amountCents': !exists(json, 'amount_cents') ? undefined : json['amount_cents'],
-        'paymentAmountCents': !exists(json, 'payment_amount_cents') ? undefined : json['payment_amount_cents'],
-        'balanceCents': !exists(json, 'balance_cents') ? undefined : json['balance_cents'],
-        'previousBalanceCents': !exists(json, 'previous_balance_cents') ? undefined : json['previous_balance_cents'],
-        'creditCardId': !exists(json, 'credit_card_id') ? undefined : json['credit_card_id'],
+        'id': json['id'],
+        'date': (new Date(json['date'])),
+        'startingDate': (new Date(json['starting_date'])),
+        'closingDate': (new Date(json['closing_date'])),
+        'amountCents': json['amount_cents'],
+        'paymentAmountCents': json['payment_amount_cents'],
+        'balanceCents': json['balance_cents'],
+        'previousBalanceCents': json['previous_balance_cents'],
+        'creditCardId': json['credit_card_id'],
     };
 }
 
-export function CreditCardInvoiceToJSON(value?: CreditCardInvoice | null): any {
-    if (value === undefined) {
-        return undefined;
+export function CreditCardInvoiceToJSON(json: any): CreditCardInvoice {
+    return CreditCardInvoiceToJSONTyped(json, false);
+}
+
+export function CreditCardInvoiceToJSONTyped(value?: CreditCardInvoice | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'id': value.id,
-        'date': value.date === undefined ? undefined : (value.date.toISOString().substr(0,10)),
-        'starting_date': value.startingDate === undefined ? undefined : (value.startingDate.toISOString().substr(0,10)),
-        'closing_date': value.closingDate === undefined ? undefined : (value.closingDate.toISOString().substr(0,10)),
-        'amount_cents': value.amountCents,
-        'payment_amount_cents': value.paymentAmountCents,
-        'balance_cents': value.balanceCents,
-        'previous_balance_cents': value.previousBalanceCents,
-        'credit_card_id': value.creditCardId,
+        'id': value['id'],
+        'date': value['date'].toISOString().substring(0,10),
+        'starting_date': value['startingDate'].toISOString().substring(0,10),
+        'closing_date': value['closingDate'].toISOString().substring(0,10),
+        'amount_cents': value['amountCents'],
+        'payment_amount_cents': value['paymentAmountCents'],
+        'balance_cents': value['balanceCents'],
+        'previous_balance_cents': value['previousBalanceCents'],
+        'credit_card_id': value['creditCardId'],
     };
 }
 

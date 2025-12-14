@@ -18,7 +18,7 @@ import type {
   Budget,
   FailedAuthentication,
   NotFound,
-} from '../models';
+} from '../models/index';
 import {
     BudgetFromJSON,
     BudgetToJSON,
@@ -26,7 +26,7 @@ import {
     FailedAuthenticationToJSON,
     NotFoundFromJSON,
     NotFoundToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface ListAnnualBudgetsRequest {
     year: number;
@@ -46,8 +46,11 @@ export class BudgetsApi extends runtime.BaseAPI {
      * Get Annual Budgets
      */
     async listAnnualBudgetsRaw(requestParameters: ListAnnualBudgetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Budget>>> {
-        if (requestParameters.year === null || requestParameters.year === undefined) {
-            throw new runtime.RequiredError('year','Required parameter requestParameters.year was null or undefined when calling listAnnualBudgets.');
+        if (requestParameters['year'] == null) {
+            throw new runtime.RequiredError(
+                'year',
+                'Required parameter "year" was null or undefined when calling listAnnualBudgets().'
+            );
         }
 
         const queryParameters: any = {};
@@ -58,11 +61,15 @@ export class BudgetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/budgets/{year}`;
+        urlPath = urlPath.replace(`{${"year"}}`, encodeURIComponent(String(requestParameters['year'])));
+
         const response = await this.request({
-            path: `/budgets/{year}`.replace(`{${"year"}}`, encodeURIComponent(String(requestParameters.year))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -91,11 +98,14 @@ export class BudgetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/budgets`;
+
         const response = await this.request({
-            path: `/budgets`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -116,12 +126,18 @@ export class BudgetsApi extends runtime.BaseAPI {
      * Get Monthly Budgets
      */
     async listMonthlyBudgetsRaw(requestParameters: ListMonthlyBudgetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Budget>>> {
-        if (requestParameters.year === null || requestParameters.year === undefined) {
-            throw new runtime.RequiredError('year','Required parameter requestParameters.year was null or undefined when calling listMonthlyBudgets.');
+        if (requestParameters['year'] == null) {
+            throw new runtime.RequiredError(
+                'year',
+                'Required parameter "year" was null or undefined when calling listMonthlyBudgets().'
+            );
         }
 
-        if (requestParameters.month === null || requestParameters.month === undefined) {
-            throw new runtime.RequiredError('month','Required parameter requestParameters.month was null or undefined when calling listMonthlyBudgets.');
+        if (requestParameters['month'] == null) {
+            throw new runtime.RequiredError(
+                'month',
+                'Required parameter "month" was null or undefined when calling listMonthlyBudgets().'
+            );
         }
 
         const queryParameters: any = {};
@@ -132,11 +148,16 @@ export class BudgetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/budgets/{year}/{month}`;
+        urlPath = urlPath.replace(`{${"year"}}`, encodeURIComponent(String(requestParameters['year'])));
+        urlPath = urlPath.replace(`{${"month"}}`, encodeURIComponent(String(requestParameters['month'])));
+
         const response = await this.request({
-            path: `/budgets/{year}/{month}`.replace(`{${"year"}}`, encodeURIComponent(String(requestParameters.year))).replace(`{${"month"}}`, encodeURIComponent(String(requestParameters.month))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -24,58 +24,96 @@ export interface Category {
      * @type {number}
      * @memberof Category
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof Category
      */
-    name?: string;
+    name: string;
     /**
      * 
      * @type {string}
      * @memberof Category
      */
-    color?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Category
-     */
-    groupId?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Category
-     */
-    fixed?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Category
-     */
-    available?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Category
-     */
-    essential?: boolean;
+    color: string;
     /**
      * 
      * @type {number}
      * @memberof Category
      */
-    parentId?: number | null;
+    parentId: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Category
+     */
+    groupId: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Category
+     */
+    fixed: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Category
+     */
+    essential: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Category
+     */
+    _default: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Category
+     */
+    uuid: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Category
+     */
+    kind: CategoryKindEnum;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Category
+     */
+    archived: boolean;
 }
+
+/**
+* @export
+* @enum {string}
+*/
+export enum CategoryKindEnum {
+    Expenses = 'expenses',
+    Earnings = 'earnings',
+    None = 'none'
+}
+
 
 /**
  * Check if a given object implements the Category interface.
  */
-export function instanceOfCategory(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCategory(value: object): value is Category {
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('color' in value) || value['color'] === undefined) return false;
+    if (!('parentId' in value) || value['parentId'] === undefined) return false;
+    if (!('groupId' in value) || value['groupId'] === undefined) return false;
+    if (!('fixed' in value) || value['fixed'] === undefined) return false;
+    if (!('essential' in value) || value['essential'] === undefined) return false;
+    if (!('_default' in value) || value['_default'] === undefined) return false;
+    if (!('uuid' in value) || value['uuid'] === undefined) return false;
+    if (!('kind' in value) || value['kind'] === undefined) return false;
+    if (!('archived' in value) || value['archived'] === undefined) return false;
+    return true;
 }
 
 export function CategoryFromJSON(json: any): Category {
@@ -83,39 +121,47 @@ export function CategoryFromJSON(json: any): Category {
 }
 
 export function CategoryFromJSONTyped(json: any, ignoreDiscriminator: boolean): Category {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'color': !exists(json, 'color') ? undefined : json['color'],
-        'groupId': !exists(json, 'group_id') ? undefined : json['group_id'],
-        'fixed': !exists(json, 'fixed') ? undefined : json['fixed'],
-        'available': !exists(json, 'available') ? undefined : json['available'],
-        'essential': !exists(json, 'essential') ? undefined : json['essential'],
-        'parentId': !exists(json, 'parent_id') ? undefined : json['parent_id'],
+        'id': json['id'],
+        'name': json['name'],
+        'color': json['color'],
+        'parentId': json['parent_id'],
+        'groupId': json['group_id'],
+        'fixed': json['fixed'],
+        'essential': json['essential'],
+        '_default': json['default'],
+        'uuid': json['uuid'],
+        'kind': json['kind'],
+        'archived': json['archived'],
     };
 }
 
-export function CategoryToJSON(value?: Category | null): any {
-    if (value === undefined) {
-        return undefined;
+export function CategoryToJSON(json: any): Category {
+    return CategoryToJSONTyped(json, false);
+}
+
+export function CategoryToJSONTyped(value?: Category | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'id': value.id,
-        'name': value.name,
-        'color': value.color,
-        'group_id': value.groupId,
-        'fixed': value.fixed,
-        'available': value.available,
-        'essential': value.essential,
-        'parent_id': value.parentId,
+        'id': value['id'],
+        'name': value['name'],
+        'color': value['color'],
+        'parent_id': value['parentId'],
+        'group_id': value['groupId'],
+        'fixed': value['fixed'],
+        'essential': value['essential'],
+        'default': value['_default'],
+        'uuid': value['uuid'],
+        'kind': value['kind'],
+        'archived': value['archived'],
     };
 }
 

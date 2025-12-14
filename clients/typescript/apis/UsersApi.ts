@@ -18,7 +18,7 @@ import type {
   FailedAuthentication,
   NotFound,
   User,
-} from '../models';
+} from '../models/index';
 import {
     FailedAuthenticationFromJSON,
     FailedAuthenticationToJSON,
@@ -26,7 +26,7 @@ import {
     NotFoundToJSON,
     UserFromJSON,
     UserToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface ReadUserRequest {
     userID: number;
@@ -49,11 +49,14 @@ export class UsersApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/users`;
+
         const response = await this.request({
-            path: `/users`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -74,8 +77,11 @@ export class UsersApi extends runtime.BaseAPI {
      * Read User
      */
     async readUserRaw(requestParameters: ReadUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<User>> {
-        if (requestParameters.userID === null || requestParameters.userID === undefined) {
-            throw new runtime.RequiredError('userID','Required parameter requestParameters.userID was null or undefined when calling readUser.');
+        if (requestParameters['userID'] == null) {
+            throw new runtime.RequiredError(
+                'userID',
+                'Required parameter "userID" was null or undefined when calling readUser().'
+            );
         }
 
         const queryParameters: any = {};
@@ -86,11 +92,15 @@ export class UsersApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = "Basic " + btoa(this.configuration.username + ":" + this.configuration.password);
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["User-Agent"] = this.configuration.apiKey("User-Agent"); // userAgent authentication
+            headerParameters["User-Agent"] = await this.configuration.apiKey("User-Agent"); // userAgent authentication
         }
 
+
+        let urlPath = `/users/{userID}`;
+        urlPath = urlPath.replace(`{${"userID"}}`, encodeURIComponent(String(requestParameters['userID'])));
+
         const response = await this.request({
-            path: `/users/{userID}`.replace(`{${"userID"}}`, encodeURIComponent(String(requestParameters.userID))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
