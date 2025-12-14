@@ -37,8 +37,9 @@ class TransactionInput(BaseModel):
     category_id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
     notes: Optional[StrictStr] = None
     credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
+    credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     tags: Optional[Annotated[List[Tag], Field(min_length=0, max_length=100)]] = None
-    __properties: ClassVar[List[str]] = ["description", "date", "paid", "amount_cents", "account_id", "category_id", "notes", "credit_card_id", "tags"]
+    __properties: ClassVar[List[str]] = ["description", "date", "paid", "amount_cents", "account_id", "category_id", "notes", "credit_card_id", "credit_card_invoice_id", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,6 +97,11 @@ class TransactionInput(BaseModel):
         if self.credit_card_id is None and "credit_card_id" in self.model_fields_set:
             _dict['credit_card_id'] = None
 
+        # set to None if credit_card_invoice_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.credit_card_invoice_id is None and "credit_card_invoice_id" in self.model_fields_set:
+            _dict['credit_card_invoice_id'] = None
+
         return _dict
 
     @classmethod
@@ -116,6 +122,7 @@ class TransactionInput(BaseModel):
             "category_id": obj.get("category_id"),
             "notes": obj.get("notes"),
             "credit_card_id": obj.get("credit_card_id"),
+            "credit_card_invoice_id": obj.get("credit_card_invoice_id"),
             "tags": [Tag.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None
         })
         return _obj
