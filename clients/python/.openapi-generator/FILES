@@ -23,7 +23,6 @@ docs/RecurringTransactionAllOfRecurrenceAttributes.md
 docs/Tag.md
 docs/Transaction.md
 docs/TransactionInput.md
-docs/TransactionTags.md
 docs/TransactionsApi.md
 docs/UpdateTransactionRequest.md
 docs/User.md
@@ -62,7 +61,6 @@ organizze_api/models/recurring_transaction_all_of_recurrence_attributes.py
 organizze_api/models/tag.py
 organizze_api/models/transaction.py
 organizze_api/models/transaction_input.py
-organizze_api/models/transaction_tags.py
 organizze_api/models/update_transaction_request.py
 organizze_api/models/user.py
 organizze_api/models/validation_error.py
@@ -72,4 +70,3 @@ requirements.txt
 setup.cfg
 test-requirements.txt
 test/__init__.py
-test/test_transaction_tags.py

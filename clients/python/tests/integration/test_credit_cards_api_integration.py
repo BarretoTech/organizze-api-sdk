@@ -106,7 +106,7 @@ class TestCreditCardsApiIntegration(BaseIntegrationTest):
 
         try:
             # Create a new credit card
-            new_card = organizze_api.CreditCard(
+            new_card = organizze_api.CreditCardInput(
                 name="Test Card SDK",
                 card_network="visa",
                 closing_day=15,
@@ -121,11 +121,16 @@ class TestCreditCardsApiIntegration(BaseIntegrationTest):
             print(f"✓ Successfully created credit card with ID: {created_card_id}")
 
             # Update the card
-            created_card.name = "Test Card SDK Updated"
-            created_card.limit_cents = 750000  # R$ 7500.00
+            update_data = organizze_api.CreditCardInput(
+                name="Test Card SDK Updated",
+                card_network="visa",
+                closing_day=15,
+                due_day=25,
+                limit_cents=750000  # R$ 7500.00
+            )
             updated_card = self.credit_cards_api.update_credit_card(
                 created_card_id,
-                created_card
+                update_data
             )
             # Some API operations may return None on successful update
             if updated_card is not None:

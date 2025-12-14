@@ -60,7 +60,7 @@ class TestCategoriesApiIntegration(BaseIntegrationTest):
         try:
             # Create a new category
             # Color format: lowercase hex without # (e.g., "ff5733")
-            new_category = organizze_api.Category(
+            new_category = organizze_api.CategoryInput(
                 name="Test Category SDK",
                 color="ff5733"
             )
@@ -72,10 +72,13 @@ class TestCategoriesApiIntegration(BaseIntegrationTest):
             print(f"✓ Successfully created category with ID: {created_category_id}")
 
             # Update the category
-            created_category.name = "Test Category SDK Updated"
+            update_data = organizze_api.CategoryInput(
+                name="Test Category SDK Updated",
+                color="ffd5ff"
+            )
             updated_category = self.categories_api.update_category(
                 created_category_id,
-                created_category
+                update_data
             )
             # Some API operations may return None on successful update
             if updated_category is not None:

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **category_id** | **int** |  | 
 **notes** | **str** |  | 
 **credit_card_id** | **int** |  | 
-**tags** | [**TransactionTags**](TransactionTags.md) |  | 
+**tags** | [**List[Tag]**](Tag.md) |  | 
 **id** | **int** | ID of the Transaction | 
 **total_installments** | **int** |  | 
 **installment** | **int** |  | 

@@ -29,12 +29,12 @@ class UpdateTransactionRequest(BaseModel):
     """
     UpdateTransactionRequest
     """ # noqa: E501
-    description: StrictStr
-    var_date: date = Field(alias="date")
+    description: Optional[StrictStr] = None
+    var_date: Optional[date] = Field(default=None, alias="date")
     paid: Optional[StrictBool] = None
-    amount_cents: Annotated[int, Field(le=2147483647, strict=True, ge=-2147483647)]
+    amount_cents: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483647)]] = None
     account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(default=None, description="ID of the Bank Account")
-    category_id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
+    category_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     notes: Optional[StrictStr] = None
     credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     tags: Optional[Annotated[List[Tag], Field(min_length=0, max_length=100)]] = None

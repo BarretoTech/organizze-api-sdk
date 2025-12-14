@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | 
-**var_date** | **date** |  | 
+**description** | **str** |  | [optional] 
+**var_date** | **date** |  | [optional] 
 **paid** | **bool** |  | [optional] 
-**amount_cents** | **int** |  | 
+**amount_cents** | **int** |  | [optional] 
 **account_id** | **int** | ID of the Bank Account | [optional] 
-**category_id** | **int** |  | 
+**category_id** | **int** |  | [optional] 
 **notes** | **str** |  | [optional] 
 **credit_card_id** | **int** |  | [optional] 
 **tags** | [**List[Tag]**](Tag.md) |  | [optional] 

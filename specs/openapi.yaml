@@ -670,15 +670,11 @@ components:
           minLength: 20
           maxLength: 29
         tags:
-          oneOf:
-            - type: string
-              description: Empty string when returned in invoice transactions
-            - type: array
-              minItems: 0
-              maxItems: 100
-              items:
-                $ref: "#/components/schemas/Tag"
-              description: Array of tags when returned in transaction list/detail endpoints
+          type: array
+          minItems: 0
+          maxItems: 100
+          items:
+            $ref: "#/components/schemas/Tag"
         attachments:
           type: array
           minItems: 0
@@ -1521,15 +1517,53 @@ components:
       content:
         application/json:
           schema:
-            allOf:
-              - $ref: "#/components/schemas/TransactionInput"
-              - type: object
-                additionalProperties: false
-                properties:
-                  update_future:
-                    type: boolean
-                  update_all:
-                    type: boolean
+            type: object
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+              date:
+                type: string
+                format: date
+                minLength: 10
+                maxLength: 10
+              paid:
+                type: boolean
+              amount_cents:
+                type: integer
+                format: int32
+                minimum: -2147483647
+                maximum: 2147483647
+              account_id:
+                description: ID of the Bank Account
+                type: integer
+                format: int32
+                minimum: 1
+                maximum: 2147483647
+              category_id:
+                type: integer
+                format: int32
+                minimum: 1
+                maximum: 2147483647
+              notes:
+                type: string
+                nullable: true
+              credit_card_id:
+                type: integer
+                format: int32
+                minimum: 1
+                maximum: 2147483647
+                nullable: true
+              tags:
+                type: array
+                minItems: 0
+                maxItems: 100
+                items:
+                  $ref: "#/components/schemas/Tag"
+              update_future:
+                type: boolean
+              update_all:
+                type: boolean
     DeleteTransaction:
       required: true
       content:

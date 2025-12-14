@@ -60,7 +60,7 @@ class TestBankAccountsApiIntegration(BaseIntegrationTest):
         try:
             # Create a new bank account
             # Note: type field should be omitted or set to valid values like "other" or "bank"
-            new_account = organizze_api.BankAccount(
+            new_account = organizze_api.BankAccountInput(
                 name="Test Account SDK",
                 description="Created by SDK integration tests",
                 type="other"  # Valid values: "other", "bank", etc.
@@ -73,11 +73,14 @@ class TestBankAccountsApiIntegration(BaseIntegrationTest):
             print(f"✓ Successfully created bank account with ID: {created_account_id}")
 
             # Update the account
-            created_account.name = "Test Account SDK Updated"
-            created_account.description = "Updated by SDK integration tests"
+            update_data = organizze_api.BankAccountInput(
+                name="Test Account SDK Updated",
+                description="Updated by SDK integration tests",
+                type="other"
+            )
             updated_account = self.bank_accounts_api.update_bank_account(
                 created_account_id,
-                created_account
+                update_data
             )
             # Some API operations may return None on successful update
             if updated_account is not None:

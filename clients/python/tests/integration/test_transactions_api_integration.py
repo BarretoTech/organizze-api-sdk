@@ -88,8 +88,8 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             category_id = categories[0].id
 
             # Create a new transaction
-            # Note: CreateTransactionRequest is a oneOf wrapper, use Transaction directly
-            transaction_data = organizze_api.Transaction(
+            # Note: CreateTransactionRequest is a oneOf wrapper, use TransactionInput
+            transaction_data = organizze_api.TransactionInput(
                 description="Test Transaction SDK",
                 var_date=date.today(),
                 account_id=account_id,
@@ -210,7 +210,7 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             tag3 = Tag(name="automated")
 
             # Create a transaction with tags
-            transaction_data = organizze_api.Transaction(
+            transaction_data = organizze_api.TransactionInput(
                 description="Test Transaction with Tags",
                 var_date=date.today(),
                 account_id=account_id,
@@ -276,7 +276,7 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
 
             # Create a transaction with initial tags
             tag1 = Tag(name="initial-tag")
-            transaction_data = organizze_api.Transaction(
+            transaction_data = organizze_api.TransactionInput(
                 description="Test Transaction - Update Tags",
                 var_date=date.today(),
                 account_id=account_id,
