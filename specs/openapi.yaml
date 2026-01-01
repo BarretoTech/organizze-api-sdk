@@ -335,6 +335,8 @@ paths:
       operationId: listCreditCardInvoices
       parameters:
         - $ref: "#/components/parameters/CreditCardID"
+        - $ref: "#/components/parameters/StartDate"
+        - $ref: "#/components/parameters/EndDate"
       responses:
         "200":
           $ref: "#/components/responses/ListCreditCardInvoicesResponse"

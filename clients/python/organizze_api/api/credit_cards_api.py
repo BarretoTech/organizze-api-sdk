@@ -16,8 +16,9 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from datetime import date
 from pydantic import Field
-from typing import List
+from typing import List, Optional
 from typing_extensions import Annotated
 from organizze_api.models.credit_card import CreditCard
 from organizze_api.models.credit_card_input import CreditCardInput
@@ -880,6 +881,8 @@ class CreditCardsApi:
     def list_credit_card_invoices(
         self,
         credit_card_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Credit Card ID")],
+        start_date: Annotated[Optional[date], Field(description="ISO8601 Date with the start period for filtering")] = None,
+        end_date: Annotated[Optional[date], Field(description="ISO8601 Date with the end period for filtering")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -898,6 +901,10 @@ class CreditCardsApi:
 
         :param credit_card_id: Credit Card ID (required)
         :type credit_card_id: int
+        :param start_date: ISO8601 Date with the start period for filtering
+        :type start_date: date
+        :param end_date: ISO8601 Date with the end period for filtering
+        :type end_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -922,6 +929,8 @@ class CreditCardsApi:
 
         _param = self._list_credit_card_invoices_serialize(
             credit_card_id=credit_card_id,
+            start_date=start_date,
+            end_date=end_date,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -948,6 +957,8 @@ class CreditCardsApi:
     def list_credit_card_invoices_with_http_info(
         self,
         credit_card_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Credit Card ID")],
+        start_date: Annotated[Optional[date], Field(description="ISO8601 Date with the start period for filtering")] = None,
+        end_date: Annotated[Optional[date], Field(description="ISO8601 Date with the end period for filtering")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -966,6 +977,10 @@ class CreditCardsApi:
 
         :param credit_card_id: Credit Card ID (required)
         :type credit_card_id: int
+        :param start_date: ISO8601 Date with the start period for filtering
+        :type start_date: date
+        :param end_date: ISO8601 Date with the end period for filtering
+        :type end_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -990,6 +1005,8 @@ class CreditCardsApi:
 
         _param = self._list_credit_card_invoices_serialize(
             credit_card_id=credit_card_id,
+            start_date=start_date,
+            end_date=end_date,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1016,6 +1033,8 @@ class CreditCardsApi:
     def list_credit_card_invoices_without_preload_content(
         self,
         credit_card_id: Annotated[int, Field(le=2147483647, strict=True, ge=1, description="Credit Card ID")],
+        start_date: Annotated[Optional[date], Field(description="ISO8601 Date with the start period for filtering")] = None,
+        end_date: Annotated[Optional[date], Field(description="ISO8601 Date with the end period for filtering")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1034,6 +1053,10 @@ class CreditCardsApi:
 
         :param credit_card_id: Credit Card ID (required)
         :type credit_card_id: int
+        :param start_date: ISO8601 Date with the start period for filtering
+        :type start_date: date
+        :param end_date: ISO8601 Date with the end period for filtering
+        :type end_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1058,6 +1081,8 @@ class CreditCardsApi:
 
         _param = self._list_credit_card_invoices_serialize(
             credit_card_id=credit_card_id,
+            start_date=start_date,
+            end_date=end_date,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1079,6 +1104,8 @@ class CreditCardsApi:
     def _list_credit_card_invoices_serialize(
         self,
         credit_card_id,
+        start_date,
+        end_date,
         _request_auth,
         _content_type,
         _headers,
@@ -1103,6 +1130,32 @@ class CreditCardsApi:
         if credit_card_id is not None:
             _path_params['creditCardID'] = credit_card_id
         # process the query parameters
+        if start_date is not None:
+            if isinstance(start_date, date):
+                _query_params.append(
+                    (
+                        'start_date',
+                        start_date.strftime(
+                            self.api_client.configuration.date_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('start_date', start_date))
+            
+        if end_date is not None:
+            if isinstance(end_date, date):
+                _query_params.append(
+                    (
+                        'end_date',
+                        end_date.strftime(
+                            self.api_client.configuration.date_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('end_date', end_date))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

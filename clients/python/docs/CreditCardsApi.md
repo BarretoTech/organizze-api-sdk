@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_credit_card_invoices**
-> List[CreditCardInvoice] list_credit_card_invoices(credit_card_id)
+> List[CreditCardInvoice] list_credit_card_invoices(credit_card_id, start_date=start_date, end_date=end_date)
 
 List Credit Card Invoices
 
@@ -324,10 +324,12 @@ with organizze_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = organizze_api.CreditCardsApi(api_client)
     credit_card_id = 1 # int | Credit Card ID
+    start_date = '2015-09-01' # date | ISO8601 Date with the start period for filtering (optional)
+    end_date = '2015-10-01' # date | ISO8601 Date with the end period for filtering (optional)
 
     try:
         # List Credit Card Invoices
-        api_response = api_instance.list_credit_card_invoices(credit_card_id)
+        api_response = api_instance.list_credit_card_invoices(credit_card_id, start_date=start_date, end_date=end_date)
         print("The response of CreditCardsApi->list_credit_card_invoices:\n")
         pprint(api_response)
     except Exception as e:
@@ -342,6 +344,8 @@ with organizze_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **credit_card_id** | **int**| Credit Card ID | 
+ **start_date** | **date**| ISO8601 Date with the start period for filtering | [optional] 
+ **end_date** | **date**| ISO8601 Date with the end period for filtering | [optional] 
 
 ### Return type
 

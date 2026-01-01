@@ -58,6 +58,8 @@ export interface ListCreditCardInvoicePaymentsRequest {
 
 export interface ListCreditCardInvoicesRequest {
     creditCardID: number;
+    startDate?: Date;
+    endDate?: Date;
 }
 
 export interface ReadCreditCardRequest {
@@ -233,6 +235,14 @@ export class CreditCardsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters['startDate'] != null) {
+            queryParameters['start_date'] = requestParameters['startDate'];
+        }
+
+        if (requestParameters['endDate'] != null) {
+            queryParameters['end_date'] = requestParameters['endDate'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 

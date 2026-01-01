@@ -247,7 +247,7 @@ example().catch(console.error);
 
 ## listCreditCardInvoices
 
-> Array&lt;CreditCardInvoice&gt; listCreditCardInvoices(creditCardID)
+> Array&lt;CreditCardInvoice&gt; listCreditCardInvoices(creditCardID, startDate, endDate)
 
 List Credit Card Invoices
 
@@ -274,6 +274,10 @@ async function example() {
   const body = {
     // number | Credit Card ID
     creditCardID: 1,
+    // Date | ISO8601 Date with the start period for filtering (optional)
+    startDate: 2015-09-01,
+    // Date | ISO8601 Date with the end period for filtering (optional)
+    endDate: 2015-10-01,
   } satisfies ListCreditCardInvoicesRequest;
 
   try {
@@ -294,6 +298,8 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **creditCardID** | `number` | Credit Card ID | [Defaults to `undefined`] |
+| **startDate** | `Date` | ISO8601 Date with the start period for filtering | [Optional] [Defaults to `undefined`] |
+| **endDate** | `Date` | ISO8601 Date with the end period for filtering | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
