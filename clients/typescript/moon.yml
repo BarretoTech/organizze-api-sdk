@@ -1,0 +1,49 @@
+project:
+  name: typescript-client
+  description: The typescript client for the Organizze API SDK
+toolchain:
+  default: node
+language: typescript
+layer: library
+tasks:
+  generate-client:
+    script: npx @openapitools/openapi-generator-cli generate -i ../../specs/openapi.yaml -g typescript-fetch -o . -c ../config/typescript.json
+    toolchain: node
+    type: build
+    inputs:
+      - /specs/openapi.yaml
+      - /clients/config/typescript.json
+    outputs:
+      - "**/**"
+  clean-build:
+    type: run
+    script: rm -rf dist/
+  build:
+    command: npm run build
+    type: build
+    local: true
+    deps:
+      - generate-client
+      - clean-build
+    inputs:
+      - apis/**
+      - docs/**
+      - models/**
+      - index.ts
+      - LICENSE
+      - package.json
+      - package-lock.json
+      - tsconfig.json
+      - runtime.ts
+      - README.md
+    outputs:
+      - dist/**
+    options:
+      persistent: false
+      runDepsInParallel: false
+  publish:
+    command: npm publish
+    local: true
+    options:
+      persistent: true
+      runInCI: false

@@ -1,0 +1,44 @@
+project:
+  name: python-client
+  description: The python client for the Organizze API SDK
+toolchain:
+  default: uv
+language: python
+layer: library
+tasks:
+  generate-client:
+    script: npx @openapitools/openapi-generator-cli generate -i ../../specs/openapi.yaml -g python -o . -c ../config/python.json
+    toolchain: node
+    type: build
+    inputs:
+      - /specs/openapi.yaml
+      - /clients/config/python.json
+    outputs:
+      - "**/**"
+  clean-build:
+    type: run
+    script: rm -rf dist/
+  build:
+    command: uv build
+    toolchain: uv
+    type: build
+    deps:
+      - generate-client
+      - clean-build
+    inputs:
+      - docs/**
+      - organizze_api/**
+      - test/**
+      - tests/**
+      - pyproject.toml
+    outputs:
+      - dist/**
+    options:
+      persistent: false
+      runDepsInParallel: false
+  publish:
+    command: uv publish --username=__token__
+    local: true
+    options:
+      persistent: true
+      runInCI: false
