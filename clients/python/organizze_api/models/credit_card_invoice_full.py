@@ -38,8 +38,8 @@ class CreditCardInvoiceFull(BaseModel):
     balance_cents: StrictInt
     previous_balance_cents: StrictInt
     credit_card_id: Annotated[int, Field(le=2147483647, strict=True, ge=1)]
-    transactions: Annotated[List[Transaction], Field(min_length=0, max_length=100)]
-    payments: Annotated[List[Transaction], Field(min_length=0, max_length=100)]
+    transactions: Annotated[List[Transaction], Field(min_length=0)]
+    payments: Annotated[List[Transaction], Field(min_length=0)]
     __properties: ClassVar[List[str]] = ["id", "date", "starting_date", "closing_date", "amount_cents", "payment_amount_cents", "balance_cents", "previous_balance_cents", "credit_card_id", "transactions", "payments"]
 
     model_config = ConfigDict(

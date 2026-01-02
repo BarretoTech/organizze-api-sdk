@@ -1320,13 +1320,11 @@ components:
         transactions:
           type: array
           minItems: 0
-          maxItems: 100
           items:
             $ref: "#/components/schemas/Transaction"
         payments:
           type: array
           minItems: 0
-          maxItems: 100
           items:
             $ref: "#/components/schemas/Transaction"
       example:

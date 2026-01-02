@@ -176,11 +176,11 @@ export class TransactionsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = requestParameters['startDate'];
+            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = requestParameters['endDate'];
+            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
         }
 
         if (requestParameters['accountId'] != null) {
