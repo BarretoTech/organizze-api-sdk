@@ -72,4 +72,3 @@ requirements.txt
 setup.cfg
 test-requirements.txt
 test/__init__.py
-test/test_transaction_tags_inner.py
