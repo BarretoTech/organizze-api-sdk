@@ -53,8 +53,8 @@ __all__ = [
     "Tag",
     "Transaction",
     "TransactionInput",
+    "TransactionTagsInner",
     "UpdateTransactionRequest",
-    "UpdateTransactionRequestTagsInner",
     "User",
     "ValidationError",
 ]
@@ -99,8 +99,8 @@ from organizze_api.models.recurring_transaction_all_of_recurrence_attributes imp
 from organizze_api.models.tag import Tag as Tag
 from organizze_api.models.transaction import Transaction as Transaction
 from organizze_api.models.transaction_input import TransactionInput as TransactionInput
+from organizze_api.models.transaction_tags_inner import TransactionTagsInner as TransactionTagsInner
 from organizze_api.models.update_transaction_request import UpdateTransactionRequest as UpdateTransactionRequest
-from organizze_api.models.update_transaction_request_tags_inner import UpdateTransactionRequestTagsInner as UpdateTransactionRequestTagsInner
 from organizze_api.models.user import User as User
 from organizze_api.models.validation_error import ValidationError as ValidationError
 

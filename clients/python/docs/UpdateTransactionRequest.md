@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **category_id** | **int** |  | [optional] 
 **notes** | **str** |  | [optional] 
 **credit_card_id** | **int** |  | [optional] 
-**tags** | [**List[UpdateTransactionRequestTagsInner]**](UpdateTransactionRequestTagsInner.md) |  | [optional] 
+**tags** | [**List[Tag]**](Tag.md) |  | [optional] 
 **update_future** | **bool** |  | [optional] 
 **update_all** | **bool** |  | [optional] 
 

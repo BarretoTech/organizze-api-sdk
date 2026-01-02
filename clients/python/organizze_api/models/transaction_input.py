@@ -21,7 +21,7 @@ from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from organizze_api.models.update_transaction_request_tags_inner import UpdateTransactionRequestTagsInner
+from organizze_api.models.tag import Tag
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,7 +38,7 @@ class TransactionInput(BaseModel):
     notes: Optional[StrictStr] = None
     credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    tags: Optional[Annotated[List[UpdateTransactionRequestTagsInner], Field(min_length=0, max_length=100)]] = None
+    tags: Optional[Annotated[List[Tag], Field(min_length=0, max_length=100)]] = None
     __properties: ClassVar[List[str]] = ["description", "date", "paid", "amount_cents", "account_id", "category_id", "notes", "credit_card_id", "credit_card_invoice_id", "tags"]
 
     model_config = ConfigDict(
@@ -123,7 +123,7 @@ class TransactionInput(BaseModel):
             "notes": obj.get("notes"),
             "credit_card_id": obj.get("credit_card_id"),
             "credit_card_invoice_id": obj.get("credit_card_invoice_id"),
-            "tags": [UpdateTransactionRequestTagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None
+            "tags": [Tag.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None
         })
         return _obj
 

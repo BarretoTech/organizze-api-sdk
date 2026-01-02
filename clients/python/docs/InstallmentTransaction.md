@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **oposite_account_id** | **int** | ID of the Bank Account | 
 **created_at** | **datetime** |  | 
 **updated_at** | **datetime** |  | 
-**tags** | [**List[UpdateTransactionRequestTagsInner]**](UpdateTransactionRequestTagsInner.md) |  | 
+**tags** | [**List[TransactionTagsInner]**](TransactionTagsInner.md) |  | 
 **attachments** | **List[str]** |  | 
 **recurrence_id** | **int** |  | 
 **installments_attributes** | [**InstallmentTransactionAllOfInstallmentsAttributes**](InstallmentTransactionAllOfInstallmentsAttributes.md) |  | [optional] 

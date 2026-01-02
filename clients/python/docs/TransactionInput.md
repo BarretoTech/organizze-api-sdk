@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **notes** | **str** |  | [optional] 
 **credit_card_id** | **int** |  | [optional] 
 **credit_card_invoice_id** | **int** |  | [optional] 
-**tags** | [**List[UpdateTransactionRequestTagsInner]**](UpdateTransactionRequestTagsInner.md) |  | [optional] 
+**tags** | [**List[Tag]**](Tag.md) |  | [optional] 
 
 ## Example
 

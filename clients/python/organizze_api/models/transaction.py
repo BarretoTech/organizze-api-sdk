@@ -21,7 +21,7 @@ from datetime import date, datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from organizze_api.models.update_transaction_request_tags_inner import UpdateTransactionRequestTagsInner
+from organizze_api.models.transaction_tags_inner import TransactionTagsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -49,7 +49,7 @@ class Transaction(BaseModel):
     oposite_account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(description="ID of the Bank Account")
     created_at: datetime
     updated_at: datetime
-    tags: Optional[Annotated[List[UpdateTransactionRequestTagsInner], Field(min_length=0, max_length=100)]]
+    tags: Optional[Annotated[List[TransactionTagsInner], Field(min_length=0, max_length=100)]]
     attachments: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]]
     recurrence_id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]]
     __properties: ClassVar[List[str]] = ["id", "description", "date", "paid", "amount_cents", "total_installments", "installment", "recurring", "account_id", "category_id", "notes", "attachments_count", "credit_card_id", "credit_card_invoice_id", "paid_credit_card_id", "paid_credit_card_invoice_id", "oposite_transaction_id", "oposite_account_id", "created_at", "updated_at", "tags", "attachments", "recurrence_id"]
@@ -182,7 +182,7 @@ class Transaction(BaseModel):
             "oposite_account_id": obj.get("oposite_account_id"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),
-            "tags": [UpdateTransactionRequestTagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
+            "tags": [TransactionTagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
             "attachments": obj.get("attachments"),
             "recurrence_id": obj.get("recurrence_id")
         })
