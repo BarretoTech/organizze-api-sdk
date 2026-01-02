@@ -159,13 +159,13 @@ export interface InstallmentTransaction {
      * @type {Array<Tag>}
      * @memberof InstallmentTransaction
      */
-    tags: Array<Tag>;
+    tags: Array<Tag> | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof InstallmentTransaction
      */
-    attachments: Array<string>;
+    attachments: Array<string> | null;
     /**
      * 
      * @type {number}
@@ -240,8 +240,8 @@ export function InstallmentTransactionFromJSONTyped(json: any, ignoreDiscriminat
         'opositeAccountId': json['oposite_account_id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
-        'tags': ((json['tags'] as Array<any>).map(TagFromJSON)),
-        'attachments': json['attachments'],
+        'tags': (json['tags'] == null ? null : (json['tags'] as Array<any>).map(TagFromJSON)),
+        'attachments': json['attachments'] == null ? null : json['attachments'],
         'recurrenceId': json['recurrence_id'],
         'installmentsAttributes': json['installments_attributes'] == null ? undefined : InstallmentTransactionAllOfInstallmentsAttributesFromJSON(json['installments_attributes']),
     };
@@ -278,7 +278,7 @@ export function InstallmentTransactionToJSONTyped(value?: InstallmentTransaction
         'oposite_account_id': value['opositeAccountId'],
         'created_at': value['createdAt'].toISOString(),
         'updated_at': value['updatedAt'].toISOString(),
-        'tags': ((value['tags'] as Array<any>).map(TagToJSON)),
+        'tags': (value['tags'] == null ? null : (value['tags'] as Array<any>).map(TagToJSON)),
         'attachments': value['attachments'],
         'recurrence_id': value['recurrenceId'],
         'installments_attributes': InstallmentTransactionAllOfInstallmentsAttributesToJSON(value['installmentsAttributes']),

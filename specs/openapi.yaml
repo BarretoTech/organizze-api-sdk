@@ -677,12 +677,14 @@ components:
           maxItems: 100
           items:
             $ref: "#/components/schemas/Tag"
+          nullable: true
         attachments:
           type: array
           minItems: 0
           maxItems: 100
           items:
             type: string
+          nullable: true
         recurrence_id:
           type: integer
           format: int64

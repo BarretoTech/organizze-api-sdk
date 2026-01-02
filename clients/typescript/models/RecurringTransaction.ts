@@ -159,13 +159,13 @@ export interface RecurringTransaction {
      * @type {Array<Tag>}
      * @memberof RecurringTransaction
      */
-    tags: Array<Tag>;
+    tags: Array<Tag> | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof RecurringTransaction
      */
-    attachments: Array<string>;
+    attachments: Array<string> | null;
     /**
      * 
      * @type {number}
@@ -241,8 +241,8 @@ export function RecurringTransactionFromJSONTyped(json: any, ignoreDiscriminator
         'opositeAccountId': json['oposite_account_id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
-        'tags': ((json['tags'] as Array<any>).map(TagFromJSON)),
-        'attachments': json['attachments'],
+        'tags': (json['tags'] == null ? null : (json['tags'] as Array<any>).map(TagFromJSON)),
+        'attachments': json['attachments'] == null ? null : json['attachments'],
         'recurrenceId': json['recurrence_id'],
         'recurrenceAttributes': RecurringTransactionAllOfRecurrenceAttributesFromJSON(json['recurrence_attributes']),
     };
@@ -279,7 +279,7 @@ export function RecurringTransactionToJSONTyped(value?: RecurringTransaction | n
         'oposite_account_id': value['opositeAccountId'],
         'created_at': value['createdAt'].toISOString(),
         'updated_at': value['updatedAt'].toISOString(),
-        'tags': ((value['tags'] as Array<any>).map(TagToJSON)),
+        'tags': (value['tags'] == null ? null : (value['tags'] as Array<any>).map(TagToJSON)),
         'attachments': value['attachments'],
         'recurrence_id': value['recurrenceId'],
         'recurrence_attributes': RecurringTransactionAllOfRecurrenceAttributesToJSON(value['recurrenceAttributes']),

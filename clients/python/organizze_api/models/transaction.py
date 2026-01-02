@@ -49,8 +49,8 @@ class Transaction(BaseModel):
     oposite_account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(description="ID of the Bank Account")
     created_at: datetime
     updated_at: datetime
-    tags: Annotated[List[Tag], Field(min_length=0, max_length=100)]
-    attachments: Annotated[List[StrictStr], Field(min_length=0, max_length=100)]
+    tags: Optional[Annotated[List[Tag], Field(min_length=0, max_length=100)]]
+    attachments: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]]
     recurrence_id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]]
     __properties: ClassVar[List[str]] = ["id", "description", "date", "paid", "amount_cents", "total_installments", "installment", "recurring", "account_id", "category_id", "notes", "attachments_count", "credit_card_id", "credit_card_invoice_id", "paid_credit_card_id", "paid_credit_card_invoice_id", "oposite_transaction_id", "oposite_account_id", "created_at", "updated_at", "tags", "attachments", "recurrence_id"]
 
@@ -134,6 +134,16 @@ class Transaction(BaseModel):
         # and model_fields_set contains the field
         if self.oposite_account_id is None and "oposite_account_id" in self.model_fields_set:
             _dict['oposite_account_id'] = None
+
+        # set to None if tags (nullable) is None
+        # and model_fields_set contains the field
+        if self.tags is None and "tags" in self.model_fields_set:
+            _dict['tags'] = None
+
+        # set to None if attachments (nullable) is None
+        # and model_fields_set contains the field
+        if self.attachments is None and "attachments" in self.model_fields_set:
+            _dict['attachments'] = None
 
         # set to None if recurrence_id (nullable) is None
         # and model_fields_set contains the field

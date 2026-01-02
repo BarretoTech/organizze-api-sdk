@@ -152,13 +152,13 @@ export interface Transaction {
      * @type {Array<Tag>}
      * @memberof Transaction
      */
-    tags: Array<Tag>;
+    tags: Array<Tag> | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof Transaction
      */
-    attachments: Array<string>;
+    attachments: Array<string> | null;
     /**
      * 
      * @type {number}
@@ -227,8 +227,8 @@ export function TransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'opositeAccountId': json['oposite_account_id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
-        'tags': ((json['tags'] as Array<any>).map(TagFromJSON)),
-        'attachments': json['attachments'],
+        'tags': (json['tags'] == null ? null : (json['tags'] as Array<any>).map(TagFromJSON)),
+        'attachments': json['attachments'] == null ? null : json['attachments'],
         'recurrenceId': json['recurrence_id'],
     };
 }
@@ -264,7 +264,7 @@ export function TransactionToJSONTyped(value?: Transaction | null, ignoreDiscrim
         'oposite_account_id': value['opositeAccountId'],
         'created_at': value['createdAt'].toISOString(),
         'updated_at': value['updatedAt'].toISOString(),
-        'tags': ((value['tags'] as Array<any>).map(TagToJSON)),
+        'tags': (value['tags'] == null ? null : (value['tags'] as Array<any>).map(TagToJSON)),
         'attachments': value['attachments'],
         'recurrence_id': value['recurrenceId'],
     };
