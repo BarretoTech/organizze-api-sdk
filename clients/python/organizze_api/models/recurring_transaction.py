@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from organizze_api.models.recurring_transaction_all_of_recurrence_attributes import RecurringTransactionAllOfRecurrenceAttributes
+from organizze_api.models.update_transaction_request_tags_inner import UpdateTransactionRequestTagsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -49,7 +50,7 @@ class RecurringTransaction(BaseModel):
     oposite_account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(description="ID of the Bank Account")
     created_at: datetime
     updated_at: datetime
-    tags: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]]
+    tags: Optional[Annotated[List[UpdateTransactionRequestTagsInner], Field(min_length=0, max_length=100)]]
     attachments: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]]
     recurrence_id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]]
     recurrence_attributes: RecurringTransactionAllOfRecurrenceAttributes
@@ -94,6 +95,13 @@ class RecurringTransaction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
+        _items = []
+        if self.tags:
+            for _item_tags in self.tags:
+                if _item_tags:
+                    _items.append(_item_tags.to_dict())
+            _dict['tags'] = _items
         # override the default output from pydantic by calling `to_dict()` of recurrence_attributes
         if self.recurrence_attributes:
             _dict['recurrence_attributes'] = self.recurrence_attributes.to_dict()
@@ -179,7 +187,7 @@ class RecurringTransaction(BaseModel):
             "oposite_account_id": obj.get("oposite_account_id"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),
-            "tags": obj.get("tags"),
+            "tags": [UpdateTransactionRequestTagsInner.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
             "attachments": obj.get("attachments"),
             "recurrence_id": obj.get("recurrence_id"),
             "recurrence_attributes": RecurringTransactionAllOfRecurrenceAttributes.from_dict(obj["recurrence_attributes"]) if obj.get("recurrence_attributes") is not None else None

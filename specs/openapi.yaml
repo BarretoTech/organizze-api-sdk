@@ -676,7 +676,9 @@ components:
           minItems: 0
           maxItems: 100
           items:
-            type: string
+            oneOf:
+              - $ref: "#/components/schemas/Tag"
+              - type: string
           nullable: true
         attachments:
           type: array
@@ -771,7 +773,9 @@ components:
           minItems: 0
           maxItems: 100
           items:
-            type: string
+            oneOf:
+              - $ref: "#/components/schemas/Tag"
+              - type: string
       example:
         description: Despesa fixa
         date: "2015-09-16"
@@ -1569,7 +1573,9 @@ components:
                 minItems: 0
                 maxItems: 100
                 items:
-                  type: string
+                  oneOf:
+                    - $ref: "#/components/schemas/Tag"
+                    - type: string
               update_future:
                 type: boolean
               update_all:

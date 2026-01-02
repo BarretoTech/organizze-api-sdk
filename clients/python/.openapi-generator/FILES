@@ -25,6 +25,7 @@ docs/Transaction.md
 docs/TransactionInput.md
 docs/TransactionsApi.md
 docs/UpdateTransactionRequest.md
+docs/UpdateTransactionRequestTagsInner.md
 docs/User.md
 docs/UsersApi.md
 docs/ValidationError.md
@@ -62,6 +63,7 @@ organizze_api/models/tag.py
 organizze_api/models/transaction.py
 organizze_api/models/transaction_input.py
 organizze_api/models/update_transaction_request.py
+organizze_api/models/update_transaction_request_tags_inner.py
 organizze_api/models/user.py
 organizze_api/models/validation_error.py
 organizze_api/py.typed
@@ -70,3 +72,4 @@ requirements.txt
 setup.cfg
 test-requirements.txt
 test/__init__.py
+test/test_update_transaction_request_tags_inner.py

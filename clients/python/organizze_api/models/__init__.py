@@ -34,6 +34,7 @@ from organizze_api.models.tag import Tag
 from organizze_api.models.transaction import Transaction
 from organizze_api.models.transaction_input import TransactionInput
 from organizze_api.models.update_transaction_request import UpdateTransactionRequest
+from organizze_api.models.update_transaction_request_tags_inner import UpdateTransactionRequestTagsInner
 from organizze_api.models.user import User
 from organizze_api.models.validation_error import ValidationError
 
