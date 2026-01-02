@@ -6,6 +6,13 @@ toolchain:
 language: typescript
 layer: library
 tasks:
+  bump:
+    command: npm version patch --git-tag-version=false
+    toolchains:
+      - node
+      - npm
+    local: true
+    type: run
   generate-client:
     script: npx @openapitools/openapi-generator-cli generate -i ../../specs/openapi.yaml -g typescript-fetch -o . -c ../config/typescript.json
     toolchain: node
@@ -14,7 +21,11 @@ tasks:
       - /specs/openapi.yaml
       - /clients/config/typescript.json
     outputs:
-      - "**/**"
+      - apis/**
+      - docs/**
+      - models/**
+      - index.ts
+      - runtime.ts
   clean-build:
     type: run
     script: rm -rf dist/
@@ -30,12 +41,12 @@ tasks:
       - docs/**
       - models/**
       - index.ts
+      - runtime.ts
+      - README.md
       - LICENSE
       - package.json
       - package-lock.json
       - tsconfig.json
-      - runtime.ts
-      - README.md
     outputs:
       - dist/**
     options:
@@ -44,6 +55,9 @@ tasks:
   publish:
     command: npm publish
     local: true
+    deps:
+      - build
+    type: run
     options:
       persistent: true
       runInCI: false

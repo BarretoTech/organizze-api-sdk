@@ -6,6 +6,13 @@ toolchain:
 language: python
 layer: library
 tasks:
+  bump:
+    command: uv version --bump patch
+    toolchains:
+      - uv
+      - python
+    local: true
+    type: run
   generate-client:
     script: npx @openapitools/openapi-generator-cli generate -i ../../specs/openapi.yaml -g python -o . -c ../config/python.json
     toolchain: node
@@ -14,7 +21,13 @@ tasks:
       - /specs/openapi.yaml
       - /clients/config/python.json
     outputs:
-      - "**/**"
+      - organizze_api/**
+      - docs/**
+      - .gitignore
+      - requirements.txt
+      - setup.cfg
+      - test-requirements.txt
+      - test/__init__.py
   clean-build:
     type: run
     script: rm -rf dist/
@@ -37,8 +50,11 @@ tasks:
       persistent: false
       runDepsInParallel: false
   publish:
-    command: uv publish --username=__token__
+    command: uv publish
     local: true
+    deps:
+      - build
     options:
       persistent: true
       runInCI: false
+      envFile: .env
