@@ -20,13 +20,6 @@ import {
     InstallmentTransactionAllOfInstallmentsAttributesToJSON,
     InstallmentTransactionAllOfInstallmentsAttributesToJSONTyped,
 } from './InstallmentTransactionAllOfInstallmentsAttributes';
-import type { Tag } from './Tag';
-import {
-    TagFromJSON,
-    TagFromJSONTyped,
-    TagToJSON,
-    TagToJSONTyped,
-} from './Tag';
 
 /**
  * Installment Transaction
@@ -156,10 +149,10 @@ export interface InstallmentTransaction {
     updatedAt: Date;
     /**
      * 
-     * @type {Array<Tag>}
+     * @type {Array<string>}
      * @memberof InstallmentTransaction
      */
-    tags: Array<Tag> | null;
+    tags: Array<string> | null;
     /**
      * 
      * @type {Array<string>}
@@ -240,7 +233,7 @@ export function InstallmentTransactionFromJSONTyped(json: any, ignoreDiscriminat
         'opositeAccountId': json['oposite_account_id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
-        'tags': (json['tags'] == null ? null : (json['tags'] as Array<any>).map(TagFromJSON)),
+        'tags': json['tags'] == null ? null : json['tags'],
         'attachments': json['attachments'] == null ? null : json['attachments'],
         'recurrenceId': json['recurrence_id'],
         'installmentsAttributes': json['installments_attributes'] == null ? undefined : InstallmentTransactionAllOfInstallmentsAttributesFromJSON(json['installments_attributes']),
@@ -278,7 +271,7 @@ export function InstallmentTransactionToJSONTyped(value?: InstallmentTransaction
         'oposite_account_id': value['opositeAccountId'],
         'created_at': value['createdAt'].toISOString(),
         'updated_at': value['updatedAt'].toISOString(),
-        'tags': (value['tags'] == null ? null : (value['tags'] as Array<any>).map(TagToJSON)),
+        'tags': value['tags'],
         'attachments': value['attachments'],
         'recurrence_id': value['recurrenceId'],
         'installments_attributes': InstallmentTransactionAllOfInstallmentsAttributesToJSON(value['installmentsAttributes']),

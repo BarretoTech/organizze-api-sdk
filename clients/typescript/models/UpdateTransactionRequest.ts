@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Tag } from './Tag';
-import {
-    TagFromJSON,
-    TagFromJSONTyped,
-    TagToJSON,
-    TagToJSONTyped,
-} from './Tag';
-
 /**
  * 
  * @export
@@ -77,10 +69,10 @@ export interface UpdateTransactionRequest {
     creditCardId?: number | null;
     /**
      * 
-     * @type {Array<Tag>}
+     * @type {Array<string>}
      * @memberof UpdateTransactionRequest
      */
-    tags?: Array<Tag>;
+    tags?: Array<string>;
     /**
      * 
      * @type {boolean}
@@ -120,7 +112,7 @@ export function UpdateTransactionRequestFromJSONTyped(json: any, ignoreDiscrimin
         'categoryId': json['category_id'] == null ? undefined : json['category_id'],
         'notes': json['notes'] == null ? undefined : json['notes'],
         'creditCardId': json['credit_card_id'] == null ? undefined : json['credit_card_id'],
-        'tags': json['tags'] == null ? undefined : ((json['tags'] as Array<any>).map(TagFromJSON)),
+        'tags': json['tags'] == null ? undefined : json['tags'],
         'updateFuture': json['update_future'] == null ? undefined : json['update_future'],
         'updateAll': json['update_all'] == null ? undefined : json['update_all'],
     };
@@ -145,7 +137,7 @@ export function UpdateTransactionRequestToJSONTyped(value?: UpdateTransactionReq
         'category_id': value['categoryId'],
         'notes': value['notes'],
         'credit_card_id': value['creditCardId'],
-        'tags': value['tags'] == null ? undefined : ((value['tags'] as Array<any>).map(TagToJSON)),
+        'tags': value['tags'],
         'update_future': value['updateFuture'],
         'update_all': value['updateAll'],
     };

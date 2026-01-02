@@ -20,13 +20,6 @@ import {
     RecurringTransactionAllOfRecurrenceAttributesToJSON,
     RecurringTransactionAllOfRecurrenceAttributesToJSONTyped,
 } from './RecurringTransactionAllOfRecurrenceAttributes';
-import type { Tag } from './Tag';
-import {
-    TagFromJSON,
-    TagFromJSONTyped,
-    TagToJSON,
-    TagToJSONTyped,
-} from './Tag';
 
 /**
  * Recurring Transaction
@@ -156,10 +149,10 @@ export interface RecurringTransaction {
     updatedAt: Date;
     /**
      * 
-     * @type {Array<Tag>}
+     * @type {Array<string>}
      * @memberof RecurringTransaction
      */
-    tags: Array<Tag> | null;
+    tags: Array<string> | null;
     /**
      * 
      * @type {Array<string>}
@@ -241,7 +234,7 @@ export function RecurringTransactionFromJSONTyped(json: any, ignoreDiscriminator
         'opositeAccountId': json['oposite_account_id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
-        'tags': (json['tags'] == null ? null : (json['tags'] as Array<any>).map(TagFromJSON)),
+        'tags': json['tags'] == null ? null : json['tags'],
         'attachments': json['attachments'] == null ? null : json['attachments'],
         'recurrenceId': json['recurrence_id'],
         'recurrenceAttributes': RecurringTransactionAllOfRecurrenceAttributesFromJSON(json['recurrence_attributes']),
@@ -279,7 +272,7 @@ export function RecurringTransactionToJSONTyped(value?: RecurringTransaction | n
         'oposite_account_id': value['opositeAccountId'],
         'created_at': value['createdAt'].toISOString(),
         'updated_at': value['updatedAt'].toISOString(),
-        'tags': (value['tags'] == null ? null : (value['tags'] as Array<any>).map(TagToJSON)),
+        'tags': value['tags'],
         'attachments': value['attachments'],
         'recurrence_id': value['recurrenceId'],
         'recurrence_attributes': RecurringTransactionAllOfRecurrenceAttributesToJSON(value['recurrenceAttributes']),

@@ -22,7 +22,6 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from organizze_api.models.installment_transaction_all_of_installments_attributes import InstallmentTransactionAllOfInstallmentsAttributes
-from organizze_api.models.tag import Tag
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -50,7 +49,7 @@ class InstallmentTransaction(BaseModel):
     oposite_account_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = Field(description="ID of the Bank Account")
     created_at: datetime
     updated_at: datetime
-    tags: Optional[Annotated[List[Tag], Field(min_length=0, max_length=100)]]
+    tags: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]]
     attachments: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]]
     recurrence_id: Optional[Annotated[int, Field(le=9223372036854775807, strict=True, ge=1)]]
     installments_attributes: Optional[InstallmentTransactionAllOfInstallmentsAttributes] = None
@@ -95,13 +94,6 @@ class InstallmentTransaction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
-        _items = []
-        if self.tags:
-            for _item_tags in self.tags:
-                if _item_tags:
-                    _items.append(_item_tags.to_dict())
-            _dict['tags'] = _items
         # override the default output from pydantic by calling `to_dict()` of installments_attributes
         if self.installments_attributes:
             _dict['installments_attributes'] = self.installments_attributes.to_dict()
@@ -187,7 +179,7 @@ class InstallmentTransaction(BaseModel):
             "oposite_account_id": obj.get("oposite_account_id"),
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at"),
-            "tags": [Tag.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
+            "tags": obj.get("tags"),
             "attachments": obj.get("attachments"),
             "recurrence_id": obj.get("recurrence_id"),
             "installments_attributes": InstallmentTransactionAllOfInstallmentsAttributes.from_dict(obj["installments_attributes"]) if obj.get("installments_attributes") is not None else None

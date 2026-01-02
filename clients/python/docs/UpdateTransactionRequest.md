@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **category_id** | **int** |  | [optional] 
 **notes** | **str** |  | [optional] 
 **credit_card_id** | **int** |  | [optional] 
-**tags** | [**List[Tag]**](Tag.md) |  | [optional] 
+**tags** | **List[str]** |  | [optional] 
 **update_future** | **bool** |  | [optional] 
 **update_all** | **bool** |  | [optional] 
 

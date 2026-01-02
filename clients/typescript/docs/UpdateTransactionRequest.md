@@ -14,7 +14,7 @@ Name | Type
 `categoryId` | number
 `notes` | string
 `creditCardId` | number
-`tags` | [Array&lt;Tag&gt;](Tag.md)
+`tags` | Array&lt;string&gt;
 `updateFuture` | boolean
 `updateAll` | boolean
 

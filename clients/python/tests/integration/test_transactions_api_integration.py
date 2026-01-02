@@ -3,7 +3,6 @@ import unittest
 from datetime import date, datetime, timedelta
 
 import organizze_api
-from organizze_api.models.tag import Tag
 from organizze_api.rest import ApiException
 
 from .base_test import BaseIntegrationTest
@@ -171,14 +170,11 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
                 self.assertIsInstance(transaction.tags, list, "Tags should be a list")
 
                 for tag in transaction.tags:
-                    self.assertIsInstance(tag, Tag, f"Tag should be a Tag instance, got {type(tag)}")
-                    self.assertIsNotNone(tag.name, "Tag should have a name")
-                    self.assertIsInstance(tag.name, str, "Tag name should be a string")
+                    self.assertIsInstance(tag, str, f"Tag should be a string, got {type(tag)}")
 
                 # Print sample tags
                 if len(transaction.tags) > 0:
-                    tag_names = [tag.name for tag in transaction.tags]
-                    print(f"  Sample transaction {transaction.id} has tags: {', '.join(tag_names)}")
+                    print(f"  Sample transaction {transaction.id} has tags: {', '.join(transaction.tags)}")
                     break  # Only print one sample
 
         except ApiException as e:
@@ -204,10 +200,8 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             account_id = accounts[0].id
             category_id = categories[0].id
 
-            # Create tags
-            tag1 = Tag(name="integration-test")
-            tag2 = Tag(name="sdk-test")
-            tag3 = Tag(name="automated")
+            # Create tags as strings
+            tags = ["integration-test", "sdk-test", "automated"]
 
             # Create a transaction with tags
             transaction_data = organizze_api.TransactionInput(
@@ -217,7 +211,7 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
                 category_id=category_id,
                 amount_cents=1500,  # R$ 15.00
                 notes="Created by SDK integration tests with tags",
-                tags=[tag1, tag2, tag3]
+                tags=tags
             )
             new_transaction = organizze_api.CreateTransactionRequest(actual_instance=transaction_data)
 
@@ -230,10 +224,9 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             if created_transaction.tags:
                 self.assertGreater(len(created_transaction.tags), 0, "Transaction should have tags")
                 for tag in created_transaction.tags:
-                    self.assertIsInstance(tag, Tag, "Tag should be a Tag instance")
+                    self.assertIsInstance(tag, str, "Tag should be a string")
 
-                tag_names = [tag.name for tag in created_transaction.tags]
-                print(f"✓ Successfully created transaction with tags: {', '.join(tag_names)}")
+                print(f"✓ Successfully created transaction with tags: {', '.join(created_transaction.tags)}")
             else:
                 print(f"✓ Successfully created transaction with ID: {created_transaction_id}")
 
@@ -275,14 +268,13 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             category_id = categories[0].id
 
             # Create a transaction with initial tags
-            tag1 = Tag(name="initial-tag")
             transaction_data = organizze_api.TransactionInput(
                 description="Test Transaction - Update Tags",
                 var_date=date.today(),
                 account_id=account_id,
                 category_id=category_id,
                 amount_cents=2500,  # R$ 25.00
-                tags=[tag1]
+                tags=["initial-tag"]
             )
             new_transaction = organizze_api.CreateTransactionRequest(actual_instance=transaction_data)
 
@@ -291,11 +283,9 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             print(f"✓ Created transaction with ID: {created_transaction_id}")
 
             # Update with new tags
-            tag2 = Tag(name="updated-tag")
-            tag3 = Tag(name="modified-tag")
             update_request = organizze_api.UpdateTransactionRequest(
                 description="Test Transaction - Tags Updated",
-                tags=[tag2, tag3]
+                tags=["updated-tag", "modified-tag"]
             )
             updated_transaction = self.transactions_api.update_transaction(
                 created_transaction_id,
@@ -303,8 +293,7 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             )
 
             if updated_transaction and updated_transaction.tags:
-                tag_names = [tag.name for tag in updated_transaction.tags]
-                print(f"✓ Successfully updated transaction tags: {', '.join(tag_names)}")
+                print(f"✓ Successfully updated transaction tags: {', '.join(updated_transaction.tags)}")
 
             # Clean up
             delete_request = organizze_api.DeleteTransactionRequest()
@@ -324,7 +313,7 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             self.fail(f"Update transaction tags test failed: {e}")
 
     def test_read_transaction_verifies_tag_objects(self) -> None:
-        """Test reading a transaction and verifying tags are Tag objects."""
+        """Test reading a transaction and verifying tags are strings."""
         try:
             # Get recent transactions
             end_date = date.today()
@@ -352,15 +341,12 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             self.assertIsNotNone(transaction, "Transaction should not be None")
             self.assertIsNotNone(transaction.tags, "Transaction should have tags")
 
-            # Verify each tag is a proper Tag object
+            # Verify each tag is a string
             for tag in transaction.tags:
-                self.assertIsInstance(tag, Tag, "Tag should be a Tag instance")
-                self.assertIsNotNone(tag.name, "Tag should have a name")
-                self.assertIsInstance(tag.name, str, "Tag name should be a string")
+                self.assertIsInstance(tag, str, "Tag should be a string")
 
-            tag_names = [tag.name for tag in transaction.tags]
-            print(f"✓ Successfully verified tag objects for transaction {transaction_id}")
-            print(f"  Tags: {', '.join(tag_names)}")
+            print(f"✓ Successfully verified tags for transaction {transaction_id}")
+            print(f"  Tags: {', '.join(transaction.tags)}")
 
         except ApiException as e:
             self.fail(f"Failed to read and verify transaction tags: {e}")

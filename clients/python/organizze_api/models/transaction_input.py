@@ -21,7 +21,6 @@ from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from organizze_api.models.tag import Tag
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,7 +37,7 @@ class TransactionInput(BaseModel):
     notes: Optional[StrictStr] = None
     credit_card_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
     credit_card_invoice_id: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]] = None
-    tags: Optional[Annotated[List[Tag], Field(min_length=0, max_length=100)]] = None
+    tags: Optional[Annotated[List[StrictStr], Field(min_length=0, max_length=100)]] = None
     __properties: ClassVar[List[str]] = ["description", "date", "paid", "amount_cents", "account_id", "category_id", "notes", "credit_card_id", "credit_card_invoice_id", "tags"]
 
     model_config = ConfigDict(
@@ -80,13 +79,6 @@ class TransactionInput(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in tags (list)
-        _items = []
-        if self.tags:
-            for _item_tags in self.tags:
-                if _item_tags:
-                    _items.append(_item_tags.to_dict())
-            _dict['tags'] = _items
         # set to None if notes (nullable) is None
         # and model_fields_set contains the field
         if self.notes is None and "notes" in self.model_fields_set:
@@ -123,7 +115,7 @@ class TransactionInput(BaseModel):
             "notes": obj.get("notes"),
             "credit_card_id": obj.get("credit_card_id"),
             "credit_card_invoice_id": obj.get("credit_card_invoice_id"),
-            "tags": [Tag.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None
+            "tags": obj.get("tags")
         })
         return _obj
 

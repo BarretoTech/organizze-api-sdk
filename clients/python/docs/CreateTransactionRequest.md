@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **notes** | **str** |  | 
 **credit_card_id** | **int** |  | 
 **credit_card_invoice_id** | **int** |  | 
-**tags** | [**List[Tag]**](Tag.md) |  | 
+**tags** | **List[str]** |  | 
 **id** | **int** | ID of the Transaction | 
 **total_installments** | **int** |  | 
 **installment** | **int** |  | 

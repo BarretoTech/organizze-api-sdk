@@ -26,7 +26,7 @@ Name | Type
 `opositeAccountId` | number
 `createdAt` | Date
 `updatedAt` | Date
-`tags` | [Array&lt;Tag&gt;](Tag.md)
+`tags` | Array&lt;string&gt;
 `attachments` | Array&lt;string&gt;
 `recurrenceId` | number
 

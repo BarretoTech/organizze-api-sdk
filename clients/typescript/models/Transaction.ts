@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Tag } from './Tag';
-import {
-    TagFromJSON,
-    TagFromJSONTyped,
-    TagToJSON,
-    TagToJSONTyped,
-} from './Tag';
-
 /**
  * 
  * @export
@@ -149,10 +141,10 @@ export interface Transaction {
     updatedAt: Date;
     /**
      * 
-     * @type {Array<Tag>}
+     * @type {Array<string>}
      * @memberof Transaction
      */
-    tags: Array<Tag> | null;
+    tags: Array<string> | null;
     /**
      * 
      * @type {Array<string>}
@@ -227,7 +219,7 @@ export function TransactionFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'opositeAccountId': json['oposite_account_id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
-        'tags': (json['tags'] == null ? null : (json['tags'] as Array<any>).map(TagFromJSON)),
+        'tags': json['tags'] == null ? null : json['tags'],
         'attachments': json['attachments'] == null ? null : json['attachments'],
         'recurrenceId': json['recurrence_id'],
     };
@@ -264,7 +256,7 @@ export function TransactionToJSONTyped(value?: Transaction | null, ignoreDiscrim
         'oposite_account_id': value['opositeAccountId'],
         'created_at': value['createdAt'].toISOString(),
         'updated_at': value['updatedAt'].toISOString(),
-        'tags': (value['tags'] == null ? null : (value['tags'] as Array<any>).map(TagToJSON)),
+        'tags': value['tags'],
         'attachments': value['attachments'],
         'recurrence_id': value['recurrenceId'],
     };

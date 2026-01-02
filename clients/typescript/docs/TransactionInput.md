@@ -16,7 +16,7 @@ Name | Type
 `notes` | string
 `creditCardId` | number
 `creditCardInvoiceId` | number
-`tags` | [Array&lt;Tag&gt;](Tag.md)
+`tags` | Array&lt;string&gt;
 
 ## Example
 
