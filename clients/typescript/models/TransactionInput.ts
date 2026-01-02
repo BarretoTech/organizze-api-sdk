@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { Tag } from './Tag';
+import {
+    TagFromJSON,
+    TagFromJSONTyped,
+    TagToJSON,
+    TagToJSONTyped,
+} from './Tag';
+
 /**
  * Schema for creating a transaction
  * @export
@@ -75,10 +83,10 @@ export interface TransactionInput {
     creditCardInvoiceId?: number | null;
     /**
      * 
-     * @type {Array<string>}
+     * @type {Array<Tag>}
      * @memberof TransactionInput
      */
-    tags?: Array<string>;
+    tags?: Array<Tag>;
 }
 
 /**
@@ -111,7 +119,7 @@ export function TransactionInputFromJSONTyped(json: any, ignoreDiscriminator: bo
         'notes': json['notes'] == null ? undefined : json['notes'],
         'creditCardId': json['credit_card_id'] == null ? undefined : json['credit_card_id'],
         'creditCardInvoiceId': json['credit_card_invoice_id'] == null ? undefined : json['credit_card_invoice_id'],
-        'tags': json['tags'] == null ? undefined : json['tags'],
+        'tags': json['tags'] == null ? undefined : ((json['tags'] as Array<any>).map(TagFromJSON)),
     };
 }
 
@@ -135,7 +143,7 @@ export function TransactionInputToJSONTyped(value?: TransactionInput | null, ign
         'notes': value['notes'],
         'credit_card_id': value['creditCardId'],
         'credit_card_invoice_id': value['creditCardInvoiceId'],
-        'tags': value['tags'],
+        'tags': value['tags'] == null ? undefined : ((value['tags'] as Array<any>).map(TagToJSON)),
     };
 }
 

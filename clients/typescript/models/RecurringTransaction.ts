@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TransactionTagsInner } from './TransactionTagsInner';
+import {
+    TransactionTagsInnerFromJSON,
+    TransactionTagsInnerFromJSONTyped,
+    TransactionTagsInnerToJSON,
+    TransactionTagsInnerToJSONTyped,
+} from './TransactionTagsInner';
 import type { RecurringTransactionAllOfRecurrenceAttributes } from './RecurringTransactionAllOfRecurrenceAttributes';
 import {
     RecurringTransactionAllOfRecurrenceAttributesFromJSON,
@@ -149,10 +156,10 @@ export interface RecurringTransaction {
     updatedAt: Date;
     /**
      * 
-     * @type {Array<string>}
+     * @type {Array<TransactionTagsInner>}
      * @memberof RecurringTransaction
      */
-    tags: Array<string> | null;
+    tags: Array<TransactionTagsInner> | null;
     /**
      * 
      * @type {Array<string>}
@@ -234,7 +241,7 @@ export function RecurringTransactionFromJSONTyped(json: any, ignoreDiscriminator
         'opositeAccountId': json['oposite_account_id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
-        'tags': json['tags'] == null ? null : json['tags'],
+        'tags': (json['tags'] == null ? null : (json['tags'] as Array<any>).map(TransactionTagsInnerFromJSON)),
         'attachments': json['attachments'] == null ? null : json['attachments'],
         'recurrenceId': json['recurrence_id'],
         'recurrenceAttributes': RecurringTransactionAllOfRecurrenceAttributesFromJSON(json['recurrence_attributes']),
@@ -272,7 +279,7 @@ export function RecurringTransactionToJSONTyped(value?: RecurringTransaction | n
         'oposite_account_id': value['opositeAccountId'],
         'created_at': value['createdAt'].toISOString(),
         'updated_at': value['updatedAt'].toISOString(),
-        'tags': value['tags'],
+        'tags': (value['tags'] == null ? null : (value['tags'] as Array<any>).map(TransactionTagsInnerToJSON)),
         'attachments': value['attachments'],
         'recurrence_id': value['recurrenceId'],
         'recurrence_attributes': RecurringTransactionAllOfRecurrenceAttributesToJSON(value['recurrenceAttributes']),

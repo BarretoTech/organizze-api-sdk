@@ -15,7 +15,7 @@ Name | Type
 `notes` | string
 `creditCardId` | number
 `creditCardInvoiceId` | number
-`tags` | Array&lt;string&gt;
+`tags` | [Array&lt;TransactionTagsInner&gt;](TransactionTagsInner.md)
 `id` | number
 `totalInstallments` | number
 `installment` | number

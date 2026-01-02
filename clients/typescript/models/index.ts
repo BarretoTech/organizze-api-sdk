@@ -20,6 +20,7 @@ export * from './RecurringTransactionAllOfRecurrenceAttributes';
 export * from './Tag';
 export * from './Transaction';
 export * from './TransactionInput';
+export * from './TransactionTagsInner';
 export * from './UpdateTransactionRequest';
 export * from './User';
 export * from './ValidationError';

@@ -27,7 +27,7 @@ Name | Type
 `opositeAccountId` | number
 `createdAt` | Date
 `updatedAt` | Date
-`tags` | Array&lt;string&gt;
+`tags` | [Array&lt;TransactionTagsInner&gt;](TransactionTagsInner.md)
 `attachments` | Array&lt;string&gt;
 `recurrenceId` | number
 `installmentsAttributes` | [InstallmentTransactionAllOfInstallmentsAttributes](InstallmentTransactionAllOfInstallmentsAttributes.md)

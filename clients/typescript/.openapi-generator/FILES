@@ -29,6 +29,7 @@ docs/RecurringTransactionAllOfRecurrenceAttributes.md
 docs/Tag.md
 docs/Transaction.md
 docs/TransactionInput.md
+docs/TransactionTagsInner.md
 docs/TransactionsApi.md
 docs/UpdateTransactionRequest.md
 docs/User.md
@@ -55,6 +56,7 @@ models/RecurringTransactionAllOfRecurrenceAttributes.ts
 models/Tag.ts
 models/Transaction.ts
 models/TransactionInput.ts
+models/TransactionTagsInner.ts
 models/UpdateTransactionRequest.ts
 models/User.ts
 models/ValidationError.ts
