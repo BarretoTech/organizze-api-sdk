@@ -17,3 +17,6 @@ LICENSE
 README.md
 pyproject.toml
 setup.py
+requirements.txt
+test-requirements.txt
+setup.cfg
