@@ -1,0 +1,70 @@
+name: CI (Code)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+
+concurrency:
+  group: code-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate Code
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: moonrepo/setup-toolchain@v0
+        with:
+          auto-install: true
+          cache: true
+          cache-base: main
+      - name: Restore Bun Package Cache
+        id: restore-bun-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: /home/runner/.bun/install/cache
+          key: bun-packages-${{ runner.os }}-v1-${{ hashFiles('packages/typescript/bun.lock') }}
+      - name: Restore uv Package Cache
+        id: restore-uv-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: /home/runner/.cache/uv
+          key: uv-packages-${{ runner.os }}-v1-${{ hashFiles('packages/python/uv.lock') }}
+      - name: Install Dependencies
+        run: |
+          bun install --frozen-lockfile
+          uv sync --frozen
+      - name: Validate
+        id: validate-code
+        run: moon ci --color
+        env:
+          ORGANIZZE_EMAIL: ${{ secrets.ORGANIZZE_EMAIL }}
+          ORGANIZZE_API_KEY: ${{ secrets.ORGANIZZE_API_KEY }}
+          ORGANIZZE_USER_AGENT: ${{ secrets.ORGANIZZE_USER_AGENT }}
+      - name: Archive Moon Cache
+        uses: actions/upload-artifact@v4
+        with:
+          name: moon-cache-check
+          if-no-files-found: warn
+          include-hidden-files: true
+          path: .moon/cache
+        if: failure()
+      - name: Save Bun Cache
+        uses: actions/cache/save@v4
+        if: ${{ steps.validate-code.outcome == 'success' && steps.restore-bun-cache.outputs.cache-hit == false }}
+        with:
+          path: /home/runner/.bun/install/cache
+          key: ${{ steps.restore-bun-cache.outputs.cache-primary-key }}
+      - name: Save uv Cache
+        uses: actions/cache/save@v4
+        if: ${{ steps.validate-code.outcome == 'success' && steps.restore-uv-cache.outputs.cache-hit == false }}
+        with:
+          path: /home/runner/.cache/uv
+          key: ${{ steps.restore-uv-cache.outputs.cache-primary-key }}

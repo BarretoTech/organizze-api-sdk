@@ -1,10 +1,4 @@
 node:
   packageManager: bun
-  bun:
-    installArgs:
-      - "--frozen-lockfile"
 python:
   packageManager: uv
-  uv:
-    syncArgs:
-      - "--frozen"
