@@ -1,6 +1,6 @@
 {
   "name": "organizze-api-sdk",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "TypeScript/JavaScript SDK for Organizze API - Manage your personal finances programmatically with type-safe access to bank accounts, transactions, budgets, categories, and credit cards",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

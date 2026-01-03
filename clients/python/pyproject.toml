@@ -1,6 +1,6 @@
 [project]
 name = "organizze_api"
-version = "1.0.15"
+version = "1.0.16"
 description = "Python SDK for Organizze API - Manage your personal finances programmatically with type-safe access to bank accounts, transactions, budgets, categories, and credit cards"
 authors = [{ name = "Rhuan Barreto", email = "rhuan@barreto.work" }]
 readme = "README.md"

@@ -534,7 +534,7 @@ wheels = [
 
 [[package]]
 name = "organizze-api"
-version = "1.0.15"
+version = "1.0.16"
 source = { editable = "." }
 dependencies = [
     { name = "pydantic" },
