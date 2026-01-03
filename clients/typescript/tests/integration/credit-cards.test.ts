@@ -25,8 +25,8 @@ describe('CreditCardsApi - Integration Tests', () => {
     const firstCard = cards[0];
     const invoices = await api.listCreditCardInvoices({
       creditCardID: firstCard.id,
-      startDate: '2024-01-01',
-      endDate: '2024-12-31',
+      startDate: new Date('2024-01-01'),
+      endDate: new Date('2024-12-31'),
     });
 
     assert.ok(Array.isArray(invoices), 'should return an array of invoices');

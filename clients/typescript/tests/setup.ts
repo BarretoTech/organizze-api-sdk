@@ -1,4 +1,8 @@
 import { Configuration } from '../index';
+import { config as loadDotenv } from 'dotenv';
+
+// Load environment variables from .env file
+loadDotenv();
 
 /**
  * Get test configuration from environment variables
@@ -6,11 +10,11 @@ import { Configuration } from '../index';
  */
 export function getTestConfig(): Configuration {
   const username = process.env.ORGANIZZE_EMAIL;
-  const password = process.env.ORGANIZZE_TOKEN;
+  const password = process.env.ORGANIZZE_API_KEY;
 
   if (!username || !password) {
     throw new Error(
-      'ORGANIZZE_EMAIL and ORGANIZZE_TOKEN environment variables must be set for integration tests. ' +
+      'ORGANIZZE_EMAIL and ORGANIZZE_API_KEY environment variables must be set for integration tests. ' +
       'Copy .env.example to .env and add your credentials.'
     );
   }

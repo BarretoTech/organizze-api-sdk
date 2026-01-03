@@ -64,7 +64,7 @@ npm run test:watch
 Create a `.env` file (copy from `.env.example`) with:
 
 - `ORGANIZZE_EMAIL`: Your Organizze account email
-- `ORGANIZZE_TOKEN`: Your API token from [Organizze API Settings](https://app.organizze.com.br/configuracoes/api-keys)
+- `ORGANIZZE_API_KEY`: Your API token from [Organizze API Settings](https://app.organizze.com.br/configuracoes/api-keys)
 - `ORGANIZZE_BASE_URL`: API base URL (default: https://api.organizze.com.br/rest/v2)
 
 ## Test Structure

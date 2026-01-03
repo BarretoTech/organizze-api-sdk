@@ -5,6 +5,15 @@ toolchain:
   default: node
 language: typescript
 layer: library
+fileGroups:
+  sources:
+    - apis/**
+    - models/**
+    - index.ts
+    - runtime.ts
+    - package.json
+    - package-lock.json
+    - tsconfig.json
 tasks:
   bump:
     command: npm version patch --git-tag-version=false
@@ -13,6 +22,9 @@ tasks:
       - npm
     local: true
     type: run
+    options:
+      persistent: false
+      runInCI: false
   generate-client:
     script: npx @openapitools/openapi-generator-cli generate -i ../../specs/openapi.yaml -g typescript-fetch -o . -c ../config/typescript.json
     toolchain: node
@@ -26,9 +38,19 @@ tasks:
       - models/**
       - index.ts
       - runtime.ts
+    options:
+      persistent: false
+      outputStyle: buffer-only-failure
+      runInCI: true
+      mutex: ts-client
   clean-build:
     type: run
+    toolchain: system
     script: rm -rf dist/
+    options:
+      persistent: false
+      runInCI: false
+      mutex: ts-client
   build:
     command: npm run build
     type: build
@@ -37,21 +59,16 @@ tasks:
       - generate-client
       - clean-build
     inputs:
-      - apis/**
+      - "@group(sources)"
       - docs/**
-      - models/**
-      - index.ts
-      - runtime.ts
       - README.md
       - LICENSE
-      - package.json
-      - package-lock.json
-      - tsconfig.json
     outputs:
       - dist/**
     options:
       persistent: false
       runDepsInParallel: false
+      outputStyle: buffer-only-failure
   publish:
     command: npm publish
     local: true
@@ -61,3 +78,14 @@ tasks:
     options:
       persistent: true
       runInCI: false
+  test:
+    command: npm run test:all
+    type: test
+    inputs:
+      - "@group(sources)"
+      - tests/**
+    options:
+      persistent: false
+      runInCI: true
+      outputStyle: buffer-only-failure
+      mutex: ts-client
