@@ -37,10 +37,12 @@ jobs:
         with:
           path: /home/runner/.cache/uv
           key: uv-packages-${{ runner.os }}-v1-${{ hashFiles('packages/python/uv.lock') }}
-      - name: Install Dependencies
-        run: |
-          bun install --frozen-lockfile
-          uv sync --frozen
+      - name: Install Typescript Dependencies
+        run: bun install --frozen-lockfile
+        working-directory: packages/typescript
+      - name: Install Python Dependencies
+        run: uv sync --frozen
+        working-directory: packages/python
       - name: Validate
         id: validate-code
         run: moon ci --color
