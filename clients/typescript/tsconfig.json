@@ -10,5 +10,5 @@
     "outDir": "./dist"
   },
   "include": ["."],
-  "exclude": ["dist", "node_modules", "**/__tests__/*"]
+  "exclude": ["dist", "node_modules", "tests", "**/__tests__/*", "**/*.test.ts"]
 }
