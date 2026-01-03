@@ -12,14 +12,12 @@ fileGroups:
     - index.ts
     - runtime.ts
     - package.json
-    - package-lock.json
+    - bun.lock
     - tsconfig.json
 tasks:
   bump:
     command: npm version patch --git-tag-version=false
-    toolchains:
-      - node
-      - npm
+    toolchain: node
     local: true
     type: run
     options:
@@ -43,21 +41,13 @@ tasks:
       outputStyle: buffer-only-failure
       runInCI: true
       mutex: ts-client
-  clean-build:
-    type: run
-    toolchain: system
-    script: rm -rf dist/
-    options:
-      persistent: false
-      runInCI: false
-      mutex: ts-client
   build:
     command: npm run build
     type: build
     local: true
+    toolchain: node
     deps:
       - generate-client
-      - clean-build
     inputs:
       - "@group(sources)"
       - docs/**
@@ -69,8 +59,11 @@ tasks:
       persistent: false
       runDepsInParallel: false
       outputStyle: buffer-only-failure
+      cache: true
+      runInCI: true
   publish:
     command: npm publish
+    toolchain: node
     local: true
     deps:
       - build
@@ -80,6 +73,7 @@ tasks:
       runInCI: false
   test:
     command: npm run test:all
+    toolchain: node
     type: test
     inputs:
       - "@group(sources)"

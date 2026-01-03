@@ -2,7 +2,7 @@ project:
   name: python-client
   description: The python client for the Organizze API SDK
 toolchain:
-  default: uv
+  default: python
 language: python
 layer: library
 fileGroups:
@@ -17,7 +17,7 @@ fileGroups:
 tasks:
   bump:
     script: uv version --bump patch && uv sync
-    toolchain: uv
+    toolchain: python
     local: true
     type: run
     options:
@@ -26,7 +26,7 @@ tasks:
       runInCI: false
   generate-client:
     script: npx @openapitools/openapi-generator-cli generate -i ../../specs/openapi.yaml -g python -o . -c ../config/python.json
-    toolchain: node
+    toolchain: system
     type: build
     inputs:
       - /specs/openapi.yaml
@@ -48,7 +48,7 @@ tasks:
       mutex: generate-client
   build:
     command: uv build
-    toolchain: uv
+    toolchain: python
     type: build
     deps:
       - generate-client
@@ -73,7 +73,7 @@ tasks:
       envFile: .env
   test:
     command: uv run pytest
-    toolchain: uv
+    toolchain: python
     type: test
     inputs:
       - "@group(sources)"
@@ -84,7 +84,7 @@ tasks:
       outputStyle: buffer-only-failure
   typecheck:
     command: uv run mypy
-    toolchain: uv
+    toolchain: python
     type: test
     inputs:
       - "@group(sources)"
