@@ -28,19 +28,19 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: /home/runner/.bun/install/cache
-          key: bun-packages-${{ runner.os }}-v1-${{ hashFiles('packages/typescript/bun.lock') }}
+          key: bun-packages-${{ runner.os }}-v1-${{ hashFiles('clients/typescript/bun.lock') }}
       - name: Restore uv Package Cache
         id: restore-uv-cache
         uses: actions/cache/restore@v4
         with:
           path: /home/runner/.cache/uv
-          key: uv-packages-${{ runner.os }}-v1-${{ hashFiles('packages/python/uv.lock') }}
+          key: uv-packages-${{ runner.os }}-v1-${{ hashFiles('clients/python/uv.lock') }}
       - name: Install Typescript Dependencies
         run: bun install --frozen-lockfile
-        working-directory: packages/typescript
+        working-directory: clients/typescript
       - name: Install Python Dependencies
         run: uv sync --frozen
-        working-directory: packages/python
+        working-directory: clients/python
       - name: Validate
         id: validate-code
         run: moon check --all --color
