@@ -68,7 +68,4 @@ organizze_api/models/user.py
 organizze_api/models/validation_error.py
 organizze_api/py.typed
 organizze_api/rest.py
-requirements.txt
-setup.cfg
-test-requirements.txt
 test/__init__.py

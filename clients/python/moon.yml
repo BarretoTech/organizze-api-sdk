@@ -5,6 +5,15 @@ toolchain:
   default: uv
 language: python
 layer: library
+fileGroups:
+  sources:
+    - organizze_api/**
+    - docs/**
+    - pyproject.toml
+    - uv.lock
+  tests:
+    - tests/**
+    - test/**
 tasks:
   bump:
     script: uv version --bump patch && uv sync
@@ -26,13 +35,17 @@ tasks:
       - organizze_api/**
       - docs/**
       - .gitignore
-      - requirements.txt
-      - setup.cfg
-      - test-requirements.txt
       - test/__init__.py
+    options:
+      persistent: false
+      runInCI: true
+      mutex: generate-client
+      outputStyle: buffer-only-failure
   clean-build:
     type: run
     script: rm -rf dist/
+    options:
+      mutex: generate-client
   build:
     command: uv build
     toolchain: uv
@@ -41,16 +54,14 @@ tasks:
       - generate-client
       - clean-build
     inputs:
-      - docs/**
-      - organizze_api/**
-      - test/**
-      - tests/**
-      - pyproject.toml
+      - "@group(sources)"
     outputs:
       - dist/**
     options:
       persistent: false
       runDepsInParallel: false
+      outputStyle: buffer-only-failure
+      runInCI: true
   publish:
     command: uv publish
     local: true
@@ -65,7 +76,20 @@ tasks:
     toolchain: uv
     type: test
     inputs:
-      - organizze_api/**
-      - tests/**
-      - test/**
-      - pyproject.toml
+      - "@group(sources)"
+      - "@group(tests)"
+    options:
+      persistent: false
+      runInCI: true
+      outputStyle: buffer-only-failure
+  typecheck:
+    command: uv run mypy
+    toolchain: uv
+    type: test
+    inputs:
+      - "@group(sources)"
+      - "@group(tests)"
+    options:
+      persistent: false
+      runInCI: true
+      outputStyle: buffer-only-failure
