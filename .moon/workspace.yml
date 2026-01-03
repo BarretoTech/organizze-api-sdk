@@ -4,8 +4,9 @@ $schema: "./cache/schemas/workspace.json"
 # extends: './shared/workspace.yml'
 
 projects:
-  - "clients/*"
-  - "!clients/config"
+  python-client: clients/python
+  typescipt-client: clients/typescript
+
 vcs:
   manager: "git"
   defaultBranch: "main"
