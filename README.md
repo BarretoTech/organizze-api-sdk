@@ -148,31 +148,36 @@ All Organizze API requests require:
 
 ### Prerequisites
 
-- Node.js 18.14.2 (see `.nvmrc`)
-- npm 11.6.2+
+This project uses [proto](https://moonrepo.dev/proto) for toolchain management and [moon](https://moonrepo.dev) for task running.
+
+1. **Install proto**
+
+   Follow the installation instructions at [https://moonrepo.dev/proto](https://moonrepo.dev/proto)
+
+2. **Install the toolchain**
+
+   The project's toolchain is defined in [`.prototools`](./.prototools). Install all required tools by running:
+
+   ```bash
+   proto use
+   ```
+
+   This will install:
+
+   - moon
+   - Node.js
+   - Python
+   - npm
+   - uv
 
 ### Regenerating Clients
 
 This project uses [OpenAPI Generator](https://openapi-generator.tech) to automatically generate clients from the OpenAPI specification located at [`specs/openapi.yaml`](./specs/openapi.yaml).
 
-#### Generate TypeScript Client
+#### Generate All Clients (Recommended)
 
 ```bash
-npx @openapitools/openapi-generator-cli generate \
-  -i specs/openapi.yaml \
-  -g typescript-fetch \
-  -o clients/typescript \
-  -c clients/config/typescript.json
-```
-
-#### Generate Python Client
-
-```bash
-npx @openapitools/openapi-generator-cli generate \
-  -i specs/openapi.yaml \
-  -g python \
-  -o clients/python \
-  -c clients/config/python.json
+moon run :generate-client
 ```
 
 ### Updating the OpenAPI Specification
