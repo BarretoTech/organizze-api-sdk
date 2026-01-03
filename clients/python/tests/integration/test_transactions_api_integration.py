@@ -26,8 +26,8 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             start_date = end_date - timedelta(days=30)
 
             transactions = self.transactions_api.list_transactions(
-                start_date=start_date.isoformat(),
-                end_date=end_date.isoformat()
+                start_date=start_date,
+                end_date=end_date
             )
             self.assertIsNotNone(transactions, "Transactions list should not be None")
             self.assertIsInstance(transactions, list, "Transactions should be a list")
@@ -48,8 +48,8 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             end_date = date.today()
             start_date = end_date - timedelta(days=30)
             transactions = self.transactions_api.list_transactions(
-                start_date=start_date.isoformat(),
-                end_date=end_date.isoformat()
+                start_date=start_date,
+                end_date=end_date
             )
 
             if len(transactions) == 0:
@@ -90,7 +90,7 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             # Note: CreateTransactionRequest is a oneOf wrapper, use TransactionInput
             transaction_data = organizze_api.TransactionInput(
                 description="Test Transaction SDK",
-                var_date=date.today(),
+                date=date.today(),
                 account_id=account_id,
                 category_id=category_id,
                 amount_cents=1000,  # R$ 10.00
@@ -150,8 +150,8 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             start_date = end_date - timedelta(days=30)
 
             transactions = self.transactions_api.list_transactions(
-                start_date=start_date.isoformat(),
-                end_date=end_date.isoformat()
+                start_date=start_date,
+                end_date=end_date
             )
 
             self.assertIsNotNone(transactions, "Transactions list should not be None")
@@ -170,7 +170,7 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
                 self.assertIsInstance(transaction.tags, list, "Tags should be a list")
 
                 # Print sample tags
-                if len(transaction.tags) > 0:
+                if transaction.tags and len(transaction.tags) > 0:
                     tag_names = []
                     for tag in transaction.tags:
                         # Tag can be a string or a Tag object wrapped in TransactionTagsInner
@@ -179,8 +179,10 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
                         elif hasattr(tag, 'actual_instance'):
                             if isinstance(tag.actual_instance, str):
                                 tag_names.append(tag.actual_instance)
-                            elif hasattr(tag.actual_instance, 'name'):
-                                tag_names.append(tag.actual_instance.name)
+                            elif hasattr(tag.actual_instance, 'name') and tag.actual_instance is not None:
+                                name = tag.actual_instance.name
+                                if name is not None:
+                                    tag_names.append(name)
                     print(f"  Sample transaction {transaction.id} has tags: {', '.join(tag_names)}")
                     break  # Only print one sample
 
@@ -217,7 +219,7 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             # Create a transaction with tags
             transaction_data = organizze_api.TransactionInput(
                 description="Test Transaction with Tags",
-                var_date=date.today(),
+                date=date.today(),
                 account_id=account_id,
                 category_id=category_id,
                 amount_cents=1500,  # R$ 15.00
@@ -242,8 +244,10 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
                     elif hasattr(tag, 'actual_instance'):
                         if isinstance(tag.actual_instance, str):
                             tag_names.append(tag.actual_instance)
-                        elif hasattr(tag.actual_instance, 'name'):
-                            tag_names.append(tag.actual_instance.name)
+                        elif hasattr(tag.actual_instance, 'name') and tag.actual_instance is not None:
+                            name = tag.actual_instance.name
+                            if name is not None:
+                                tag_names.append(name)
 
                 print(f"✓ Successfully created transaction with tags: {', '.join(tag_names)}")
             else:
@@ -289,7 +293,7 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             # Create a transaction with initial tags
             transaction_data = organizze_api.TransactionInput(
                 description="Test Transaction - Update Tags",
-                var_date=date.today(),
+                date=date.today(),
                 account_id=account_id,
                 category_id=category_id,
                 amount_cents=2500,  # R$ 25.00
@@ -315,7 +319,18 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             )
 
             if updated_transaction and updated_transaction.tags:
-                print(f"✓ Successfully updated transaction tags: {', '.join(updated_transaction.tags)}")
+                tag_names = []
+                for tag in updated_transaction.tags:
+                    if isinstance(tag, str):
+                        tag_names.append(tag)
+                    elif hasattr(tag, 'actual_instance'):
+                        if isinstance(tag.actual_instance, str):
+                            tag_names.append(tag.actual_instance)
+                        elif hasattr(tag.actual_instance, 'name') and tag.actual_instance is not None:
+                            name = tag.actual_instance.name
+                            if name is not None:
+                                tag_names.append(name)
+                print(f"✓ Successfully updated transaction tags: {', '.join(tag_names)}")
 
             # Clean up
             delete_request = organizze_api.DeleteTransactionRequest()
@@ -341,8 +356,8 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
             end_date = date.today()
             start_date = end_date - timedelta(days=30)
             transactions = self.transactions_api.list_transactions(
-                start_date=start_date.isoformat(),
-                end_date=end_date.isoformat()
+                start_date=start_date,
+                end_date=end_date
             )
 
             # Find a transaction with tags
@@ -365,15 +380,18 @@ class TestTransactionsApiIntegration(BaseIntegrationTest):
 
             # Extract tag names from Tag objects
             tag_names = []
-            for tag in transaction.tags:
-                # Tag can be a string or a Tag object wrapped in TransactionTagsInner
-                if isinstance(tag, str):
-                    tag_names.append(tag)
-                elif hasattr(tag, 'actual_instance'):
-                    if isinstance(tag.actual_instance, str):
-                        tag_names.append(tag.actual_instance)
-                    elif hasattr(tag.actual_instance, 'name'):
-                        tag_names.append(tag.actual_instance.name)
+            if transaction.tags:
+                for tag in transaction.tags:
+                    # Tag can be a string or a Tag object wrapped in TransactionTagsInner
+                    if isinstance(tag, str):
+                        tag_names.append(tag)
+                    elif hasattr(tag, 'actual_instance'):
+                        if isinstance(tag.actual_instance, str):
+                            tag_names.append(tag.actual_instance)
+                        elif hasattr(tag.actual_instance, 'name') and tag.actual_instance is not None:
+                            name = tag.actual_instance.name
+                            if name is not None:
+                                tag_names.append(name)
 
             print(f"✓ Successfully verified tags for transaction {transaction_id}")
             print(f"  Tags: {', '.join(tag_names)}")
