@@ -7,12 +7,14 @@ language: python
 layer: library
 tasks:
   bump:
-    command: uv version --bump patch
-    toolchains:
-      - uv
-      - python
+    script: uv version --bump patch && uv sync
+    toolchain: uv
     local: true
     type: run
+    options:
+      cache: false
+      persistent: false
+      runInCI: false
   generate-client:
     script: npx @openapitools/openapi-generator-cli generate -i ../../specs/openapi.yaml -g python -o . -c ../config/python.json
     toolchain: node
@@ -58,3 +60,12 @@ tasks:
       persistent: true
       runInCI: false
       envFile: .env
+  test:
+    command: uv run pytest
+    toolchain: uv
+    type: test
+    inputs:
+      - organizze_api/**
+      - tests/**
+      - test/**
+      - pyproject.toml

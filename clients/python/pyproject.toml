@@ -1,6 +1,6 @@
 [project]
 name = "organizze_api"
-version = "1.0.14"
+version = "1.0.15"
 description = "Python SDK for Organizze API - Manage your personal finances programmatically with type-safe access to bank accounts, transactions, budgets, categories, and credit cards"
 authors = [{ name = "Rhuan Barreto", email = "rhuan@barreto.work" }]
 readme = "README.md"
@@ -24,14 +24,13 @@ keywords = [
   "finance-api",
   "money-management",
   "pydantic",
-  "type-safe"
+  "type-safe",
 ]
 requires-python = ">=3.9"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",
   "Intended Audience :: Financial and Insurance Industry",
-  "License :: OSI Approved :: Apache Software License",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.9",
@@ -78,6 +77,25 @@ build-backend = "setuptools.build_meta"
 
 [tool.pylint.'MESSAGES CONTROL']
 extension-pkg-whitelist = "pydantic"
+
+[tool.flake8]
+max-line-length = 99
+
+[tool.pytest.ini_options]
+testpaths = ["test", "tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+minversion = "7.0"
+addopts = [
+    "-v",
+    "--tb=short",
+    "--strict-markers",
+]
+markers = [
+    "integration: Integration tests that make real API calls",
+    "unit: Unit tests that don't make API calls",
+]
 
 [tool.mypy]
 files = [
