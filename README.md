@@ -1,13 +1,19 @@
 # Organizze API SDK
 
-This repository provides auto-generated client libraries for the [Organizze](https://organizze.com.br) API, based on the official documentation at https://github.com/organizze/api-doc.
+Auto-generated client libraries for the [Organizze](https://organizze.com.br) API, simplifying integration with your personal finance data.
 
-The intention of this repo is to simplify the life of developers trying to integrate their own personal finance with [Organizze](https://organizze.com.br/).
+This repository provides type-safe, well-documented client libraries in multiple languages, based on the [official Organizze API documentation](https://github.com/organizze/api-doc). These SDKs handle authentication, request formatting, and response parsing, allowing you to focus on building your application.
 
 ## Disclaimer
 
 This repo and its owner are not affiliated with Organizze and offer no guarantee with regards to API stability or reliability.
 More legal information about license and liabilities, please check the [license file](./LICENSE).
+
+## Important Notice
+
+> **Note:** While the [official Organizze API documentation](https://github.com/organizze/api-doc) describes the available endpoints, some specifications in this repository's [`specs/openapi.yaml`](./specs/openapi.yaml) may not align perfectly with the official documentation. This is because the official documentation can become outdated over time.
+>
+> The OpenAPI specification in this repository has been refined based on real-world API testing and may include corrections, additional constraints, or updated field definitions that better reflect the actual API behavior. When in doubt, the OpenAPI specification in this repository should be considered more accurate for implementation purposes.
 
 ## Available Clients
 
@@ -140,14 +146,14 @@ All Organizze API requests require:
 
 ## Development
 
-### Regenerating Clients
-
-This project uses [OpenAPI Generator](https://openapi-generator.tech) to generate clients from the OpenAPI specification.
-
-#### Prerequisites
+### Prerequisites
 
 - Node.js 18.14.2 (see `.nvmrc`)
 - npm 11.6.2+
+
+### Regenerating Clients
+
+This project uses [OpenAPI Generator](https://openapi-generator.tech) to automatically generate clients from the OpenAPI specification located at [`specs/openapi.yaml`](./specs/openapi.yaml).
 
 #### Generate TypeScript Client
 
@@ -171,26 +177,35 @@ npx @openapitools/openapi-generator-cli generate \
 
 ### Updating the OpenAPI Specification
 
-The OpenAPI specification is located at [`specs/openapi.yaml`](./specs/openapi.yaml).
+The OpenAPI specification is the single source of truth for all generated clients. To update it:
 
-To update it:
-
-1. Edit the `specs/openapi.yaml` file
+1. Edit [`specs/openapi.yaml`](./specs/openapi.yaml) with your changes
 2. Regenerate the clients using the commands above
-3. Test the generated clients
-4. Submit a pull request
+3. Test the generated clients thoroughly
+4. Update the package versions in client-specific files (if needed)
+5. Submit a pull request with a clear description of the changes
 
 ## Contributing
 
-Do you see an endpoint not properly documented? Fork this repo and propose changes through a Pull Request. Contributions are welcome!
+Contributions are welcome! Whether you've found an endpoint that's not properly documented, discovered a bug, or want to add support for a new language, we'd love your help.
 
 ### How to Contribute
 
-1. Fork the repository
-2. Update the OpenAPI specification in `specs/openapi.yaml`
-3. Regenerate the clients
-4. Test your changes
-5. Submit a pull request with a clear description of the changes
+1. **Fork the repository**
+2. **Update the OpenAPI specification** in [`specs/openapi.yaml`](./specs/openapi.yaml)
+   - Add missing endpoints
+   - Fix incorrect types or constraints
+   - Improve descriptions
+3. **Regenerate the clients** using the commands in the Development section
+4. **Test your changes** thoroughly with real API calls
+5. **Submit a pull request** with:
+   - A clear description of what you changed and why
+   - Examples of the issue you're fixing (if applicable)
+   - Test results showing the changes work as expected
+
+### Found an Issue?
+
+If you encounter discrepancies between the SDK and the actual API behavior, please [open an issue](https://github.com/BarretoTech/organizze-api-sdk/issues) with details about the expected vs. actual behavior.
 
 ## License
 

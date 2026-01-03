@@ -1,16 +1,48 @@
 [project]
 name = "organizze_api"
-version = "1.0.11"
-description = "SDK to interface with the Organizze REST API"
+version = "1.0.14"
+description = "Python SDK for Organizze API - Manage your personal finances programmatically with type-safe access to bank accounts, transactions, budgets, categories, and credit cards"
 authors = [{ name = "Rhuan Barreto", email = "rhuan@barreto.work" }]
 readme = "README.md"
-keywords = ["OpenAPI", "OpenAPI-Generator", "Organizze"]
+keywords = [
+  "organizze",
+  "api",
+  "sdk",
+  "client",
+  "personal-finance",
+  "finance",
+  "budget",
+  "budgeting",
+  "transactions",
+  "bank-account",
+  "credit-card",
+  "financial-management",
+  "rest-api",
+  "openapi",
+  "brazil",
+  "brazilian",
+  "finance-api",
+  "money-management",
+  "pydantic",
+  "type-safe"
+]
 requires-python = ">=3.9"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",
+  "Intended Audience :: Financial and Insurance Industry",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Office/Business :: Financial",
+  "Topic :: Office/Business :: Financial :: Accounting",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Typing :: Typed",
 ]
 license = "Apache-2.0"
 
@@ -22,7 +54,11 @@ dependencies = [
 ]
 
 [project.urls]
+Homepage = "https://github.com/BarretoTech/organizze-api-sdk/tree/main/clients/python"
 Repository = "https://github.com/BarretoTech/organizze-api-sdk"
+Documentation = "https://github.com/BarretoTech/organizze-api-sdk/tree/main/clients/python#readme"
+"Issue Tracker" = "https://github.com/BarretoTech/organizze-api-sdk/issues"
+"Source Code" = "https://github.com/BarretoTech/organizze-api-sdk/tree/main/clients/python"
 
 [dependency-groups]
 dev = [
